@@ -1,0 +1,13 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea un cilindro
+bpy.ops.mesh.primitive_cylinder_add(radius=0.15, depth=0.9, location=(0, 0, 0))
+
+# Guarda el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

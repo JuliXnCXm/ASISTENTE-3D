@@ -1,0 +1,66 @@
+```python
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del terreno en metros
+width = 15
+height = 15
+
+# Crear la malla del terreno
+bpy.ops.mesh.plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+terrain = bpy.context.object
+terrain.scale = (width/2, height/2, 1)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Aplicar un material de césped
+material = bpy.data.materials.new(name="GrassMaterial")
+material.use_nodes = True
+nodes = material.node_tree.nodes
+links = material.node_tree.links
+
+# Eliminar el nodo BSDF por defecto
+for node in nodes:
+    if node.type == 'BSDF_PRINCIPLED':
+        nodes.remove(node)
+
+# Crear un nodo Principled BSDF
+principled_bsdf = nodes.new(type='ShaderNodeBsdfPrincipled')
+principled_bsdf.location = (200, 0)
+
+# Crear un nodo Material Output
+material_output = nodes.new(type='ShaderNodeOutputMaterial')
+material_output.location = (400, 0)
+
+# Crear un nodo Texture Coordinate
+texture_coordinate = nodes.new(type='ShaderNodeTexCoord')
+texture_coordinate.location = (-200, 0)
+
+# Crear un nodo Mapping
+mapping = nodes.new(type='ShaderNodeMapping')
+mapping.location = (-100, 0)
+mapping.vector_type = 'TEXTURE'
+mapping.scale[0] = 2
+mapping.scale[1] = 2
+
+# Crear un nodo Noise Texture
+noise_texture = nodes.new(type='ShaderNodeTexNoise')
+noise_texture.location = (100, 0)
+noise_texture.inputs['Scale'].default_value = 5
+
+# Conectar los nodos
+links.new(noise_texture.outputs['Fac'], principled_bsdf.inputs['Base Color'])
+links.new(texture_coordinate.outputs['UV'], mapping.inputs['Vector'])
+links.new(mapping.outputs['Vector'], noise_texture.inputs['Vector'])
+links.new(principled_bsdf.outputs['BSDF'], material_output.inputs['Surface'])
+
+# Asignar el material al terreno
+if terrain:
+    terrain.data.materials.append(material)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

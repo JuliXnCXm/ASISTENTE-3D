@@ -1,0 +1,34 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el piso de concreto
+bpy.ops.mesh.primitive_plane_add(size=5, location=(0, 0, 0))
+piso = bpy.context.active_object
+
+# Aplica material de concreto al piso
+mat_concreto = bpy.data.materials.new(name='Concreto')
+mat_concreto.diffuse_color = (0.8, 0.8, 0.8)
+piso.data.materials.append(mat_concreto)
+
+# Crea el muro de ladrillo
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -4))
+muro = bpy.context.active_object
+
+# Aplica material de ladrillo al muro
+mat_ladrillo = bpy.data.materials.new(name='Ladrillo')
+mat_ladrillo.diffuse_color = (0.9, 0.7, 0.5)
+muro.data.materials.append(mat_ladrillo)
+
+# Escala el muro para que sea alto suficiente
+muro.scale = (1, 1, 4)
+
+# Guarda la escena si se especificó un archivo de salida
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene.BLEND_OUT)

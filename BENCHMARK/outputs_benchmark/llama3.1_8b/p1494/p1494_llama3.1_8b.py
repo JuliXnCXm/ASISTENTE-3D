@@ -1,0 +1,52 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del muro y la puerta
+muro_largo = 10
+muro_alto = 2.2
+puerta_ancho = 1
+
+# Crea el muro
+muro = bpy.data.objects.new("Muro", bpy.data.meshes.new("Muro"))
+muro.location = mathutils.Vector((0, 0, 0))
+muro.scale = (muro_largo, muro_alto, 0.01)
+
+# Crea la geometría del muro
+verts = [
+    (-muro_largo/2, -muro_alto/2, 0),
+    (muro_largo/2, -muro_alto/2, 0),
+    (muro_largo/2, muro_alto/2, 0),
+    (-muro_largo/2, muro_alto/2, 0)
+]
+faces = [
+    (0, 1, 2, 3)
+]
+
+muro.data.from_pydata(verts, [], faces)
+bpy.context.collection.objects.link(muro)
+
+# Crea la puerta
+puerta = bpy.data.objects.new("Puerta", bpy.data.meshes.new("Puerta"))
+puerta.location = mathutils.Vector((0, 0, muro_alto/2 + 0.01))
+puerta.scale = (muro_largo - puerta_ancho, muro_alto, 0.01)
+
+# Crea la geometría de la puerta
+verts_puerta = [
+    (-muro_largo/2 + puerta_ancho/2, -muro_alto/2, 0),
+    (muro_largo/2 - puerta_ancho/2, -muro_alto/2, 0),
+    (muro_largo/2 - puerta_ancho/2, muro_alto/2, 0),
+    (-muro_largo/2 + puerta_ancho/2, muro_alto/2, 0)
+]
+faces_puerta = [
+    (0, 1, 2, 3)
+]
+
+puerta.data.from_pydata(verts_puerta, [], faces_puerta)
+bpy.context.collection.objects.link(puerta)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

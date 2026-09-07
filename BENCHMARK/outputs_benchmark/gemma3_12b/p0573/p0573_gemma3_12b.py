@@ -1,0 +1,60 @@
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del terreno en metros
+width = 20.0
+length = 15.0
+height = 0.0  # Terreno plano
+
+# Crear la malla del terreno
+bpy.ops.mesh.plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+terrain = bpy.context.object
+terrain.scale = (width / 2, length / 2, 1)  # Escalar a las dimensiones deseadas
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True) # Aplicar la escala
+
+# Crear el material de césped
+material = bpy.data.materials.new(name="GrassMaterial")
+material.use_nodes = True
+nodes = material.node_tree.nodes
+links = material.node_tree.links
+
+# Eliminar el nodo Principled BSDF por defecto
+principled_bsdf = nodes.get("Principled BSDF")
+if principled_bsdf:
+    nodes.remove(principled_bsdf)
+
+# Crear un nodo BSDF de Principio
+principled_bsdf = nodes.new(type='ShaderNodeBsdfPrincipled')
+principled_bsdf.location = (200, 0)
+
+# Crear un nodo de textura de ruido
+noise_texture = nodes.new(type='ShaderNodeTexNoise')
+noise_texture.location = (-200, 200)
+noise_texture.inputs['Scale'].default_value = 5.0
+
+# Crear un nodo de color
+color = nodes.new(type='ShaderNodeRGB')
+color.location = (-200, 0)
+color.outputs[0].default_value = (0.5, 0.7, 0.2, 1)  # Color verde césped
+
+# Conectar los nodos
+links.new(color.outputs[0], principled_bsdf.inputs['Base Color'])
+links.new(noise_texture.outputs['Fac'], principled_bsdf.inputs['Roughness'])
+links.new(principled_bsdf.outputs['BSDF'], material.node_tree.nodes['Material Output'].inputs['Surface'])
+
+# Asignar el material al terreno
+if terrain.data.materials:
+    terrain.data.materials[0] = material
+else:
+    terrain.data.materials.append(material)
+
+# Ajustar la suavidad del terreno
+bpy.ops.object.shade_smooth()
+terrain.data.use_auto_smooth = True
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

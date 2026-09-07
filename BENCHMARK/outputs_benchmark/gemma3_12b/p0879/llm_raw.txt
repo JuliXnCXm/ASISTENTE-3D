@@ -1,0 +1,94 @@
+```python
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones de la habitación en metros
+room_width = 4.0
+room_depth = 3.5
+room_height = 2.5
+
+# --- Crear paredes ---
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, room_height/2), scale=(room_width, room_depth, room_height))
+wall_1 = bpy.context.object
+wall_1.name = "Wall_1"
+wall_1.data.materials.clear()
+material_wall = bpy.data.materials.new(name="WallMaterial")
+material_wall.use_nodes = True
+bsdf = material_wall.node_tree.nodes.get("Principled BSDF")
+bsdf.inputs["Base Color"].default_value = (0.5, 0.5, 0.5, 1)  # Gris
+wall_1.data.materials.append(material_wall)
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(room_width/2, 0, room_height/2), scale=(room_width/2, room_height, room_depth))
+wall_2 = bpy.context.object
+wall_2.name = "Wall_2"
+wall_2.data.materials.clear()
+wall_2.data.materials.append(material_wall)
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(room_width/2, room_depth, room_height/2), scale=(room_width/2, room_height, room_depth))
+wall_3 = bpy.context.object
+wall_3.name = "Wall_3"
+wall_3.data.materials.clear()
+wall_3.data.materials.append(material_wall)
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, room_depth/2, room_height/2), scale=(room_width, room_height, room_depth/2))
+wall_4 = bpy.context.object
+wall_4.name = "Wall_4"
+wall_4.data.materials.clear()
+wall_4.data.materials.append(material_wall)
+
+
+# --- Crear suelo de parquet ---
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(room_width/2, room_depth/2, 0))
+floor = bpy.context.object
+floor.name = "Floor"
+floor.scale = (room_width/2, room_depth/2, 1)
+
+material_floor = bpy.data.materials.new(name="ParquetMaterial")
+material_floor.use_nodes = True
+material_floor.node_tree.nodes.remove(material_floor.node_tree.nodes["Principled BSDF"])
+material_floor.use_nodes = True
+material_floor.node_tree.nodes.add("ShaderNodeGlossy")
+material_floor.node_tree.links.new(material_floor.node_tree.nodes["Glossy BSDF"].inputs["Color"], material_floor.node_tree.nodes["Material Output"].inputs["Surface"])
+material_floor.node_tree.nodes["Glossy BSDF"].inputs["Roughness"].default_value = 0.3
+material_floor.node_tree.nodes["Glossy BSDF"].inputs["Color"].default_value = (0.6, 0.4, 0.2, 1)
+floor.data.materials.append(material_floor)
+
+
+# --- Crear cama doble ---
+bed_width = 1.6
+bed_depth = 2.0
+bed_height = 0.5
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(room_width/2 - bed_width/2, room_depth/2 - bed_depth/2, bed_height/2), scale=(bed_width/2, bed_depth/2, bed_height/2))
+bed = bpy.context.object
+bed.name = "Bed"
+
+material_bed = bpy.data.materials.new(name="BedMaterial")
+material_bed.use_nodes = True
+bsdf_bed = material_bed.node_tree.nodes.get("Principled BSDF")
+bsdf_bed.inputs["Base Color"].default_value = (0.8, 0.6, 0.4, 1)  # Madera
+bed.data.materials.append(material_bed)
+
+# --- Crear armario de dos puertas ---
+wardrobe_width = 1.2
+wardrobe_depth = 0.6
+wardrobe_height = 2.0
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, room_depth/2 - wardrobe_depth/2, wardrobe_height/2), scale=(wardrobe_width/2, wardrobe_depth/2, wardrobe_height/2))
+wardrobe = bpy.context.object
+wardrobe.name = "Wardrobe"
+
+material_wardrobe = bpy.data.materials.new(name="WardrobeMaterial")
+material_wardrobe.use_nodes = True
+bsdf_wardrobe = material_wardrobe.node_tree.nodes.get("Principled BSDF")
+bsdf_wardrobe.inputs["Base Color"].default_value = (0.7, 0.7, 0.7, 1)  # Gris claro
+wardrobe.data.materials.append(material_wardrobe)
+
+
+# Guardar la escena si BLEND_OUT está definido
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])
+```

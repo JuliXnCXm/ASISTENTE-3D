@@ -1,0 +1,60 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el terreno de césped
+bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, 0))
+cortadora = bpy.context.active_object
+cortadora.name = "Césped"
+cortadora.data.name = "Césped"
+
+# Crea la casa
+bpy.ops.mesh.primitive_cube_add(size=10, location=(-5, -4, 2))
+casa = bpy.context.active_object
+casa.name = "Casa"
+casa.data.name = "Casa"
+
+# Ajusta las dimensiones de la casa
+casa.dimensions = (10, 8, 3)
+
+# Crea el tejado a dos aguas
+bpy.ops.mesh.primitive_cube_add(size=12, location=(-5, -4, 5))
+techo = bpy.context.active_object
+techo.name = "Techo"
+techo.data.name = "Techo"
+
+# Ajusta las dimensiones del techo
+techo.dimensions = (10, 8, 2)
+
+# Crea la segunda planta de la casa
+bpy.ops.mesh.primitive_cube_add(size=10, location=(-5, -4, 7))
+segunda_planta = bpy.context.active_object
+segunda_planta.name = "Segunda Planta"
+segunda_planta.data.name = "Segunda Planta"
+
+# Ajusta las dimensiones de la segunda planta
+segunda_planta.dimensions = (10, 8, 3)
+
+# Crea el árbol 1
+bpy.ops.mesh.primitive_cylinder_add(radius=2, depth=5, location=(-15, -10, 0))
+arbol1 = bpy.context.active_object
+arbol1.name = "Árbol 1"
+arbol1.data.name = "Árbol 1"
+
+# Crea el árbol 2
+bpy.ops.mesh.primitive_cylinder_add(radius=2, depth=5, location=(15, -10, 0))
+arbol2 = bpy.context.active_object
+arbol2.name = "Árbol 2"
+arbol2.data.name = "Árbol 2"
+
+# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -1,0 +1,53 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear el escritorio en forma de L
+def create_desk():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    desk = bpy.context.object
+    desk.scale = (2, 0.5, 0.7)
+
+    bpy.ops.transform.rotate(value=-1.5708, orient_axis='X')
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, -2, 0))
+    desk_part = bpy.context.object
+    desk_part.scale = (2, 0.5, 0.7)
+
+    bpy.ops.object.select_all(action='DESELECT')
+    desk.select_set(True)
+    desk_part.select_set(True)
+    bpy.context.view_layer.objects.active = desk
+    bpy.ops.object.join()
+
+# Función para crear la silla de oficina
+def create_chair():
+    bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=1, location=(2, -3, 0))
+    chair = bpy.context.object
+    chair.scale = (0.8, 0.8, 0.8)
+
+# Función para crear la estantería de pared con modificadores
+def create_shelf():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(3, -4, 2))
+    shelf = bpy.context.object
+    shelf.scale = (0.5, 1, 1)
+
+    # Añadir modificador Array
+    array_mod = shelf.modifiers.new(name="Array", type='ARRAY')
+    array_mod.count = 4
+    array_mod.relative_offset_displace[0] = 0.5
+
+# Crear el escritorio en forma de L
+create_desk()
+
+# Crear la silla de oficina
+create_chair()
+
+# Crear la estantería de pared
+create_shelf()
+
+# Guardar el archivo si BLEND_OUT está definido
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

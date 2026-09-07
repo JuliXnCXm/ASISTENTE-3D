@@ -1,0 +1,42 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del muro
+longitud = 4.0
+alto = 2.5
+espesor = 0.15
+
+# Crea un nuevo objeto para el muro
+muro = bpy.data.objects.new("Muro", None)
+bpy.context.collection.objects.link(muro)
+
+# Define la geometría del muro
+verts = [
+    mathutils.Vector((0, 0, 0)),
+    mathutils.Vector((longitud, 0, 0)),
+    mathutils.Vector((longitud, alto, 0)),
+    mathutils.Vector((0, alto, 0)),
+    mathutils.Vector((0, 0, -espesor)),
+    mathutils.Vector((longitud, 0, -espesor)),
+    mathutils.Vector((longitud, alto, -espesor)),
+    mathutils.Vector((0, alto, -espesor))
+]
+
+faces = [
+    (0, 1, 2, 3),
+    (4, 5, 6, 7)
+]
+
+# Crea las aristas y caras del muro
+muro.data.from_pydata(verts, [], faces)
+muro.data.update()
+
+# Aplica la transformación de escala para definir el tamaño del muro
+muro.scale = (longitud, alto, espesor)
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -1,0 +1,40 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el plano de fondo (pared)
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
+bpy.context.object.name = "Fondo"
+bpy.context.object.scale = (1, 1, 1)
+
+# Crea la pared de madera vertical
+bpy.ops.mesh.primitive_cube_add(size=2, location=(-5, 0, 0))
+bpy.context.object.name = "Pared de Madera"
+bpy.context.object.scale = (0.1, 2, 2)
+bpy.context.object.rotation_euler = mathutils.Vector((math.pi/2, 0, 0))
+
+# Crea el sofá
+bpy.ops.mesh.primitive_cube_add(size=3, location=(0, -5, 0))
+bpy.context.object.name = "Sofa"
+bpy.context.object.scale = (1.5, 1.5, 1)
+bpy.context.object.rotation_euler = mathutils.Vector((math.pi/4, 0, 0))
+
+# Crea la alfombra
+bpy.ops.mesh.primitive_plane_add(size=8, location=(0, -7, 0))
+bpy.context.object.name = "Alfombra"
+bpy.context.object.scale = (1.5, 1.5, 0.01)
+
+# Crea el mueble de TV bajo y alargado
+bpy.ops.mesh.primitive_cube_add(size=2, location=(0, -3, 0))
+bpy.context.object.name = "Mueble de TV"
+bpy.context.object.scale = (1.5, 0.5, 0.5)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

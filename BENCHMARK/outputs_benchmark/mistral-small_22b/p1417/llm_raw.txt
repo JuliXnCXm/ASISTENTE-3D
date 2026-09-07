@@ -1,0 +1,25 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo del jardín
+bpy.ops.mesh.primitive_plane_add(size=4, location=(0, 0, 0))
+bpy.context.object.name = "Suelo"
+
+# Crear las columnas de la pérgola
+column_height = 3
+for i in range(2):
+    for j in range(2):
+        bpy.ops.mesh.primitive_cylinder_add(radius=0.1, depth=column_height, location=(i * 2 - 1, j * 2 - 1, 0))
+        bpy.context.object.name = f"Columna_{i}_{j}"
+
+# Crear el techo de la pérgola
+bpy.ops.mesh.primitive_plane_add(size=4, location=(0, 0, column_height))
+bpy.context.object.name = "Techo"
+
+# Guardar el archivo .blend si existe BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

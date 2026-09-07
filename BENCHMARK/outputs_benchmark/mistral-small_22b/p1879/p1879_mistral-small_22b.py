@@ -1,0 +1,42 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear el sofá
+def create_sofa():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    sofa = bpy.context.object
+    sofa.scale = (2, 1, 1)
+    sofa.name = "Sofa"
+
+# Función para crear la alfombra
+def create_carpet():
+    bpy.ops.mesh.primitive_plane_add(size=3, location=(0, 0, 0))
+    carpet = bpy.context.object
+    carpet.scale = (2, 1, 1)
+    carpet.name = "Carpet"
+
+# Función para crear el mueble de TV
+def create_tv_stand():
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(0, -1, 0))
+    tv_stand = bpy.context.object
+    tv_stand.scale = (2, 0.5, 1)
+    tv_stand.name = "TV Stand"
+
+# Función para crear el panel de listones de madera vertical
+def create_wood_panel():
+    bpy.ops.mesh.primitive_plane_add(size=2, location=(0, -2, 0))
+    wood_panel = bpy.context.object
+    wood_panel.scale = (1, 0.5, 1)
+    wood_panel.name = "Wood Panel"
+
+# Crear los objetos
+create_sofa()
+create_carpet()
+create_tv_stand()
+create_wood_panel()
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

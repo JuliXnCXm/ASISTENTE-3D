@@ -1,0 +1,52 @@
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones en metros
+sofa_width = 2.4
+sofa_depth = 0.9
+sofa_height = 0.8
+table_width = 1.2
+table_depth = 0.6
+table_height = 0.45
+
+# Crear el sofá
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, sofa_height/2), scale=(sofa_width, sofa_depth, sofa_height))
+sofa = bpy.context.object
+sofa.name = "Sofa"
+sofa.data.materials.clear()
+material_sofa = bpy.data.materials.new(name="SofaMaterial")
+material_sofa.use_nodes = True
+bsdf = material_sofa.node_tree.nodes["Principled BSDF"]
+bsdf.inputs["Base Color"].default_value = (0.8, 0.8, 0.8, 1)  # Gris claro
+bsdf.inputs["Roughness"].default_value = 0.7
+sofa.data.materials.append(material_sofa)
+
+
+# Crear la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0.8, 0, table_height/2), scale=(table_width, table_depth, table_height))
+table = bpy.context.object
+table.name = "CoffeeTable"
+table.data.materials.clear()
+material_table = bpy.data.materials.new(name="TableMaterial")
+material_table.use_nodes = True
+bsdf_table = material_table.node_tree.nodes["Principled BSDF"]
+bsdf_table.inputs["Base Color"].default_value = (0.6, 0.4, 0.2, 1)  # Madera de roble
+bsdf_table.inputs["Roughness"].default_value = 0.8
+table.data.materials.append(material_table)
+
+
+# Ajustar la posición del sofá y la mesa
+# Puedes ajustar estos valores para cambiar la disposición
+# sofa.location = (0, 0, sofa_height/2)
+# table.location = (0.8, 0, table_height/2)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+    print(f"Archivo guardado como: {blend_out_path}")
+else:
+    print("Variable de entorno BLEND_OUT no definida. No se guardó el archivo.")

@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "'ArrayModifier' object has no attribute 'use_merge_holes'",
+  "chamfer_distance": null,
+  "gt_vertices_count": 8,
+  "pred_vertices_count": 0
+}

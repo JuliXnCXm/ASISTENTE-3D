@@ -1,0 +1,17 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el muro divisorio interior
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 2.5/2, -0.15/2))
+wall = bpy.context.object
+wall.scale.x = 5
+wall.scale.y = 2.5
+wall.scale.z = 0.15
+
+# Guarda el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

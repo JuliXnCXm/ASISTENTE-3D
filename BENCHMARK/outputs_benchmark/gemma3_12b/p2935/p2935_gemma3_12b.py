@@ -1,0 +1,75 @@
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones de la losa
+losa_longitud = 4.0
+losa_ancho = 3.0
+losa_espesor = 0.15
+
+# Dimensiones de los postes
+poste_ancho = 0.15
+poste_largo = 0.15
+poste_alto = 2.5
+
+# Crear la losa
+bpy.ops.mesh.primitive_plane_add(size=losa_longitud, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+losa = bpy.context.object
+losa.name = "Losa"
+losa.scale[2] = losa_espesor
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+
+# Crear los postes
+for i in range(4):
+    if i == 0:
+        x = -losa_longitud / 2 + poste_ancho / 2
+        y = -losa_ancho / 2 + poste_ancho / 2
+    elif i == 1:
+        x = -losa_longitud / 2 + poste_ancho / 2
+        y = losa_ancho / 2 - poste_ancho / 2
+    elif i == 2:
+        x = losa_longitud / 2 - poste_ancho / 2
+        y = losa_ancho / 2 - poste_ancho / 2
+    else:
+        x = losa_longitud / 2 - poste_ancho / 2
+        y = -losa_ancho / 2 + poste_ancho / 2
+
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x, y, poste_alto / 2), scale=(poste_ancho, poste_ancho, poste_alto))
+    poste = bpy.context.object
+    poste.name = f"Poste_{i}"
+
+
+# Crear las vigas
+viga_ancho = 0.15
+viga_longitud = losa_longitud
+viga_longitud2 = losa_ancho
+
+# Viga 1 (superior, longitud)
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-losa_longitud / 2 + viga_ancho / 2, 0, poste_alto + viga_ancho / 2), scale=(viga_longitud, viga_ancho, viga_ancho))
+viga1 = bpy.context.object
+viga1.name = "Viga_1"
+
+# Viga 2 (superior, longitud)
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(losa_longitud / 2 - viga_ancho / 2, 0, poste_alto + viga_ancho / 2), scale=(viga_longitud, viga_ancho, viga_ancho))
+viga2 = bpy.context.object
+viga2.name = "Viga_2"
+
+# Viga 3 (superior, ancho)
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, losa_ancho / 2 - viga_ancho / 2, poste_alto + viga_ancho / 2), scale=(viga_ancho, viga_longitud, viga_ancho))
+viga3 = bpy.context.object
+viga3.name = "Viga_3"
+
+# Viga 4 (superior, ancho)
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, -losa_ancho / 2 + viga_ancho / 2, poste_alto + viga_ancho / 2), scale=(viga_ancho, viga_longitud, viga_ancho))
+viga4 = bpy.context.object
+viga4.name = "Viga_4"
+
+
+# Guardar el archivo
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+else:
+    print("No se especificó BLEND_OUT. No se guardó el archivo.")

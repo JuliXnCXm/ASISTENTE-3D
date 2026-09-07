@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "Calling operator \"bpy.ops.mesh.plane_add\" error, could not be found",
+  "chamfer_distance": null,
+  "gt_vertices_count": 104,
+  "pred_vertices_count": 0
+}

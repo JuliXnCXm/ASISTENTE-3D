@@ -1,0 +1,34 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades de la escalera
+altura_total = 3.0  # metros
+diametro = 1.8  # metros
+num_escalones = 16
+radio_poste = diametro / 2
+
+# Crea el poste central
+bpy.ops.mesh.primitive_cylinder_add(radius=radio_poste, depth=diametro)
+poste = bpy.context.active_object
+poste.location = (0, 0, altura_total / 2)
+
+# Crea los escalones
+for i in range(num_escalones):
+    # Calcula la posición del escalón actual
+    angulo = mathutils.pi * (i + 1) / (num_escalones + 1)
+    x = radio_poste * math.cos(angulo)
+    y = radio_poste * math.sin(angulo)
+
+    # Crea el escalón
+    bpy.ops.mesh.primitive_cylinder_add(radius=diametro / num_escalones, depth=0.2)
+    escalon = bpy.context.active_object
+    escalon.location = (x, y, altura_total / 2 + i * 0.2)
+
+# Guarda la escena si se especificó un archivo de salida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

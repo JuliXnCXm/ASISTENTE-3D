@@ -1,0 +1,88 @@
+```python
+import bpy
+import math
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del edificio
+ancho = 20.0  # metros
+fondo = 15.0  # metros
+altura_planta = 3.0  # metros
+altura_total = altura_planta * 5  # metros
+grosor_pared = 0.2  # metros
+grosor_columna = 0.3  # metros
+separacion_columnas = 5.0  # metros
+
+# Crear la base del edificio
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, altura_total / 2))
+edificio = bpy.context.object
+edificio.scale = (ancho / 2, fondo / 2, altura_total / 2)
+edificio.name = "Edificio"
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear paredes
+pared_material = bpy.data.materials.new(name="ParedMaterial")
+pared_material.use_nodes = True
+bsdf = pared_material.node_tree.nodes["Principled BSDF"]
+bsdf.inputs["Base Color"].default_value = (0.8, 0.8, 0.8, 1)  # Gris claro
+edificio.data.materials.append(pared_material)
+
+# Crear columnas
+columna_material = bpy.data.materials.new(name="ColumnaMaterial")
+columna_material.use_nodes = True
+bsdf_columna = columna_material.node_tree.nodes["Principled BSDF"]
+bsdf_columna.inputs["Base Color"].default_value = (0.3, 0.3, 0.3, 1)  # Gris oscuro
+columna_material.use_nodes = True
+
+# Crear columnas en la fachada principal
+for i in range(int(ancho / separacion_columnas) + 1):
+    x = -ancho / 2 + i * separacion_columnas
+    bpy.ops.mesh.primitive_cylinder_add(radius=grosor_columna / 2, depth=altura_total, enter_editmode=False, align='WORLD', location=(x, -fondo / 2 + grosor_columna / 2, altura_total / 2))
+    columna = bpy.context.object
+    columna.name = "Columna_Fachada_" + str(i)
+    columna.data.materials.append(columna_material)
+
+# Crear columnas en la fachada trasera
+for i in range(int(ancho / separacion_columnas) + 1):
+    x = -ancho / 2 + i * separacion_columnas
+    bpy.ops.mesh.primitive_cylinder_add(radius=grosor_columna / 2, depth=altura_total, enter_editmode=False, align='WORLD', location=(x, fondo / 2 - grosor_columna / 2, altura_total / 2))
+    columna = bpy.context.object
+    columna.name = "Columna_Trasera_" + str(i)
+    columna.data.materials.append(columna_material)
+
+# Crear ventanas (retícula simple)
+ventana_ancho = 2.0
+ventana_alto = 1.5
+separacion_ventanas_x = 3.0
+separacion_ventanas_y = 3.0
+
+ventana_material = bpy.data.materials.new(name="VentanaMaterial")
+ventana_material.use_nodes = True
+bsdf_ventana = ventana_material.node_tree.nodes["Principled BSDF"]
+bsdf_ventana.inputs["Base Color"].default_value = (0.2, 0.5, 0.8, 1)  # Azul claro
+bsdf_ventana.inputs["Transmission"].default_value = 1.0
+ventana_material = bpy.data.materials.new(name="VentanaMaterial")
+ventana_material.use_nodes = True
+ventana_material.node_tree.nodes.remove(ventana_material.node_tree.nodes["Principled BSDF"])
+ventana_material.node_tree.nodes.add(ventana_material.node_tree.nodes.new('ShaderNodeBsdfPrincipled'))
+ventana_material.node_tree.links.new(ventana_material.node_tree.nodes["Principled BSDF"].inputs["Base Color"], ventana_material.node_tree.nodes["Principled BSDF"].inputs["Base Color"])
+ventana_material.node_tree.links.new(ventana_material.node_tree.nodes["Principled BSDF"].inputs["Transmission"], ventana_material.node_tree.nodes["Principled BSDF"].inputs["Transmission"])
+ventana_material.use_nodes = True
+
+for piso in range(5):
+    for i in range(int(ancho / separacion_ventanas_x) + 1):
+        for j in range(int(fondo / separacion_ventanas_y) + 1):
+            x = -ancho / 2 + i * separacion_ventanas_x
+            y = -fondo / 2 + j * separacion_ventanas_y
+            z = altura_planta * piso + altura_planta / 2
+            bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x, y, z))
+            ventana = bpy.context.object
+            ventana.scale = (ventana_ancho / 2, grosor_pared / 2, ventana_alto / 2)
+            ventana.name = "Ventana_Piso_" + str(piso) + "_X_" + str(i) + "_Y_" + str(j)
+            ventana.data.materials.append(ventana_material)
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])
+```

@@ -1,0 +1,56 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, -5))
+
+# Crear la escalinata central
+bpy.ops.mesh.primitive_cube_add(size=0.2, location=(0, 0, -4.8))
+steps = bpy.context.active_object
+for i in range(10):
+    steps.select_set(False)
+    bpy.ops.mesh.duplicate()
+    steps = bpy.context.active_object
+    steps.location.z += 0.2
+    steps.select_set(True)
+steps.select_set(False)
+
+# Crear rampas de accesibilidad
+bpy.ops.mesh.primitive_plane_add(size=1, location=(1, -4.8, -5))
+ramp = bpy.context.active_object
+for i in range(9):
+    ramp.select_set(False)
+    bpy.ops.mesh.duplicate()
+    ramp = bpy.context.active_object
+    ramp.location.z += 0.1
+    ramp.location.x -= 0.1
+    ramp.select_set(True)
+ramp.select_set(False)
+
+# Crear jardineras de hormigón
+bpy.ops.mesh.primitive_cube_add(size=2, location=(3, -5, -5))
+jardinera = bpy.context.active_object
+for i in range(4):
+    jardinera.select_set(False)
+    bpy.ops.mesh.duplicate()
+    jardinera = bpy.context.active_object
+    jardinera.location.x += 1
+    jardinera.select_set(True)
+jardinera.select_set(False)
+
+# Añadir iluminación de piso
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, -5))
+light = bpy.context.active_object
+light.data.emit_pass_index = 2
+light.data.use_nodes = True
+bsdf = light.data.node_tree.nodes["Principled BSDF"]
+tex_coord = light.data.node_tree.nodes.new('ShaderNodeTexCoord')
+tex_coord.location = (300, 250)
+light.data.node_tree.links.new(bsdf.inputs['Base Color'], tex_coord.outputs['Object'])
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

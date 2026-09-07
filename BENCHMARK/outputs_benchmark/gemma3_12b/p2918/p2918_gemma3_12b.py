@@ -1,0 +1,43 @@
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del muro
+longitud = 10.0  # metros
+altura = 2.5  # metros
+espesor = 0.2  # metros
+ancho_porton = 3.0  # metros
+
+# Calcular la posición del portón
+posicion_porton = longitud / 2.0 - ancho_porton / 2.0
+
+# Crear el muro principal
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, altura / 2.0))
+muro = bpy.context.object
+muro.name = "Muro"
+muro.scale = (longitud, espesor, altura)
+
+# Crear la abertura para el portón
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(posicion_porton, -espesor/2, altura/2))
+porton_corte = bpy.context.object
+porton_corte.name = "PortonCorte"
+porton_corte.scale = (ancho_porton, espesor, altura)
+
+# Boolean modifier para crear la abertura
+bpy.context.view_layer.objects.active = muro
+muro.select_set(True)
+bpy.ops.object.modifier_add(type='BOOLEAN')
+muro.modifiers["Boolean"].operation = 'DIFFERENCE'
+muro.modifiers["Boolean"].object = porton_corte
+
+# Aplicar el modificador booleano
+bpy.ops.object.modifier_apply(modifier="Boolean")
+
+# Eliminar el objeto de corte
+bpy.data.objects.remove(porton_corte, do_unlink=True)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

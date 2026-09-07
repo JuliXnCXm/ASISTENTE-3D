@@ -1,0 +1,164 @@
+```python
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# --- Terreno de césped ---
+bpy.ops.mesh.plane_add(size=20, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+grass_plane = bpy.context.object
+grass_plane.name = "Grass_Plane"
+bpy.ops.object.shade_smooth()
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+grass_plane.scale = (1, 1, 1)
+
+# Material para el césped
+grass_material = bpy.data.materials.new(name="GrassMaterial")
+grass_material.use_nodes = True
+nodes = grass_material.node_tree.nodes
+links = grass_material.node_tree.links
+
+# Eliminar el nodo BSDF por defecto
+for node in nodes:
+    if node.type == 'BSDF_PRINCIPLED':
+        nodes.remove(node)
+
+# Crear un nodo Principled BSDF
+principled_bsdf = nodes.new(type='ShaderNodeBsdfPrincipled')
+principled_bsdf.location = (200, 0)
+
+# Crear un nodo Material Output
+material_output = nodes.new(type='ShaderNodeOutputMaterial')
+material_output.location = (400, 0)
+
+# Crear un nodo Texture Coordinate
+texture_coordinate = nodes.new(type='ShaderNodeTexCoord')
+texture_coordinate.location = (-200, 0)
+
+# Crear un nodo Mapping
+mapping = nodes.new(type='ShaderNodeMapping')
+mapping.location = (-100, 0)
+mapping.vector_type = 'TEXTURE'
+mapping.scale[0] = 1
+mapping.scale[1] = 1
+mapping.scale[2] = 1
+
+# Crear un nodo Noise Texture
+noise_texture = nodes.new(type='ShaderNodeTexNoise')
+noise_texture.location = (100, 0)
+noise_texture.inputs['Scale'].default_value = 2.0
+noise_texture.inputs['Detail'].default_value = 8.0
+
+# Conectar los nodos
+links.new(noise_texture.outputs['Fac'], principled_bsdf.inputs['Base Color'])
+links.new(texture_coordinate.outputs['UV'], mapping.inputs['Vector'])
+links.new(mapping.outputs['Vector'], noise_texture.inputs['Vector'])
+links.new(principled_bsdf.outputs['BSDF'], material_output.inputs['Surface'])
+
+# Asignar el material al plano
+if grass_plane.data.materials:
+    grass_plane.data.materials[0] = grass_material
+else:
+    grass_plane.data.materials.append(grass_material)
+
+# --- Árbol ---
+bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=3, enter_editmode=False, align='WORLD', location=(2, 0, 1.5))
+tree_trunk = bpy.context.object
+tree_trunk.name = "Tree_Trunk"
+bpy.ops.object.shade_smooth()
+
+# Crear ramas (simplificado)
+bpy.ops.mesh.primitive_cylinder_add(radius=0.3, depth=1, enter_editmode=False, align='WORLD', location=(2, 1, 3))
+tree_branch1 = bpy.context.object
+tree_branch1.name = "Tree_Branch_1"
+bpy.ops.object.shade_smooth()
+
+bpy.ops.mesh.primitive_cylinder_add(radius=0.2, depth=1.2, enter_editmode=False, align='WORLD', location=(2, -1, 3.2))
+tree_branch2 = bpy.context.object
+tree_branch2.name = "Tree_Branch_2"
+bpy.ops.object.shade_smooth()
+
+# Material para el tronco
+tree_material = bpy.data.materials.new(name="TreeMaterial")
+tree_material.use_nodes = True
+tree_nodes = tree_material.node_tree.nodes
+tree_links = tree_material.node_tree.links
+
+# Eliminar el nodo BSDF por defecto
+for node in tree_nodes:
+    if node.type == 'BSDF_PRINCIPLED':
+        tree_nodes.remove(node)
+
+# Crear un nodo Principled BSDF
+principled_bsdf_tree = tree_nodes.new(type='ShaderNodeBsdfPrincipled')
+principled_bsdf_tree.location = (200, 0)
+principled_bsdf_tree.inputs['Base Color'].default_value = (0.6, 0.3, 0.1, 1) # Marrón
+
+# Crear un nodo Material Output
+material_output_tree = tree_nodes.new(type='ShaderNodeOutputMaterial')
+material_output_tree.location = (400, 0)
+
+# Conectar los nodos
+tree_links.new(principled_bsdf_tree.outputs['BSDF'], material_output_tree.inputs['Surface'])
+
+# Asignar el material al tronco
+if tree_trunk.data.materials:
+    tree_trunk.data.materials[0] = tree_material
+else:
+    tree_trunk.data.materials.append(tree_material)
+
+# Asignar el material a las ramas
+if tree_branch1.data.materials:
+    tree_branch1.data.materials[0] = tree_material
+else:
+    tree_branch1.data.materials.append(tree_material)
+
+if tree_branch2.data.materials:
+    tree_branch2.data.materials[0] = tree_material
+else:
+    tree_branch2.data.materials.append(tree_material)
+
+
+# --- Banco de madera ---
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-2, 0, 0.5))
+bench = bpy.context.object
+bench.name = "Bench"
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+bench.scale = (1.5, 0.3, 0.8)
+bpy.ops.object.shade_smooth()
+
+# Material para el banco
+bench_material = bpy.data.materials.new(name="BenchMaterial")
+bench_material.use_nodes = True
+bench_nodes = bench_material.node_tree.nodes
+bench_links = bench_material.node_tree.links
+
+# Eliminar el nodo BSDF por defecto
+for node in bench_nodes:
+    if node.type == 'BSDF_PRINCIPLED':
+        bench_nodes.remove(node)
+
+# Crear un nodo Principled BSDF
+principled_bsdf_bench = bench_nodes.new(type='ShaderNodeBsdfPrincipled')
+principled_bsdf_bench.location = (200, 0)
+principled_bsdf_bench.inputs['Base Color'].default_value = (0.8, 0.6, 0.4, 1) # Madera clara
+
+# Crear un nodo Material Output
+material_output_bench = bench_nodes.new(type='ShaderNodeOutputMaterial')
+material_output_bench.location = (400, 0)
+
+# Conectar los nodos
+bench_links.new(principled_bsdf_bench.outputs['BSDF'], material_output_bench.inputs['Surface'])
+
+# Asignar el material al banco
+if bench.data.materials:
+    bench.data.materials[0] = bench_material
+else:
+    bench.data.materials.append(bench_material)
+
+
+# Guardar la escena
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -1,0 +1,109 @@
+import bpy
+import math
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones generales
+building_width = 10  # metros
+building_depth = 15  # metros
+roof_height = 5  # metros
+terrace_width = building_width
+terrace_depth = building_depth
+terrace_height = 0.1  # Grosor de la terraza
+
+# Dimensiones de la pérgola
+pergola_width = 6
+pergola_depth = 8
+pergola_height = 3
+post_diameter = 0.2
+beam_height = 2.5
+
+# Dimensiones de las jardineras
+planter_width = 0.3
+planter_depth = 0.5
+planter_height = 0.4
+
+# --- Funciones de creación ---
+
+def create_building(width, depth, height):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, height/2), scale=(width, depth, height))
+    building = bpy.context.object
+    building.name = "Building"
+    return building
+
+def create_terrace(width, depth, height):
+    bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, roof_height), scale=(width, depth, 1))
+    terrace = bpy.context.object
+    terrace.name = "Terrace"
+    terrace.scale[2] = height
+    return terrace
+
+def create_planter(width, depth, height, location):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=location, scale=(width, depth, height))
+    planter = bpy.context.object
+    planter.name = "Planter"
+    return planter
+
+def create_pergola_post(diameter, height, location):
+    bpy.ops.mesh.primitive_cylinder_add(radius=diameter/2, depth=height, enter_editmode=False, align='WORLD', location=location, rotation=(math.pi/2, 0, 0))
+    post = bpy.context.object
+    post.name = "PergolaPost"
+    return post
+
+def create_pergola_beam(width, depth, height, location):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=location, scale=(width, depth, height))
+    beam = bpy.context.object
+    beam.name = "PergolaBeam"
+    return beam
+
+# --- Creación de objetos ---
+
+# Edificio
+building = create_building(building_width, building_depth, 10)
+
+# Terraza
+terrace = create_terrace(terrace_width, terrace_depth, terrace_height)
+
+# Jardineras
+planter_locations = [
+    (0, 0, roof_height + planter_height/2),
+    (building_width, 0, roof_height + planter_height/2),
+    (0, building_depth, roof_height + planter_height/2),
+    (building_width, building_depth, roof_height + planter_height/2)
+]
+
+planters = []
+for loc in planter_locations:
+    planter = create_planter(planter_width, planter_depth, planter_height, loc)
+    planters.append(planter)
+
+#Pérgola
+post_locations = [
+    (building_width/2 - pergola_width/2, building_depth/2 - pergola_depth/2, roof_height + post_diameter/2),
+    (building_width/2 + pergola_width/2, building_depth/2 - pergola_depth/2, roof_height + post_diameter/2),
+    (building_width/2 - pergola_width/2, building_depth/2 + pergola_depth/2, roof_height + post_diameter/2),
+    (building_width/2 + pergola_width/2, building_depth/2 + pergola_depth/2, roof_height + post_diameter/2)
+]
+
+pergola_posts = []
+for loc in post_locations:
+    post = create_pergola_post(post_diameter, pergola_height, loc)
+    pergola_posts.append(post)
+
+beam_locations = [
+    (building_width/2 - pergola_width/2, building_depth/2 - pergola_depth/2 + pergola_depth/2, roof_height + beam_height),
+    (building_width/2 + pergola_width/2, building_depth/2 - pergola_depth/2 + pergola_depth/2, roof_height + beam_height),
+    (building_width/2 - pergola_width/2, building_depth/2 + pergola_depth/2, roof_height + beam_height),
+    (building_width/2 + pergola_width/2, building_depth/2 + pergola_depth/2, roof_height + beam_height)
+]
+
+pergola_beams = []
+for loc in beam_locations:
+    beam = create_pergola_beam(pergola_width, pergola_depth/2, beam_height, loc)
+    pergola_beams.append(beam)
+
+
+# --- Guardar la escena ---
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

@@ -1,0 +1,30 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el material del hormigón
+material = bpy.data.materials.new(name="ConcreteMaterial")
+material.diffuse_color = (0.5, 0.5, 0.5)
+
+# Crear la escalera
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+stairs = bpy.context.object
+stairs.name = "Stairs"
+
+# Añadir material a la escalera
+stairs.data.materials.append(material)
+
+# Crear los peldaños
+for i in range(16):
+    bpy.ops.mesh.primitive_cube_add(size=0.1, location=(i * 0.1 - 7.5, 0, 1))
+    stair = bpy.context.object
+    stair.name = f"Stair_{i}"
+    stair.data.materials.append(material)
+    stair.parent = stairs
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -1,0 +1,34 @@
+import bpy
+import math
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del edificio
+ancho = 20
+alto = 5 * 3  # 3 metros por piso, con un total de 5 pisos
+profundidad = 10
+
+# Crea el cuerpo principal del edificio
+bpy.ops.mesh.primitive_cube_add(size=alto, location=(0, 0, -profundidad / 2))
+objeto_edificio = bpy.context.active_object
+objeto_edificio.scale((ancho, profundidad, alto))
+
+# Define la altura de las ventanas y su separación
+altura_ventana = 3
+separacion_ventana = 1
+
+# Crea las ventanas en cada piso
+for i in range(5):
+    # Calcula la posición x de la primera ventana
+    pos_x = ancho / 2 - (ancho / separacion_ventana) * (i + 1)
+    
+    # Crea una serie de cubos para representar las ventanas en cada piso
+    for j in range(int(ancho / separacion_ventana)):
+        bpy.ops.mesh.primitive_cube_add(size=altura_ventana, location=(pos_x + j * separacion_ventana, 0, -profundidad / 2 + i * alto))
+        objeto_ventana = bpy.context.active_object
+        objeto_ventana.scale((separacion_ventana, altura_ventana, altura_ventana))
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

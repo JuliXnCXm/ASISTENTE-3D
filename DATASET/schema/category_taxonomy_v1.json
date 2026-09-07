@@ -1,0 +1,179 @@
+{
+  "taxonomy_version": "1.0.0",
+  "description": "Taxonomia canonica de categorias para el dataset AEC de creacion.",
+  "categories": {
+    "abertura": [
+      "ventana",
+      "puerta",
+      "carpintería"
+    ],
+    "apartamento": [
+      "apartamento",
+      "apartamento 2 dormitorios",
+      "apartamento_2_dormitorios",
+      "apartamento accesible",
+      "apartamento_duplex",
+      "dúplex",
+      "loft",
+      "loft industrial",
+      "loft_industrial",
+      "loft_mezzanine"
+    ],
+    "bano": [
+      "baño",
+      "baño accesible"
+    ],
+    "casa": [
+      "casa",
+      "casa de campo",
+      "casa duplex",
+      "casa dúplex",
+      "casa en L",
+      "casa pequeña",
+      "cabaña"
+    ],
+    "cerramiento": [
+      "cerramiento",
+      "cerco",
+      "division"
+    ],
+    "cielorraso": [
+      "cielorraso",
+      "falso techo"
+    ],
+    "circulacion": [
+      "circulacion",
+      "baranda"
+    ],
+    "cocina": [
+      "cocina",
+      "isla de cocina"
+    ],
+    "cubierta": [
+      "cubierta",
+      "techo",
+      "tejado"
+    ],
+    "decoracion": [
+      "decoración",
+      "zócalo"
+    ],
+    "dormitorio": [
+      "dormitorio"
+    ],
+    "edificio": [
+      "edificio"
+    ],
+    "escalera": [
+      "escalera",
+      "escalera_diseno"
+    ],
+    "espacio_colectivo": [
+      "aula",
+      "restaurante",
+      "tienda"
+    ],
+    "espacio_exterior": [
+      "anfiteatro",
+      "area_barbacoa",
+      "calle",
+      "camino",
+      "pavimento",
+      "quincho_barbacoa",
+      "vialidad"
+    ],
+    "estacionamiento": [
+      "aparcamiento",
+      "cochera",
+      "estacionamiento"
+    ],
+    "estructura": [
+      "caseta",
+      "cobertizo",
+      "columna",
+      "estructura",
+      "estructural"
+    ],
+    "fachada": [
+      "acceso_edificio",
+      "fachada"
+    ],
+    "habitacion": [
+      "comedor",
+      "habitacion"
+    ],
+    "iluminacion": [
+      "iluminacion",
+      "iluminación"
+    ],
+    "jardin": [
+      "jardin",
+      "jardin_zen",
+      "jardín",
+      "jardín contemporáneo",
+      "jardín zen",
+      "paisaje"
+    ],
+    "jardinera": [
+      "jardinera"
+    ],
+    "losa": [
+      "losa"
+    ],
+    "mobiliario": [
+      "alfombra",
+      "estanteria",
+      "mesa",
+      "mobiliario",
+      "vestidor"
+    ],
+    "mobiliario_urbano": [
+      "banca",
+      "fuente",
+      "fuente_ornamental",
+      "fuente_plaza",
+      "mobiliario urbano",
+      "zona_descanso"
+    ],
+    "muro": [
+      "muro",
+      "muro de contención",
+      "muro y jardinera"
+    ],
+    "oficina": [
+      "oficina"
+    ],
+    "parque": [
+      "parque",
+      "parque_urbano"
+    ],
+    "patio": [
+      "patio"
+    ],
+    "pergola": [
+      "gazebo",
+      "patio_pergola",
+      "pergola"
+    ],
+    "piscina": [
+      "piscina"
+    ],
+    "plaza": [
+      "espacio urbano",
+      "plaza",
+      "plaza urbana"
+    ],
+    "terreno": [
+      "terreno"
+    ],
+    "terraza": [
+      "balcon",
+      "porche",
+      "terraza",
+      "terraza en azotea"
+    ],
+    "vegetacion": [
+      "vegetacion"
+    ]
+  }
+}

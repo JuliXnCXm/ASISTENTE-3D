@@ -1,0 +1,61 @@
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del muro
+longitud_muro = 10.0
+altura_muro = 2.5
+grosor_muro = 0.2
+
+# Dimensiones de la puerta
+ancho_puerta = 1.5
+
+# Crear el muro de ladrillo
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, altura_muro / 2), scale=(1, 1, 1))
+muro = bpy.context.object
+muro.name = "Muro"
+muro.scale[0] = longitud_muro
+muro.scale[1] = grosor_muro
+muro.scale[2] = altura_muro
+
+# Subdividir el muro para crear ladrillos
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.subdivide(number_cuts=10)
+bpy.ops.object.mode_set(mode='OBJECT')
+
+# Material rojo para el muro
+material_ladrillo = bpy.data.materials.new(name="LadrilloRojo")
+material_ladrillo.use_nodes = True
+bsdf = material_ladrillo.node_tree.nodes["Principled BSDF"]
+bsdf.inputs["Base Color"].default_value = (0.8, 0.2, 0.1, 1)
+bsdf.inputs["Roughness"].default_value = 0.7
+muro.data.materials.append(material_ladrillo)
+
+# Crear la puerta de madera
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+puerta = bpy.context.object
+puerta.name = "Puerta"
+puerta.scale[0] = ancho_puerta / 2
+puerta.scale[1] = grosor_muro / 2
+puerta.scale[2] = altura_muro / 2
+puerta.location[0] = longitud_muro / 2
+puerta.location[1] = -grosor_muro / 2
+puerta.location[2] = altura_muro / 2
+
+# Material de madera para la puerta
+material_madera = bpy.data.materials.new(name="Madera")
+material_madera.use_nodes = True
+bsdf_madera = material_madera.node_tree.nodes["Principled BSDF"]
+bsdf_madera.inputs["Base Color"].default_value = (0.6, 0.4, 0.2, 1)
+bsdf_madera.inputs["Roughness"].default_value = 0.5
+puerta.data.materials.append(material_madera)
+
+# Ocultar la puerta
+puerta.hide_render = True
+puerta.hide_viewport = True
+
+# Guardar el archivo .blend si BLEND_OUT está definido
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

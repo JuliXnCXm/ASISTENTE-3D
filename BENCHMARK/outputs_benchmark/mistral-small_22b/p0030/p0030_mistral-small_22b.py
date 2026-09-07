@@ -1,0 +1,14 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el muro interior
+bpy.ops.mesh.primitive_cube_add(size=0.15, location=(2.5, 0, 1.35))
+wall = bpy.context.object
+wall.scale.x = 5
+wall.scale.y = 2.7
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

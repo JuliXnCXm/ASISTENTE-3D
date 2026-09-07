@@ -1,0 +1,87 @@
+ ```python
+import bpy
+from math import pi
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear un muro
+def create_wall(location, dimensions):
+    bpy.ops.mesh.primitive_cube_add(size=dimensions, location=location)
+    obj = bpy.context.object
+    obj.name = "Wall"
+    return obj
+
+# Función para crear una losa
+def create_slab(location, dimensions):
+    bpy.ops.mesh.primitive_cube_add(size=dimensions, location=location)
+    obj = bpy.context.object
+    obj.name = "Slab"
+    return obj
+
+# Función para crear una puerta
+def create_door(location):
+    bpy.ops.mesh.primitive_cube_add(size=(0.8, 2, 0.1), location=location)
+    obj = bpy.context.object
+    obj.name = "Door"
+    return obj
+
+# Función para crear una ventana
+def create_window(location):
+    bpy.ops.mesh.primitive_cube_add(size=(1, 1, 0.2), location=location)
+    obj = bpy.context.object
+    obj.name = "Window"
+    return obj
+
+# Función para crear un sofá
+def create_sofa(location):
+    bpy.ops.mesh.primitive_cube_add(size=(2, 1, 0.5), location=location)
+    obj = bpy.context.object
+    obj.name = "Sofa"
+    return obj
+
+# Función para crear una mesa de comedor
+def create_table(location):
+    bpy.ops.mesh.primitive_cube_add(size=(1, 1, 0.5), location=location)
+    obj = bpy.context.object
+    obj.name = "Table"
+    return obj
+
+# Función para crear una cama
+def create_bed(location):
+    bpy.ops.mesh.primitive_cube_add(size=(2, 0.5, 0.5), location=location)
+    obj = bpy.context.object
+    obj.name = "Bed"
+    return obj
+
+# Crear la estructura de muros y losas
+wall_dimensions = (0.3, 2.7, 2.4)
+slab_dimensions = (11, 8, 0.3)
+
+create_wall((-5.5, -4, 0))
+create_wall((-5.5, 4, 0))
+create_wall((5.5, -4, 0))
+create_wall((5.5, 4, 0))
+create_wall((-11, 0, 0))
+create_wall((11, 0, 0))
+create_slab((0, 0, 2.4))
+
+# Crear puertas y ventanas
+create_door((-5.5, -3, 0))
+create_door((-5.5, 3, 0))
+create_window((-11, 0, 1.2))
+create_window((11, 0, 1.2))
+create_window((5.5, -3, 1.2))
+create_window((5.5, 3, 1.2))
+
+# Crear mobiliario
+create_sofa((-4, -2, 0))
+create_table((-4, 0, 0))
+create_bed((-8, -2, 0))
+create_bed((-8, 2, 0))
+create_bed((-10, 0, 0))
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

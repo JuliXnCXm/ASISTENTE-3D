@@ -1,0 +1,54 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del sofá
+sofa_length = 3.5  # metros
+sofa_width = 1.2   # metros
+sofa_height = 0.8  # metros
+
+# Crea el cuerpo del sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_length, location=(0, -1.5, 0))
+sofa_body = bpy.context.active_object
+sofa_body.scale = (sofa_length, sofa_width, sofa_height)
+
+# Agrega la textura de tela gris al cuerpo del sofá
+bpy.ops.mesh.primitive_plane_add(size=sofa_width)
+tex_plane = bpy.context.active_object
+tex_plane.name = "Sofa Texture"
+tex_plane.location = (0, -1.5, 0.8)
+tex_plane.scale = (sofa_length, sofa_width, 0.01)
+
+# Crea la textura de tela gris
+bpy.ops.mesh.primitive_plane_add(size=sofa_width)
+tex_plane.name = "Sofa Texture"
+tex_plane.location = (0, -1.5, 0.8)
+tex_plane.scale = (sofa_length, sofa_width, 0.01)
+
+# Aplica la textura de tela gris al cuerpo del sofá
+bpy.context.active_object.data.materials.append(bpy.data.materials['TelaGris'])
+
+# Define las propiedades de la mesa de centro
+table_length = 1.5  # metros
+table_width = 0.8   # metros
+table_height = 0.4  # metros
+
+# Crea el cuerpo de la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=table_length, location=(0, -2.5, 0))
+table_body = bpy.context.active_object
+table_body.scale = (table_length, table_width, table_height)
+
+# Agrega un material a la mesa de centro
+bpy.ops.mesh.primitive_plane_add(size=table_width)
+tex_plane.name = "Mesa Texture"
+tex_plane.location = (0, -2.5, 0.4)
+tex_plane.scale = (table_length, table_width, 0.01)
+
+# Aplica un material a la mesa de centro
+bpy.context.active_object.data.materials.append(bpy.data.materials['MaderaNogal'])
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -1,0 +1,128 @@
+import bpy
+import math
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# --- Terreno de césped ---
+terreno_size = 20
+terreno = bpy.data.meshes.new("Terreno")
+terreno_data = bpy.data.meshes[terreno.name].data
+terreno_data.from_pydata(
+    [
+        [0, 0, 0],
+        [terreno_size, 0, 0],
+        [terreno_size, terreno_size, 0],
+        [0, terreno_size, 0],
+    ]
+)
+terreno_data.update()
+terreno_object = bpy.data.objects.new("Terreno", terreno)
+bpy.context.collection.objects.link(terreno_object)
+
+# Crear material de césped
+grass_material = bpy.data.materials.new(name="GrassMaterial")
+grass_material.use_nodes = True
+nodes = grass_material.node_tree.nodes
+links = grass_material.node_tree.links
+principled_bsdf = nodes.get("Principled BSDF")
+if not principled_bsdf:
+    principled_bsdf = nodes.new(type="ShaderNodeBsdfPrincipled")
+output = nodes.new(type="ShaderNodeOutputMaterial")
+principled_bsdf.inputs["Base Color"].default_value = (0.1, 0.4, 0.1, 1)
+principled_bsdf.inputs["Roughness"].default_value = 0.8
+links.new(principled_bsdf.outputs["BSDF"], output.inputs["Surface"])
+
+# Asignar material al terreno
+terreno_object.data.materials.append(grass_material)
+
+# --- Casa de dos pisos ---
+casa_largo = 10
+casa_ancho = 8
+casa_alto = 6
+
+# Crear la base de la casa
+base = bpy.data.meshes.new("CasaBase")
+base_data = bpy.data.meshes[base.name].data
+base_data.from_pydata(
+    [
+        [0, 0, 0],
+        [casa_largo, 0, 0],
+        [casa_largo, casa_ancho, 0],
+        [0, casa_ancho, 0],
+    ]
+)
+base_data.update()
+casa_base = bpy.data.objects.new("CasaBase", base)
+bpy.context.collection.objects.link(casa_base)
+casa_base.location = [casa_largo/2, casa_ancho/2, 0]
+
+# Crear los pisos
+piso_alto = 3
+piso_alto_object = bpy.data.objects.new("PisoSuperior", bpy.data.meshes.new("PisoSuperior"))
+piso_superior_data = piso_alto_object.data.data
+piso_superior_data.from_pydata(
+    [
+        [0, 0, piso_alto],
+        [casa_largo, 0, piso_alto],
+        [casa_largo, casa_ancho, piso_alto],
+        [0, casa_ancho, piso_alto],
+    ]
+)
+piso_alto_object.data.update()
+bpy.context.collection.objects.link(piso_alto_object)
+piso_alto_object.location = [casa_largo/2, casa_ancho/2, piso_alto]
+
+# Crear el tejado a dos aguas
+tejado_altura = 2
+tejado_ancho = casa_largo
+tejado_profundidad = casa_ancho / 2
+
+vertices_tejado = [
+    [0, 0, 0],
+    [tejado_ancho, 0, 0],
+    [tejado_ancho / 2, tejado_profundidad, tejado_altura],
+]
+aristas = [
+    (0, 1),
+    (0, 2),
+    (1, 2),
+]
+tejado = bpy.data.meshes.new("Tejado")
+tejado_data = bpy.data.meshes[tejado.name].data
+tejado_data.from_pydata(vertices_tejado)
+tejado_data.update()
+tejado_data.draw_edges_indices = True
+tejado_data.edge_draw_type = 'STICK'
+tejado_object = bpy.data.objects.new("Tejado", bpy.data.meshes.new("Tejado"))
+bpy.context.collection.objects.link(tejado_object)
+tejado_object.location = [casa_largo/2, casa_ancho/2, casa_alto]
+
+# --- Árboles ---
+def crear_arbol(ubicacion):
+    # Tronco
+    tronco_altura = 2
+    tronco_radio = 0.2
+    bpy.ops.mesh.primitive_cylinder_add(
+        radius=tronco_radio,
+        depth=tronco_altura,
+        location=ubicacion + [0, 0, tronco_altura/2]
+    )
+    tronco = bpy.context.object
+    tronco.name = "Tronco"
+
+    # Hojas
+    hojas_radio = 1
+    bpy.ops.mesh.primitive_uv_sphere_add(
+        radius=hojas_radio,
+        location=ubicacion + [0, 0, tronco_altura + hojas_radio]
+    )
+    hojas = bpy.context.object
+    hojas.name = "Hojas"
+
+crear_arbol([5, 5, 0])
+crear_arbol([15, 15, 0])
+
+# Guardar la escena
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

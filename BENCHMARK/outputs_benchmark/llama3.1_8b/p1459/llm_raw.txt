@@ -1,0 +1,68 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del edificio
+ancho = 20
+alto = 15
+num_pisos = 4
+
+# Crea el plano base del edificio
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+base = bpy.context.active_object
+
+# Establece las dimensiones del plano base
+base.dimensions = (ancho, alto, 0.01)
+
+# Crea la geometría del edificio
+for i in range(num_pisos):
+    # Mueve el objeto a la posición correcta
+    base.location = (0, 0, i * alto)
+    
+    # Duplica el objeto para crear un nuevo piso
+    bpy.ops.object.duplicate_move_linked()
+    
+    # Establece las dimensiones del nuevo piso
+    bpy.context.active_object.dimensions = (ancho, alto, 1)
+
+# Crea las columnas estructurales
+for i in range(num_pisos):
+    # Mueve el objeto a la posición correcta
+    base.location = (0, 0, i * alto)
+    
+    # Duplica el objeto para crear una columna
+    bpy.ops.object.duplicate_move_linked()
+    
+    # Establece las dimensiones de la columna
+    bpy.context.active_object.dimensions = (0.5, 0.5, alto)
+
+# Crea la fachada del edificio
+for i in range(num_pisos):
+    # Mueve el objeto a la posición correcta
+    base.location = (0, 0, i * alto)
+    
+    # Duplica el objeto para crear una fachada
+    bpy.ops.object.duplicate_move_linked()
+    
+    # Establece las dimensiones de la fachada
+    bpy.context.active_object.dimensions = (ancho, 1, 1)
+
+# Crea las ventanas en todas las fachadas
+for i in range(num_pisos):
+    for j in range(2):
+        # Mueve el objeto a la posición correcta
+        base.location = ((j - 0.5) * ancho / 2, (i - num_pisos // 2) * alto, i * alto)
+        
+        # Duplica el objeto para crear una ventana
+        bpy.ops.object.duplicate_move_linked()
+        
+        # Establece las dimensiones de la ventana
+        bpy.context.active_object.dimensions = (1, 1, 1)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

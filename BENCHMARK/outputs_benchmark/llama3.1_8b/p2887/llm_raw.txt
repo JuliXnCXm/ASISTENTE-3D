@@ -1,0 +1,31 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del bolardo
+alto = 0.9
+diametro = 0.3
+
+# Crea un nuevo objeto cilíndrico en el origen
+bolardo = bpy.data.objects.new("Bolardo", None)
+bolardo.location = mathutils.Vector((0, 0, 0))
+
+# Define las propiedades del material de hormigón
+mat_hormigon = bpy.data.materials.new(name="Hormigón")
+mat_hormigon.diffuse_color = (1.0, 1.0, 1.0)
+bolardo.data.materials.append(mat_hormigon)
+
+# Crea el objeto cilíndrico con las propiedades definidas
+bpy.ops.mesh.primitive_cylinder_add(radius=diametro/2, depth=alto, location=(0, 0, 0), rotation=(math.pi/2, 0, 0))
+bolardo = bpy.context.active_object
+
+# Asigna el material de hormigón al objeto cilíndrico
+bolardo.data.materials.append(mat_hormigon)
+
+# Guarda la escena si se especificó una ruta en BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

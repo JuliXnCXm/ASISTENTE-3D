@@ -1,0 +1,46 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
+floor = bpy.context.object
+floor.name = "Floor"
+
+# Crear la alfombra
+bpy.ops.mesh.primitive_circle_add(radius=2, location=(0, 0, 0.1), depth=0.01)
+carpet = bpy.context.object
+carpet.name = "Carpet"
+
+# Crear el sofá modular
+bpy.ops.mesh.primitive_cube_add(size=2, location=(3, 0, 0))
+sofa1 = bpy.context.object
+sofa1.name = "Sofa1"
+
+bpy.ops.mesh.primitive_cube_add(size=2, location=(5, 0, 0))
+sofa2 = bpy.context.object
+sofa2.name = "Sofa2"
+
+# Crear la estantería de diseño irregular
+bpy.ops.mesh.primitive_cube_add(size=1, location=(7, 0, 0))
+shelf = bpy.context.object
+shelf.name = "Shelf"
+
+# Aplicar modificador de subdivisión
+bpy.ops.object.modifier_add(type='SUBSURF')
+subsurf = shelf.modifiers['Subdivision']
+subsurf.levels = 2
+subsurf.render_levels = 2
+
+# Aplicar modificador de desplazamiento
+bpy.ops.object.modifier_add(type='DISPLACE')
+displace = shelf.modifiers['Displace']
+displace.texture = bpy.data.textures.new("NoiseTexture", type='CLOUDS')
+displace.strength = 0.5
+
+# Guardar el archivo si BLEND_OUT está definido
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

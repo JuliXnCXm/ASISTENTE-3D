@@ -1,0 +1,28 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(size=4, location=(0, 0, 0))
+
+# Crear los postes
+poste = bpy.data.objects['Plane']
+poste.scale = (0.15, 2.5, 0.15)
+for i in range(4):
+    for j in range(3):
+        poste_copy = poste.copy()
+        poste_copy.data = poste.data.copy()
+        bpy.context.collection.objects.link(poste_copy)
+        poste_copy.location = (i * 4, j * 3, 0)
+
+# Crear la estructura de la pérgola
+bpy.ops.mesh.primitive_cube_add(size=1, location=(2, 1.5, 2.5))
+cube = bpy.context.object
+cube.scale = (4, 3, 0)
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as(filepath=os.environ['BLEND_OUT'])
+```

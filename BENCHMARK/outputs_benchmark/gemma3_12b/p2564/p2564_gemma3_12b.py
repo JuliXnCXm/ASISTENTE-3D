@@ -1,0 +1,81 @@
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones de la habitación (internas)
+room_width = 5.0
+room_length = 4.0
+room_height = 2.7
+
+# Espesor de las paredes
+wall_thickness = 0.15
+
+# Dimensiones externas de la habitación
+external_width = room_width + 2 * wall_thickness
+external_length = room_length + 2 * wall_thickness
+
+# Crear paredes
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, room_height / 2))
+wall_base = bpy.context.object
+wall_base.name = "Wall_Base"
+wall_base.scale = (external_width / 2, wall_thickness / 2, room_height / 2)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, external_length, room_height / 2))
+wall_back = bpy.context.object
+wall_back.name = "Wall_Back"
+wall_back.scale = (external_width / 2, wall_thickness / 2, room_height / 2)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(external_width, 0, room_height / 2))
+wall_left = bpy.context.object
+wall_left.name = "Wall_Left"
+wall_left.scale = (wall_thickness / 2, external_length / 2, room_height / 2)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(external_width, external_length, room_height / 2))
+wall_right = bpy.context.object
+wall_right.name = "Wall_Right"
+wall_right.scale = (wall_thickness / 2, external_length / 2, room_height / 2)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear suelo
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+floor = bpy.context.object
+floor.name = "Floor"
+floor.scale = (room_width / 2, room_length / 2, 1)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear techo
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, room_height))
+ceiling = bpy.context.object
+ceiling.name = "Ceiling"
+ceiling.scale = (room_width / 2, room_length / 2, 1)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear cama
+bed_width = 1.8
+bed_length = 2.0
+bed_height = 0.5
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(external_width / 2 - bed_length / 2, external_length / 2 - bed_width / 2, bed_height / 2))
+bed = bpy.context.object
+bed.name = "Bed"
+bed.scale = (bed_length / 2, bed_width / 2, bed_height / 2)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear mesa de noche
+nightstand_width = 0.5
+nightstand_length = 0.4
+nightstand_height = 0.6
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(external_width / 2 - bed_length / 2 + bed_length, external_length / 2 - bed_width / 2 + bed_width/2, nightstand_height / 2))
+nightstand = bpy.context.object
+nightstand.name = "Nightstand"
+nightstand.scale = (nightstand_length / 2, nightstand_width / 2, nightstand_height / 2)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+
+# Guardar la escena si BLEND_OUT está definido
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

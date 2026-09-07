@@ -1,0 +1,48 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el marco de la cama
+frame = bpy.data.objects.new("Frame", None)
+bpy.context.collection.objects.link(frame)
+
+# Dimensiones del marco
+length = 2.00
+width = 1.60
+height = 0.30
+
+# Crear los bordes del marco
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, width/2, height/2))
+frame_border = bpy.context.object
+frame_border.scale = (length/2, width/2, height/2)
+
+# Crear el colchón
+mattress = bpy.data.objects.new("Mattress", None)
+bpy.context.collection.objects.link(mattress)
+
+# Dimensiones del colchón
+mattress_length = length
+mattress_width = width
+mattress_height = 0.20
+
+# Crear los bordes del colchón
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, mattress_width/2, mattress_height/2))
+mattress_border = bpy.context.object
+mattress_border.scale = (mattress_length/2, mattress_width/2, mattress_height/2)
+
+# Asignar materiales
+materials = bpy.data.materials
+wood_material = materials.new(name="Wood")
+wood_material.diffuse_color = (0.8, 0.4, 0.1)
+frame_border.data.materials.append(wood_material)
+
+mattress_material = materials.new(name="Mattress")
+mattress_material.diffuse_color = (1, 1, 1)
+mattress_border.data.materials.append(mattress_material)
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

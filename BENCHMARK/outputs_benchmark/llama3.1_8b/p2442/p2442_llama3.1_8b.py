@@ -1,0 +1,26 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de los muros
+longitud_x = 4
+ancho_y = 3
+altura = 2.5
+
+# Crea el primer muro (X)
+bpy.ops.mesh.primitive_cube_add(size=altura, location=(0, 0, altura/2))
+muro_x = bpy.context.active_object
+muro_x.scale = (longitud_x, altura, altura)
+
+# Crea el segundo muro (Y)
+bpy.ops.mesh.primitive_cube_add(size=altura, location=(ancho_y, 0, altura/2))
+muro_y = bpy.context.active_object
+muro_y.scale = (ancho_y, altura, altura)
+
+# Almacena la ruta de salida si se especifica la variable de entorno BLEND_OUT
+ruta_salida = os.environ.get('BLEND_OUT')
+
+if ruta_salida:
+    bpy.ops.wm.save_mainfile(filepath=ruta_salida)

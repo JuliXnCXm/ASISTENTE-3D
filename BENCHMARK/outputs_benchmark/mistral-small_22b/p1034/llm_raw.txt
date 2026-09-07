@@ -1,0 +1,53 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el marco de la cama
+frame = bpy.data.objects.new("Frame", None)
+bpy.context.collection.objects.link(frame)
+frame.location = (0, 0, 0)
+
+# Crear los bordes del marco
+bpy.ops.mesh.primitive_cube_add(size=1.6, location=(0, -2, 0))
+bpy.context.object.name = "Bottom"
+
+bpy.ops.mesh.primitive_cube_add(size=1.6, location=(0, 2, 0))
+bpy.context.object.name = "Top"
+
+bpy.ops.mesh.primitive_cube_add(size=2, location=(-1.6, -1, 0))
+bpy.context.object.name = "SideLeft"
+
+bpy.ops.mesh.primitive_cube_add(size=2, location=(1.6, -1, 0))
+bpy.context.object.name = "SideRight"
+
+# Crear el colchón
+colchon = bpy.data.objects.new("Colchon", None)
+bpy.context.collection.objects.link(colchon)
+colchon.location = (0, 1, 0)
+
+bpy.ops.mesh.primitive_plane_add(size=2, location=(0, 1, 0))
+bpy.context.object.name = "Colchon"
+
+# Asignar materiales
+materials = bpy.data.materials
+wood_material = materials.new(name="WoodMaterial")
+wood_material.diffuse_color = (0.5, 0.35, 0.1)
+
+tela_material = materials.new(name="TelaMaterial")
+tela_material.diffuse_color = (1, 1, 1)
+
+# Asignar materiales a los objetos
+for obj in bpy.context.scene.objects:
+    if "Frame" in obj.name:
+        for mat in obj.data.materials:
+            mat.wood_material = wood_material
+    elif "Colchon" in obj.name:
+        for mat in obj.data.materials:
+            mat.tela_material = tela_material
+
+# Guardar el archivo si BLEND_OUT está definido
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -1,0 +1,38 @@
+import bpy
+import math
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del edificio
+ancho = 20  # metros
+profundidad = 5  # metros
+altura_total = 25  # metros (5 pisos * 5 metros/piso)
+altura_piso = 5  # metros
+
+# Dimensiones de la ventana
+ancho_ventana = 1.5  # metros
+alto_ventana = 2  # metros
+separacion_ventana = 1  # metros
+
+# Crear el edificio
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, altura_total / 2), scale=(ancho / 2, profundidad / 2, altura_total / 2))
+edificio = bpy.context.object
+edificio.name = "Edificio"
+
+# Crear la retícula de ventanas
+for piso in range(5):
+    for i in range(int(ancho / ancho_ventana)):
+        for j in range(int(ancho / ancho_ventana)):
+            x = -ancho / 2 + i * (ancho_ventana + separacion_ventana)
+            y = -ancho / 2 + j * (ancho_ventana + separacion_ventana)
+            z = piso * altura_piso + altura_piso / 2
+
+            bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x, y, z), scale=(ancho_ventana / 2, 0.1, alto_ventana / 2))
+            ventana = bpy.context.object
+            ventana.name = f"Ventana_Piso_{piso+1}_{i}_{j}"
+            ventana.data.materials.clear() # Limpiar materiales existentes
+
+# Guardar el archivo .blend
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

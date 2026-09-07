@@ -1,0 +1,41 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del tejado
+ancho = 4
+fondo = 3
+pendiente = 0.5  # Pendiente en metros
+
+# Crea un nuevo objeto para el tejado
+tejado = bpy.data.objects.new("Tejado", None)
+bpy.context.collection.objects.link(tejado)
+
+# Define los vértices del tejado
+v1 = mathutils.Vector((ancho / 2, fondo, 0))
+v2 = mathutils.Vector((-ancho / 2, fondo, 0))
+v3 = mathutils.Vector((-ancho / 2 - ancho * pendiente, 0, 0))
+v4 = mathutils.Vector((ancho / 2 + ancho * pendiente, 0, 0))
+
+# Crea un nuevo mesh para el tejado
+mesh = bpy.data.meshes.new("TejadoMesh")
+verts = [v1, v2, v3, v4]
+edges = [(0, 1), (1, 2), (2, 3), (3, 0)]
+faces = [(0, 1, 2, 3)]
+
+# Define la geometría del tejado
+mesh.from_pydata(verts, edges, faces)
+mesh.update(calc_edges=True)
+
+# Asigna el mesh al objeto del tejado
+tejado.data = mesh
+
+# Aplica una transformación de escala para que el tejado tenga las dimensiones correctas
+bpy.ops.object.mode_set(mode='OBJECT')
+tejado.scale = (ancho, fondo, 0.1)
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

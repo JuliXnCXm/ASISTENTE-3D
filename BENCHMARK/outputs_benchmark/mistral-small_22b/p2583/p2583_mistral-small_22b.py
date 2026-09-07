@@ -1,0 +1,17 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el suelo
+bpy.ops.mesh.primitive_plane_add(size=3.5, location=(0, 1.75, 0))
+
+# Crea las paredes
+for i in range(-2, 3):
+    bpy.ops.mesh.primitive_cube_add(location=(i * 4, -1.75, 0), size=2)
+
+# Crea la cama
+bpy.ops.mesh.primitive_cube_add(size=2, location=(1.5, -3.5, 0))
+
+# Crea la mesita de noche
+bpy.ops.mesh.primitive_cube_add(size=0.4, location=(2.9, -3.5, 0), rotation=(0, 0, 1.5708))

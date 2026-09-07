@@ -1,0 +1,29 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el muro
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 5, 3))
+muro = bpy.context.object
+muro.scale = (10, 6, 0.2)
+
+# Crear la puerta
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 2.5, 3))
+puerta = bpy.context.object
+puerta.scale = (2, 4, 0.2)
+
+# Crear las ventanas
+bpy.ops.mesh.primitive_cube_add(size=1, location=(2, 2.5, 3))
+ventana1 = bpy.context.object
+ventana1.scale = (1, 2, 0.2)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-2, 2.5, 3))
+ventana2 = bpy.context.object
+ventana2.scale = (1, 2, 0.2)
+
+# Guardar el archivo si BLEND_OUT está definido
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

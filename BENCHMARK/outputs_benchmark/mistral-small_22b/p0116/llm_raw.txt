@@ -1,0 +1,17 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el muro
+bpy.ops.mesh.primitive_cube_add(size=0.15, location=(0, 0, 2.7 / 2))
+wall = bpy.context.object
+
+# Escala el muro en la dirección X para que tenga 5 metros de largo
+bpy.ops.transform.resize(value=(5, 1, 1))
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

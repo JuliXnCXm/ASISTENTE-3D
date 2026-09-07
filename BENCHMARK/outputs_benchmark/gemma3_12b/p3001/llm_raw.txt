@@ -1,0 +1,112 @@
+```python
+import bpy
+import math
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones generales
+longitud = 8.0  # metros
+ancho = 6.0  # metros
+altura_paredes = 2.5  # metros
+altura_techo = 2.8  # metros
+grosor_pared = 0.15  # metros
+
+# --- Funciones de creación de geometría ---
+
+def crear_pared(nombre, longitud, ancho, altura, grosor):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+    pared = bpy.context.object
+    pared.name = nombre
+    pared.scale = (longitud/2, ancho/2, altura/2)
+    pared.location = (0, 0, altura/2)
+    pared.data.name = nombre + "_data"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    pared.scale = (longitud, ancho, altura)
+    return pared
+
+def crear_suelo(longitud, ancho, grosor):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+    suelo = bpy.context.object
+    suelo.name = "Suelo"
+    suelo.scale = (longitud/2, ancho/2, grosor/2)
+    suelo.location = (0, 0, 0)
+    suelo.data.name = "Suelo_data"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    return suelo
+
+def crear_techo(longitud, ancho, grosor):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+    techo = bpy.context.object
+    techo.name = "Techo"
+    techo.scale = (longitud/2, ancho/2, grosor/2)
+    techo.location = (0, 0, altura_techo/2)
+    techo.data.name = "Techo_data"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    techo.scale = (longitud, ancho, grosor)
+    return techo
+
+def crear_puerta(longitud, ancho, altura):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+    puerta = bpy.context.object
+    puerta.name = "Puerta"
+    puerta.scale = (longitud/2, ancho/2, altura/2)
+    puerta.location = (0, 0, altura/2)
+    puerta.data.name = "Puerta_data"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    puerta.scale = (longitud, ancho, altura)
+    return puerta
+
+def crear_ventana(longitud, ancho, altura):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+    ventana = bpy.context.object
+    ventana.name = "Ventana"
+    ventana.scale = (longitud/2, ancho/2, altura/2)
+    ventana.location = (0, 0, altura/2)
+    ventana.data.name = "Ventana_data"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    ventana.scale = (longitud, ancho, altura)
+    return ventana
+
+# --- Creación de la vivienda ---
+
+# Paredes
+pared_frontal = crear_pared("Pared_Frontal", longitud, ancho, altura_paredes, grosor_pared)
+pared_trasera = crear_pared("Pared_Trasera", longitud, ancho, altura_paredes, grosor_pared)
+pared_izquierda = crear_pared("Pared_Izquierda", longitud, ancho, altura_paredes, grosor_pared)
+pared_derecha = crear_pared("Pared_Derecha", longitud, ancho, altura_paredes, grosor_pared)
+
+# Suelo
+suelo = crear_suelo(longitud, ancho, 0.1)
+
+# Techo
+techo = crear_techo(longitud, ancho, 0.15)
+
+# Puerta (en la pared frontal)
+puerta = crear_puerta(0.8, 0.9, altura_paredes)
+puerta.location = (longitud/2 - 0.4, 0, altura_paredes/2)
+
+# Ventanas (en la pared frontal y trasera)
+ventana_frontal = crear_ventana(1.5, 0.8, altura_paredes)
+ventana_frontal.location = (longitud/2, 0, altura_paredes/2)
+ventana_trasera = crear_ventana(1.5, 0.8, altura_paredes)
+ventana_trasera.location = (longitud/2, 0, altura_paredes/2)
+
+# --- Agrupar la vivienda ---
+vivienda = bpy.data.objects.new("Vivienda", None)
+bpy.context.collection.objects.link(vivienda)
+pared_frontal.parent = vivienda
+pared_trasera.parent = vivienda
+pared_izquierda.parent = vivienda
+pared_derecha.parent = vivienda
+suelo.parent = vivienda
+techo.parent = vivienda
+puerta.parent = vivienda
+ventana_frontal.parent = vivienda
+ventana_trasera.parent = vivienda
+
+
+# --- Guardar el archivo (opcional) ---
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])
+```

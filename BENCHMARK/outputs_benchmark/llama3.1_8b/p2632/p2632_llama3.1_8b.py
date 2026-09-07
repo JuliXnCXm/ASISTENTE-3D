@@ -1,0 +1,27 @@
+import bpy
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones de la columna
+alto = 2.8
+ancho = 0.4
+profundo = 0.4
+
+# Crear un cubo para la base de la columna
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, 0, -profundo/2))
+
+# Duplicar el cubo y ajustarlo a la altura deseada
+objeto_base = bpy.context.active_object
+objeto_base.select_set(True)
+bpy.ops.object.duplicate_move_linked()
+objeto_cima = bpy.context.active_object
+objeto_cima.location = (0, 0, alto - profundo/2)
+
+# Unir los dos objetos en una sola pieza
+bpy.ops.object.join()
+
+# Renombrar el objeto para que sea más fácil de identificar
+bpy.context.active_object.name = "Columna"
+
+# Si existe la variable de entorno BLEND_OUT, guardar el archivo .blend con ese nombre
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

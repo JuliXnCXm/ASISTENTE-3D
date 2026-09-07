@@ -1,0 +1,62 @@
+import bpy
+import math
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones de la pérgola
+pergola_width = 4.0  # metros
+pergola_depth = 3.0  # metros
+columna_height = 2.5  # metros
+columna_diameter = 0.2  # metros
+techo_thickness = 0.05  # metros
+techo_width = pergola_width
+techo_depth = pergola_depth
+
+# Crear columnas
+def create_column(x, y, z):
+    bpy.ops.mesh.primitive_cylinder_add(
+        radius=columna_diameter / 2.0,
+        depth=columna_height,
+        location=(x, y, z),
+        rotation=(math.pi / 2, 0, 0)
+    )
+    column = bpy.context.object
+    column.name = "Column"
+    return column
+
+columna1 = create_column(pergola_width / 2.0, pergola_depth / 2.0, columna_height / 2.0)
+columna2 = create_column(-pergola_width / 2.0, pergola_depth / 2.0, columna_height / 2.0)
+columna3 = create_column(pergola_width / 2.0, -pergola_depth / 2.0, columna_height / 2.0)
+columna4 = create_column(-pergola_width / 2.0, -pergola_depth / 2.0, columna_height / 2.0)
+
+# Crear techo
+bpy.ops.mesh.primitive_plane_add(
+    size=math.sqrt(techo_width**2 + techo_depth**2),
+    location=(0, 0, columna_height + techo_thickness / 2.0),
+    rotation=(0, 0, 0)
+)
+techo = bpy.context.object
+techo.name = "Roof"
+techo.scale = (techo_width / math.sqrt(techo_width**2 + techo_depth**2), techo_depth / math.sqrt(techo_width**2 + techo_depth**2), 1)
+
+# Ajustar el grosor del techo
+techo.scale[2] = techo_thickness
+
+# Material simple para la madera
+material = bpy.data.materials.new(name="WoodMaterial")
+material.use_nodes = True
+bsdf = material.node_tree.nodes["Principled BSDF"]
+bsdf.inputs["Base Color"].default_value = (0.6, 0.3, 0.1, 1)  # Marrón
+bsdf.inputs["Roughness"].default_value = 0.5
+
+# Asignar material a las columnas y al techo
+for obj in [columna1, columna2, columna3, columna4, techo]:
+    if obj.data.materials:
+        obj.data.materials[0] = material
+    else:
+        obj.data.materials.append(material)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

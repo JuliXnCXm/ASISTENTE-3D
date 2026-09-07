@@ -1,0 +1,70 @@
+import bpy
+import os
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del terreno en metros
+width = 20.0
+length = 15.0
+height = 0.0  # Terreno plano
+
+# Crear la malla del terreno
+bpy.ops.mesh.plane_add(size=1.0, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+terrain = bpy.context.object
+terrain.scale = (width / 2.0, length / 2.0, 1.0)
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+terrain.name = "Terrain"
+
+# Crear un material de césped
+grass_material = bpy.data.materials.new(name="GrassMaterial")
+grass_material.use_nodes = True
+nodes = grass_material.node_tree.nodes
+links = grass_material.node_tree.links
+
+# Eliminar el nodo BSDF por defecto
+for node in nodes:
+    if node.type == 'BSDF_PRINCIPLED':
+        nodes.remove(node)
+
+# Crear un nodo Principled BSDF
+principled_bsdf = nodes.new(type='ShaderNodeBsdfPrincipled')
+principled_bsdf.location = (200, 0)
+
+# Crear un nodo Texture Coordinate
+texture_coordinate = nodes.new(type='ShaderNodeTexCoord')
+texture_coordinate.location = (-600, 0)
+
+# Crear un nodo Mapping
+mapping = nodes.new(type='ShaderNodeMapping')
+mapping.location = (-400, 0)
+mapping.vector_type = 'TEXTURE'
+mapping.scale[0] = 2.0
+mapping.scale[1] = 2.0
+
+# Crear un nodo Noise Texture
+noise_texture = nodes.new(type='ShaderNodeTexNoise')
+noise_texture.location = (-200, 0)
+noise_texture.inputs['Scale'].default_value = 2.0
+
+# Crear un nodo ColorRamp
+colorramp = nodes.new(type='ShaderNodeValToRGB')
+colorramp.location = (0, 0)
+colorramp.color_ramp.elements[0].color = (0.0, 0.5, 0.0, 1.0)  # Verde oscuro
+colorramp.color_ramp.elements[1].color = (0.0, 1.0, 0.0, 1.0)  # Verde brillante
+
+# Conectar los nodos
+links.new(texture_coordinate.outputs['Generated'], mapping.inputs['Vector'])
+links.new(mapping.outputs['Vector'], noise_texture.inputs['Vector'])
+links.new(noise_texture.outputs['Fac'], colorramp.inputs['Fac'])
+links.new(colorramp.outputs['Color'], principled_bsdf.inputs['Base Color'])
+
+# Asignar el material al terreno
+if terrain.data.materials:
+    terrain.data.materials[0] = grass_material
+else:
+    terrain.data.materials.append(grass_material)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

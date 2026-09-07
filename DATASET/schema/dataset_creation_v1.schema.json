@@ -1,0 +1,349 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tesis.local/schemas/dataset_creation_v1.schema.json",
+  "title": "Dataset AEC de creacion procedural en Blender",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "items"
+  ],
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "items": {
+      "type": "object",
+      "minProperties": 1,
+      "patternProperties": {
+        "^p[0-9]+$": {
+          "$ref": "#/$defs/item"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "countMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "dataset_version",
+        "generated_at",
+        "source_dataset",
+        "source_dataset_sha256",
+        "model",
+        "language",
+        "task_type",
+        "representation",
+        "units",
+        "coordinate_system",
+        "blender_version",
+        "dsl_version",
+        "total",
+        "tiers",
+        "balance",
+        "complexities",
+        "categories",
+        "artifact_fields",
+        "depth_status"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "dataset_version": {
+          "const": "creation-v1.0.0"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_dataset": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_dataset_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_updated_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "const": "es"
+        },
+        "task_type": {
+          "const": "creation"
+        },
+        "representation": {
+          "const": "procedural_parametric_mesh"
+        },
+        "units": {
+          "const": "m"
+        },
+        "coordinate_system": {
+          "const": "RH_Z_UP"
+        },
+        "blender_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dsl_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tiers": {
+          "$ref": "#/$defs/countMap"
+        },
+        "balance": {
+          "$ref": "#/$defs/countMap"
+        },
+        "complexities": {
+          "$ref": "#/$defs/countMap"
+        },
+        "categories": {
+          "$ref": "#/$defs/countMap"
+        },
+        "artifact_fields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "blend_path",
+              "render_path",
+              "depth_path"
+            ]
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "depth_status": {
+          "const": "normalized_preview_without_metric_reconstruction_metadata"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "task_type",
+        "domain",
+        "category",
+        "category_original",
+        "complexity",
+        "tier",
+        "prompt",
+        "python_code",
+        "blend_path",
+        "render_path",
+        "depth_path",
+        "asset_collection",
+        "objects",
+        "units",
+        "coordinate_system",
+        "split",
+        "family_id",
+        "validation"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^p[0-9]+$"
+        },
+        "task_type": {
+          "const": "creation"
+        },
+        "domain": {
+          "enum": [
+            "interior",
+            "exterior"
+          ]
+        },
+        "category": {
+          "enum": [
+            "abertura",
+            "apartamento",
+            "bano",
+            "casa",
+            "cerramiento",
+            "cielorraso",
+            "circulacion",
+            "cocina",
+            "cubierta",
+            "decoracion",
+            "dormitorio",
+            "edificio",
+            "escalera",
+            "espacio_colectivo",
+            "espacio_exterior",
+            "estacionamiento",
+            "estructura",
+            "fachada",
+            "habitacion",
+            "iluminacion",
+            "jardin",
+            "jardinera",
+            "losa",
+            "mobiliario",
+            "mobiliario_urbano",
+            "muro",
+            "oficina",
+            "parque",
+            "patio",
+            "pergola",
+            "piscina",
+            "plaza",
+            "terreno",
+            "terraza",
+            "vegetacion"
+          ]
+        },
+        "category_original": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complexity": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "tier": {
+          "enum": [
+            "bpy",
+            "dsl",
+            "mixed"
+          ]
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "python_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blend_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "render_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "depth_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_collection": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "units": {
+          "const": "m"
+        },
+        "coordinate_system": {
+          "const": "RH_Z_UP"
+        },
+        "split": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "train",
+            "validation",
+            "test",
+            "ood",
+            null
+          ]
+        },
+        "family_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "validation": {
+          "$ref": "#/$defs/validation"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "syntax_status",
+        "artifact_status",
+        "execution_status",
+        "geometry_status",
+        "semantic_status"
+      ],
+      "properties": {
+        "syntax_status": {
+          "enum": [
+            "valid",
+            "invalid"
+          ]
+        },
+        "artifact_status": {
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "execution_status": {
+          "enum": [
+            "historical_success",
+            "historical_failure",
+            "not_revalidated"
+          ]
+        },
+        "geometry_status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "not_evaluated"
+          ]
+        },
+        "semantic_status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "not_evaluated"
+          ]
+        }
+      }
+    }
+  }
+}

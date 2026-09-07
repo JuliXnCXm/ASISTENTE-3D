@@ -1,0 +1,39 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear el escritorio en forma de L
+def create_desk():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    desk = bpy.context.object
+    desk.name = "Desk"
+
+    # Extrusión del perfil en forma de L
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_shrink_fatten={"value":0.5})
+    bpy.ops.transform.translate(value=(1, 0, 0))
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+# Función para crear la estantería grande
+def create_shelf():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(2, 0, 0))
+    shelf = bpy.context.object
+    shelf.name = "Shelf"
+    shelf.scale = (1, 1, 3)  # Ajusta la altura de la estantería
+
+# Función para crear la silla
+def create_chair():
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(0, -2, 0))
+    chair = bpy.context.object
+    chair.name = "Chair"
+    chair.scale = (1, 1, 0.5)  # Ajusta la altura de la silla
+
+# Crear los objetos
+create_desk()
+create_shelf()
+create_chair()
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

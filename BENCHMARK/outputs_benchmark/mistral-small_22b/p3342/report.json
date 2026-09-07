@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "create_wall() missing 1 required positional argument: 'dimensions'",
+  "chamfer_distance": null,
+  "gt_vertices_count": 432,
+  "pred_vertices_count": 0
+}

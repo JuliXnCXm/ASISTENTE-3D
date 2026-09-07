@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "too many values to unpack (expected 3)",
+  "chamfer_distance": null,
+  "gt_vertices_count": 88,
+  "pred_vertices_count": 0
+}

@@ -1,0 +1,31 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de cada peldaño
+peldaño_ancho = 1.0
+peldaño_huella = 0.3
+peldaño_contrahuella = 0.18
+
+# Crea la escalera
+for i in range(15):
+    # Crea un nuevo objeto para el peldaño actual
+    bpy.ops.mesh.primitive_cube_add(size=peldaño_ancho, location=(i * (peldaño_ancho + 0.01), 0, 0))
+    
+    # Obtiene el objeto actual
+    obj = bpy.context.active_object
+    
+    # Establece la escala del peldaño
+    obj.scale = (1, peldaño_huella, peldaño_contrahuella)
+    
+    # Rotar el peldaño para que esté en posición correcta
+    obj.rotation_euler = mathutils.Euler((0, 0.5 * math.pi, 0), 'XYZ')
+    
+    # Mueve el peldaño a su posición final
+    obj.location = (i * (peldaño_ancho + 0.01), 0, i * (peldaño_huella + peldaño_contrahuella))
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

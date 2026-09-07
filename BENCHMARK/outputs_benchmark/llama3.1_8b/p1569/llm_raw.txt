@@ -1,0 +1,35 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del edificio
+ancho = 15
+alto = 12
+altura_edificio = 4 * 3.5  # 1 metro por piso, con un poco de margen
+
+# Crea el cuerpo principal del edificio
+bpy.ops.mesh.primitive_cube_add(size=alto, location=(0, 0, altura_edificio))
+cuerpo_principal = bpy.context.active_object
+cuerpo_principal.name = "Edificio"
+
+# Crea las columnas
+columna_ancho = ancho / 5
+for i in range(5):
+    for j in range(4):
+        columna = bpy.ops.mesh.primitive_cube_add(size=altura_edificio, location=(i * columna_ancho - ancho/2 + columna_ancho/2, j * (alto+0.1) - alto/2 + 0.05, altura_edificio))
+        columna.name = f"Columna_{i}_{j}"
+
+# Crea las ventanas
+ventana_ancho = ancho / 5
+for i in range(5):
+    for j in range(4):
+        ventana = bpy.ops.mesh.primitive_cube_add(size=0.1, location=(i * columna_ancho - ancho/2 + columna_ancho/2, j * (alto+0.1) - alto/2 + 0.05, altura_edificio))
+        ventana.name = f"Ventana_{i}_{j}"
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

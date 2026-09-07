@@ -1,0 +1,26 @@
+import bpy
+import math
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Parámetros de la escalera
+altura_total = 3.0
+diametro = 1.8
+numero_escalones = 16
+radio_escalon = diametro / 2
+altura_escalon = altura_total / numero_escalones
+
+# Crear el poste central
+bpy.ops.mesh.primitive_cylinder_add(radius=0.1, depth=altura_total, location=(0, 0, altura_total / 2))
+poste = bpy.context.object
+
+# Crear los escalones
+for i in range(numero_escalones):
+    bpy.ops.mesh.primitive_circle_add(radius=radio_escalon, location=(0, 0, altura_total / 2 - (i + 1) * altura_escalon), rotation=(math.pi / 2, 0, math.pi))
+    escalon = bpy.context.object
+    escalon.name = f"Escalon_{i}"
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

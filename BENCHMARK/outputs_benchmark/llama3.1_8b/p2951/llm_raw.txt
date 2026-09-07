@@ -1,0 +1,48 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la plaza
+ancho = 12
+alto = 10
+
+# Crea el suelo base
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+suelo_base = bpy.context.active_object
+suelo_base.scale = (ancho, alto, 0.01)
+suelo_base.name = "Suelo Base"
+
+# Crea los bancos de parque
+banco_ancho = 2.0
+banco_alto = 1.5
+soporte_alto = 0.8
+
+# Banco 1
+bpy.ops.mesh.primitive_cube_add(size=1, location=(ancho/2 - banco_ancho/2, 4, 0))
+asiento_banco_1 = bpy.context.active_object
+asiento_banco_1.scale = (banco_ancho, 0.5, 0.01)
+asiento_banco_1.name = "Asiento Banco 1"
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(ancho/2 - banco_ancho/4, 4 + 0.5 + soporte_alto, 0))
+respaldo_banco_1 = bpy.context.active_object
+respaldo_banco_1.scale = (banco_ancho, 0.01, 0.8)
+respaldo_banco_1.name = "Respaldo Banco 1"
+
+# Banco 2
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-ancho/2 + banco_ancho/2, -4, 0))
+asiento_banco_2 = bpy.context.active_object
+asiento_banco_2.scale = (banco_ancho, 0.5, 0.01)
+asiento_banco_2.name = "Asiento Banco 2"
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-ancho/2 + banco_ancho/4, -4 + 0.5 + soporte_alto, 0))
+respaldo_banco_2 = bpy.context.active_object
+respaldo_banco_2.scale = (banco_ancho, 0.01, 0.8)
+respaldo_banco_2.name = "Respaldo Banco 2"
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -1,0 +1,37 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo de deck de madera
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
+deck = bpy.context.object
+deck.name = "Deck"
+
+# Crear jardineras perimetrales de hormigón con vegetación
+def create_planter(location):
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=location)
+    planter = bpy.context.object
+    planter.name = "Planter"
+    # Añadir vegetación (por ejemplo, una planta)
+    bpy.ops.mesh.primitive_cone_add(vertices=32, radius=0.1, depth=0.5, location=(0, 0, 0.2))
+    plant = bpy.context.object
+    plant.name = "Plant"
+    plant.parent = planter
+
+# Crear jardineras en las esquinas del deck
+create_planter((-5, -5, 0))
+create_planter((-5, 5, 0))
+create_planter((5, -5, 0))
+create_planter((5, 5, 0))
+
+# Crear la pérgola metálica que cubra una zona de estar
+bpy.ops.mesh.primitive_cube_add(size=2, location=(0, 0, 1))
+pergola = bpy.context.object
+pergola.name = "Pergola"
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

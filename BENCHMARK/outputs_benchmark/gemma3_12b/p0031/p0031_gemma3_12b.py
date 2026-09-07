@@ -1,0 +1,22 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones de la habitación en metros
+longitud = 6.0
+ancho = 4.0
+espesor = 0.20
+
+# Crear la losa de piso
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+losa = bpy.context.object
+losa.scale = (longitud/2, ancho/2, 1)
+losa.dimensions = (longitud, ancho, espesor)
+
+# Renombrar el objeto
+losa.name = "Piso"
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

@@ -1,0 +1,52 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la cama
+ancho = 1.6
+largo = 2.0
+
+# Crea el marco de madera
+marco = bpy.data.objects.new('Cama', bpy.data.meshes.new('Cama'))
+marco.location = mathutils.Vector((0, 0, 0))
+
+# Crea los lados del marco
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, ancho/2, largo/2))
+lado_derecha = bpy.context.active_object
+lado_derecha.name = 'Lado Derecha'
+lado_derecha.scale = (ancho, 1, largo)
+
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -ancho/2, largo/2))
+lado_izquierda = bpy.context.active_object
+lado_izquierda.name = 'Lado Izquierda'
+lado_izquierda.scale = (ancho, 1, largo)
+
+bpy.ops.mesh.primitive_cube_add(size=largo, location=(ancho/2, 0, largo/2))
+fondo = bpy.context.active_object
+fondo.name = 'Fondo'
+fondo.scale = (ancho, ancho, largo)
+
+bpy.ops.mesh.primitive_cube_add(size=largo, location=(-ancho/2, 0, largo/2))
+frente = bpy.context.active_object
+frente.name = 'Frente'
+frente.scale = (ancho, ancho, largo)
+
+# Crea el colchón de textil blanco
+colchon = bpy.data.objects.new('Colchon', bpy.data.meshes.new('Colchon'))
+colchon.location = mathutils.Vector((0, 0, 0))
+colchon.scale = (ancho, ancho, largo)
+
+# Crea un material para el colchón
+mat_colchon = bpy.data.materials.new(name='Material Colchon')
+mat_colchon.use_nodes = True
+
+# Asigna el material al colchón
+colchon.data.materials.append(mat_colchon)
+
+# Guardar .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

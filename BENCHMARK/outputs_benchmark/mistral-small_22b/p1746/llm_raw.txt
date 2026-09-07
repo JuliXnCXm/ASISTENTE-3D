@@ -1,0 +1,48 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear un cubo
+def create_cube(name, size):
+    bpy.ops.mesh.primitive_cube_add(size=size)
+    obj = bpy.context.object
+    obj.name = name
+    return obj
+
+# Crear base de asfalto
+base = create_cube("Base", 10)
+base.location = (0, 0, -5)
+
+# Función para crear una columna
+def create_column(name, size):
+    bpy.ops.mesh.primitive_cylinder_add(radius=size/2, depth=size, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.name = name
+    return obj
+
+# Crear columnas
+for i in range(4):
+    for j in range(3):
+        create_column(f"Column_{i}_{j}", 1)
+        col = bpy.context.object
+        col.location = (i * 2, j * 2, -4)
+
+# Crear edificio de oficinas
+for i in range(5):
+    create_cube(f"Floor_{i}", 10)
+    floor = bpy.context.object
+    floor.location = (0, 0, i * 2 - 4)
+
+# Crear ventanas en la fachada principal
+for i in range(3):
+    for j in range(5):
+        create_cube(f"Window_{i}_{j}", 1)
+        window = bpy.context.object
+        window.location = (i * 2, j * 2, -4)
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

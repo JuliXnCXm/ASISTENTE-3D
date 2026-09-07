@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.venv/
+env-tesis2/
+ENV/
+env.bak/
+venv.bak/
+
+# Blender & Renders
+*.blend1
+*.blend2
+*.crash.txt
+DATASET/out_assets/
+DATASET/.**
+DATASET/reports
+
+# Entrenamiento y Modelos
+TRAINING/checkpoints/
+*.safetensors
+*.bin
+*.pt
+# Logs y bases vectoriales temporales
+*.log
+RAG/vector_store/
+
+# Jupyter Notebooks (Si no quieres subir los outputs)
+.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ignorar Markdown solo en la raíz
+/*.md

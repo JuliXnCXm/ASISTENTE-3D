@@ -1,0 +1,79 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades de la geometría
+sofa_length = 2.5  # metros
+sofa_width = 1.8   # metros
+mesa_centro_length = 1.2  # metros
+mesa_centro_width = 0.6  # metros
+
+# Crea el plano para el sofá
+sofa_mesh = bpy.data.meshes.new('SofaMesh')
+sofa_obj = bpy.data.objects.new('Sofa', sofa_mesh)
+bpy.context.collection.objects.link(sofa_obj)
+
+# Define los vértices del sofá
+sofa_verts = [
+    mathutils.Vector((-sofa_length/2, -sofa_width/2, 0)),
+    mathutils.Vector((sofa_length/2, -sofa_width/2, 0)),
+    mathutils.Vector((sofa_length/2, sofa_width/2, 0)),
+    mathutils.Vector((-sofa_length/2, sofa_width/2, 0))
+]
+
+# Define las caras del sofá
+sofa_faces = [
+    (0, 1, 2),
+    (2, 3, 0)
+]
+
+# Crea el plano para la mesa de centro
+mesa_centro_mesh = bpy.data.meshes.new('MesaCentroMesh')
+mesa_centro_obj = bpy.data.objects.new('MesaCentro', mesa_centro_mesh)
+bpy.context.collection.objects.link(mesa_centro_obj)
+
+# Define los vértices de la mesa de centro
+mesa_centro_verts = [
+    mathutils.Vector((-mesa_centro_length/2, -mesa_centro_width/2, 0)),
+    mathutils.Vector((mesa_centro_length/2, -mesa_centro_width/2, 0)),
+    mathutils.Vector((mesa_centro_length/2, mesa_centro_width/2, 0)),
+    mathutils.Vector((-mesa_centro_length/2, mesa_centro_width/2, 0))
+]
+
+# Define las caras de la mesa de centro
+mesa_centro_faces = [
+    (0, 1, 2),
+    (2, 3, 0)
+]
+
+# Crea los polígonos para el sofá y la mesa de centro
+sofa_mesh.from_pydata(sofa_verts, [], sofa_faces)
+mesa_centro_mesh.from_pydata(mesa_centro_verts, [], mesa_centro_faces)
+
+# Aplica la transformación de escala al sofá y a la mesa de centro
+sofa_obj.scale = (1, 1, 1)  # metros
+mesa_centro_obj.scale = (1, 1, 1)  # metros
+
+# Coloca el sofá en la posición deseada
+sofa_obj.location = (0, -2, 0)
+
+# Coloca la mesa de centro en la posición deseada
+mesa_centro_obj.location = (0, 0.5, 0)
+
+# Aplica la textura al sofá
+sofa_mat = bpy.data.materials.new('SofaMaterial')
+sofa_mat.use_nodes = True
+sofa_mat.node_tree.nodes['Principled BSDF'].base_color = (0.7, 0.7, 0.7)
+bpy.context.object.data.materials.append(sofa_mat)
+
+# Aplica la textura a la mesa de centro
+mesa_centro_mat = bpy.data.materials.new('MesaCentroMaterial')
+mesa_centro_mat.use_nodes = True
+mesa_centro_mat.node_tree.nodes['Principled BSDF'].base_color = (0.9, 0.7, 0.5)
+bpy.context.object.data.materials.append(mesa_centro_mat)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene.BLEND_OUT)

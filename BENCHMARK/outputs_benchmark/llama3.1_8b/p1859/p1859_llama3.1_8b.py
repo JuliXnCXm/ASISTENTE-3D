@@ -1,0 +1,68 @@
+import bpy
+import mathutils
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones de la oficina
+oficina_ancho = 3.0  # metros
+oficina_largo = 4.5  # metros
+estanteria_altura = 2.5  # metros
+
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(location=(0, 0, 0), size=oficina_ancho)
+
+# Crear la pared delantera
+bpy.ops.mesh.primitive_cube_add(location=(oficina_ancho/2, oficina_largo/2, 0))
+bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
+bpy.ops.object.modifier_apply(modifier='Subdivision')
+
+# Crear la pared trasera
+bpy.ops.mesh.primitive_cube_add(location=(-oficina_ancho/2, oficina_largo/2, 0))
+bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
+bpy.ops.object.modifier_apply(modifier='Subdivision')
+
+# Crear la pared izquierda
+bpy.ops.mesh.primitive_cube_add(location=(-oficina_ancho/2, -oficina_largo/2, 0))
+bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
+bpy.ops.object.modifier_apply(modifier='Subdivision')
+
+# Crear la pared derecha
+bpy.ops.mesh.primitive_cube_add(location=(oficina_ancho/2, -oficina_largo/2, 0))
+bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
+bpy.ops.object.modifier_apply(modifier='Subdivision')
+
+# Crear la estantería
+estanteria_base = bpy.data.curves.new(name="EstanteriaBase", type='MESH')
+estanteria_base.dimensions = '2D'
+estanteria_base.data.from_pydata([(0, 0, 0), (oficina_ancho/2, oficina_largo/2, estanteria_altura)])
+bpy.context.collection.objects.link(estanteria_base)
+
+# Crear la silla
+silla_base = bpy.data.curves.new(name="SillaBase", type='MESH')
+silla_base.dimensions = '2D'
+silla_base.data.from_pydata([(0, 0, 0), (oficina_ancho/4, oficina_largo/2, estanteria_altura)])
+bpy.context.collection.objects.link(silla_base)
+
+# Crear el escritorio
+perfil = bpy.data.curves.new(name="Perfil", type='MESH')
+perfil.dimensions = '2D'
+perfil.data.from_pydata([(0, 0, 0), (oficina_ancho/4, oficina_largo/2)])
+bpy.context.collection.objects.link(perfil)
+
+# Extruir el perfil para crear la forma L
+extrusion = bpy.ops.mesh.extrude_individually(
+    type='PATH',
+    direction='POSITIVE',
+    mirror=False,
+    use_normal=True,
+    layers=(True, False)
+)
+
+# Escalar y rotar la forma L para que se ajuste al escritorio
+bpy.context.active_object.scale = (oficina_ancho/4, oficina_largo/2, 1)
+bpy.context.active_object.rotation_euler = mathutils.Vector((0, 0, math.pi/2))
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

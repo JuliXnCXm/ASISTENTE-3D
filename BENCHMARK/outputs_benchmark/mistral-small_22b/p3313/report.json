@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "Operator bpy.ops.mesh.duplicate.poll() failed, context is incorrect",
+  "chamfer_distance": null,
+  "gt_vertices_count": 632,
+  "pred_vertices_count": 0
+}

@@ -1,0 +1,28 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el muro de ladrillo rojo
+bpy.ops.mesh.primitive_cube_add(size=0.25, location=(0, 0, 1.25))
+wall = bpy.context.object
+wall.scale = (10, 2.5, 0.25)
+wall.name = "Wall"
+
+# Crear la puerta de madera
+door_size = (1.5, 2.5, 0.25)
+door_location = (-4.25 + door_size[0] / 2, 0, 1.25)
+
+bpy.ops.mesh.primitive_cube_add(size=door_size[2], location=door_location)
+door = bpy.context.object
+door.scale = door_size
+door.name = "Door"
+
+# Cambiar la color del muro a rojo
+wall.data.materials.append(bpy.data.materials.new(name="RedBrick"))
+bpy.context.object.active_material.diffuse_color = (0.64, 0.16, 0.16, 1)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

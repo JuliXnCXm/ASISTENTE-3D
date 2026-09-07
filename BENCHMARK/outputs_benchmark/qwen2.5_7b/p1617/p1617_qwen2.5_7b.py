@@ -1,0 +1,29 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el terreno plano de césped
+terreno = bpy.data.meshes.new(name="Césped")
+obj = bpy.data.objects.new("Jardin", terreno)
+bpy.context.collection.objects.link(obj)
+
+# Definir los vértices del terreno
+vertices = [
+    (-10, -15, 0), (-10, 15, 0),
+    (10, 15, 0), (10, -15, 0)
+]
+
+# Definir las caras del terreno
+caras = [(0, 1, 3, 2)]
+
+# Crear la geometría
+terreno.from_pydata(vertices, [], caras)
+terreno.update()
+
+# Escalar el objeto al tamaño deseado (20x30 metros)
+obj.scale = (20, 30, 1)
+
+# Guardar el archivo .blend si existe BLEND_OUT en las variables de entorno
+if "BLEND_OUT" in bpy.app.background_vars:
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.app.background_vars["BLEND_OUT"])

@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "name 'os' is not defined",
-  "chamfer_distance": null,
-  "gt_vertices_count": 1168,
-  "pred_vertices_count": 0
-}

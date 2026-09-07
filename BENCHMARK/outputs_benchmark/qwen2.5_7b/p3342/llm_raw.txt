@@ -1,0 +1,105 @@
+```python
+import bpy
+import math
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definición de las dimensiones
+ancho_patio = 10
+largo_patio = 20
+ancho_zona_dia = 30
+largo_zona_dia = 40
+ancho_zona_noche = 25
+largo_zona_noche = 30
+
+# Crear el patio central
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, -0.1))
+patio = bpy.context.object
+patio.scale = (ancho_patio, largo_patio, 1)
+
+# Crear los muros de la casa
+muro_ancho = 2.5
+muro_largo = 3
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 + muro_ancho / 2, largo_patio / 2 - ancho_patio / 2 + muro_ancho / 2, 0))
+muro1 = bpy.context.object
+muro1.scale = (ancho_zona_dia, ancho_patio, muro_ancho)
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 + muro_ancho / 2, largo_patio / 2 - ancho_patio / 2 - muro_largo, 0))
+muro2 = bpy.context.object
+muro2.scale = (ancho_zona_dia, muro_largo, muro_ancho)
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 - muro_largo, largo_patio / 2 - ancho_patio / 2 + muro_ancho / 2, 0))
+muro3 = bpy.context.object
+muro3.scale = (ancho_zona_dia, ancho_patio, muro_ancho)
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 - muro_largo, largo_patio / 2 - ancho_patio / 2 - muro_largo, 0))
+muro4 = bpy.context.object
+muro4.scale = (ancho_zona_dia, muro_largo, muro_ancho)
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 + muro_ancho / 2, largo_patio / 2 - ancho_patio / 2 + muro_ancho / 2, 0))
+muro5 = bpy.context.object
+muro5.scale = (ancho_zona_noche, ancho_patio, muro_ancho)
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 + muro_ancho / 2, largo_patio / 2 - ancho_patio / 2 - muro_largo, 0))
+muro6 = bpy.context.object
+muro6.scale = (ancho_zona_noche, muro_largo, muro_ancho)
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 - muro_largo, largo_patio / 2 - ancho_patio / 2 + muro_ancho / 2, 0))
+muro7 = bpy.context.object
+muro7.scale = (ancho_zona_noche, ancho_patio, muro_ancho)
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 - muro_largo, largo_patio / 2 - ancho_patio / 2 - muro_largo, 0))
+muro8 = bpy.context.object
+muro8.scale = (ancho_zona_noche, muro_largo, muro_ancho)
+
+# Crear las losas
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 + muro_ancho / 2, largo_patio / 2 - ancho_patio / 2 + muro_ancho / 2, 0))
+losa1 = bpy.context.object
+losa1.scale = (ancho_zona_dia - muro_ancho * 2, ancho_patio - muro_largo * 2, 0.1)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 + muro_ancho / 2, largo_patio / 2 - ancho_patio / 2 + muro_ancho / 2, 0))
+losa2 = bpy.context.object
+losa2.scale = (ancho_zona_noche - muro_ancho * 2, ancho_patio - muro_largo * 2, 0.1)
+
+# Crear el patio con suelo de baldosas
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, -0.2))
+patio_baldosa = bpy.context.object
+patio_baldosa.scale = (ancho_patio, largo_patio, 0.1)
+
+# Crear mobiliario de la zona de día
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 + muro_ancho * 2 + 1, largo_patio / 2 - ancho_patio / 2 + muro_ancho * 2 + 1, 0.3))
+sala_estar = bpy.context.object
+sala_estar.scale = (5, 4, 1)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 + muro_ancho * 2 + 3.5, largo_patio / 2 - ancho_patio / 2 + muro_ancho * 2 + 2.5, 0.3))
+mesa_comedor = bpy.context.object
+mesa_comedor.scale = (4, 2, 1)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_dia / 2 - ancho_zona_dia / 2 + muro_ancho * 2 + 3.5, largo_patio / 2 - ancho_patio / 2 + muro_ancho * 2 + 4.5, 0.3))
+isla_cocina = bpy.context.object
+isla_cocina.scale = (2, 1.5, 1)
+
+# Crear mobiliario de la zona de noche
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 + muro_ancho * 2 + 1, largo_patio / 2 - ancho_patio / 2 + muro_ancho * 2 + 1, 0.3))
+cama1 = bpy.context.object
+cama1.scale = (2, 1, 1)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 + muro_ancho * 2 + 3.5, largo_patio / 2 - ancho_patio / 2 + muro_ancho * 2 + 2.5, 0.3))
+cama2 = bpy.context.object
+cama2.scale = (2, 1, 1)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 + muro_ancho * 2 + 3.5, largo_patio / 2 - ancho_patio / 2 + muro_ancho * 2 + 4.5, 0.3))
+cama3 = bpy.context.object
+cama3.scale = (2, 1, 1)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(largo_zona_noche / 2 - ancho_zona_noche / 2 + muro_ancho * 2 + 5.5, largo_patio / 2 - ancho_patio / 2 + muro_ancho * 2 + 3.5, 0.3))
+baño = bpy.context.object
+baño.scale = (2, 1, 1)
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+```

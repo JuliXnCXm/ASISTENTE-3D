@@ -1,0 +1,23 @@
+```python
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el primer muro de 4m en el eje X
+bpy.ops.mesh.primitive_cube_add(size=0.25, location=(2, 0, 1.25))
+wall_x = bpy.context.object
+wall_x.scale = (4, 0.25, 2.5)
+
+# Crear el segundo muro de 3m en el eje Y
+bpy.ops.mesh.primitive_cube_add(size=0.25, location=(0, 1.5, 1.25))
+wall_y = bpy.context.object
+wall_y.scale = (0.25, 3, 2.5)
+
+# Alinear los muros para formar una esquina
+bpy.context.view_layer.objects.active = wall_x
+bpy.ops.transform.translate(value=(0, -1.5, 0))
+
+if "BLEND_OUT" in bpy.context.scene:
+    bpy.data.libraries.write(bpy.context.scene["BLEND_OUT"], {wall_x.name: True, wall_y.name: True})
+```

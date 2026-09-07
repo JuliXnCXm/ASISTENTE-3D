@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "module 'bpy' has no attribute 'math'",
+  "chamfer_distance": null,
+  "gt_vertices_count": 156,
+  "pred_vertices_count": 0
+}

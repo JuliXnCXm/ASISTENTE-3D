@@ -1,0 +1,47 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones en metros
+edificio_altura = 10
+edificio_ancho = 20
+edificio_largo = 30
+suelo_deck_madera_altura = 0.15
+jardinera_hormigon_altura = 0.6
+vegetacion_altura = 1.5
+pergola_metallo_techo_altura = 4
+
+# Crear el edificio
+bpy.ops.mesh.primitive_cube_add(size=edificio_largo, location=(0, 0, -edificio_altura / 2))
+edificio_objeto = bpy.context.object
+edificio_objeto.scale = (edificio_ancho, edificio_largo, edificio_altura)
+
+# Crear el suelo de deck de madera
+bpy.ops.mesh.primitive_plane_add(size=30, location=(0, 0, -edificio_altura / 2 - suelo_deck_madera_altura))
+suelo_objeto = bpy.context.object
+suelo_objeto.scale = (1.5 * edificio_ancho, 1.5 * edificio_largo, 1)
+
+# Crear las jardineras perimetrales de hormigón
+for x in [-edificio_largo / 2 + 0.75, edificio_largo / 2 - 0.75]:
+    for z in [-edificio_ancho / 2 + 0.75, edificio_ancho / 2 - 0.75]:
+        bpy.ops.mesh.primitive_cube_add(size=jardinera_hormigon_altura, location=(x, 0, z))
+        jardinera_objeto = bpy.context.object
+        jardinera_objeto.scale = (1.5, 3, 1)
+
+# Crear la vegetación en las jardineras
+for obj in bpy.data.objects:
+    if "Cube" in obj.name and "suelo" not in obj.name:
+        bpy.ops.mesh.primitive_cube_add(size=vegetacion_altura, location=obj.location)
+        vegetacion_objeto = bpy.context.object
+        vegetacion_objeto.scale = (0.5, 0.5, 1)
+
+# Crear la pérgola metálica
+bpy.ops.mesh.primitive_cube_add(size=edificio_largo - 3, location=(0, edificio_ancho / 2 - 1.5, -edificio_altura / 2 + 1))
+pergola_objeto = bpy.context.object
+pergola_objeto.scale = (1, 1, pergola_metallo_techo_altura)
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

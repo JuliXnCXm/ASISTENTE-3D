@@ -1,6 +1,6 @@
 {
   "execution_success": false,
-  "execution_error": "bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items, not 3",
+  "execution_error": "BlendDataCurves.new(): error with keyword argument \"type\" -  enum \"MESH\" not found in ('CURVE', 'SURFACE', 'FONT')",
   "chamfer_distance": null,
   "gt_vertices_count": 24,
   "pred_vertices_count": 0

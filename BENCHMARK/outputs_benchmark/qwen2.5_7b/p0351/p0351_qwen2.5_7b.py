@@ -1,0 +1,28 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el marco de la cama (estructura de madera)
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -0.5))
+bpy.context.object.scale = (2, 1.5, 0.1)  # Ajustar a las dimensiones típicas de una cama doble
+
+# Crear el colchón (tela blanca)
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -0.6))
+bpy.context.object.scale = (2, 1.5, 0.05)  # Ajustar a las dimensiones típicas de un colchón
+
+# Asignar materiales
+material_madera = bpy.data.materials.new(name="MaderaNogal")
+material_madera.diffuse_color = (0.4, 0.2, 0.1, 1)  # Color marrón oscuro para nogal
+bpy.context.object.data.materials.append(material_madera)
+
+material_tela = bpy.data.materials.new(name="TelaBlanca")
+material_tela.diffuse_color = (1, 1, 1, 1)  # Blanco puro
+bpy.context.object.data.materials.append(material_tela)
+
+# Asignar materiales a los objetos
+bpy.context.view_layer.objects.active = bpy.data.objects['Cube']
+bpy.data.objects['Cube'].data.materials[0] = material_madera
+
+bpy.context.view_layer.objects.active = bpy.data.objects['Cube.001']
+bpy.data.objects['Cube.001'].data.materials[0] = material_tela

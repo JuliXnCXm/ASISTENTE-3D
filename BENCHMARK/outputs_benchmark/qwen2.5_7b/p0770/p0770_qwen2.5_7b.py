@@ -1,0 +1,50 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el sofá de tres plazas de tela gris
+sofa = bpy.data.objects.new(name="Sofa", object_data=None)
+bpy.context.collection.objects.link(sofa)
+
+# Definir la geometría del sofá (simplificado para ejemplo)
+bpy.ops.mesh.primitive_cube_add(location=(0, 0, -1))
+sofa_mesh = bpy.context.object
+sofa_mesh.scale = (2, 3, 1)  # Ajustar a las dimensiones reales de un sofá de tres plazas
+
+# Asignar material de tela gris al sofá
+material = bpy.data.materials.new(name="SofaMaterial")
+material.use_nodes = True
+nodes = material.node_tree.nodes
+nodes.clear()
+emission_node = nodes.new(type='ShaderNodeEmission')
+emission_node.inputs['Color'].default_value = (0.5, 0.5, 0.5, 1)
+emission_node.inputs['Strength'].default_value = 1
+material.node_tree.links.new(emission_node.outputs['Emission'], nodes['Material Output'].inputs['Base Color'])
+
+sofa_mesh.materials.append(material)
+
+# Crear la mesa de centro de madera
+table = bpy.data.objects.new(name="Table", object_data=None)
+bpy.context.collection.objects.link(table)
+
+# Definir la geometría de la mesa (simplificado para ejemplo)
+bpy.ops.mesh.primitive_cube_add(location=(0, 2.5, -1))
+table_mesh = bpy.context.object
+table_mesh.scale = (1.5, 1.5, 0.3)  # Ajustar a las dimensiones reales de una mesa de centro
+
+# Asignar material de madera al sofá
+wood_material = bpy.data.materials.new(name="WoodMaterial")
+wood_texture = bpy.data.textures.new(name="WoodTexture", type='WOOD')
+wood_material.use_nodes = True
+nodes = wood_material.node_tree.nodes
+nodes.clear()
+texture_node = nodes.new(type='ShaderNodeTexImage')
+texture_node.texture = wood_texture
+nodes['Material Output'].inputs['Base Color'].links.new(texture_node.outputs['Color'])
+table_mesh.materials.append(wood_material)
+
+# Guardar el archivo .blend si la variable BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

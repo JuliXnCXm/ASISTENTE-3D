@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "Converting py args to operator properties: sequences of dimension 0 should contain 3 items, not 6",
-  "chamfer_distance": null,
-  "gt_vertices_count": 116,
-  "pred_vertices_count": 0
-}

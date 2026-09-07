@@ -9,65 +9,44 @@ ancho_peldaño = 1.0
 huella_peldaño = 0.3
 contrahuella_peldaño = 0.18
 
-# Crea un objeto para la escalera
-escalera = bpy.data.objects.new("Escalera", None)
-
-# Agrega el objeto a la escena
-bpy.context.collection.objects.link(escalera)
-
-# Define las coordenadas de los peldaños
-coord_x = -7.5  # Coordenada x del primer peldaño
-
+# Crea el tramo de escalera recto con 15 peldaños
 for i in range(15):
     # Crea un nuevo objeto para cada peldaño
-    peldaño = bpy.data.objects.new(f"Peldaño {i+1}", None)
+    bpy.ops.mesh.primitive_cube_add(size=ancho_peldaño, location=(i * ancho_peldaño, 0, 0))
     
-    # Agrega el objeto a la escena
-    bpy.context.collection.objects.link(peldaño)
+    # Obtiene el objeto actual (último creado)
+    obj = bpy.context.active_object
+    
+    # Renombra el objeto para que sea más fácil de identificar
+    obj.name = f"Peldaño {i+1}"
+    
+    # Aplica la transformación de escala para darle la altura correcta al peldaño
+    obj.scale[2] = contrahuella_peldaño
+    
+    # Aplica la transformación de rotación para que el peldaño esté en su posición correcta
+    obj.rotation_euler[1] = mathutils.Vector((0, 0, 0))
+    
+    # Mueve el peldaño a su posición correcta en la escalera
+    obj.location[2] = i * ancho_peldaño
+    
+    # Crea un nuevo objeto para cada contrahuella
+    bpy.ops.mesh.primitive_cube_add(size=ancho_peldaño, location=(i * ancho_peldaño, 0, contrahuella_peldaño))
+    
+    # Obtiene el objeto actual (último creado)
+    obj = bpy.context.active_object
+    
+    # Renombra el objeto para que sea más fácil de identificar
+    obj.name = f"Contrahuella {i+1}"
+    
+    # Aplica la transformación de escala para darle la altura correcta a la contrahuella
+    obj.scale[2] = huella_peldaño
+    
+    # Aplica la transformación de rotación para que la contrahuella esté en su posición correcta
+    obj.rotation_euler[1] = mathutils.Vector((0, 0, 0))
+    
+    # Mueve la contrahuella a su posición correcta en la escalera
+    obj.location[2] = i * ancho_peldaño + (ancho_peldaño / 2)
 
-    # Establece las coordenadas del peldaño
-    peldaño.location = (coord_x, 0, i * contrahuella_peldaño)
-    
-    # Define los vértices del peldaño
-    vertices = [
-        mathutils.Vector((ancho_peldaño / 2, huella_peldaño / 2, 0)),
-        mathutils.Vector((-ancho_peldaño / 2, huella_peldaño / 2, 0)),
-        mathutils.Vector((-ancho_peldaño / 2, -huella_peldaño / 2, 0)),
-        mathutils.Vector((ancho_peldaño / 2, -huella_peldaño / 2, 0))
-    ]
-    
-    # Crea un nuevo mesh para el peldaño
-    mesh = bpy.data.meshes.new(f"Mesh Peldaño {i+1}")
-    
-    # Define los polígonos del peldaño
-    faces = [
-        (0, 1, 2),
-        (2, 3, 0)
-    ]
-    
-    # Crea el objeto de geometría para el peldaño
-    obj_data = bpy.data.objects.new(f"Mesh Peldaño {i+1}", mesh)
-    
-    # Agrega el objeto a la escena
-    bpy.context.collection.objects.link(obj_data)
-    
-    # Define los vértices y polígonos del peldaño
-    mesh.from_pydata(vertices, [], faces)
-    mesh.update(calc_edges=True)
-    
-    # Establece las coordenadas del peldaño en el objeto de geometría
-    obj_data.location = (coord_x, 0, i * contrahuella_peldaño)
-
-    # Agrega el peldaño a la escalera
-    bpy.ops.object.select_all(action='DESELECT')
-    peldaño.select_set(True)
-    bpy.context.collection.objects.link(peldaño)
-    
-    # Mueve el peldaño al objeto de geometría
-    obj_data.location = (coord_x, 0, i * contrahuella_peldaño)
-
-    coord_x += ancho_peldaño
-
-# Guarda la escena si se especificó un archivo de salida
-if 'BLEND_OUT' in bpy.context.scene:
-    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene['BLEND_OUT'])
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend con ese nombre
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

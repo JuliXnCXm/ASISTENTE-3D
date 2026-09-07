@@ -1,0 +1,36 @@
+```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define el tamaño de la parcela en metros
+parcel_size = 5
+
+# Crea un plano para representar la parcela
+bpy.ops.mesh.primitive_plane_add(size=parcel_size, location=(0, 0, -1))
+plane = bpy.context.object
+plane.name = "Parcela"
+
+# Define los parámetros del árbol
+tree_radius = 2.5  # Radio de la copa en metros
+tree_height = 10   # Altura del tronco en metros
+
+# Crea el tronco del árbro
+bpy.ops.mesh.primitive_cylinder_add(radius=0.3, depth=tree_height, location=(0, 0, tree_height / 2))
+tronco = bpy.context.object
+tronco.name = "Tronco"
+
+# Crea la copa del árbol como una esfera
+bpy.ops.mesh.primitive_uv_sphere_add(radius=tree_radius, location=(0, 0, tree_height + 1))
+copa = bpy.context.object
+copa.name = "Copa"
+
+# Alinear la copa al tronco
+copa.location = (0, 0, tree_height / 2)
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+```

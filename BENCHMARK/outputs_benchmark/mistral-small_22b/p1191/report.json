@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "'bpy_prop_collection[key]: key \"Mirror\" not found'",
-  "chamfer_distance": null,
-  "gt_vertices_count": 24,
-  "pred_vertices_count": 0
-}

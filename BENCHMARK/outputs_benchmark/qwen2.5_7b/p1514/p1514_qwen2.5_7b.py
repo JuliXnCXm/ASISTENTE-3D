@@ -1,0 +1,25 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del muro y la puerta
+murillo_length = 8.0  # metros
+murillo_height = 2.2  # metros
+door_width = 1.0      # metros
+
+# Crea el muro perimetral
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -1))
+wall = bpy.context.object
+wall.scale = (murillo_length / 2, murillo_height, 0.1)
+
+# Crea la puerta de madera centrada en el muro
+door_location_x = -(murillo_length / 2) + door_width / 2
+bpy.ops.mesh.primitive_cube_add(size=1, location=(door_location_x, 0, -0.05))
+door = bpy.context.object
+door.scale = (door_width, murillo_height, 0.1)
+
+# Guarda el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

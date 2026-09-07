@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "Error: Cannot add vertices in edit mode\n",
+  "chamfer_distance": null,
+  "gt_vertices_count": 8,
+  "pred_vertices_count": 0
+}

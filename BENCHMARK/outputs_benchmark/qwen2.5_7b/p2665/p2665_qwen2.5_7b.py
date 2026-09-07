@@ -1,0 +1,32 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones
+peldaños = 12
+ancho_tramo = 1.0
+huella = 0.28
+contrahuella = 0.18
+altura_peldaño = 0.2
+
+# Crear el piso
+bpy.ops.mesh.primitive_plane_add(size=ancho_tramo, location=(0, 0, -altura_peldaños * (peldaños - 1) / 2))
+piso = bpy.context.object
+piso.scale = (ancho_tramo, ancho_tramo, 0.01)
+
+# Crear los peldaños
+for i in range(peldaños):
+    x_offset = -(peldaños - 1) * huella / 2 + i * huella
+    y_offset = contrahuella if i % 2 == 0 else -contrahuella
+    
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(x_offset, y_offset, altura_peldaño * i))
+    peldaño = bpy.context.object
+    peldaño.scale = (huella, ancho_tramo, altura_peldaño)
+    
+    # Alinear el peldaño con el piso
+    peldaño.location.z -= 0.01
+
+# Guardar la escena si BLEND_OUT está definido
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene['BLEND_OUT'])

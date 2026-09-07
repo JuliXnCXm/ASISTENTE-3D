@@ -1,0 +1,34 @@
+```python
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones y propiedades del edificio
+pisos = 5
+ancho = 20
+largo = 30
+espacio_ventana = 4
+altura_piso = 3.5
+
+# Crear los pisos
+for p in range(pisos):
+    # Paredes laterales
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(ancho / 2 - largo / 2, espacio_ventana * (p + 0.5), altura_piso * p))
+    bpy.ops.transform.resize(value=(largo, espacio_ventana, altura_piso))
+    
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-ancho / 2 + largo / 2, espacio_ventana * (p + 0.5), altura_piso * p))
+    bpy.ops.transform.resize(value=(largo, espacio_ventana, altura_piso))
+
+# Crear las ventanas
+for p in range(pisos):
+    for i in range(int(ancho // espacio_ventana)):
+        x = -ancho / 2 + largo / 2 + (i + 0.5) * espacio_ventana
+        bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x, espacio_ventana * (p + 0.5), altura_piso * p))
+        bpy.ops.transform.resize(value=(espacio_ventana / 2, espacio_ventana / 2, altura_piso))
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out)
+```

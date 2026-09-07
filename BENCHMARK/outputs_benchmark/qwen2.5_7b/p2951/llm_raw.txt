@@ -1,0 +1,42 @@
+```python
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear suelo base
+bpy.ops.mesh.primitive_plane_add(size=12, location=(0, 0, -0.1))
+suelo = bpy.context.object
+suelo.scale = (10, 12, 1)
+bpy.context.view_layer.objects.active = suelo
+
+# Crear bancos de parque
+def crear_banco(x_pos, length):
+    # Soporte de hormigón
+    soporte = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_pos - 0.25, 0, 0))
+    soporte_obj = bpy.context.object
+    soporte_obj.scale = (length + 1, 0.1, 0.3)
+    
+    # Asiento de madera
+    asiento = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_pos - 0.25, 0, -0.05))
+    asiento_obj = bpy.context.object
+    asiento_obj.scale = (length + 1, 0.1, 0.05)
+    
+    # Respaldo de madera
+    respaldo = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_pos - 0.25, 0, 0.05))
+    respaldo_obj = bpy.context.object
+    respaldo_obj.scale = (length + 1, 0.1, 0.05)
+    
+    return soporte_obj, asiento_obj, respaldo_obj
+
+# Crear bancos
+bancos_x = -4
+for i in range(2):
+    banco = crear_banco(bancos_x, 2)
+    bancos_x += 6
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path, check_existing=False)
+```

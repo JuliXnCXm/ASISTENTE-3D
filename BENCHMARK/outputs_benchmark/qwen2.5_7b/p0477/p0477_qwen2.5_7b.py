@@ -1,0 +1,42 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir el terreno
+bpy.ops.mesh.primitive_plane_add(size=30, location=(0, 0, -1))
+terrain = bpy.context.object
+terrain.scale = (25, 30, 1)
+terrain.name = "Terreno"
+
+# Definir la casa de dos pisos con tejado a dos aguas
+bpy.ops.mesh.primitive_cube_add(size=4, location=(0, -4, 2))
+house_base = bpy.context.object
+house_base.scale = (8, 10, 1)
+house_base.name = "Casa_Base"
+
+# Piso superior
+bpy.ops.mesh.primitive_cube_add(size=4, location=(0, -4, 3.5))
+house_upper_floor = bpy.context.object
+house_upper_floor.scale = (8, 10, 0.2)
+house_upper_floor.name = "Piso_Superior"
+
+# Tejado a dos aguas
+tejado_dos_aguas = []
+for i in range(4):
+    angle = -90 + i * 90
+    bpy.ops.mesh.primitive_cone_add(radius1=2, radius2=0.5, depth=3, location=(0, -4, 3))
+    roof_part = bpy.context.object
+    roof_part.rotation_euler[2] = angle * (bpy.math.pi / 180)
+    tejado_dos_aguas.append(roof_part)
+
+# Árbol
+bpy.ops.mesh.primitive_uv_sphere_add(radius=0.5, location=(10, -5, 3))
+tree = bpy.context.object
+tree.scale = (2, 2, 2)
+tree.name = "Árbol"
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path, check_existing=False)

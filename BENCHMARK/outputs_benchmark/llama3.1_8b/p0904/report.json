@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "Error: Object 'Colchon' already in collection 'Scene Collection'\n",
-  "chamfer_distance": null,
-  "gt_vertices_count": 24,
-  "pred_vertices_count": 0
-}

@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "Error: Object 'C\u00e9sped' already in collection 'Scene Collection'\n",
-  "chamfer_distance": null,
-  "gt_vertices_count": 104,
-  "pred_vertices_count": 0
-}

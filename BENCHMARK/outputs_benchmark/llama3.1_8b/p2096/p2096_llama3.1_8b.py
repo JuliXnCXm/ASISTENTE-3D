@@ -4,56 +4,42 @@ import mathutils
 # Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Establece las unidades en metros
-bpy.context.scene.unit_settings.system = 'METRIC'
-bpy.context.scene.unit_settings.length_unit = 'METERS'
-
-# Crea el suelo
-bpy.ops.mesh.primitive_plane_add(size=5, location=(0, 0, -0.1))
+# Define las dimensiones del dormitorio principal
+ancho = 4.5  # metros
+profundidad = 3.2  # metros
+alto_cama = 1.8  # metros
+alto_muro = 1.9  # metros
 
 # Crea la cama con cabecero tapizado
-cama = bpy.data.objects.new('Cama', bpy.data.meshes.new('Cama'))
-cama.location = (0, 2, 0)
-cama.scale = (3, 2, 2)
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2, 0))
+cama = bpy.context.active_object
+cama.name = "Cama"
+cama.scale = (alto_cama, ancho, profundidad)
 
-# Cuerpo de la cama
-bpy.ops.mesh.primitive_cube_add(size=1.5, location=(0, 0, -0.5))
-cama_body = bpy.context.active_object
-cama_body.name = 'Cuerpo de la cama'
-cama_body.parent = cama
-
-# Cabecero de la cama
-bpy.ops.mesh.primitive_cube_add(size=1.5, location=(0, 0, -1.2))
+# Crea el cabecero de la cama
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + 0.5, alto_cama))
 cabecero = bpy.context.active_object
-cabecero.name = 'Cabecero de la cama'
-cabecero.parent = cama
+cabecero.name = "Cabecero"
+cabecero.scale = (alto_cama, ancho, profundidad)
+cabecero.rotation_euler = mathutils.Vector((math.radians(90), 0, 0))
 
-# Tapizado del cabecero
-bpy.ops.mesh.primitive_plane_add(size=1.5, location=(0, 0, -1.2))
-tapizado = bpy.context.active_object
-tapizado.name = 'Tapizado del cabecero'
-tapizado.parent = cabecero
+# Crea el muro bajo separador para el vestidor
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + ancho/2, alto_cama))
+muro = bpy.context.active_object
+muro.name = "Muro"
+muro.scale = (alto_muro, ancho, profundidad)
 
-# Muro bajo separador para un vestidor
-muro = bpy.data.objects.new('Muro', bpy.data.meshes.new('Muro'))
-muro.location = (2, 0, -1.5)
-muro.scale = (0.5, 3, 1)
+# Crea los armarios empotrados
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + ancho/4, alto_cama))
+armario_izquierdo = bpy.context.active_object
+armario_izquierdo.name = "Armario Izquierdo"
+armario_izquierdo.scale = (alto_muro, ancho/2, profundidad)
 
-# Armarios empotrados
-armario_izquierdo = bpy.data.objects.new('Armario izquierdo', bpy.data.meshes.new('Armario izquierdo'))
-armario_izquierdo.location = (-2, -1.5, -1)
-armario_izquierdo.scale = (0.5, 3, 1)
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + 3*ancho/4, alto_cama))
+armario_derecho = bpy.context.active_object
+armario_derecho.name = "Armario Derecho"
+armario_derecho.scale = (alto_muro, ancho/2, profundidad)
 
-armario_derecho = bpy.data.objects.new('Armario derecho', bpy.data.meshes.new('Armario derecho'))
-armario_derecho.location = (2, -1.5, -1)
-armario_derecho.scale = (0.5, 3, 1)
-
-# Agrega los objetos a la escena
-bpy.context.collection.objects.link(cama)
-bpy.context.collection.objects.link(muro)
-bpy.context.collection.objects.link(armario_izquierdo)
-bpy.context.collection.objects.link(armario_derecho)
-
-# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
 if 'BLEND_OUT' in bpy.context.scene:
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene['BLEND_OUT'])
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene['BLEND_OUT'])

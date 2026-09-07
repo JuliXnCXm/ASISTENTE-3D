@@ -1,0 +1,42 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones y altura
+base_length = 12
+base_width = 8
+height_cumbrera = 3
+thick_roof = 0.25
+
+# Crear los vértices de la cubierta a dos aguas
+verts = [
+    (-base_width / 2, -base_length / 2, 0),
+    (base_width / 2, -base_length / 2, 0),
+    (base_width / 2, base_length / 2, height_cumbrera),
+    (-base_width / 2, base_length / 2, height_cumbrera)
+]
+
+# Crear las caras
+faces = [
+    (0, 1, 3, 2),  # Cara inferior
+    (0, 1, 4, -thick_roof),  # Cara superior izquierda
+    (1, 2, 5, -thick_roof),  # Cara superior derecha
+    (2, 3, 6, -thick_roof),  # Cara superior derecha
+    (3, 0, 7, -thick_roof)   # Cara superior izquierda
+]
+
+# Crear la geometría
+mesh = bpy.data.meshes.new(name="Roof")
+obj = bpy.data.objects.new("Roof", mesh)
+bpy.context.collection.objects.link(obj)
+
+# Añadir vértices y caras al objeto
+mesh.from_pydata(verts, [], faces)
+mesh.update()
+
+# Ajustar la escala para convertir de metros a Blender units (1m = 100 BU)
+obj.scale = (100, 100, 100)
+
+if "BLEND_OUT" in bpy.context.scene:
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene["BLEND_OUT"])

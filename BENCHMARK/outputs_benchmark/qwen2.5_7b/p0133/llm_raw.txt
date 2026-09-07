@@ -1,0 +1,38 @@
+```python
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones del peldaño
+peldaño_ancho = 1.0
+peldaño_huella = 0.3
+peldaño_contrahuella = 0.18
+
+# Definir la cantidad de peldaños
+num_peldaños = 15
+
+# Crear los peldaños
+for i in range(num_peldaños):
+    # Posición inicial del peldaño
+    x_pos = -peldaño_ancho * (i + 0.5)
+    
+    # Crear un plano para el peldaño
+    bpy.ops.mesh.primitive_plane_add(size=peldaño_huella, location=(x_pos, 0, i * peldaño_contrahuella))
+    
+    # Rotar el peldaño para darle la forma correcta
+    obj = bpy.context.object
+    obj.rotation_euler = (1.5708, 0, 0)  # 90 grados en radianes
+
+# Alinear todos los peldaños horizontalmente
+bpy.ops.object.select_all(action='DESELECT')
+for i in range(num_peldaños):
+    bpy.context.view_layer.objects.active = bpy.data.objects[f'Plane.{i}']
+    bpy.data.objects[f'Plane.{i}'].select_set(True)
+bpy.ops.transform.translate(value=(peldaño_ancho * 0.5, 0, 0), constraint_axis=(True, False, False))
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+```

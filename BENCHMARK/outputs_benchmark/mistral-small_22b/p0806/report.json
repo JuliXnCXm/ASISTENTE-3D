@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items, not 3",
-  "chamfer_distance": null,
-  "gt_vertices_count": 80,
-  "pred_vertices_count": 0
-}

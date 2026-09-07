@@ -55,7 +55,7 @@ def call_ollama(model: str, user_prompt: str, base_url: str = None, system_promp
     if debug:
         print(f"POST {url}  model={model}")
 
-    r = sess.post(url, json=payload, timeout=600)
+    r = sess.post(url, json=payload, timeout=1800) # Timeout subido a 30 minutos (1800s) para cambio de modelos
     r.raise_for_status()
     data = r.json()
     return (data.get("message") or {}).get("content", "")
@@ -102,10 +102,44 @@ def main():
     runner = Path(args.runner)
     if not runner.exists(): raise SystemExit(f"No se encontró {runner}")
 
+    # --- 1) Cargar resumen histórico si existe ---
+    summary_json_path = outdir / "results_summary.json"
+    summary_csv_path = outdir / "results_summary.csv"
+    
     summary = []
+    procesados = set()
+    
+    if summary_json_path.exists():
+        try:
+            summary = json.loads(summary_json_path.read_text(encoding="utf-8"))
+            for entry in summary:
+                # Usamos la combinación de modelo + id para saber si ya se evaluó
+                procesados.add(f"{entry['model']}_{entry['id']}")
+        except Exception:
+            pass
+
+    cols = ["model","id","titulo","ollama_ok","compile_ok","rc","chamfer_distance","execution_error"]
+
+    def guardar_resumen():
+        """Guarda tanto el JSON como el CSV de manera segura."""
+        # JSON
+        summary_json_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+        # CSV
+        lines = [",".join(cols)]
+        for r in summary:
+            row = [str(r.get(k,"")) for k in cols]
+            lines.append(",".join(x.replace("\n"," ").replace(",",";") for x in row))
+        summary_csv_path.write_text("\n".join(lines), encoding="utf-8")
+
     for model in models:
         for item in prompts:
             pid = str(item["id"])
+            
+            # --- 2) Lógica de Saltar (Skip) ---
+            if f"{model}_{pid}" in procesados:
+                print(f"[SKIP] {model} ya procesó el caso {pid}")
+                continue
+                
             titulo = item.get("titulo","")
             prompt = item["prompt"]
             case_dir = outdir / model.replace(":", "_") / pid
@@ -117,6 +151,7 @@ def main():
             except Exception as e:
                 (case_dir/"error_ollama.txt").write_text(str(e), encoding="utf-8")
                 summary.append({"model":model,"id":pid,"titulo":titulo,"ollama_ok":False,"compile_ok":False,"rc":None})
+                guardar_resumen()
                 continue
 
             (case_dir/"llm_raw.txt").write_text(raw, encoding="utf-8")
@@ -129,10 +164,10 @@ def main():
             (case_dir/"compile.log").write_text(comp_msg, encoding="utf-8")
             if not comp_ok:
                 summary.append({"model":model,"id":pid,"titulo":titulo,"ollama_ok":True,"compile_ok":False,"rc":None})
+                guardar_resumen()
                 continue
 
             # 3) Ejecutar Blender runner
-            out_blend = case_dir / f"{pid}.blend"
             report = case_dir / "report.json"
 
             env_arch_dir = args.use_arch_dir.strip()
@@ -162,15 +197,11 @@ def main():
                 "chamfer_distance": rep.get("chamfer_distance", None),
                 "execution_error": rep.get("execution_error", "")
             })
+            
+            # --- 3) Guardado Iterativo Inmediato ---
+            procesados.add(f"{model}_{pid}")
+            guardar_resumen()
 
-    (outdir/"results_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
-    # CSV rápido
-    cols = ["model","id","titulo","ollama_ok","compile_ok","rc","chamfer_distance","execution_error"]
-    lines = [",".join(cols)]
-    for r in summary:
-        row = [str(r.get(k,"")) for k in cols]
-        lines.append(",".join(x.replace("\n"," ").replace(",",";") for x in row))
-    (outdir/"results_summary.csv").write_text("\n".join(lines), encoding="utf-8")
     print(f"Listo. Resultados en {outdir}")
 
 if __name__ == "__main__":

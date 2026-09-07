@@ -1,0 +1,49 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones del edificio
+ancho = 15
+altura_piso = 3
+num_pisos = 3
+espacio_ventana_ancho = 2
+espacio_ventana_alto = 2
+
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(size=ancho * 2, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+suelo = bpy.context.object
+suelo.scale = (1, 1, 0.1)
+
+# Crear los pisos superiores
+for i in range(num_pisos):
+    piso = suelo.copy()
+    piso.location.z += altura_piso * (i + 1)
+    bpy.context.collection.objects.link(piso)
+
+# Crear las paredes laterales y traseras
+pared_lateral_izquierda = suelo.copy()
+pared_lateral_izquierda.location.x = -ancho / 2
+bpy.context.collection.objects.link(pared_lateral_izquierda)
+
+pared_lateral_derecha = suelo.copy()
+pared_lateral_derecha.location.x = ancho / 2
+bpy.context.collection.objects.link(pared_lateral_derecha)
+
+pared_trasera = suelo.copy()
+pared_trasera.location.z = altura_piso * num_pisos
+bpy.context.collection.objects.link(pared_trasera)
+
+# Crear las ventanas
+for i in range(int(ancho / espacio_ventana_ancho)):
+    for j in range(int(altura_piso * num_pisos / espacio_ventana_alto)):
+        ventana = suelo.copy()
+        ventana.scale = (espacio_ventana_ancho, espacio_ventana_alto, 0.5)
+        ventana.location.x = -ancho / 2 + i * espacio_ventana_ancho
+        ventana.location.z = altura_piso * num_pisos - j * espacio_ventana_alto
+        bpy.context.collection.objects.link(ventana)
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

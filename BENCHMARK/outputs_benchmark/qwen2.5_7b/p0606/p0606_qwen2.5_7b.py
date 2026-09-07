@@ -1,0 +1,47 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo (base)
+bpy.ops.mesh.primitive_plane_add(size=2.0, location=(0, 0, -0.1))
+suelo = bpy.context.object
+suelo.scale = (2.0, 1.6, 1.0)  # Ajustar el tamaño
+
+# Crear la estructura de madera
+bpy.ops.mesh.primitive_cube_add(size=0.1, location=(0, -0.8, -0.1))
+patas = [bpy.context.object]
+for i in range(3):
+    patas.append(bpy.ops.mesh.primitive_cube_add(size=0.1, location=(i * 2 - 1, 0.8, -0.1))['CREATE'])
+
+# Alinear las patas con el suelo
+for pata in patas:
+    bpy.context.view_layer.objects.active = pata
+    bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
+
+# Crear la estructura principal
+bpy.ops.mesh.primitive_cube_add(size=0.1, location=(0, 0, -0.2))
+estructura_principal = bpy.context.object
+
+# Alinear la estructura principal con las patas
+bpy.context.view_layer.objects.active = estructura_principal
+bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
+
+# Crear el colchón (solo un plano para representación)
+bpy.ops.mesh.primitive_plane_add(size=1.9, location=(0, 0, -0.3))
+colchon = bpy.context.object
+colchon.scale = (1.6, 2.0, 0.1)  # Ajustar el tamaño y la altura
+
+# Asignar materiales
+madera_material = bpy.data.materials.new(name="Madera")
+madera_material.diffuse_color = (0.843, 0.576, 0.294, 1)
+for obj in patas + [estructura_principal]:
+    obj.data.materials.append(madera_material)
+
+colchon_material = bpy.data.materials.new(name="Colchón")
+colchon_material.diffuse_color = (1, 1, 1, 1)  # Blanco
+colchon.data.materials.append(colchon_material)
+
+# Guardar el archivo si la variable BLEND_OUT está definida
+if 'BLEND_OUT' in dir(bpy.app):
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.app.background_save_path)

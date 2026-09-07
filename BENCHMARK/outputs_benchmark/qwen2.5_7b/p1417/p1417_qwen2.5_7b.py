@@ -1,0 +1,44 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones y propiedades del material de madera
+material = bpy.data.materials.new(name="Madera")
+material.use_nodes = True
+nodes = material.node_tree.nodes
+links = material.node_tree.links
+nodes.remove(nodes.get('Principled BSDF'))
+output_node = nodes.new(type='ShaderNodeOutputMaterial')
+bsdf_node = nodes.new(type='ShaderNodeBsdfDiffuse')
+bsdf_node.inputs['Color'].default_value = (0.5, 0.3, 0.1, 1)
+links.new(bsdf_node.outputs['BSDF'], output_node.inputs['Surface'])
+
+# Crear las columnas
+columns = [
+    {"x": -2, "z": -1},
+    {"x": 2, "z": -1},
+    {"x": -2, "z": 1},
+    {"x": 2, "z": 1}
+]
+
+for col in columns:
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(col["x"], 0, col["z"]))
+    column = bpy.context.object
+    column.data.materials.append(material)
+
+# Crear el techo
+roof_size_x = 4
+roof_size_z = 3
+bpy.ops.mesh.primitive_plane_add(size=max(roof_size_x, roof_size_z), location=(0, 1.25, 0))
+roof = bpy.context.object
+roof.scale = (roof_size_x / 2, 1, roof_size_z / 2)
+roof.data.materials.append(material)
+
+# Alinear el techo con las columnas
+roof.location.x = sum([col["x"] for col in columns]) / len(columns)
+roof.location.z = sum([col["z"] for col in columns]) / len(columns)
+
+# Guardar la escena si se especifica una ruta de salida
+if "BLEND_OUT" in bpy.context.scene:
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene["BLEND_OUT"])

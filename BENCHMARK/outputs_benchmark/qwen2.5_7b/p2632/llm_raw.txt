@@ -1,0 +1,50 @@
+```python
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear un objeto malla vacío
+mesh = bpy.data.meshes.new(name="ColumnMesh")
+obj = bpy.data.objects.new("Column", mesh)
+bpy.context.collection.objects.link(obj)
+
+# Seleccionar el objeto recién creado
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Definir la geometría de la columna (sección cuadrada y altura)
+vertices = [
+    (-0.2, -0.2, 0),
+    (0.2, -0.2, 0),
+    (0.2, 0.2, 0),
+    (-0.2, 0.2, 0),
+    (-0.2, -0.2, 2.8),
+    (0.2, -0.2, 2.8),
+    (0.2, 0.2, 2.8),
+    (-0.2, 0.2, 2.8)
+]
+
+edges = []  # No se necesitan aristas para este caso
+
+faces = [
+    (0, 1, 5, 4),  # Lado izquierdo
+    (1, 2, 6, 5),  # Lado frontal
+    (2, 3, 7, 6),  # Lado derecho
+    (3, 0, 4, 7)   # Lado trasero
+]
+
+# Crear la malla y los polígonos
+mesh.from_pydata(vertices, edges, faces)
+mesh.update()
+
+bpy.ops.object.mode_set(mode='OBJECT')
+
+# Posicionar el objeto en el origen
+obj.location = (0, 0, 0)
+
+# Guardar el archivo .blend si existe BLEND_OUT
+if "BLEND_OUT" in bpy.context.scene:
+    blend_out_path = bpy.context.scene["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+```

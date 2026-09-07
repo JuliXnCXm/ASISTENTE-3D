@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "'set' object is not subscriptable",
+  "chamfer_distance": null,
+  "gt_vertices_count": 24,
+  "pred_vertices_count": 0
+}

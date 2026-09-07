@@ -1,0 +1,76 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el sofá de tela gris
+sofa = bpy.data.objects.new("Sofa", None)
+bpy.context.collection.objects.link(sofa)
+
+sofa_mesh = bpy.data.meshes.new(name="SofaMesh")
+sofa_obj = bpy.data.objects.new(name="Sofa", object_data=sofa_mesh)
+
+# Definir la geometría del sofá (3 plazas)
+sofa_vertices = [
+    (-1, -0.5, 0), (-1, 0.5, 0), (-1, 0.8, 0),
+    (1, -0.5, 0), (1, 0.5, 0), (1, 0.8, 0),
+    (-1, -0.5, 2), (-1, 0.5, 2), (-1, 0.8, 2),
+    (1, -0.5, 2), (1, 0.5, 2), (1, 0.8, 2)
+]
+
+sofa_edges = [
+    (0, 1), (1, 2), (3, 4), (4, 5),
+    (6, 7), (7, 8), (9, 10), (10, 11),
+    (0, 3), (1, 4), (2, 5), (6, 9), (7, 10), (8, 11)
+]
+
+sofa_faces = [
+    (0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11),
+    (0, 1, 4, 3), (1, 2, 5, 4), (2, 3, 6, 5),
+    (6, 7, 10, 9), (7, 8, 11, 10), (8, 9, 12, 11)
+]
+
+sofa_mesh.from_pydata(sofa_vertices, sofa_edges, sofa_faces)
+sofa_mesh.update()
+
+# Asignar material al sofá
+material = bpy.data.materials.new(name="SofaMaterial")
+material.diffuse_color = (0.537, 0.486, 0.419)  # Color gris
+sofa_obj.data.materials.append(material)
+
+bpy.context.view_layer.objects.active = sofa_obj
+
+# Crear la mesa de centro de madera de nogal
+table = bpy.data.objects.new("Table", None)
+bpy.context.collection.objects.link(table)
+
+table_mesh = bpy.data.meshes.new(name="TableMesh")
+table_obj = bpy.data.objects.new(name="Table", object_data=table_mesh)
+
+# Definir la geometría de la mesa (superficie plana)
+table_vertices = [
+    (-0.5, -0.25, 0), (-0.5, 0.25, 0), (0.5, 0.25, 0), (0.5, -0.25, 0)
+]
+
+table_edges = [
+    (0, 1), (1, 2), (2, 3), (3, 0)
+]
+
+table_faces = [(0, 1, 2, 3)]
+
+table_mesh.from_pydata(table_vertices, table_edges, table_faces)
+table_mesh.update()
+
+# Asignar material a la mesa
+material_table = bpy.data.materials.new(name="TableMaterial")
+material_table.diffuse_color = (0.647, 0.518, 0.298)  # Color nogal
+table_obj.data.materials.append(material_table)
+
+bpy.context.view_layer.objects.active = table_obj
+
+# Posicionar la mesa al frente del sofá
+sofa.location = (-2, 0, 0)
+table.location = (2, 0, 0.5)
+
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "Converting py args to operator properties: MESH_OT_primitive_cube_add.size expected a float type, not tuple",
-  "chamfer_distance": null,
-  "gt_vertices_count": 520,
-  "pred_vertices_count": 0
-}

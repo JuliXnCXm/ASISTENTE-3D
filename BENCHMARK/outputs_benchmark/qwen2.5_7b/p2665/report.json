@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "name 'altura_pelda\u00f1os' is not defined",
+  "chamfer_distance": null,
+  "gt_vertices_count": 96,
+  "pred_vertices_count": 0
+}

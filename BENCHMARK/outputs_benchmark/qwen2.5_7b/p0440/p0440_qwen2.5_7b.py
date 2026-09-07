@@ -1,0 +1,26 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el colchón blanco
+bpy.ops.mesh.primitive_cube_add(size=2, location=(0, 0, -1))
+colchon = bpy.context.object
+colchon.scale = (2, 2, 0.5)
+colchon.name = "Colchon"
+colchon.data.name = "Colchon"
+
+# Crear la estructura de madera de roble
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+estructura = bpy.context.object
+estructura.scale = (2.5, 1.8, 0.1)
+estructura.name = "Estructura"
+estructura.data.name = "Estructura"
+
+# Alinear la estructura con el colchón
+estructura.location = (-0.25, -0.9, -0.05)
+
+# Guardar el archivo .blend si existe BLEND_OUT en las variables de entorno
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

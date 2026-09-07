@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "'set' object has no attribute 'name' and no __dict__ for setting new attributes",
-  "chamfer_distance": null,
-  "gt_vertices_count": 1016,
-  "pred_vertices_count": 0
-}

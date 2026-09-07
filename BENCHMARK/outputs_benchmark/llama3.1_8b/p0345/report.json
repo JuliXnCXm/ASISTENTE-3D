@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "'ArrayModifier' object has no attribute 'offset'",
-  "chamfer_distance": null,
-  "gt_vertices_count": 296,
-  "pred_vertices_count": 0
-}

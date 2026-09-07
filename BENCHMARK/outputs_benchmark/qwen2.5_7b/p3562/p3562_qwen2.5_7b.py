@@ -1,0 +1,38 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de los elementos
+pavimento_size = 20
+banco_length = 5
+farola_height = 3
+alcorque_radius = 1.5
+arbol_height = 8
+
+# Crea el pavimento de adoquines
+bpy.ops.mesh.primitive_plane_add(size=pavimento_size, location=(0, 0, -0.2))
+pavimento = bpy.context.object
+pavimento.name = "Pavimento"
+
+# Crea las bancas
+for i in range(4):
+    banco = bpy.ops.mesh.primitive_cube_add(size=1, location=(-5 + i * (banco_length + 1), -3, 0))
+    banco_obj = bpy.context.object
+    banco_obj.name = f"Banco_{i}"
+
+# Crea las farolas
+for i in range(4):
+    farola = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-2 + i * (2 + 1), 3, farola_height))
+    farola_obj = bpy.context.object
+    farola_obj.name = f"Farola_{i}"
+
+# Crea el alcorque con el árbol central
+bpy.ops.mesh.primitive_uv_sphere_add(radius=alcorque_radius, location=(0, 0, arbol_height + 1))
+arbol = bpy.context.object
+arbol.name = "Arbol"
+
+# Guarda la escena si BLEND_OUT está definido
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

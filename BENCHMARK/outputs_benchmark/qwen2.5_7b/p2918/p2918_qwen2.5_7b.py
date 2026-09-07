@@ -1,0 +1,28 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones del muro
+length = 10.0  # Longitud del muro en metros
+height = 2.5   # Altura del muro en metros
+thickness = 0.2  # Espesor del muro en metros
+
+# Crear el muro perimetral
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+wall = bpy.context.object
+wall.scale = (length, height, thickness)
+
+# Definir la posición y tamaño de la apertura para el portón
+door_width = 3.0  # Ancho del portón en metros
+door_height = height  # Altura del portón es igual a la altura del muro
+
+# Crear la apertura (cubo negativo) en el centro del muro
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(length / 2 - door_width / 2, 0, height / 2))
+door = bpy.context.object
+door.scale = (door_width, door_height, thickness)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

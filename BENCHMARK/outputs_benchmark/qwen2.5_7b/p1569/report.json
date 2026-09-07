@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "'float' object cannot be interpreted as an integer",
+  "chamfer_distance": null,
+  "gt_vertices_count": 1016,
+  "pred_vertices_count": 0
+}

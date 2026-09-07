@@ -1,0 +1,59 @@
+```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define los materiales
+sofa_material = bpy.data.materials.new(name="SofaMaterial")
+sofa_material.diffuse_color = (0.537, 0.537, 0.537, 1)  # Color gris
+
+table_material = bpy.data.materials.new(name="TableMaterial")
+table_material.diffuse_color = (0.647, 0.290, 0.168, 1)  # Color madera
+
+# Crea el sofá
+sofa_mesh = bpy.data.meshes.new("SofaMesh")
+sofa_object = bpy.data.objects.new("SofaObject", sofa_mesh)
+
+bpy.context.collection.objects.link(sofa_object)
+
+sofa_vertices = [
+    (-0.5, -0.25, 0), (0.5, -0.25, 0), (0.5, 0.75, 0), (-0.5, 0.75, 0),
+    (-1, 0.375, 0.2), (-1, -0.375, 0.2), (1, 0.375, 0.2), (1, -0.375, 0.2)
+]
+sofa_edges = [
+    (0, 1), (1, 2), (2, 3), (3, 0),
+    (4, 5), (5, 6), (6, 7), (7, 4),
+    (0, 4), (1, 5), (2, 6), (3, 7)
+]
+
+sofa_mesh.from_pydata(sofa_vertices, sofa_edges, [])
+sofa_mesh.update()
+
+# Asigna el material al sofá
+sofa_object.data.materials.append(sofa_material)
+
+# Crea la mesa de centro
+table_mesh = bpy.data.meshes.new("TableMesh")
+table_object = bpy.data.objects.new("TableObject", table_mesh)
+
+bpy.context.collection.objects.link(table_object)
+
+table_vertices = [
+    (-0.25, -0.1, 0), (0.25, -0.1, 0), (0.25, 0.3, 0), (-0.25, 0.3, 0)
+]
+table_edges = [(0, 1), (1, 2), (2, 3), (3, 0)]
+
+table_mesh.from_pydata(table_vertices, table_edges, [])
+table_mesh.update()
+
+# Asigna el material a la mesa
+table_object.data.materials.append(table_material)
+
+# Posiciona los objetos
+sofa_object.location = (-1.5, -1, 0)
+table_object.location = (0, 0, 0)
+
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

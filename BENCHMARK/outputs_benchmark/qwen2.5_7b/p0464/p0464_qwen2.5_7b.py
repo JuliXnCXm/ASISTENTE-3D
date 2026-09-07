@@ -1,0 +1,21 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el piso de concreto
+bpy.ops.mesh.primitive_plane_add(size=5, location=(0, 0, -0.1))
+concrete_floor = bpy.context.object
+concrete_floor.name = "ConcreteFloor"
+concrete_floor.scale = (5, 4, 1)
+
+# Crear el muro de ladrillo al fondo
+bpy.ops.mesh.primitive_cube_add(size=0.2, location=(0, -2, 1))
+brick_wall = bpy.context.object
+brick_wall.name = "BrickWall"
+brick_wall.scale = (5, 0.4, 1)
+
+# Guardar el archivo blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

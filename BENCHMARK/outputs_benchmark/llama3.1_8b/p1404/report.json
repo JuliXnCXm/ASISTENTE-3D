@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "'Vector' object is not callable",
-  "chamfer_distance": null,
-  "gt_vertices_count": 88,
-  "pred_vertices_count": 0
-}

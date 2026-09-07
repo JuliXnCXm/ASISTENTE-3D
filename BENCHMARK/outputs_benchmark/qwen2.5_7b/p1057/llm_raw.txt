@@ -1,0 +1,32 @@
+```python
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones
+peldaños = 16
+ancho = 1.0
+altura_total = 3.0  # Altura total de los peldaños en metros
+altura_peldaño = altura_total / peldaños
+
+# Crear la geometría de la escalera
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -ancho/2, 0))
+cubo = bpy.context.object
+
+for i in range(peldaños):
+    nuevo_cubo = cubo.copy()
+    nuevo_cubo.location.z += altura_peldaño + (i * altura_peldaño)
+    nuevo_cubo.name = f"peldaño_{i}"
+    bpy.context.collection.objects.link(nuevo_cubo)
+
+# Alinear los peldaños
+for i, obj in enumerate(bpy.data.objects):
+    if "peldaño_" in obj.name:
+        obj.location.y = -ancho / 2
+
+# Guardar el archivo .blend si la variable BLEND_OUT está definida
+if 'BLEND_OUT' in bpy.context.scene:
+    blend_out_path = bpy.context.scene['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+```

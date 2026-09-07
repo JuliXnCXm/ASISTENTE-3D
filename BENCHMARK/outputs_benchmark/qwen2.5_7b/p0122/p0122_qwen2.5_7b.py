@@ -1,0 +1,30 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las propiedades de la escalera de caracol
+height = 3.0  # Altura total en metros
+radius = 0.9  # Radio del diámetro en metros (1.8 / 2)
+steps = 16    # Número de escalones
+
+# Crear el poste central
+bpy.ops.mesh.primitive_cylinder_add(radius=0.1, depth=height, location=(0, 0, height / 2))
+poste = bpy.context.object
+poste.name = "PosteCentral"
+
+# Crear los escalones
+for i in range(steps):
+    angle = (i * 360 / steps) * (3.14159 / 180)
+    x = radius * 0.8 * -1 if i % 2 == 0 else radius * 0.8
+    bpy.ops.mesh.primitive_cylinder_add(radius=0.3, depth=height / steps, location=(x, 0, height / (steps * 2) + i * (height / steps)))
+    escalon = bpy.context.object
+    escalon.name = f"Escalon{i}"
+
+# Ajustar la escena para que todo esté en el centro
+bpy.ops.view3d.view_all(use_all_views=False)
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if "BLEND_OUT" in os.environ:
+    blend_out = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out)

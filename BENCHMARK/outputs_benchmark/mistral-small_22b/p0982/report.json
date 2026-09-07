@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "'Object' object has no attribute 'objects'",
-  "chamfer_distance": null,
-  "gt_vertices_count": 80,
-  "pred_vertices_count": 0
-}

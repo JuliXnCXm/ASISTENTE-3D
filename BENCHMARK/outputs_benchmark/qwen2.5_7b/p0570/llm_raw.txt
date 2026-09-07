@@ -1,0 +1,31 @@
+```python
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones del edificio
+pisos = 5
+ancho = 20
+largo = 15
+
+# Crear los pisos
+for i in range(pisos):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, i * 3))
+    piso = bpy.context.object
+    piso.scale = (ancho, largo, 3)
+
+# Crear la fachada con una retícula de ventanas
+ventana_ancho = 2
+ventana_largo = 1.5
+
+for x in range(int(ancho / ventana_ancho)):
+    for y in range(int(largo / ventana_largo)):
+        bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x * ventana_ancho - ancho / 2 + ventana_ancho / 2, y * ventana_largo - largo / 2 + ventana_largo / 2, 0))
+        ventana = bpy.context.object
+        ventana.scale = (ventana_ancho, ventana_largo, 3)
+
+# Guardar el archivo .blend si la variable BLEND_OUT está definida
+if 'BLEND_OUT' in dir():
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.path.abspath("//" + BLEND_OUT))
+```

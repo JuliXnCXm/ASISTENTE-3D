@@ -1,6 +1,6 @@
 {
   "execution_success": false,
-  "execution_error": "Error: Object 'Pelda\u00f1o 1' already in collection 'Scene Collection'\n",
+  "execution_error": "euler[attribute] = x: assigned value not a number",
   "chamfer_distance": null,
   "gt_vertices_count": 120,
   "pred_vertices_count": 0

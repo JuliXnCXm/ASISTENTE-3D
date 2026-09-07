@@ -1,0 +1,42 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el piso de ladrillo
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
+bpy.context.object.scale = (1, 1, 0.2)
+material_brick = bpy.data.materials.new(name="Brick")
+material_brick.diffuse_color = (0.8, 0.4, 0.4, 1)
+bpy.context.object.data.materials.append(material_brick)
+
+# Crear la fachada de ladrillo
+fachada = bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 2))
+bpy.context.object.scale = (1, 6, 0.2)
+material_fachada = bpy.data.materials.new(name="BrickWall")
+material_fachada.diffuse_color = (0.5, 0.3, 0.3, 1)
+bpy.context.object.data.materials.append(material_fachada)
+
+# Crear la puerta
+puerta_size = (2, 3, 2)
+puerta_location = (-4, 0, 2.9)
+bpy.ops.mesh.primitive_cube_add(size=1, location=puerta_location)
+puerta = bpy.context.object
+puerta.scale = puerta_size
+
+# Crear las ventanas
+ventana_size = (1, 2, 2)
+ventana_location_1 = (-3, -0.5, 2.9)
+bpy.ops.mesh.primitive_cube_add(size=1, location=ventana_location_1)
+ventana_1 = bpy.context.object
+ventana_1.scale = ventana_size
+
+ventana_location_2 = (3, -0.5, 2.9)
+bpy.ops.mesh.primitive_cube_add(size=1, location=ventana_location_2)
+ventana_2 = bpy.context.object
+ventana_2.scale = ventana_size
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

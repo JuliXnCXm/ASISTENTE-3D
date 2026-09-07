@@ -1,0 +1,8 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el muro interior
+bpy.ops.mesh.primitive_cube_add(size=0.3, enter_editmode=False, align='WORLD', location=(2.5, 1.35, 1.35))
+bpy.context.object.scale = (5, 2.7, 0.15)

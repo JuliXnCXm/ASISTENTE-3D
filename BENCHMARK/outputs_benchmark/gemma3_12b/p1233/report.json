@@ -1,7 +1,0 @@
-{
-  "execution_success": false,
-  "execution_error": "'Mesh' object has no attribute 'data'",
-  "chamfer_distance": null,
-  "gt_vertices_count": 212,
-  "pred_vertices_count": 0
-}

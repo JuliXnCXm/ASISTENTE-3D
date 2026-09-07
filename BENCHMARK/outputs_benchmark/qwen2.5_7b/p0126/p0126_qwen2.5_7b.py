@@ -1,0 +1,17 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones del muro
+largo = 4.0
+alto = 2.5
+espesor = 0.15
+
+# Crear el muro de partición
+bpy.ops.mesh.primitive_cube_add(size=0.3, enter_editmode=False, align='WORLD', location=(largo / 2 - espesor / 2, 0, alto / 2))
+muro = bpy.context.object
+muro.scale = (largo, alto, espesor)
+
+# Aplicar transformaciones
+bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)

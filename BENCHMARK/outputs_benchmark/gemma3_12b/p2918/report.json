@@ -1,7 +1,0 @@
-{
-  "execution_success": true,
-  "execution_error": null,
-  "chamfer_distance": 3.251666574975462,
-  "gt_vertices_count": 16,
-  "pred_vertices_count": 12
-}

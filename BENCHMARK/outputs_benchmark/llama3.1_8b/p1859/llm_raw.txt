@@ -5,64 +5,49 @@ import mathutils
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Definir las dimensiones de la oficina
-oficina_ancho = 3.0  # metros
-oficina_largo = 4.5  # metros
-estanteria_altura = 2.5  # metros
+# Establecer las unidades a metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
 
-# Crear el suelo
-bpy.ops.mesh.primitive_plane_add(location=(0, 0, 0), size=oficina_ancho)
+# Crear el perfil para el escritorio L
+profile_data = [
+    (0, 0.5),  # Punto superior izquierdo
+    (1, 0.5),  # Punto superior derecho
+    (1.2, 0.8),  # Punto inferior derecho
+    (0.2, 0.8)   # Punto inferior izquierdo
+]
+profile = bpy.data.curves.new('Profile', 'CURVE')
+profile.dimensions = '3D'
+profile.fill_mode = 'FULL'
 
-# Crear la pared delantera
-bpy.ops.mesh.primitive_cube_add(location=(oficina_ancho/2, oficina_largo/2, 0))
-bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
-bpy.ops.object.modifier_apply(modifier='Subdivision')
+# Crear los puntos del perfil
+points = []
+for x, y in profile_data:
+    points.append(mathutils.Vector((x, y, 0)))
+profile.points = points
 
-# Crear la pared trasera
-bpy.ops.mesh.primitive_cube_add(location=(-oficina_ancho/2, oficina_largo/2, 0))
-bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
-bpy.ops.object.modifier_apply(modifier='Subdivision')
+# Crear el objeto de extrusión
+extrusion_object = bpy.data.objects.new('Profile', profile)
+bpy.context.collection.objects.link(extrusion_object)
 
-# Crear la pared izquierda
-bpy.ops.mesh.primitive_cube_add(location=(-oficina_ancho/2, -oficina_largo/2, 0))
-bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
-bpy.ops.object.modifier_apply(modifier='Subdivision')
+# Extruir el perfil para crear el escritorio L
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.curve.extrude_move(curve=bpy.context.active_object, offset=0.1)
+bpy.ops.object.mode_set(mode='OBJECT')
 
-# Crear la pared derecha
-bpy.ops.mesh.primitive_cube_add(location=(oficina_ancho/2, -oficina_largo/2, 0))
-bpy.context.active_object.scale = (oficina_ancho, oficina_largo, 1)
-bpy.ops.object.modifier_apply(modifier='Subdivision')
-
-# Crear la estantería
-estanteria_base = bpy.data.curves.new(name="EstanteriaBase", type='MESH')
-estanteria_base.dimensions = '2D'
-estanteria_base.data.from_pydata([(0, 0, 0), (oficina_ancho/2, oficina_largo/2, estanteria_altura)])
-bpy.context.collection.objects.link(estanteria_base)
+# Crear la estantería grande
+estanteria = bpy.data.objects.new('Estanteria', None)
+estanteria.location = (2, 0, 0)
+estanteria.scale = (5, 3, 2)
 
 # Crear la silla
-silla_base = bpy.data.curves.new(name="SillaBase", type='MESH')
-silla_base.dimensions = '2D'
-silla_base.data.from_pydata([(0, 0, 0), (oficina_ancho/4, oficina_largo/2, estanteria_altura)])
-bpy.context.collection.objects.link(silla_base)
+silla = bpy.data.objects.new('Silla', None)
+silla.location = (-1.5, -1.5, 0)
+silla.scale = (1.5, 1.5, 1.5)
 
-# Crear el escritorio
-perfil = bpy.data.curves.new(name="Perfil", type='MESH')
-perfil.dimensions = '2D'
-perfil.data.from_pydata([(0, 0, 0), (oficina_ancho/4, oficina_largo/2)])
-bpy.context.collection.objects.link(perfil)
-
-# Extruir el perfil para crear la forma L
-extrusion = bpy.ops.mesh.extrude_individually(
-    type='PATH',
-    direction='POSITIVE',
-    mirror=False,
-    use_normal=True,
-    layers=(True, False)
-)
-
-# Escalar y rotar la forma L para que se ajuste al escritorio
-bpy.context.active_object.scale = (oficina_ancho/4, oficina_largo/2, 1)
-bpy.context.active_object.rotation_euler = mathutils.Vector((0, 0, math.pi/2))
+# Agregar objetos a la escena
+bpy.context.collection.objects.link(estanteria)
+bpy.context.collection.objects.link(silla)
 
 # Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
 if 'BLEND_OUT' in os.environ:

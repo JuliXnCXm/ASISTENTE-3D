@@ -62,8 +62,19 @@ def run_script_in_clean_scene(script_path, arch_dir):
         sys.path.insert(0, arch_dir)
         
     code = open(script_path, "r", encoding="utf-8").read()
+    
+    # Inyectar librerías comunes para evitar fallas tontas de boilerplate de los LLMs
     g = {"__name__": "__main__"}
     try:
+        import os, math, random, json
+        import mathutils
+        g["os"] = os
+        g["sys"] = sys
+        g["math"] = math
+        g["random"] = random
+        g["json"] = json
+        g["mathutils"] = mathutils
+        
         import blender_arch as A
         g["A"] = A
     except Exception:

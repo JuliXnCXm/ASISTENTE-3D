@@ -1,45 +1,27 @@
 import bpy
+import mathutils
 
 # Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Define las dimensiones del muro
-longitud = 5
-alto = 2.8
-espesor = 0.15
+longitud = 5  # en metros
+altura = 2.8  # en metros
+espesor = 0.15  # en metros
 
 # Crea un nuevo objeto para el muro
-muro = bpy.data.objects.new("Muro", None)
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, altura/2 + espesor/2))
 
-# Establece la posición y orientación del muro
-muro.location = (0, 0, 0)
-muro.rotation_euler = (0, 0, 0)
+# Selecciona el objeto creado y lo renombramos
+objeto = bpy.context.active_object
+objeto.name = "Muro"
 
-# Crea un nuevo mesh para el muro
-mesh = bpy.data.meshes.new("MuroMesh")
-obj = bpy.data.objects.new("Muro", mesh)
+# Escalamos el objeto para que tenga las dimensiones correctas
+bpy.ops.transform.resize(value=(longitud, altura, espesor))
 
-# Define las coordenadas de los vértices del muro
-vertices = [
-    (-longitud/2, -alto/2, espesor/2),
-    (longitud/2, -alto/2, espesor/2),
-    (longitud/2, alto/2, espesor/2),
-    (-longitud/2, alto/2, espesor/2)
-]
+# Rotamos el objeto 90 grados alrededor del eje Y para que esté en posición vertical
+bpy.context.object.rotation_euler = (0, mathutils.pi/2, 0)
 
-# Define las coordenadas de los polígonos del muro
-polys = [
-    [(0, 1, 2), (0, 3, 2)],
-    [(4, 5, 6), (4, 7, 6)]
-]
-
-# Crea el mesh y lo asigna al objeto
-mesh.from_pydata(vertices, [], polys)
-mesh.update(calc_edges=True)
-
-# Agrega el objeto a la escena
-bpy.context.collection.objects.link(obj)
-
-# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+# Si existe la variable de entorno BLEND_OUT, guardamos el archivo .blend con ese nombre
 if 'BLEND_OUT' in os.environ:
     bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

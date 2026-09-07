@@ -1,0 +1,77 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el plano de la plaza de acceso
+plaza = bpy.data.objects.new('Plaza', bpy.data.meshes.new('Plaza'))
+plaza.location = mathutils.Vector((0, 0, 0))
+plaza.scale = (15, 20, 0.1)
+bpy.context.collection.objects.link(plaza)
+
+# Crea el plano de la fachada
+fachada = bpy.data.objects.new('Fachada', bpy.data.meshes.new('Fachada'))
+fachada.location = mathutils.Vector((0, 0, 2))
+fachada.scale = (15, 20, 5)
+bpy.context.collection.objects.link(fachada)
+
+# Crea las columnas estructurales
+columna1 = bpy.data.objects.new('Columna1', bpy.data.meshes.new('Columna1'))
+columna1.location = mathutils.Vector((7.5, -10, 2))
+columna1.scale = (0.5, 0.5, 5)
+bpy.context.collection.objects.link(columna1)
+
+columna2 = bpy.data.objects.new('Columna2', bpy.data.meshes.new('Columna2'))
+columna2.location = mathutils.Vector((7.5, 10, 2))
+columna2.scale = (0.5, 0.5, 5)
+bpy.context.collection.objects.link(columna2)
+
+# Crea los pisos
+for i in range(5):
+    piso = bpy.data.objects.new(f'Piso{i+1}', bpy.data.meshes.new(f'Piso{i+1}'))
+    piso.location = mathutils.Vector((0, 0, 6 + (i * 1.2)))
+    piso.scale = (15, 20, 0.1)
+    bpy.context.collection.objects.link(piso)
+
+# Crea la geometría de la fachada
+fachada_mesh = bpy.data.meshes['Fachada']
+fachada_mesh.from_pydata([
+    (-7.5, -10, 2),
+    (7.5, -10, 2),
+    (7.5, 10, 2),
+    (-7.5, 10, 2),
+], [], [])
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.select_all(action='SELECT')
+bpy.ops.mesh.beautify.fill()
+bpy.ops.object.mode_set(mode='OBJECT')
+
+# Crea la geometría de las columnas
+columna1_mesh = bpy.data.meshes['Columna1']
+columna1_mesh.from_pydata([
+    (7.5, -10, 2),
+    (7.5, -9.5, 2),
+], [], [])
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.select_all(action='SELECT')
+bpy.ops.mesh.beautify.fill()
+bpy.ops.object.mode_set(mode='OBJECT')
+
+columna2_mesh = bpy.data.meshes['Columna2']
+columna2_mesh.from_pydata([
+    (7.5, 10, 2),
+    (7.5, 9.5, 2),
+], [], [])
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.select_all(action='SELECT')
+bpy.ops.mesh.beautify.fill()
+bpy.ops.object.mode_set(mode='OBJECT')
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -1,0 +1,32 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el muro perimetral
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+muro = bpy.context.object
+
+# Ajusta las dimensiones del muro
+muro.scale = (10, 2.5, 0.2)
+
+# Crea el portón
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+porton = bpy.context.object
+
+# Ajusta las dimensiones del portón
+porton.scale = (3, 2.5, 0.2)
+
+# Mueve el portón al centro del muro
+porton.location = (4.75, 1.25, 0.1)
+
+# Une los objetos en uno solo
+bpy.ops.object.select_all(action='DESELECT')
+muro.select_set(True)
+porton.select_set(True)
+bpy.context.view_layer.objects.active = muro
+bpy.ops.object.join()
+
+# Guarda el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

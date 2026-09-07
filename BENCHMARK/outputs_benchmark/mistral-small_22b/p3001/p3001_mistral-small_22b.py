@@ -1,0 +1,39 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear una pared
+def create_wall(start, end, height):
+    bpy.ops.mesh.primitive_cube_add(location=(start[0], start[1], 0))
+    wall = bpy.context.object
+    wall.scale.x = (end[0] - start[0]) / 2
+    wall.scale.y = height / 2
+    wall.scale.z = (end[2] - start[2]) / 2
+
+# Crear paredes exteriores
+create_wall((-5, -5, 0), (-5, -5, 10), 3)  # Pared frontal
+create_wall((-5, -5, 10), (5, -5, 10), 3)  # Pared derecha
+create_wall((5, -5, 10), (5, 5, 10), 3)    # Pared trasera
+create_wall((5, 5, 10), (-5, 5, 10), 3)    # Pared izquierda
+
+# Crear paredes interiores
+create_wall((-5, -5, 0), (5, -5, 0), 3)    # Pared frontal interior
+create_wall((-5, 5, 0), (5, 5, 0), 3)      # Pared trasera interior
+
+# Crear techos y suelos
+bpy.ops.mesh.primitive_cube_add(location=(-5, -5, 10))
+roof = bpy.context.object
+roof.scale.x = 10
+roof.scale.y = 10
+roof.scale.z = 3
+
+bpy.ops.mesh.primitive_cube_add(location=(-5, -5, 0))
+floor = bpy.context.object
+floor.scale.x = 10
+floor.scale.y = 10
+floor.scale.z = 3
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

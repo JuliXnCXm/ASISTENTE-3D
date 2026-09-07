@@ -1,61 +1,29 @@
 import bpy
 
-# Limpiar la escena
+# Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear el sofá de cuero
-sofa = bpy.data.objects.new(name="Sofa", object_data=None)
-bpy.context.collection.objects.link(sofa)
+# Define las propiedades del sofá
+sofa_length = 2.5
+sofa_width = 1.0
+sofa_height = 0.8
 
-sofa_mesh = bpy.data.meshes.new(name="SofaMesh")
-sofa_object = bpy.data.objects.new("SofaObject", sofa_mesh)
+# Crea el sofá de cuero
+bpy.ops.mesh.primitive_cube_add(location=(0, -1.25, 0))
+sofa = bpy.context.object
+sofa.scale = (sofa_length, sofa_width, sofa_height)
 
-# Definir la geometría del sofá
-sofa_vertices = [
-    (-1, -0.5, 0), (1, -0.5, 0), (1, 0.5, 0), (-1, 0.5, 0),
-    (-1, -0.5, 0.2), (1, -0.5, 0.2), (1, 0.5, 0.2), (-1, 0.5, 0.2)
-]
-sofa_edges = [
-    (0, 1), (1, 2), (2, 3), (3, 0),
-    (4, 5), (5, 6), (6, 7), (7, 4),
-    (0, 4), (1, 5), (2, 6), (3, 7)
-]
-sofa_faces = [
-    (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6),
-    (3, 0, 4, 7)
-]
+# Define las propiedades de la mesa de centro
+table_length = 1.2
+table_width = 0.6
+table_height = 0.7
 
-sofa_mesh.from_pydata(sofa_vertices, sofa_edges, sofa_faces)
-sofa_mesh.update()
+# Crea la mesa de madera
+bpy.ops.mesh.primitive_cube_add(location=(0, 1.25, -0.3))
+table = bpy.context.object
+table.scale = (table_length, table_width, table_height)
 
-# Crear la mesa de centro
-table = bpy.data.objects.new(name="Table", object_data=None)
-bpy.context.collection.objects.link(table)
-
-table_mesh = bpy.data.meshes.new(name="TableMesh")
-table_object = bpy.data.objects.new("TableObject", table_mesh)
-
-# Definir la geometría de la mesa
-table_vertices = [
-    (-0.5, -0.25, 0), (0.5, -0.25, 0), (0.5, 0.25, 0), (-0.5, 0.25, 0),
-    (-0.5, -0.25, 0.1), (0.5, -0.25, 0.1), (0.5, 0.25, 0.1), (-0.5, 0.25, 0.1)
-]
-table_edges = [
-    (0, 1), (1, 2), (2, 3), (3, 0),
-    (4, 5), (5, 6), (6, 7), (7, 4),
-    (0, 4), (1, 5), (2, 6), (3, 7)
-]
-table_faces = [
-    (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6),
-    (3, 0, 4, 7)
-]
-
-table_mesh.from_pydata(table_vertices, table_edges, table_faces)
-table_mesh.update()
-
-# Posicionar los objetos
-sofa.location = (-1.5, -1, 0)
-table.location = (1.5, 0, 0)
-
-if "BLEND_OUT" in os.environ:
-    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])
+# Guarda el archivo .blend si existe la variable BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

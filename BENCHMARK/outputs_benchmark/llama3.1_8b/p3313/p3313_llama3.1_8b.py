@@ -1,0 +1,60 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del acceso monumental
+ancho = 10
+profundo = 20
+alto = 5
+
+# Crea el suelo de hormigón
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+obj_suelo = bpy.context.active_object
+obj_suelo.scale = (ancho, profundo, alto)
+
+# Crea la escalinata central
+escalones = 10
+anchura_escalera = ancho / 2.5
+alto_escalera = alto / 3
+
+for i in range(escalones):
+    x = -ancho/2 + (i * anchura_escalera)
+    y = 0
+    z = -alto/2 + (i * alto_escalera)
+
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(x, y, z))
+    obj_escalera = bpy.context.active_object
+    obj_escalera.scale = (anchura_escalera, alto_escalera, 0.5)
+
+# Crea las rampas de accesibilidad a ambos lados de la escalinata
+rampa_ancho = ancho / 2.5
+rampa_alto = alto / 3
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-ancho/4, -profundo/2, 0))
+obj_rampa_izquierda = bpy.context.active_object
+obj_rampa_izquierda.scale = (rampa_ancho, rampa_alto, 0.5)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(ancho/4, -profundo/2, 0))
+obj_rampa_derecha = bpy.context.active_object
+obj_rampa_derecha.scale = (rampa_ancho, rampa_alto, 0.5)
+
+# Crea las jardineras de hormigón a ambos lados del acceso monumental
+jardinera_ancho = ancho / 2.5
+jardinera_alto = alto / 3
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-ancho/4, -profundo/2 + rampa_alto, 0))
+obj_jardinera_izquierda = bpy.context.active_object
+obj_jardinera_izquierda.scale = (jardinera_ancho, jardinera_alto, 0.5)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(ancho/4, -profundo/2 + rampa_alto, 0))
+obj_jardinera_derecha = bpy.context.active_object
+obj_jardinera_derecha.scale = (jardinera_ancho, jardinera_alto, 0.5)
+
+# Añade iluminación de piso para resaltar los recorridos
+bpy.ops.object.light_add(type='SPOT', radius=1, location=(0, -profundo/2 + rampa_alto, 0))
+obj_luz = bpy.context.active_object
+
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

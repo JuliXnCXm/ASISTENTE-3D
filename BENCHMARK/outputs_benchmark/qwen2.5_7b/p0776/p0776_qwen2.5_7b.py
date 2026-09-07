@@ -4,11 +4,11 @@ import bpy
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Crear el sofá de tela gris
-sofa = bpy.data.objects.new(name="Sofa", object_data=None)
+sofa = bpy.data.objects.new("Sofa", None)
 bpy.context.collection.objects.link(sofa)
 
 sofa_mesh = bpy.data.meshes.new(name="SofaMesh")
-sofa_obj = bpy.data.objects.new(name="SofaObj", object_data=sofa_mesh)
+sofa_obj = bpy.data.objects.new("SofaObj", sofa_mesh)
 
 # Definir la geometría del sofá
 sofa_verts = [
@@ -28,21 +28,15 @@ sofa_faces = [
 sofa_mesh.from_pydata(sofa_verts, sofa_edges, sofa_faces)
 sofa_mesh.update()
 
-# Asignar material al sofá
-material = bpy.data.materials.new(name="SofaMaterial")
-material.diffuse_color = (0.533, 0.412, 0.306, 1)  # Color gris
-sofa_obj.data.materials.append(material)
-
 # Colocar el sofá en la escena
-sofa.location = (-3, 0, 0)
-bpy.context.collection.objects.link(sofa_obj)
+sofa.location = (1.5, -2, 0)
 
-# Crear la mesa de centro de nogal
-table = bpy.data.objects.new(name="Table", object_data=None)
+# Crear la mesa de centro de madera de nogal
+table = bpy.data.objects.new("Table", None)
 bpy.context.collection.objects.link(table)
 
 table_mesh = bpy.data.meshes.new(name="TableMesh")
-table_obj = bpy.data.objects.new(name="TableObj", object_data=table_mesh)
+table_obj = bpy.data.objects.new("TableObj", table_mesh)
 
 # Definir la geometría de la mesa
 table_verts = [
@@ -62,16 +56,8 @@ table_faces = [
 table_mesh.from_pydata(table_verts, table_edges, table_faces)
 table_mesh.update()
 
-# Asignar material a la mesa
-material = bpy.data.materials.new(name="TableMaterial")
-material.diffuse_color = (0.529, 0.361, 0.184, 1)  # Color nogal
-table_obj.data.materials.append(material)
-
 # Colocar la mesa en la escena
-table.location = (3, 0, 0)
-bpy.context.collection.objects.link(table_obj)
+table.location = (1.5, -1, 0)
 
-# Guardar el archivo .blend si existe BLEND_OUT
-if "BLEND_OUT" in bpy.context.scene:
-    blend_out_path = bpy.context.scene["BLEND_OUT"]
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

@@ -1,7 +1,7 @@
 {
-  "execution_success": false,
-  "execution_error": "Calling operator \"bpy.ops.paint.weight_paint_clear\" error, could not be found",
-  "chamfer_distance": null,
+  "execution_success": true,
+  "execution_error": null,
+  "chamfer_distance": 100.44574603888451,
   "gt_vertices_count": 136,
-  "pred_vertices_count": 0
+  "pred_vertices_count": 44
 }

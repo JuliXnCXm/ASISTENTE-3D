@@ -1,0 +1,68 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del sofá
+sofa_size = 2.5  # metros
+sofa_depth = 1.0  # metros
+sofa_height = 0.8  # metros
+
+# Crea el cuerpo del sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_size, location=(0, -1.5, 0))
+sofa_body = bpy.context.active_object
+sofa_body.name = 'Sofa Body'
+sofa_body.scale = (sofa_size, sofa_depth, sofa_height)
+
+# Crea la parte de respaldar del sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_size, location=(0, -1.5, 0))
+sofa_backrest = bpy.context.active_object
+sofa_backrest.name = 'Sofa Backrest'
+sofa_backrest.scale = (sofa_size, sofa_depth, sofa_height)
+sofa_backrest.rotation_euler = (mathutils.Vector((0, math.radians(30), 0)))
+
+# Crea la parte de asiento del sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_size, location=(0, -1.5, 0))
+sofa_seat = bpy.context.active_object
+sofa_seat.name = 'Sofa Seat'
+sofa_seat.scale = (sofa_size, sofa_depth, sofa_height)
+sofa_seat.rotation_euler = (mathutils.Vector((0, math.radians(30), 0)))
+
+# Crea la tela del sofá
+bpy.ops.mesh.primitive_plane_add(size=sofa_size, location=(0, -1.5, 0))
+sofa_cushion = bpy.context.active_object
+sofa_cushion.name = 'Sofa Cushion'
+sofa_cushion.scale = (sofa_size, sofa_depth, sofa_height)
+sofa_cushion.material_slots[0].material.use_nodes = True
+
+# Define las propiedades de la mesa de centro
+table_size = 1.5  # metros
+table_height = 0.6  # metros
+
+# Crea la base de la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=table_size, location=(0, -2.5, 0))
+table_base = bpy.context.active_object
+table_base.name = 'Table Base'
+table_base.scale = (table_size, table_size, table_height)
+
+# Crea el cuerpo de la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=table_size, location=(0, -2.5, 0))
+table_body = bpy.context.active_object
+table_body.name = 'Table Body'
+table_body.scale = (table_size, table_size, table_height)
+
+# Crea el borde de la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=table_size, location=(0, -2.5, 0))
+table_edge = bpy.context.active_object
+table_edge.name = 'Table Edge'
+table_edge.scale = (table_size, table_size, table_height)
+
+# Crea el material para la mesa de centro
+bpy.ops.material.new()
+table_material = bpy.data.materials['Material']
+table_material.use_nodes = True
+
+# Guarda el archivo .blend si se especificó la ruta en la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

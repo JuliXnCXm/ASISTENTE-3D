@@ -1,0 +1,41 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el marco de la cama
+frame = bpy.data.objects.new("Frame", None)
+bpy.context.collection.objects.link(frame)
+
+# Crear los bordes del marco
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -1))
+bpy.context.object.scale = (1.6, 2.0, 0.05)
+frame.modifiers.new("Solidify", 'SOLIDIFY')
+frame.modifiers["Solidify"].thickness = 0.1
+
+# Crear el colchón
+mattress = bpy.data.objects.new("Mattress", None)
+bpy.context.collection.objects.link(mattress)
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -1))
+bpy.context.object.scale = (1.6, 2.0, 0.3)
+
+# Aplicar materiales
+materials = bpy.data.materials
+
+# Material de madera de roble para el marco
+frame_mat = materials.new(name="Wood")
+frame_mat.diffuse_color = (0.5, 0.35, 0.2)
+frame.data.materials.append(frame_mat)
+
+# Material de tela blanca para el colchón
+mattress_mat = materials.new(name="Fabric")
+mattress_mat.diffuse_color = (1, 1, 1)
+mattress.data.materials.append(mattress_mat)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -1,0 +1,73 @@
+```python
+import bpy
+import math
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del edificio
+ancho = 20
+alto = 10
+num_pisos = 5
+
+# Crea el cuerpo del edificio
+bpy.ops.mesh.primitive_cube_add(size=alto, location=(0, 0, 0))
+edificio = bpy.context.active_object
+edificio.scale = (ancho, alto, num_pisos)
+
+# Define las dimensiones de la ventana
+ventana_ancho = 2
+ventana_alto = 5
+
+# Crea las ventanas en cada piso
+for i in range(num_pisos):
+    # Mueve el objeto a la posición actual del piso
+    bpy.context.active_object.location = (0, 0, i * alto)
+    
+    # Crea una nueva capa para el piso actual
+    bpy.ops.mesh.primitive_cube_add(size=alto, location=(0, 0, 0))
+    piso = bpy.context.active_object
+    
+    # Elimina la mitad de las caras del piso para crear los huecos de las ventanas
+    for j in range(4):
+        if (j == 1 or j == 3) and i % 2 != 0:
+            bpy.ops.mesh.select_all(action='DESELECT')
+            bpy.ops.object.mode_set(mode='EDIT')
+            bpy.ops.mesh.select_more()
+            bpy.ops.mesh.delete(type='FACE')
+    
+    # Mueve el objeto a la posición correcta para las ventanas
+    piso.location = (ancho / 2, 0, i * alto)
+    
+    # Crea una nueva capa para cada ventana en el piso actual
+    for j in range(10):
+        # Mueve el objeto a la posición actual de la ventana
+        bpy.context.active_object.location = (j * ventana_ancho, 0, i * alto)
+        
+        # Crea un nuevo cubo para la ventana actual
+        bpy.ops.mesh.primitive_cube_add(size=ventana_alto, location=(0, 0, 0))
+        ventana = bpy.context.active_object
+        
+        # Elimina las caras que no corresponden a la ventana
+        for k in range(6):
+            if (k == 1 or k == 3) and j % 2 != 0:
+                bpy.ops.mesh.select_all(action='DESELECT')
+                bpy.ops.object.mode_set(mode='EDIT')
+                bpy.ops.mesh.select_more()
+                bpy.ops.mesh.delete(type='FACE')
+        
+        # Mueve el objeto a la posición correcta para la ventana
+        ventana.location = (j * ventana_ancho, 0, i * alto)
+    
+    # Elimina las caras que no corresponden al piso actual
+    for j in range(6):
+        if (j == 1 or j == 3) and i % 2 != 0:
+            bpy.ops.mesh.select_all(action='DESELECT')
+            bpy.ops.object.mode_set(mode='EDIT')
+            bpy.ops.mesh.select_more()
+            bpy.ops.mesh.delete(type='FACE')
+
+# Guarda el archivo .blend si se especificó la ruta
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

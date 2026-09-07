@@ -9,25 +9,19 @@ obj = bpy.data.objects.new("Terreno", terreno)
 bpy.context.collection.objects.link(obj)
 
 # Definir la geometría del terreno
-verts = [
-    (-10, -7.5, 0),
-    (10, -7.5, 0),
-    (10, 7.5, 0),
-    (-10, 7.5, 0)
-]
+verts = [(x, y, 0) for x in range(-10, 11) for y in range(-7.5, 7.6)]
+faces = []
 
-edges = []
-faces = [(0, 1, 2, 3)]
+for i in range(20):
+    for j in range(14):
+        faces.append((i * 15 + j, i * 15 + j + 1, (i + 1) * 15 + j + 1, (i + 1) * 15 + j))
 
-# Crear la geometría
-terreno.from_pydata(verts, edges, faces)
+terreno.from_pydata(verts, [], faces)
 terreno.update()
 
-# Asignar un material verde al terreno
-material = bpy.data.materials.new(name="Césped Material")
-material.diffuse_color = (0.451, 0.627, 0.184, 1)  # Color de césped
-obj.data.materials.append(material)
+# Ajustar la escala para que sea de 20x15 metros
+bpy.context.view_layer.objects.active = obj
+obj.scale = (20, 15, 1)
 
-# Guardar el archivo .blend si la variable BLEND_OUT está definida
 if "BLEND_OUT" in bpy.context.scene:
     bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene["BLEND_OUT"])

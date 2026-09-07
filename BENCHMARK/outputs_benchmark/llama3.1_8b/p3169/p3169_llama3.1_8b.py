@@ -10,95 +10,59 @@ oficina_largo = 6
 oficina_altura = 2.8
 
 # Crea el espacio principal
-bpy.ops.mesh.primitive_cube_add(size=oficina_ancho, location=(0, 0, 0))
+bpy.ops.mesh.primitive_cube_add(size=oficina_altura, location=(0, 0, -oficina_altura/2))
 espacio_principal = bpy.context.active_object
-espacio_principal.scale((oficina_ancho, oficina_largo, oficina_altura))
+espacio_principal.name = "Espacio Principal"
 
-# Crea los puestos de trabajo
-puesto_de_trabajo_ancho = 1.5
-puesto_de_trabajo_largo = 2
-puesto_de_trabajo_altura = 1.8
+# Define las dimensiones de los puestos de trabajo
+puesto_ancho = oficina_ancho / 4
+puesto_largo = oficina_largo
 
+# Crea cuatro puestos de trabajo idénticos
 for i in range(4):
-    x = (oficina_ancho - 3 * puesto_de_trabajo_ancho) / 2 + i * puesto_de_trabajo_ancho
-    y = oficina_largo / 2
-    bpy.ops.mesh.primitive_cube_add(size=puesto_de_trabajo_altura, location=(x, y, 0))
-    puesto_de_trabajo = bpy.context.active_object
-    puesto_de_trabajo.scale((puesto_de_trabajo_ancho, puesto_de_trabajo_largo, puesto_de_trabajo_altura))
-
-# Crea la cajonera
-cajonera_ancho = 1.2
-cajonera_largo = 0.8
-cajonera_altura = 1.5
-
-for i in range(4):
-    x = (oficina_ancho - 3 * puesto_de_trabajo_ancho) / 2 + i * puesto_de_trabajo_ancho
-    y = oficina_largo / 2
-    bpy.ops.mesh.primitive_cube_add(size=cajonera_altura, location=(x, y, 0))
+    bpy.ops.mesh.primitive_cube_add(size=oficina_altura, location=(-oficina_ancho/2 + (i+1)*puesto_ancho/2, 0, -oficina_altura/2))
+    puesto = bpy.context.active_object
+    puesto.name = f"Puesto {i+1}"
+    
+    # Agrega un escritorio a cada puesto de trabajo
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-puesto_ancho/2 + (i+1)*puesto_ancho/2, 0, -oficina_altura/2))
+    escritorio = bpy.context.active_object
+    escritorio.name = f"Escritorio {i+1}"
+    
+    # Agrega una silla ergonómica a cada puesto de trabajo
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-puesto_ancho/2 + (i+1)*puesto_ancho/2, 0, -oficina_altura/2))
+    silla = bpy.context.active_object
+    silla.name = f"Silla {i+1}"
+    
+    # Agrega una cajonera a cada puesto de trabajo
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-puesto_ancho/2 + (i+1)*puesto_ancho/2, 0, -oficina_altura/2))
     cajonera = bpy.context.active_object
-    cajonera.scale((cajonera_ancho, cajonera_largo, cajonera_altura))
+    cajonera.name = f"Cajonera {i+1}"
 
-# Crea la silla ergonómica
-silla_ergonomica_ancho = 0.6
-silla_ergonomica_largo = 0.4
-silla_ergonomica_altura = 1.2
+# Define las dimensiones de la sala de reuniones
+sala_reuniones_ancho = oficina_ancho / 4
+sala_reuniones_largo = oficina_largo
 
-for i in range(4):
-    x = (oficina_ancho - 3 * puesto_de_trabajo_ancho) / 2 + i * puesto_de_trabajo_ancho
-    y = oficina_largo / 2
-    bpy.ops.mesh.primitive_cube_add(size=silla_ergonomica_altura, location=(x, y, 0))
-    silla_ergonomica = bpy.context.active_object
-    silla_ergonomica.scale((silla_ergonomica_ancho, silla_ergonomica_largo, silla_ergonomica_altura))
+# Crea la sala de reuniones en una esquina
+bpy.ops.mesh.primitive_cube_add(size=oficina_altura, location=(-oficina_ancho/2 + sala_reuniones_ancho/2, -oficina_largo/2 + sala_reuniones_largo/2, -oficina_altura/2))
+sala_reuniones = bpy.context.active_object
+sala_reuniones.name = "Sala de Reuniones"
 
-# Crea la mesa de escritorio
-mesa_de_escritorio_ancho = 1.2
-mesa_de_escritorio_largo = 0.8
-mesa_de_escritorio_altura = 0.5
-
-for i in range(4):
-    x = (oficina_ancho - 3 * puesto_de_trabajo_ancho) / 2 + i * puesto_de_trabajo_ancho
-    y = oficina_largo / 2
-    bpy.ops.mesh.primitive_cube_add(size=mesa_de_escritorio_altura, location=(x, y, 0))
-    mesa_de_escritorio = bpy.context.active_object
-    mesa_de_escritorio.scale((mesa_de_escritorio_ancho, mesa_de_escritorio_largo, mesa_de_escritorio_altura))
-
-# Crea la sala de reuniones
-sala_de_reuniones_ancho = 3
-sala_de_reuniones_largo = 4
-sala_de_reuniones_altura = oficina_altura
-
-bpy.ops.mesh.primitive_cube_add(size=sala_de_reuniones_altura, location=(oficina_ancho / 2 - sala_de_reuniones_ancho / 2, oficina_largo / 2 - sala_de_reuniones_largo / 2, 0))
-sala_de_reuniones = bpy.context.active_object
-sala_de_reuniones.scale((sala_de_reuniones_ancho, sala_de_reuniones_largo, sala_de_reuniones_altura))
-
-# Crea el tabique de vidrio
-tabique_ancho = 1.2
-tabique_largo = oficina_altura
-
-bpy.ops.mesh.primitive_cube_add(size=tabique_largo, location=(oficina_ancho / 2 - sala_de_reuniones_ancho / 2 + tabique_ancho / 2, oficina_largo / 2 - sala_de_reuniones_largo / 2, 0))
+# Agrega un tabique de vidrio entre la oficina y la sala de reuniones
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-oficina_ancho/2 + sala_reuniones_ancho/2 - 0.1, -oficina_largo/2 + sala_reuniones_largo/2 - 0.1, -oficina_altura/2))
 tabique = bpy.context.active_object
-tabique.scale((tabique_ancho, tabique_largo, tabique_largo))
+tabique.name = "Tabique de Vidrio"
 
-# Crea la mesa de reuniones
-mesa_de_reuniones_ancho = 3.6
-mesa_de_reuniones_largo = 2.4
-mesa_de_reuniones_altura = 0.8
+# Agrega una mesa grande para 6 personas en la sala de reuniones
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-oficina_ancho/2 + sala_reuniones_ancho/2 - 0.1, -oficina_largo/2 + sala_reuniones_largo/2 - 0.1, -oficina_altura/2))
+mesa = bpy.context.active_object
+mesa.name = "Mesa de Reuniones"
 
-bpy.ops.mesh.primitive_cube_add(size=mesa_de_reuniones_altura, location=(oficina_ancho / 2 - sala_de_reuniones_ancho / 2 + mesa_de_reuniones_ancho / 2, oficina_largo / 2 - sala_de_reuniones_largo / 2, 0))
-mesa_de_reuniones = bpy.context.active_object
-mesa_de_reuniones.scale((mesa_de_reuniones_ancho, mesa_de_reuniones_largo, mesa_de_reuniones_altura))
-
-# Crea las sillas de reuniones
-silla_de_reuniones_ancho = 0.6
-silla_de_reuniones_largo = 0.4
-silla_de_reuniones_altura = 1.2
-
+# Agrega seis sillas en la mesa de reuniones
 for i in range(6):
-    x = oficina_ancho / 2 - sala_de_reuniones_ancho / 2 + mesa_de_reuniones_ancho / 2 + (i % 3) * (mesa_de_reuniones_ancho / 3)
-    y = oficina_largo / 2 - sala_de_reuniones_largo / 2
-    bpy.ops.mesh.primitive_cube_add(size=silla_de_reuniones_altura, location=(x, y, 0))
-    silla_de_reuniones = bpy.context.active_object
-    silla_de_reuniones.scale((silla_de_reuniones_ancho, silla_de_reuniones_largo, silla_de_reuniones_altura))
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-oficina_ancho/2 + sala_reuniones_ancho/2 - 0.1, -oficina_largo/2 + sala_reuniones_largo/2 - 0.1, -oficina_altura/2))
+    silla = bpy.context.active_object
+    silla.name = f"Silla de Reunión {i+1}"
 
 # Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
 if 'BLEND_OUT' in os.environ:

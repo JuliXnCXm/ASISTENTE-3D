@@ -1,0 +1,55 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades de medida en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea un objeto para el suelo
+bpy.ops.mesh.primitive_plane_add(size=55, location=(0, 0, 0))
+bpy.context.active_object.name = "Suelo"
+
+# Crea la sala-comedor
+bpy.ops.mesh.primitive_cube_add(size=10, location=(-2.5, -2.5, 1))
+bpy.context.active_object.name = "Sala"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+bpy.ops.mesh.primitive_cube_add(size=3, location=(0, 0, 1))
+bpy.context.active_object.name = "Barra"
+
+# Crea la cocina
+bpy.ops.mesh.primitive_cube_add(size=4, location=(-2.5, -7.5, 1))
+bpy.context.active_object.name = "Cocina"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea el pasillo
+bpy.ops.mesh.primitive_cube_add(size=2, location=(0, -10, 1))
+bpy.context.active_object.name = "Pasillo"
+
+# Crea el baño
+bpy.ops.mesh.primitive_cube_add(size=3, location=(-5, -12.5, 1))
+bpy.context.active_object.name = "Baño"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea el dormitorio
+bpy.ops.mesh.primitive_cube_add(size=10, location=(2.5, -12.5, 1))
+bpy.context.active_object.name = "Dormitorio"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Agrega ventanas a la sala y al dormitorio
+ventana_sala = bpy.data.objects.new("Ventana_Sala", bpy.data.meshes['Cube'])
+ventana_sala.location = (0, 0, 2)
+ventana_dormitorio = bpy.data.objects.new("Ventana_Dormitorio", bpy.data.meshes['Cube'])
+ventana_dormitorio.location = (5, -12.5, 2)
+
+bpy.context.collection.objects.link(ventana_sala)
+bpy.context.collection.objects.link(ventana_dormitorio)
+
+# Guarda el archivo .blend si se especificó la ruta
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene.BLEND_OUT)
+```

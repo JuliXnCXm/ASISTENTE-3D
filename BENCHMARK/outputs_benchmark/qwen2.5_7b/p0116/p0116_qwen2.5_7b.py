@@ -6,5 +6,11 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 # Crear el muro
 bpy.ops.mesh.primitive_cube_add(size=0.3, enter_editmode=False, align='WORLD', location=(2.5, 1.35, 1.35))
 
-# Escalar el cubo para formar el muro
-bpy.context.object.scale = (5, 2.7, 0.15)
+# Escalar el objeto para ajustarlo al tamaño deseado
+obj = bpy.context.object
+obj.scale = (5, 2.7, 0.15)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

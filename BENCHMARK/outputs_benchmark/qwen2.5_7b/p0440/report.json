@@ -1,7 +1,7 @@
 {
-  "execution_success": true,
-  "execution_error": null,
-  "chamfer_distance": 4.239424927446281,
+  "execution_success": false,
+  "execution_error": "'NoneType' object has no attribute 'diffuse_color' and no __dict__ for setting new attributes",
+  "chamfer_distance": null,
   "gt_vertices_count": 24,
-  "pred_vertices_count": 16
+  "pred_vertices_count": 0
 }

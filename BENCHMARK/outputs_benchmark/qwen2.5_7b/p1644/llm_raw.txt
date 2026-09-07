@@ -1,36 +1,40 @@
 ```python
 import bpy
 
-# Limpiar la escena
+# Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Definir las dimensiones del edificio
+# Define las dimensiones del edificio
 pisos = 5
 ancho = 15
 largo = 20
 
-# Crear el piso de acceso
-plaza = bpy.ops.mesh.primitive_cube_add(location=(0, 0, -1))
-bpy.context.object.scale = (largo, ancho, 0.1)
+# Crea el suelo
+bpy.ops.mesh.primitive_plane_add(size=30, location=(0, 0, -1))
+suelo = bpy.context.object
+suelo.scale = (ancho, largo, 0.1)
 
-# Crear los pisos del edificio
-for i in range(pisos):
-    floor = bpy.ops.mesh.primitive_cube_add(location=(0, 0, i + 1))
-    bpy.context.object.scale = (largo, ancho, 0.1)
-    
-    # Crear columnas estructurales
-    for j in range(4):  # Suponiendo 4 columnas por piso
-        column = bpy.ops.mesh.primitive_cylinder_add(location=(j * largo / 4 - largo / 8, ancho / 2 - ancho / 8, i + 1))
-        bpy.context.object.scale = (0.5, 0.5, 3)
+# Crea las columnas estructurales
+for i in range(6):
+    for j in range(5):
+        columna_x = -largo / 2 + j * (largo / 5)
+        columna_z = -ancho / 2 + i * (ancho / 6)
+        bpy.ops.mesh.primitive_cylinder_add(radius=0.3, depth=15, location=(columna_x, 0, columna_z))
+        
+# Crea la fachada de cristal
+fachada = bpy.ops.mesh.primitive_cube_add(size=1, location=(-largo / 2 + largo / 4, 0, -ancho / 2 + ancho / 6))
+bpy.context.object.scale = (largo / 2 - largo / 4, ancho / 2 - ancho / 6, pisos)
+fachada_obj = bpy.context.object
+fachada_obj.name = "FachadaCristal"
+fachada_obj.data.materials.append(bpy.data.materials.new(name="Cristal"))
 
-# Crear la fachada de cristal
-glass幕墙 = bpy.ops.mesh.primitive_cube_add(location=(largo / 2, ancho / 2, pisos + 0.5))
-bpy.context.object.scale = (largo, ancho, 1)
-bpy.ops.object.shade_smooth()
+# Crea la plaza de acceso
+bpy.ops.mesh.primitive_plane_add(size=30, location=(0, 0, -pisos - 1))
+plaza = bpy.context.object
+plaza.scale = (ancho + 5, largo + 5, 0.1)
 
-# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
-if 'BLEND_OUT' in os.environ:
-    blend_out_path = os.environ['BLEND_OUT']
+# Guarda el archivo si existe BLEND_OUT
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
-
 ```

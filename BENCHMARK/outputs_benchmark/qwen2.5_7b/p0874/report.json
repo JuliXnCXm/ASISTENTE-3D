@@ -1,7 +1,7 @@
 {
-  "execution_success": false,
-  "execution_error": "'NoneType' object has no attribute 'materials'",
-  "chamfer_distance": null,
+  "execution_success": true,
+  "execution_error": null,
+  "chamfer_distance": 1.0766069400858156,
   "gt_vertices_count": 80,
-  "pred_vertices_count": 0
+  "pred_vertices_count": 13
 }

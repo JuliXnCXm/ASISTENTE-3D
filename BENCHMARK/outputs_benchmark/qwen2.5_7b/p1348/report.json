@@ -1,7 +1,7 @@
 {
-  "execution_success": true,
-  "execution_error": null,
-  "chamfer_distance": 225.04500148576335,
+  "execution_success": false,
+  "execution_error": "bpy_prop_collection: attribute \"links\" not found",
+  "chamfer_distance": null,
   "gt_vertices_count": 8,
-  "pred_vertices_count": 4
+  "pred_vertices_count": 0
 }

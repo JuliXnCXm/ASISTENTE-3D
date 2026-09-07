@@ -3,44 +3,29 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear un objeto malla vacío
-mesh = bpy.data.meshes.new(name="ColumnMesh")
-obj = bpy.data.objects.new("Column", mesh)
-bpy.context.collection.objects.link(obj)
+# Crear un objeto geometry nodes para la columna
+column = bpy.data.objects.new(name="Column", object_data=None)
+bpy.context.collection.objects.link(column)
 
-# Seleccionar el objeto recién creado
-bpy.context.view_layer.objects.active = obj
-bpy.ops.object.mode_set(mode='EDIT')
+# Definir el nodo de geometría
+nodes = column.modifiers.new(name="GeometryNodeGroup", type='NODE_GROUP')
+nodes.group = bpy.data.node_groups.new(name="ColumnNodeGroup", type='GEOMETRY_NODE_GROUP')
 
-# Definir la geometría de la columna (sección cuadrada y altura)
-vertices = [
-    (-0.2, -0.2, 0),
-    (0.2, -0.2, 0),
-    (0.2, 0.2, 0),
-    (-0.2, 0.2, 0),
-    (-0.2, -0.2, 2.8),
-    (0.2, -0.2, 2.8),
-    (0.2, 0.2, 2.8),
-    (-0.2, 0.2, 2.8)
-]
+# Definir la sección cuadrada
+section = nodes.node_group.nodes.new(type='GeometryNodeInputRectangle')
+section.width = 0.4
+section.height = 0.4
 
-edges = []  # No se necesitan aristas para este caso
+# Crear la altura de la columna
+extrude = nodes.node_group.nodes.new(type='GeometryNodeExtrudeRegionToMesh')
+extrude.offset_z = 2.8
 
-faces = [
-    (0, 1, 5, 4),  # Lado izquierdo
-    (1, 2, 6, 5),  # Lado frontal
-    (2, 3, 7, 6),  # Lado derecho
-    (3, 0, 4, 7)   # Lado trasero
-]
+# Aplicar el modificador para crear la geometría
+bpy.context.view_layer.objects.active = column
+bpy.ops.object.modifier_apply(modifier="GeometryNodeGroup")
 
-# Crear la malla y los polígonos
-mesh.from_pydata(vertices, edges, faces)
-mesh.update()
-
-bpy.ops.object.mode_set(mode='OBJECT')
-
-# Posicionar el objeto en el origen
-obj.location = (0, 0, 0)
+# Posicionar la columna en el origen
+column.location = (0, 0, 0)
 
 # Guardar el archivo .blend si existe BLEND_OUT
 if "BLEND_OUT" in bpy.context.scene:

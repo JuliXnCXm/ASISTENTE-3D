@@ -1,0 +1,59 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del sofá
+sofa_size = 2.5  # metros
+sofa_depth = 0.8  # metros
+sofa_height = 0.7  # metros
+
+# Crea el cuerpo principal del sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_size, location=(0, 0, sofa_height))
+sofa_body = bpy.context.active_object
+sofa_body.name = "Sofa Body"
+
+# Agrega los asientos y respaldos del sofá
+for i in range(3):
+    seat_size = sofa_size / 3
+    seat_depth = sofa_depth * 2/3
+    seat_height = sofa_height - 0.1
+    
+    bpy.ops.mesh.primitive_cube_add(size=seat_size, location=(sofa_body.location[0] + (i-1)*seat_size, 0, sofa_body.location[2]))
+    seat = bpy.context.active_object
+    seat.name = f"Sofa Seat {i+1}"
+    
+    bpy.ops.mesh.primitive_cube_add(size=seat_depth, location=(sofa_body.location[0] + (i-1)*seat_size, 0, sofa_body.location[2] - seat_height))
+    back = bpy.context.active_object
+    back.name = f"Sofa Back {i+1}"
+    
+    # Combina los asientos y respaldos con el cuerpo principal del sofá
+    bpy.ops.object.join()
+
+# Define las propiedades de la mesa de centro
+table_size = 1.2  # metros
+table_height = 0.5  # metros
+
+# Crea la base de la mesa
+bpy.ops.mesh.primitive_cube_add(size=table_size, location=(0, table_size/2, 0))
+table_base = bpy.context.active_object
+table_base.name = "Table Base"
+
+# Agrega los pies de la mesa
+for i in range(4):
+    leg_size = table_size / 2
+    leg_height = table_height + 0.1
+    
+    bpy.ops.mesh.primitive_cube_add(size=leg_size, location=(table_base.location[0] + (i%2)*leg_size, table_base.location[1] + (i//2)*leg_size, table_base.location[2]))
+    leg = bpy.context.active_object
+    leg.name = f"Table Leg {i+1}"
+    
+    # Combina los pies de la mesa con la base
+    bpy.ops.object.join()
+
+# Guarda el archivo .blend si se especificó una ruta de salida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

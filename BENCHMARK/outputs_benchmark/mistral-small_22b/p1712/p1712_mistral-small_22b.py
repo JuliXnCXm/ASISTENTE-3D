@@ -1,0 +1,29 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Parámetros del edificio
+ancho = 15  # metros
+altura = 3  # pisos
+profundidad = 20  # metros
+espacio_ventanas = 2  # metros entre ventanas
+
+# Función para crear una ventana de aluminio
+def crear_ventana(x, y, z):
+    bpy.ops.mesh.primitive_cube_add(size=0.1, location=(x, y, z))
+    obj = bpy.context.object
+    obj.scale = (2, 0.5, 0.1)
+    return obj
+
+# Crear el edificio
+for i in range(altura):
+    for j in range(int(ancho / espacio_ventanas)):
+        x = -ancho / 2 + j * espacio_ventanas
+        y = i * 3
+        z = profundidad / 2
+        crear_ventana(x, y, z)
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

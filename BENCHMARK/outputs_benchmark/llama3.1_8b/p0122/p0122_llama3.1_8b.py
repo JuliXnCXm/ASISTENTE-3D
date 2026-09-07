@@ -1,0 +1,45 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades de la escalera
+altura_total = 3.0
+diametro = 1.8
+num_escalones = 16
+
+# Crea el poste central
+poste = bpy.data.objects.new("Poste", bpy.data.meshes.new("Poste"))
+poste.location = (0, 0, altura_total / 2)
+bpy.context.collection.objects.link(poste)
+
+# Crea los escalones
+for i in range(num_escalones):
+    # Calcula la posición del escalón
+    angulo = mathutils.pi * (i + 1) / (num_escalones + 1)
+    x = diametro / 2 * math.cos(angulo)
+    y = diametro / 2 * math.sin(angulo)
+
+    # Crea el escalón
+    escalon = bpy.data.objects.new(f"Escalon {i+1}", bpy.data.meshes.new(f"Escalon {i+1}"))
+    escalon.location = (x, y, altura_total / num_escalones * i)
+    bpy.context.collection.objects.link(escalon)
+
+# Crea la geometría de los escalones
+for escalon in bpy.context.scene.objects:
+    if "Escalon" in escalon.name:
+        # Crea un nuevo objeto para el escalón
+        new_escalon = bpy.data.objects.new(f"New Escalon {escalon.name}", None)
+        bpy.context.collection.objects.link(new_escalon)
+
+        # Copia la geometría del poste al nuevo objeto
+        new_escalon.data = escalon.data.copy()
+
+        # Elimina el objeto original
+        bpy.context.scene.objects.unlink(escalon)
+        del escalon
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ["BLEND_OUT"])

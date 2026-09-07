@@ -3,47 +3,53 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Definir las dimensiones del edificio
+# Definir los parámetros del edificio
 pisos = 4
 ancho = 20
 largo = 15
+espacio_entre_pisos = 3.5
 
-# Crear el suelo
-bpy.ops.mesh.primitive_plane_add(size=30, location=(0, 0, -1))
+# Crear el suelo de la planta baja
+bpy.ops.mesh.primitive_plane_add(size=ancho * largo, location=(0, 0, 0))
 suelo = bpy.context.object
-suelo.scale = (ancho, largo, 0.1)
+suelo.name = "Suelo_Piso_1"
 
 # Crear los pisos superiores
-for i in range(1, pisos + 1):
-    bpy.ops.mesh.primitive_plane_add(size=30, location=(0, 0, -1 + i))
-    piso = bpy.context.object
-    piso.scale = (ancho, largo, 0.1)
+for i in range(1, pisos):
+    piso_superior = suelo.copy()
+    piso_superior.location.y += ancho * espacio_entre_pisos * (i + 1)
+    bpy.context.collection.objects.link(piso_superior)
 
 # Crear la fachada de hormigón
-bpy.ops.mesh.primitive_cube_add(size=5, location=(-20, 7.5, 3))
-fachada_hormigon = bpy.context.object
-fachada_hormigon.scale = (40, 15, 4)
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(ancho / 2 - 0.25, largo / 2 - 0.25, espacio_entre_pisos * pisos + 3))
+fachada = bpy.context.object
+fachada.name = "Fachada_Hormigon"
 
 # Crear las columnas estructurales
+columna_x = ancho / 4
+columna_y = largo / 4
+
 for i in range(5):
     for j in range(3):
-        columna_x = -20 + 8 * i
-        columna_z = 7.5 - 5 * j
-        bpy.ops.mesh.primitive_cube_add(size=1, location=(columna_x, 0, columna_z))
-        columna = bpy.context.object
-        columna.scale = (1, 15, 3)
+        columna = fachada.copy()
+        columna.location.x = -ancho / 2 + columna_x * (i + 1)
+        columna.location.y = -largo / 2 + columna_y * (j + 1)
+        bpy.context.collection.objects.link(columna)
 
-# Crear las ventanas en todas las fachadas
-ventana_size = 2.5
+# Crear las ventanas
+ventana_ancho = ancho / 5
+ventana_largo = largo / 6
+
 for i in range(4):
-    for j in range(6):
-        ventana_x = -20 + 8 * i + 4
-        ventana_z = 7.5 - 5 * j - 1.25
-        bpy.ops.mesh.primitive_cube_add(size=ventana_size, location=(ventana_x, 0, ventana_z))
-        ventana = bpy.context.object
-        ventana.scale = (ventana_size, ventana_size, ventana_size)
+    for j in range(3):
+        ventana = fachada.copy()
+        ventana.location.x = -ancho / 2 + ventana_ancho * (i + 1)
+        ventana.location.y = -largo / 2 + ventana_largo * (j + 1)
+        ventana.scale = (ventana_ancho, ventana_largo, espacio_entre_pisos)
+        bpy.context.collection.objects.link(ventana)
 
-# Guardar el archivo .blend si la variable BLEND_OUT está definida
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+import os
 if "BLEND_OUT" in os.environ:
     blend_out_path = os.environ["BLEND_OUT"]
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

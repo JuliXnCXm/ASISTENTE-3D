@@ -1,7 +1,7 @@
 {
-  "execution_success": true,
-  "execution_error": null,
-  "chamfer_distance": 1.9215622351422497,
+  "execution_success": false,
+  "execution_error": "Calling operator \"bpy.ops.mesh.select_face_by_solidify_offset\" error, could not be found",
+  "chamfer_distance": null,
   "gt_vertices_count": 24,
-  "pred_vertices_count": 48
+  "pred_vertices_count": 0
 }

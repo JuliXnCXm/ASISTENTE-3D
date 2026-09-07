@@ -1,6 +1,6 @@
 import bpy
 
-# Limpiar la escena
+# Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Definir las dimensiones en metros
@@ -15,48 +15,45 @@ dormitorio_length = 4.0
 dormitorio_width = 5.0
 
 # Crear el espacio de sala-comedor
-bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+bpy.ops.mesh.primitive_cube_add(location=(0, 0, 0))
 sala_comedor = bpy.context.object
-sala_comedor.scale = (sala_comedor_length / 2, sala_comedor_width / 2, 3)
+sala_comedor.scale = (sala_comedor_length, sala_comedor_width, 2.5)
 
 # Crear la cocina semi-abierta con barra
-bpy.ops.mesh.primitive_cube_add(size=1, location=(sala_comedor.location.x + sala_comedor_length - cocina_length / 2, sala_comedor.location.y - cocina_width / 2, 0))
+bpy.ops.mesh.primitive_cube_add(location=(sala_comedor_length + cocina_length / 2, -cocina_width / 2, 0))
 cocina = bpy.context.object
-cocina.scale = (cocina_length / 2, cocina_width / 2, 3)
+cocina.scale = (cocina_length, cocina_width, 2.5)
 
-bpy.ops.mesh.primitive_cube_add(size=1, location=(sala_comedor.location.x + sala_comedor_length - cocina_length / 2, sala_comedor.location.y - cocina_width / 2 - 0.5 * cocina_width, 0))
-barra = bpy.context.object
-barra.scale = (cocina_length / 2, 1.0, 3)
+# Crear la barra de cocina
+bpy.ops.mesh.primitive_cube_add(location=(sala_comedor_length + cocina_length / 2, -cocina_width / 4, 0))
+barra_cocina = bpy.context.object
+barra_cocina.scale = (1.0, cocina_width / 2, 0.5)
 
 # Crear el pasillo
-bpy.ops.mesh.primitive_cube_add(size=1, location=(sala_comedor.location.x + sala_comedor_length - cocina_length / 2 - pasillo_length / 2, sala_comedor.location.y - cocina_width / 2 - 0.5 * cocina_width, 0))
+bpy.ops.mesh.primitive_cube_add(location=(sala_comedor_length + cocina_length + pasillo_length / 2, -cocina_width / 2, 0))
 pasillo = bpy.context.object
-pasillo.scale = (pasillo_length / 2, 1.0, 3)
+pasillo.scale = (pasillo_length, cocina_width, 2.5)
 
 # Crear el baño
-bpy.ops.mesh.primitive_cube_add(size=1, location=(sala_comedor.location.x + sala_comedor_length - cocina_length / 2 - pasillo_length - baño_length / 2, sala_comedor.location.y - cocina_width / 2 - 0.5 * cocina_width, 0))
+bpy.ops.mesh.primitive_cube_add(location=(sala_comedor_length + cocina_length + pasillo_length + baño_length / 2, -baño_width / 2, 0))
 baño = bpy.context.object
-baño.scale = (baño_length / 2, baño_width / 2, 3)
+baño.scale = (baño_length, baño_width, 2.5)
 
-# Crear el dormitorio doble con armario
-bpy.ops.mesh.primitive_cube_add(size=1, location=(sala_comedor.location.x + sala_comedor_length - cocina_length / 2 - pasillo_length - baño_length - dormitorio_length / 2, sala_comedor.location.y - cocina_width / 2 - 0.5 * cocina_width, 0))
+# Crear el dormitorio doble
+bpy.ops.mesh.primitive_cube_add(location=(sala_comedor_length + cocina_length + pasillo_length + baño_length + dormitorio_length / 2, -dormitorio_width / 2, 0))
 dormitorio = bpy.context.object
-dormitorio.scale = (dormitorio_length / 2, dormitorio_width / 2, 3)
+dormitorio.scale = (dormitorio_length, dormitorio_width, 2.5)
 
-bpy.ops.mesh.primitive_cube_add(size=1, location=(sala_comedor.location.x + sala_comedor_length - cocina_length / 2 - pasillo_length - baño_length - dormitorio_length - armario_length / 2, sala_comedor.location.y - cocina_width / 2 - 0.5 * cocina_width, 0))
-armario = bpy.context.object
-armario.scale = (armario_length / 2, dormitorio_width / 2, 3)
-
-# Añadir ventanas al exterior a la sala y el dormitorio
-bpy.ops.mesh.primitive_cube_add(size=1, location=(sala_comedor.location.x + sala_comedor_length / 4 - 0.5 * (sala_comedor_length / 4), sala_comedor.location.y - sala_comedor_width / 2 + 0.5 * (sala_comedor_width / 4), 3))
+# Crear las ventanas al exterior en la sala y el dormitorio
+bpy.ops.mesh.primitive_cube_add(location=(sala_comedor_length / 2, -sala_comedor_width / 4, 1))
 ventana_sala = bpy.context.object
-ventana_sala.scale = (1, sala_comedor_width / 8, 6)
+ventana_sala.scale = (0.5, sala_comedor_width / 4, 2)
 
-bpy.ops.mesh.primitive_cube_add(size=1, location=(dormitorio.location.x + dormitorio_length / 4 - 0.5 * (dormitorio_length / 4), dormitorio.location.y - dormitorio_width / 2 + 0.5 * (dormitorio_width / 4), 3))
+bpy.ops.mesh.primitive_cube_add(location=(dormitorio_length / 2, -dormitorio_width / 4, 1))
 ventana_dormitorio = bpy.context.object
-ventana_dormitorio.scale = (1, dormitorio_width / 8, 6)
+ventana_dormitorio.scale = (0.5, dormitorio_width / 4, 2)
 
 # Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
-if 'BLEND_OUT' in os.environ:
-    blend_out_path = os.environ['BLEND_OUT']
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

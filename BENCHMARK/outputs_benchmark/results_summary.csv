@@ -2,3 +2,300 @@ model,id,titulo,ollama_ok,compile_ok,rc,chamfer_distance,execution_error
 qwen2.5:7b,p1164,,True,True,0,252.23928346799354,None
 qwen2.5:7b,p0133,,True,True,0,None,'bpy_prop_collection[key]: key "Plane.0" not found'
 qwen2.5:7b,p0022,,True,True,0,17.51624808698608,None
+qwen2.5:7b,p2096,,True,True,0,15.692301194567735,None
+qwen2.5:7b,p0666,,True,True,0,inf,None
+qwen2.5:7b,p0630,,True,True,0,0.7994562156124227,None
+qwen2.5:7b,p0606,,True,True,0,1.7064471813073112,None
+qwen2.5:7b,p0311,,True,True,0,None,Calling operator "bpy.ops.mesh.select_face_by_solidify_offset" error; could not be found
+qwen2.5:7b,p2095,,True,True,0,None,'Mesh' object has no attribute 'location'
+qwen2.5:7b,p0126,,True,True,0,None,Vector subtraction: (Vector -= tuple) invalid type for this operation
+qwen2.5:7b,p1859,,True,True,0,9.063626101257487,None
+qwen2.5:7b,p3169,,True,True,0,27.866532559294683,None
+qwen2.5:7b,p1034,,True,True,0,47.93824917487608,None
+qwen2.5:7b,p0110,,True,True,0,7.883397035261275,None
+qwen2.5:7b,p1113,,True,True,0,1285.051708862748,None
+qwen2.5:7b,p0879,,True,True,0,100.44574603888451,None
+qwen2.5:7b,p0031,,True,True,0,28.01999879738429,None
+qwen2.5:7b,p0030,,True,True,0,16.658751419152935,None
+qwen2.5:7b,p0116,,True,True,0,17.01874832352999,None
+qwen2.5:7b,p0440,,True,True,0,None,'NoneType' object has no attribute 'diffuse_color' and no __dict__ for setting new attributes
+qwen2.5:7b,p0615,,True,True,0,33.303120415885346,None
+qwen2.5:7b,p0982,,True,True,0,5.594393698088597,None
+qwen2.5:7b,p1123,,True,True,0,inf,None
+qwen2.5:7b,p3385,,True,True,0,34.804833316633314,None
+qwen2.5:7b,p1057,,True,False,None,,
+qwen2.5:7b,p0417,,True,True,0,inf,None
+qwen2.5:7b,p1986,,True,True,0,176.13207443468184,None
+qwen2.5:7b,p1191,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+qwen2.5:7b,p1887,,True,True,0,21.33724986410469,None
+qwen2.5:7b,p2665,,True,True,0,None,'NoneType' object has no attribute 'location' and no __dict__ for setting new attributes
+qwen2.5:7b,p0874,,True,True,0,1.0766069400858156,None
+qwen2.5:7b,p0450,,True,True,0,4.494483475895847,None
+qwen2.5:7b,p0904,,True,True,0,2.7863250639173165,None
+qwen2.5:7b,p1112,,True,True,0,inf,None
+qwen2.5:7b,p0676,,True,True,0,inf,None
+qwen2.5:7b,p0002,,True,True,0,15.753748390475721,None
+qwen2.5:7b,p0351,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+qwen2.5:7b,p1879,,True,True,0,16.032738001718563,None
+qwen2.5:7b,p2632,,True,True,0,None,ObjectModifiers.new(): error with keyword argument "type" -  enum "NODE_GROUP" not found in ('GREASE_PENCIL_VERTEX_WEIGHT_PROXIMITY'; 'DATA_TRANSFER'; 'MESH_CACHE'; 'MESH_SEQUENCE_CACHE'; 'NORMAL_EDIT'; 'WEIGHTED_NORMAL'; 'UV_PROJECT'; 'UV_WARP'; 'VERTEX_WEIGHT_EDIT'; 'VERTEX_WEIGHT_MIX'; 'VERTEX_WEIGHT_PROXIMITY'; 'GREASE_PENCIL_COLOR'; 'GREASE_PENCIL_TINT'; 'GREASE_PENCIL_OPACITY'; 'GREASE_PENCIL_VERTEX_WEIGHT_ANGLE'; 'GREASE_PENCIL_TIME'; 'GREASE_PENCIL_TEXTURE'; 'ARRAY'; 'BEVEL'; 'BOOLEAN'; 'BUILD'; 'DECIMATE'; 'EDGE_SPLIT'; 'NODES'; 'MASK'; 'MIRROR'; 'MESH_TO_VOLUME'; 'MULTIRES'; 'REMESH'; 'SCREW'; 'SKIN'; 'SOLIDIFY'; 'SUBSURF'; 'TRIANGULATE'; 'VOLUME_TO_MESH'; 'WELD'; 'WIREFRAME'; 'GREASE_PENCIL_ARRAY'; 'GREASE_PENCIL_BUILD'; 'GREASE_PENCIL_LENGTH'; 'LINEART'; 'GREASE_PENCIL_MIRROR'; 'GREASE_PENCIL_MULTIPLY'; 'GREASE_PENCIL_SIMPLIFY'; 'GREASE_PENCIL_SUBDIV'; 'GREASE_PENCIL_ENVELOPE'; 'GREASE_PENCIL_OUTLINE'; 'ARMATURE'; 'CAST'; 'CURVE'; 'DISPLACE'; 'HOOK'; 'LAPLACIANDEFORM'; 'LATTICE'; 'MESH_DEFORM'; 'SHRINKWRAP'; 'SIMPLE_DEFORM'; 'SMOOTH'; 'CORRECTIVE_SMOOTH'; 'LAPLACIANSMOOTH'; 'SURFACE_DEFORM'; 'WARP'; 'WAVE'; 'VOLUME_DISPLACE'; 'GREASE_PENCIL_HOOK'; 'GREASE_PENCIL_NOISE'; 'GREASE_PENCIL_OFFSET'; 'GREASE_PENCIL_SMOOTH'; 'GREASE_PENCIL_THICKNESS'; 'GREASE_PENCIL_LATTICE'; 'GREASE_PENCIL_DASH'; 'GREASE_PENCIL_ARMATURE'; 'GREASE_PENCIL_SHRINKWRAP'; 'CLOTH'; 'COLLISION'; 'DYNAMIC_PAINT'; 'EXPLODE'; 'FLUID'; 'OCEAN'; 'PARTICLE_INSTANCE'; 'PARTICLE_SYSTEM'; 'SOFT_BODY'; 'SURFACE')
+qwen2.5:7b,p0776,,True,True,0,inf,None
+qwen2.5:7b,p2442,,True,True,0,13.54906294697621,None
+qwen2.5:7b,p0345,,True,True,0,1.6067188735362496,None
+qwen2.5:7b,p2564,,True,True,0,2880.7320007902204,None
+qwen2.5:7b,p0770,,True,True,0,1.5214925242748318,None
+qwen2.5:7b,p3001,,True,True,0,None,'set' object is not subscriptable
+qwen2.5:7b,p2583,,True,True,0,62.714941780899764,None
+qwen2.5:7b,p0806,,True,True,0,inf,None
+qwen2.5:7b,p0122,,True,True,0,1.3593854421308327,None
+qwen2.5:7b,p0786,,True,True,0,2.7545463788448856,None
+qwen2.5:7b,p0779,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+qwen2.5:7b,p2981,,True,True,0,0.40499997854232817,None
+qwen2.5:7b,p1494,,True,True,0,4855.378827382896,None
+qwen2.5:7b,p0277,,True,True,0,8.54420981881321,None
+qwen2.5:7b,p2745,,True,True,0,0.40499997854232817,None
+qwen2.5:7b,p2902,,True,True,0,None,Calling operator "bpy.ops.object.scale_apply" error; could not be found
+qwen2.5:7b,p0595,,True,True,0,None,'NoneType' object has no attribute 'location' and no __dict__ for setting new attributes
+qwen2.5:7b,p1738,,True,True,0,None,bpy_struct: item.attr = val: Object.data expected a Image type; not Mesh
+qwen2.5:7b,p0499,,True,True,0,None,Nodes.remove(): error with argument 1; "node" -  Function.node does not support a 'None' assignment Node type
+qwen2.5:7b,p2918,,True,True,0,7.988750241878092,None
+qwen2.5:7b,p1570,,True,True,0,21.81595805909134,None
+qwen2.5:7b,p3313,,True,True,0,None,'bpy_prop_collection[key]: key "Base Color" not found'
+qwen2.5:7b,p3291,,True,True,0,None,'NoneType' object has no attribute 'location' and no __dict__ for setting new attributes
+qwen2.5:7b,p1709,,True,True,0,None,Operator bpy.ops.view3d.view_all.poll() Expected a view3d region
+qwen2.5:7b,p2943,,True,True,0,28.574387115348653,None
+qwen2.5:7b,p1348,,True,True,0,None,bpy_prop_collection: attribute "links" not found
+qwen2.5:7b,p0477,,True,True,0,None,'module' object is not callable. Did you mean: 'bpy.ops.archipack屋顶.bpy.ops.archipack屋顶(...)'?
+qwen2.5:7b,p3541,,True,True,0,None,In place element-wise multiplication: not supported between 'Vector' and 'tuple' types
+qwen2.5:7b,p1415,,True,True,0,None,'float' object cannot be interpreted as an integer
+qwen2.5:7b,p1569,,True,True,0,None,'float' object cannot be interpreted as an integer
+qwen2.5:7b,p3342,,True,True,0,939.4244748076493,None
+qwen2.5:7b,p1417,,True,True,0,None,'NoneType' object has no attribute 'location' and no __dict__ for setting new attributes
+qwen2.5:7b,p0570,,True,True,0,2095.6623501931376,None
+qwen2.5:7b,p1746,,True,True,0,163190.7974631126,None
+qwen2.5:7b,p1514,,True,True,0,4.0959678017565375,None
+qwen2.5:7b,p2741,,True,True,0,3.7414730607017317,None
+qwen2.5:7b,p1712,,True,True,0,None,'set' object is not subscriptable
+qwen2.5:7b,p1271,,True,True,0,36.10845822311123,None
+qwen2.5:7b,p1714,,True,True,0,36.82621062107063,None
+qwen2.5:7b,p1687,,True,True,0,None,'NoneType' object has no attribute 'materials'
+qwen2.5:7b,p1391,,True,True,0,4.435519336098372,None
+qwen2.5:7b,p1499,,True,True,0,3747.7840469488037,None
+qwen2.5:7b,p0478,,True,True,0,156.05577063417894,None
+qwen2.5:7b,p1280,,True,True,0,10.94595097076406,None
+qwen2.5:7b,p2887,,True,True,0,0.40499997854232817,None
+qwen2.5:7b,p1459,,True,True,0,5138.423125611559,None
+qwen2.5:7b,p2935,,True,True,0,1.6001415574437643,None
+qwen2.5:7b,p2749,,True,True,0,0.3200000095367429,None
+qwen2.5:7b,p2951,,True,True,0,9.365322115965284,None
+qwen2.5:7b,p1506,,True,True,0,162.51999452336213,None
+qwen2.5:7b,p1404,,True,True,0,23.711028648013336,None
+qwen2.5:7b,p1644,,True,True,0,378.03572602621483,None
+qwen2.5:7b,p0464,,True,True,0,300.0083261702357,None
+qwen2.5:7b,p3562,,True,True,0,195.69673179356215,None
+qwen2.5:7b,p0251,,True,True,0,0.40499997854232817,None
+qwen2.5:7b,p1617,,True,True,0,650.044967211421,None
+qwen2.5:7b,p1387,,True,True,0,30.906799335053307,None
+qwen2.5:7b,p1233,,True,True,0,77.81116386737591,None
+qwen2.5:7b,p2825,,True,True,0,0.40499997854232817,None
+qwen2.5:7b,p0573,,True,True,0,None,'float' object cannot be interpreted as an integer
+qwen2.5:7b,p3317,,True,True,0,91.18090497229826,None
+llama3.1:8b,p1164,,True,True,0,6.16092847990526,None
+llama3.1:8b,p0133,,True,True,0,None,Converting py args to operator properties:: keyword "obj" unrecognized
+llama3.1:8b,p0022,,True,True,0,None,bpy_struct: item.attr = val: Object.data expected a Image type; not Mesh
+llama3.1:8b,p2096,,True,True,0,None,'NoneType' object has no attribute 'keynames'
+llama3.1:8b,p0666,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p0630,,True,True,0,None,'bpy_prop_collection[key]: key "GreyFabric" not found'
+llama3.1:8b,p0606,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p0311,,True,True,0,None,'bpy_prop_collection[key]: key "Material.001" not found'
+llama3.1:8b,p2095,,True,True,0,None,'bpy_prop_collection[key]: key "Material.001" not found'
+llama3.1:8b,p0126,,True,True,0,None,bpy_struct: item.attr = val: Object.data expected a Image type; not Mesh
+llama3.1:8b,p1859,,True,False,None,,
+llama3.1:8b,p3169,,True,True,0,9.740514558865543,None
+llama3.1:8b,p1034,,True,True,0,3.0322376213553843,None
+llama3.1:8b,p0110,,True,True,0,None,Calling operator "bpy.ops.object.collection_all" error; could not be found
+llama3.1:8b,p1113,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p0879,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p0031,,True,True,0,None,Calling operator "bpy.ops.object.rename" error; could not be found
+llama3.1:8b,p0030,,True,True,0,None,bpy_struct: item.attr = val: Object.data expected a Image type; not Mesh
+llama3.1:8b,p0116,,True,True,0,None,bpy_struct: item.attr = val: Object.data expected a Image type; not Mesh
+llama3.1:8b,p0440,,True,True,0,None,'bpy_prop_collection[key]: key "Principio de base" not found'
+llama3.1:8b,p0615,,True,True,0,63.026382136320095,None
+llama3.1:8b,p0982,,True,True,0,0.9680322111270753,None
+llama3.1:8b,p1123,,True,True,0,8.676826330527035,None
+llama3.1:8b,p3385,,True,True,0,171.9324758866471,None
+llama3.1:8b,p1057,,True,True,0,None,Error: Object 'Cube' already in collection 'Scene Collection' 
+llama3.1:8b,p0417,,True,True,0,None,'bpy_prop_collection[key]: key "Grey" not found'
+llama3.1:8b,p1986,,True,True,0,8.095986573333844,None
+llama3.1:8b,p1191,,True,True,0,inf,None
+llama3.1:8b,p1887,,True,True,0,None,'ArrayModifier' object has no attribute 'use_merge'
+llama3.1:8b,p2665,,True,True,0,29.503098575129506,None
+llama3.1:8b,p0874,,True,True,0,None,bpy_prop_collection[index]: index 0 out of range; size 0
+llama3.1:8b,p0450,,True,True,0,inf,None
+llama3.1:8b,p0904,,True,True,0,None,'Object' object has no attribute 'materials'
+llama3.1:8b,p1112,,True,True,0,18.481559910858515,None
+llama3.1:8b,p0676,,True,True,0,None,Converting py args to operator properties:: keyword "obj" unrecognized
+llama3.1:8b,p0002,,True,True,0,None,CollectionObjects.link(): error with argument 1; "object" -  Function.object expected a Object type; not Mesh
+llama3.1:8b,p0351,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p1879,,True,True,0,299.1434091649547,None
+llama3.1:8b,p2632,,True,True,0,None,Converting py args to operator properties:: keyword "location" unrecognized
+llama3.1:8b,p0776,,True,True,0,8.222200152788343,None
+llama3.1:8b,p2442,,True,True,0,15.17406231039096,None
+llama3.1:8b,p0345,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p2564,,True,True,0,79.34351255222626,None
+llama3.1:8b,p0770,,True,True,0,3.7519591444337106,None
+llama3.1:8b,p3001,,True,True,0,27.685983155678777,None
+llama3.1:8b,p2583,,True,True,0,None,'bpy_struct[key]: key "altura" not found'
+llama3.1:8b,p0806,,True,True,0,9.107085618747304,None
+llama3.1:8b,p0122,,True,True,0,None,module 'mathutils' has no attribute 'pi'
+llama3.1:8b,p0786,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p0779,,True,True,0,None,'bpy_prop_collection[key]: key "Gray" not found'
+llama3.1:8b,p2981,,True,True,0,0.41924877698174,None
+llama3.1:8b,p1494,,True,True,0,None,name 'longuidad_muro' is not defined
+llama3.1:8b,p0277,,True,True,0,21.01332418433005,None
+llama3.1:8b,p2745,,True,True,0,None,bpy_struct: item.attr = val: Object.data expected a Image type; not Mesh
+llama3.1:8b,p2902,,True,True,0,0.5568604702428801,None
+llama3.1:8b,p0595,,True,True,0,566.3580847635064,None
+llama3.1:8b,p1738,,True,True,0,None,Mesh.from_pydata() missing 1 required positional argument: 'faces'
+llama3.1:8b,p0499,,True,True,0,None,'bpy_prop_collection[key]: key "Principio Color" not found'
+llama3.1:8b,p2918,,True,True,0,8.069134585995636,None
+llama3.1:8b,p1570,,True,True,0,None,bpy_prop_collection: attribute "nodes" not found
+llama3.1:8b,p3313,,True,True,0,40.85028521543916,None
+llama3.1:8b,p3291,,True,True,0,None,Error: Cannot read 'vegetation.jpg': No such file or directory 
+llama3.1:8b,p1709,,True,True,0,10.877891064919098,None
+llama3.1:8b,p2943,,True,True,0,None,Calling operator "bpy.ops.mesh.primitive_polygon_add" error; could not be found
+llama3.1:8b,p1348,,True,True,0,None,Calling operator "bpy.ops.object.rename" error; could not be found
+llama3.1:8b,p0477,,True,True,0,None,Converting py args to operator properties:: keyword "location" unrecognized
+llama3.1:8b,p3541,,True,True,0,None,BlendDataCurves.new(): error with keyword argument "type" -  enum "MESH" not found in ('CURVE'; 'SURFACE'; 'FONT')
+llama3.1:8b,p1415,,True,True,0,None,'set' object has no attribute 'name' and no __dict__ for setting new attributes
+llama3.1:8b,p1569,,True,True,0,inf,None
+llama3.1:8b,p3342,,True,True,0,225.55561454709243,None
+llama3.1:8b,p1417,,True,True,0,None,BlendDataCurves.new(): error with argument 2; "type" -  enum "MESH" not found in ('CURVE'; 'SURFACE'; 'FONT')
+llama3.1:8b,p0570,,True,True,0,None,'Object' object has no attribute 'update'
+llama3.1:8b,p1746,,True,True,0,None,module 'mathutils' has no attribute 'pi'
+llama3.1:8b,p1514,,True,True,0,None,'Vector' object is not callable
+llama3.1:8b,p2741,,True,True,0,None,Calling operator "bpy.ops.mesh.primitive_rectangle_add" error; could not be found
+llama3.1:8b,p1712,,True,True,0,None,name 'espacio_entre_columna' is not defined
+llama3.1:8b,p1271,,True,True,0,49.107493789368796,None
+llama3.1:8b,p1714,,True,True,0,None,'NoneType' object has no attribute 'materials'
+llama3.1:8b,p1687,,True,True,0,None,Calling operator "bpy.ops.mesh.primitive_rectangular_mesh_add" error; could not be found
+llama3.1:8b,p1391,,True,True,0,None,vec.difference(value): expects both vectors to be size 3 or 4
+llama3.1:8b,p1499,,True,True,0,16.661514661098252,None
+llama3.1:8b,p0478,,True,True,0,None,Operator bpy.ops.mesh.select_all.poll() failed; context is incorrect
+llama3.1:8b,p1280,,True,True,0,None,BlendDataCurves.new(): error with argument 2; "type" -  enum "MESH" not found in ('CURVE'; 'SURFACE'; 'FONT')
+llama3.1:8b,p2887,,True,True,0,None,'NoneType' object has no attribute 'materials'
+llama3.1:8b,p1459,,True,True,0,None,Calling operator "bpy.ops.mesh.primitive_rectangle_add" error; could not be found
+llama3.1:8b,p2935,,True,True,0,4.650833503254194,None
+llama3.1:8b,p2749,,True,True,0,None,'Scene' object has no attribute 'properties'
+llama3.1:8b,p2951,,True,True,0,29.575363708468565,None
+llama3.1:8b,p1506,,True,True,0,151.02000580928805,None
+llama3.1:8b,p1404,,True,True,0,None,'Vector' object is not callable
+llama3.1:8b,p1644,,True,True,0,None,Operator bpy.ops.object.mode_set.poll() Context missing active object
+llama3.1:8b,p0464,,True,True,0,11.947083571781876,None
+llama3.1:8b,p3562,,True,True,0,178.56713998834556,None
+llama3.1:8b,p0251,,True,True,0,None,Operator bpy.ops.object.mode_set.poll() Context missing active object
+llama3.1:8b,p1617,,True,True,0,None,Calling operator "bpy.ops.object.rename" error; could not be found
+llama3.1:8b,p1387,,True,True,0,None,'ArrayModifier' object has no attribute 'use_merge'
+llama3.1:8b,p1233,,True,True,0,2502.190747597646,None
+llama3.1:8b,p2825,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+llama3.1:8b,p0573,,True,True,0,312.5450834830539,None
+llama3.1:8b,p3317,,True,True,0,None,bpy_struct: item.attr = val: Object.data expected a Image type; not Mesh
+mistral-small:22b,p1164,,True,True,0,2.747712216474736,None
+mistral-small:22b,p0133,,True,True,0,None,name 'BLEND_OUT' is not defined
+mistral-small:22b,p0022,,True,True,0,12.57895022123239,None
+mistral-small:22b,p2096,,True,True,0,inf,None
+mistral-small:22b,p0666,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0630,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0606,,True,True,0,None,'Object' object has no attribute 'objects'
+mistral-small:22b,p0311,,True,True,0,None,'Object' object has no attribute 'objects'
+mistral-small:22b,p2095,,True,True,0,None,Converting py args to operator properties:: keyword "depth" unrecognized
+mistral-small:22b,p0126,,True,True,0,9.236249621058587,None
+mistral-small:22b,p1859,,True,True,0,None,Converting py args to operator properties:: keyword "TRANSFORM_OT_shrink_fatten" unrecognized
+mistral-small:22b,p3169,,True,True,0,4.133433596749693,None
+mistral-small:22b,p1034,,True,True,0,None,'bpy_prop_collection[key]: key "Solidify" not found'
+mistral-small:22b,p0110,,True,True,0,511.27033868907995,None
+mistral-small:22b,p1113,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0879,,True,True,0,None,'Object' object is not iterable
+mistral-small:22b,p0031,,True,True,0,17.32000108004388,None
+mistral-small:22b,p0030,,True,True,0,12.317500447200256,None
+mistral-small:22b,p0116,,True,True,0,13.656250705132631,None
+mistral-small:22b,p0440,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0615,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 3 items; not 2
+mistral-small:22b,p0982,,True,True,0,None,'bpy_prop_collection[key]: key "Subsurf" not found'
+mistral-small:22b,p1123,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p3385,,True,True,0,6.48623866864856,None
+mistral-small:22b,p1057,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0417,,True,True,0,1.1334299937088874,None
+mistral-small:22b,p1986,,True,True,0,21.12318269375001,None
+mistral-small:22b,p1191,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p1887,,True,True,0,4.778132405911908,None
+mistral-small:22b,p2665,,True,True,0,None,'MirrorModifier' object has no attribute 'axis'
+mistral-small:22b,p0874,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0450,,True,True,0,None,Operator bpy.ops.object.mode_set.poll() Context missing active object
+mistral-small:22b,p0904,,True,True,0,2.650891680973964,None
+mistral-small:22b,p1112,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0676,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0002,,True,True,0,14.796250076506684,None
+mistral-small:22b,p0351,,True,True,0,None,'Object' object has no attribute 'objects'
+mistral-small:22b,p1879,,True,True,0,11.622283434572015,None
+mistral-small:22b,p2632,,True,True,0,2.8799996566772563,None
+mistral-small:22b,p0776,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p2442,,True,True,0,3.9218751145763027,None
+mistral-small:22b,p0345,,True,True,0,4.381879653786761,None
+mistral-small:22b,p2564,,True,True,0,9.123698264352234,None
+mistral-small:22b,p0770,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p3001,,True,True,0,94.586185400144,None
+mistral-small:22b,p2583,,True,True,0,23.208285636433768,None
+mistral-small:22b,p0806,,True,True,0,3.3630987812152124,None
+mistral-small:22b,p0122,,True,True,0,None,Operator bpy.ops.mesh.inset.poll() failed; context is incorrect
+mistral-small:22b,p0786,,True,True,0,None,'Object' object has no attribute 'objects'
+mistral-small:22b,p0779,,True,True,0,2.9007125187639344,None
+mistral-small:22b,p2981,,True,True,0,0.40499997854232817,None
+mistral-small:22b,p1494,,True,True,0,17.966960179315873,None
+mistral-small:22b,p0277,,True,True,0,3.3347300352888283,None
+mistral-small:22b,p2745,,True,True,0,0.40499997854232817,None
+mistral-small:22b,p2902,,True,True,0,0.3200000095367429,None
+mistral-small:22b,p0595,,True,True,0,None,Converting py args to operator properties: MESH_OT_primitive_cube_add.size expected a float type; not tuple
+mistral-small:22b,p1738,,True,True,0,None,Converting py args to operator properties:: keyword "rotation_euler" unrecognized
+mistral-small:22b,p0499,,True,True,0,296.01999891871566,None
+mistral-small:22b,p2918,,True,True,0,10.565000834419193,None
+mistral-small:22b,p1570,,True,True,0,None,Operator bpy.ops.mesh.extrude_faces_move.poll() failed; context is incorrect
+mistral-small:22b,p3313,,True,True,0,None,'bpy_prop_collection[key]: key "Cube.1" not found'
+mistral-small:22b,p3291,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p1709,,True,True,0,128.34661705263395,None
+mistral-small:22b,p2943,,True,True,0,934.2943793753877,None
+mistral-small:22b,p1348,,True,True,0,211.04500109310564,None
+mistral-small:22b,p0477,,True,True,0,171.7667498761241,None
+mistral-small:22b,p3541,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p1415,,True,True,0,101.20386241957567,None
+mistral-small:22b,p1569,,True,True,0,None,Converting py args to operator properties:: keyword "height" unrecognized
+mistral-small:22b,p3342,,True,True,0,55.87356928283079,None
+mistral-small:22b,p1417,,True,True,0,None,Converting py args to operator properties: MESH_OT_primitive_plane_add.size expected a float type; not tuple
+mistral-small:22b,p0570,,True,True,0,None,Converting py args to operator properties: enum "EXTRUDE" not found in ('DATA_TRANSFER'; 'MESH_CACHE'; 'MESH_SEQUENCE_CACHE'; 'NORMAL_EDIT'; 'WEIGHTED_NORMAL'; 'UV_PROJECT'; 'UV_WARP'; 'VERTEX_WEIGHT_EDIT'; 'VERTEX_WEIGHT_MIX'; 'VERTEX_WEIGHT_PROXIMITY'; 'ARRAY'; 'BEVEL'; 'BOOLEAN'; 'BUILD'; 'DECIMATE'; 'EDGE_SPLIT'; 'NODES'; 'MASK'; 'MIRROR'; 'MULTIRES'; 'REMESH'; 'SCREW'; 'SKIN'; 'SOLIDIFY'; 'SUBSURF'; 'TRIANGULATE'; 'VOLUME_TO_MESH'; 'WELD'; 'WIREFRAME'; 'ARMATURE'; 'CAST'; 'CURVE'; 'DISPLACE'; 'HOOK'; 'LAPLACIANDEFORM'; 'LATTICE'; 'MESH_DEFORM'; 'SHRINKWRAP'; 'SIMPLE_DEFORM'; 'SMOOTH'; 'CORRECTIVE_SMOOTH'; 'LAPLACIANSMOOTH'; 'SURFACE_DEFORM'; 'WARP'; 'WAVE'; 'CLOTH'; 'COLLISION'; 'DYNAMIC_PAINT'; 'EXPLODE'; 'FLUID'; 'OCEAN'; 'PARTICLE_INSTANCE'; 'PARTICLE_SYSTEM'; 'SOFT_BODY')
+mistral-small:22b,p1746,,True,True,0,93.32304127637155,None
+mistral-small:22b,p1514,,True,True,0,31.71769930580477,None
+mistral-small:22b,p2741,,True,True,0,9.535685366909377,None
+mistral-small:22b,p1712,,True,True,0,107.03280176721331,None
+mistral-small:22b,p1271,,True,True,0,None,bpy_prop_collection: attribute "new" not found
+mistral-small:22b,p1714,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p1687,,True,True,0,58.542354627910285,None
+mistral-small:22b,p1391,,True,True,0,19.49806749714464,None
+mistral-small:22b,p1499,,True,True,0,None,bpy_struct: item.attr = val: sequences of dimension 0 should contain 4 items; not 3
+mistral-small:22b,p0478,,True,True,0,101.3444218239097,None
+mistral-small:22b,p1280,,True,True,0,None,Converting py args to operator properties: sequences of dimension 0 should contain 3 items; not 2
+mistral-small:22b,p2887,,True,True,0,0.40499997854232817,None
+mistral-small:22b,p1459,,True,True,0,None,'float' object cannot be interpreted as an integer
+mistral-small:22b,p2935,,True,True,0,3.2552428058586305,None
+mistral-small:22b,p2749,,True,True,0,0.3200000095367429,None
+mistral-small:22b,p2951,,True,True,0,None,Calling operator "bpy.ops.object.group_make" error; could not be found
+mistral-small:22b,p1506,,True,True,0,151.02000580928805,None
+mistral-small:22b,p1404,,True,True,0,43.54963561844181,None
+mistral-small:22b,p1644,,True,True,0,240.94541477243416,None
+mistral-small:22b,p0464,,True,True,0,12.920833583388669,None
+mistral-small:22b,p3562,,True,True,0,None,name 'TRANSFORM_OT_shrink_fatten' is not defined
+mistral-small:22b,p0251,,True,True,0,0.40499997854232817,None
+mistral-small:22b,p1617,,True,True,0,626.0449777396827,None
+mistral-small:22b,p1387,,True,True,0,23.897473419788206,None
+mistral-small:22b,p1233,,True,True,0,52.869731144941014,None
+mistral-small:22b,p2825,,True,True,0,0.40499997854232817,None
+mistral-small:22b,p0573,,True,True,0,296.04499744310584,None
+mistral-small:22b,p3317,,True,True,0,28.935645051459723,None

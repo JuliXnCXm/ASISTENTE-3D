@@ -1,0 +1,50 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del muro
+longitud = 5
+alto = 2.7
+espesor = 0.15
+
+# Crea un nuevo objeto para el muro
+muro = bpy.data.objects.new("Muro", None)
+
+# Establece la posición y orientación del muro
+muro.location = mathutils.Vector((longitud/2, alto/2, espesor/2))
+muro.rotation_euler = (0, 0, 0) # Rotación en el eje Z
+
+# Crea un nuevo mesh para el muro
+mesh = bpy.data.meshes.new("MuroMesh")
+muro.data = mesh
+
+# Define los vértices del muro
+vertices = [
+    (-longitud/2, -alto/2, 0),
+    ( longitud/2, -alto/2, 0),
+    ( longitud/2,  alto/2, 0),
+    (-longitud/2,  alto/2, 0)
+]
+
+# Define las caras del muro
+faces = [
+    (0, 1, 2, 3) # Cara frontal
+]
+
+# Define los bordes del muro
+edges = []
+
+# Crea el mesh con los vértices, caras y bordes definidos
+mesh.from_pydata(vertices, edges, faces)
+mesh.update(calc_edges=True)
+
+# Agrega el objeto a la escena
+bpy.context.collection.objects.link(muro)
+
+# Si existe una variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

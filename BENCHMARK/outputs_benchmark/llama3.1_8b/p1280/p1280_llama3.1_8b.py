@@ -1,0 +1,39 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la pérgola
+ancho = 4
+alto = 3
+altura = 2.5
+
+# Crea las columnas
+for i in range(4):
+    columna = bpy.data.curves.new('Columna', 'MESH')
+    columna.dimensions = 'CUBE'
+    columna.location = (i * ancho / 2, 0, altura)
+    bpy.context.collection.objects.link(columna)
+
+# Crea el techo
+techo = bpy.data.curves.new('Techo', 'MESH')
+techo.dimensions = 'QUAD'
+techo.location = (ancho / 2, alto / 2, altura)
+bpy.context.collection.objects.link(techo)
+
+# Aplica materiales a las columnas y el techo
+columna_mat = bpy.data.materials.new('Columna_Mat')
+columna_mat.diffuse_color = (0.5, 0.5, 0.5, 1)
+techo_mat = bpy.data.materials.new('Techo_Mat')
+techo_mat.diffuse_color = (0.8, 0.8, 0.8, 1)
+
+for obj in bpy.context.collection.objects:
+    if 'Columna' in obj.name:
+        obj.data.materials.append(columna_mat)
+    elif 'Techo' in obj.name:
+        obj.data.materials.append(techo_mat)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -6,27 +6,28 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Definir las dimensiones del edificio
 ancho = 15.0
-pisos = 3
 altura_piso = 3.0
+num_pisos = 3
+espacio_ventana = 2.0
 
-# Crear los pisos
-for piso in range(pisos):
-    # Crear el piso como una caja
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, altura_piso * piso))
-    piso_obj = bpy.context.object
-    piso_obj.scale = (ancho, ancho, altura_piso)
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, 0, -altura_piso * num_pisos / 2))
+suelo = bpy.context.object
+suelo.scale = (1, 1, altura_piso)
 
-# Crear las ventanas
-ventana_ancho = 2.5
-ventana_alto = 1.5
+# Función para crear ventanas
+def crear_ventana(x, y):
+    ventana = bpy.ops.mesh.primitive_cube_add(size=1.0, location=(x, y, -altura_piso * num_pisos / 2 + 2))
+    return ventana
 
-for x in range(int(ancho / ventana_ancho)):
-    for y in range(int(ancho / ventana_alto)):
-        for piso in range(pisos):
-            # Posición de la ventana en el piso actual
-            bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x * ventana_ancho - ancho/2 + ventana_ancho/2, y * ventana_alto - ancho/2 + ventana_alto/2, altura_piso * piso))
-            ventana_obj = bpy.context.object
-            ventana_obj.scale = (ventana_ancho, ventana_alto, 1)
+# Crear las ventanas en una retícula regular
+for i in range(int(ancho / espacio_ventana)):
+    for j in range(num_pisos):
+        crear_ventana(i * espacio_ventana - ancho / 2, j * altura_piso)
+
+# Ajustar la escena para que se vea bien
+bpy.context.scene.camera.location = (ancho + 5, 0, num_pisos * altura_piso + 5)
+bpy.context.scene.camera.rotation_euler = (1.57, 0, 0)  # Mirar hacia arriba
 
 # Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
 if 'BLEND_OUT' in os.environ:

@@ -1,0 +1,24 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Parámetros de la escalera
+ancho = 1.0
+huella = 0.3
+contrahuella = 0.18
+num_peldaños = 15
+
+# Crear peldaños
+for i in range(num_peldaños):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(i * (huella + contrahuella), huella / 2, contrahuella))
+    bpy.context.object.scale = (ancho, huella, contrahuella)
+
+# Crear barandilla (opcional)
+if BLEND_OUT:
+    for i in range(num_peldaños + 1):
+        bpy.ops.mesh.primitive_cylinder_add(radius=0.05, depth=huella, location=(i * (huella + contrahuella), huella / 2, 0))
+
+# Guardar el archivo si BLEND_OUT está definido
+if BLEND_OUT:
+    bpy.ops.wm.save_as_mainfile(filepath=BLEND_OUT)

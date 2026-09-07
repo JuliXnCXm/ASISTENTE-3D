@@ -1,0 +1,43 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la pérgola
+ancho = 4
+alto = 3
+altura = 2.5
+
+# Define las dimensiones de los postes
+ancho_poste = 0.15
+alto_poste = 0.15
+
+# Crea los postes
+for i in range(4):
+    x = (i % 2) * ancho + ancho / 2 - alto_poste / 2
+    y = (i // 2) * alto + alto / 2 - alto_poste / 2
+    bpy.ops.mesh.primitive_cube_add(location=(x, y, altura))
+    poste = bpy.context.active_object
+    poste.scale = (alto_poste, ancho_poste, altura)
+
+# Crea la estructura de la pérgola
+bpy.ops.mesh.primitive_rectangle_add(width=ancho, height=alto)
+estructura = bpy.context.active_object
+
+# Ubica la estructura sobre los postes
+poste1 = bpy.data.objects['Cube.001']
+poste2 = bpy.data.objects['Cube.002']
+poste3 = bpy.data.objects['Cube.003']
+poste4 = bpy.data.objects['Cube.004']
+
+estructura.location = (0, 0, altura)
+
+# Conecta los postes con la estructura
+bpy.ops.object.join()
+
+# Guarda el archivo .blend si se especificó una ruta de salida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

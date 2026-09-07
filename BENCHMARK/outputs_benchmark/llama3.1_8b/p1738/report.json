@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "Mesh.from_pydata() missing 1 required positional argument: 'faces'",
+  "chamfer_distance": null,
+  "gt_vertices_count": 56,
+  "pred_vertices_count": 0
+}

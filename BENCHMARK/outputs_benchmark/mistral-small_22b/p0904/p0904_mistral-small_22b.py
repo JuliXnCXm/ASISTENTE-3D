@@ -1,0 +1,30 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el colchón
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+colchon = bpy.context.object
+colchon.scale = (1.6, 2.0, 0.5)
+colchon.name = "Colchón"
+
+# Crear la estructura de madera
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -0.6))
+estructura = bpy.context.object
+estructura.scale = (1.7, 2.1, 0.5)
+estructura.name = "Estructura"
+
+# Asignar materiales
+material_blanco = bpy.data.materials.new(name="MaterialBlanco")
+material_blanco.diffuse_color = (1, 1, 1, 1)
+colchon.data.materials.append(material_blanco)
+
+material_nogal = bpy.data.materials.new(name="MaterialNogal")
+material_nogal.diffuse_color = (0.5, 0.3, 0.2, 1)
+estructura.data.materials.append(material_nogal)
+
+# Guardar el archivo si existe la variable de entorno BLEND_OUT
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

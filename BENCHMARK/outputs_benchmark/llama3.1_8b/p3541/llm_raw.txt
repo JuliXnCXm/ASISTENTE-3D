@@ -1,0 +1,98 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el suelo de deck de madera
+deck = bpy.data.curves.new(name="Deck", type='MESH')
+deck.dimensions = '2D'
+deck.fill_mode = 'FULL'
+deck.resolution_u = 64
+
+verts = [
+    (0, 0),
+    (10, 0),
+    (10, 5),
+    (0, 5)
+]
+
+faces = [
+    (0, 1, 2, 3)
+]
+
+deck.data.from_pydata(verts, [], faces)
+deck.update(calc_edges=True)
+
+obj_deck = bpy.data.objects.new("Deck", deck)
+bpy.context.collection.objects.link(obj_deck)
+
+# Crea las jardineras perimetrales de hormigón
+jardinera = bpy.data.curves.new(name="Jardinera", type='MESH')
+jardinera.dimensions = '2D'
+jardinera.fill_mode = 'FULL'
+jardinera.resolution_u = 64
+
+verts_jardinera = [
+    (0, 0),
+    (10, 0),
+    (10, 1.5),
+    (0, 1.5)
+]
+
+faces_jardinera = [
+    (0, 1, 2, 3)
+]
+
+jardinera.data.from_pydata(verts_jardinera, [], faces_jardinera)
+jardinera.update(calc_edges=True)
+
+obj_jardinera = bpy.data.objects.new("Jardinera", jardinera)
+bpy.context.collection.objects.link(obj_jardinera)
+
+# Crea la pérgola metálica
+pérgola = bpy.data.curves.new(name="Pergola", type='MESH')
+pérgola.dimensions = '2D'
+pérgola.fill_mode = 'FULL'
+pérgola.resolution_u = 64
+
+verts_pérgola = [
+    (5, 0),
+    (7.5, 0),
+    (7.5, 3),
+    (5, 3)
+]
+
+faces_pérgola = [
+    (0, 1, 2, 3)
+]
+
+pérgola.data.from_pydata(verts_pérgola, [], faces_pérgola)
+pérgola.update(calc_edges=True)
+
+obj_pérgola = bpy.data.objects.new("Pergola", pérgola)
+bpy.context.collection.objects.link(obj_pérgola)
+
+# Posiciona los objetos
+obj_deck.location = (0, 0, 1)
+obj_jardinera.location = (-5, -5, 1)
+obj_jardinera.rotation_euler = mathutils.Vector((math.radians(45), 0, 0))
+obj_pérgola.location = (5, -5, 2)
+
+# Agrega vegetación a las jardineras
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-4.75, -4.75, 1))
+
+cube = bpy.context.active_object
+cube.name = "Plant"
+cube.scale = (0.5, 0.5, 0.5)
+
+# Guarda el archivo .blend si se especificó la ruta de salida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

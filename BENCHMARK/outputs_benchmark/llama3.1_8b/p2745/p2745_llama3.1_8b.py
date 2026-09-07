@@ -1,0 +1,43 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del bolardo
+altura = 0.9
+diametro = 0.3
+
+# Crea un nuevo objeto cilíndrico en el origen
+bolardo = bpy.data.objects.new("Bolardo", None)
+bpy.context.collection.objects.link(bolardo)
+
+# Establece la escala del bolardo
+bolardo.scale = (1, diametro / 2, altura)
+
+# Define las coordenadas del centro del bolardo
+centro = mathutils.Vector((0, 0, altura / 2))
+
+# Crea un nuevo mesh para el bolardo
+mesh = bpy.data.meshes.new("BolardoMesh")
+bolardo.data = mesh
+
+# Define los vértices y caras del bolardo
+vertices = [
+    centro + mathutils.Vector((diametro / 2, 0, 0)),
+    centro + mathutils.Vector((-diametro / 2, 0, 0)),
+    centro + mathutils.Vector((0, diametro / 2, 0)),
+    centro + mathutils.Vector((0, -diametro / 2, 0)),
+]
+
+faces = [
+    (0, 1, 3, 2),
+]
+
+# Crea el mesh del bolardo
+mesh.from_pydata(vertices, [], faces)
+mesh.update()
+
+# Guarda la escena si se especificó un archivo de salida
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene.BLEND_OUT)

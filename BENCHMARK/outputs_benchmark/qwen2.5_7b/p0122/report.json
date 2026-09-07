@@ -1,7 +1,7 @@
 {
-  "execution_success": false,
-  "execution_error": "Operator bpy.ops.view3d.view_all.poll() Expected a view3d region",
-  "chamfer_distance": null,
+  "execution_success": true,
+  "execution_error": null,
+  "chamfer_distance": 1.3593854421308327,
   "gt_vertices_count": 192,
-  "pred_vertices_count": 0
+  "pred_vertices_count": 2050
 }

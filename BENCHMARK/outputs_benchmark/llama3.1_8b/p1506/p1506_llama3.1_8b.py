@@ -1,0 +1,25 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del terreno en metros
+ancho = 15
+alto = 10
+
+# Crea un plano para el terreno
+bpy.ops.mesh.primitive_plane_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+
+# Selecciona el plano recién creado
+objeto = bpy.context.active_object
+
+# Establece las dimensiones del plano en metros
+objeto.scale = (ancho, alto, 0.01)
+
+# Renombra el objeto para que sea más descriptivo
+objeto.name = 'Terreno'
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend con ese nombre
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

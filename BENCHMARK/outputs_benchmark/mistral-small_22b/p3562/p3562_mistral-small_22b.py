@@ -1,0 +1,67 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear adoquines de hormigón
+def create_concrete_pavers():
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.name = "ConcretePaver"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear adoquines de hormigón en una cuadrícula
+for i in range(-5, 6):
+    for j in range(-5, 6):
+        create_concrete_pavers()
+        bpy.context.object.location = (i, j, 0)
+
+# Función para crear bancas de diseño contemporáneo
+def create_bench():
+    bpy.ops.mesh.primitive_cube_add(size=2, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.name = "Bench"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.mesh.select_all(action='SELECT')
+    bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_shrink_fatten, value=0.5)
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+# Crear varias bancas en la plaza
+for i in range(-3, 4):
+    for j in range(-3, 4):
+        create_bench()
+        bpy.context.object.location = (i * 2, j * 2, 0)
+
+# Función para crear farolas altas
+def create_lamp_post():
+    bpy.ops.mesh.primitive_cylinder_add(radius=0.1, depth=5, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.name = "LampPost"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear farolas en la plaza
+for i in range(-5, 6):
+    for j in range(-5, 6):
+        if (i % 2 == 0 and j % 2 == 0):
+            create_lamp_post()
+            bpy.context.object.location = (i * 2, j * 2, 0)
+
+# Función para crear un alcorque elevado con un árbol
+def create_tree_planter():
+    bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=0.5, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.name = "TreePlanter"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    bpy.ops.mesh.primitive_cone_add(radius1=0.5, depth=2, location=(0, 0, 1))
+    tree = bpy.context.object
+    tree.name = "Tree"
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+# Crear un alcorque elevado con un árbol en el centro de la plaza
+create_tree_planter()
+bpy.context.object.location = (0, 0, 0)
+
+# Guardar el archivo .blend si BLEND_OUT está definido
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

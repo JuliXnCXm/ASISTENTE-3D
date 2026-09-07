@@ -4,42 +4,40 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear el suelo
-bpy.ops.mesh.primitive_plane_add(size=5, location=(0, 0, -0.1))
-bpy.context.object.scale = (2.0, 1.6, 1.0)  # Ajustar al tamaño de la cama
+# Definir las dimensiones en metros
+width = 1.6
+length = 2.0
+thickness = 0.05
 
-# Crear las estructuras laterales
-for side in [(-0.8, 0), (-0.8, 1.6)]:
-    bpy.ops.mesh.primitive_cube_add(size=0.1, location=(side[0], side[1] / 2, -0.05))
-    bpy.context.object.scale = (0.1, 1.6, 0.1)
-    
-for end in [(0, -0.8), (0, 0.8)]:
-    bpy.ops.mesh.primitive_cube_add(size=0.1, location=(end[0] / 2, end[1], -0.05))
-    bpy.context.object.scale = (1.6, 0.1, 0.1)
+# Crear el marco de madera
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+cama = bpy.context.object
+cama.scale = (width / 2, length / 2, thickness)
 
-# Crear el marco superior
-bpy.ops.mesh.primitive_cube_add(size=0.1, location=(0, 0, 0.2))
-bpy.context.object.scale = (1.6, 1.6, 0.1)
+# Crear las barras laterales y pies
+bpy.ops.mesh.primitive_cube_add(size=0.1, location=(-width/4, -length/2, -thickness/2))
+lateral_izquierdo = bpy.context.object
+lateral_izquierdo.scale = (0.1, length / 2, thickness)
 
-# Crear el colchón
-bpy.ops.mesh.primitive_plane_add(size=1.8, location=(0, 0, 0.15))
-bpy.context.object.scale = (2.0, 1.6, 0.05)  # Ajustar al tamaño del colchón
+bpy.ops.mesh.primitive_cube_add(size=0.1, location=(width/4, -length/2, -thickness/2))
+lateral_derecho = bpy.context.object
+lateral_derecho.scale = (0.1, length / 2, thickness)
 
-# Cambiar el material de la cama a nogal
-for obj in bpy.context.scene.objects:
-    if "Cube" in obj.name or "Plane" in obj.name:
-        mat = bpy.data.materials.new(name="Nogal")
-        mat.diffuse_color = (0.6, 0.45, 0.2)
-        obj.data.materials.append(mat)
+bpy.ops.mesh.primitive_cube_add(size=0.1, location=(-width/2, -length/2, -thickness/2))
+pie_izquierdo = bpy.context.object
+pie_izquierdo.scale = (width / 4, 0.1, thickness)
 
-# Cambiar el material del colchón a blanco
-for obj in bpy.context.scene.objects:
-    if "colchon" in obj.name:
-        mat = bpy.data.materials.new(name="Blanco")
-        mat.diffuse_color = (1, 1, 1)
-        obj.data.materials.append(mat)
+bpy.ops.mesh.primitive_cube_add(size=0.1, location=(width/2, -length/2, -thickness/2))
+pie_derecho = bpy.context.object
+pie_derecho.scale = (width / 4, 0.1, thickness)
 
-# Guardar el archivo .blend si la variable BLEND_OUT está definida
+# Crear el colchón de textil blanco
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -thickness - 0.05))
+colchon = bpy.context.object
+colchon.scale = (width / 2, length / 2, 0.1)
+colchon.color = (1, 1, 1, 1)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
 if 'BLEND_OUT' in os.environ:
     blend_out_path = os.environ['BLEND_OUT']
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

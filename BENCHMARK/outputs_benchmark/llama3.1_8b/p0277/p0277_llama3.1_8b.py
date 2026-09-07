@@ -1,0 +1,50 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la pérgola
+ancho = 4
+alto = 3
+profundidad = 2.5
+
+# Crea los postes en las esquinas
+for i in range(4):
+    # Posición del poste
+    x = (i % 2) * ancho + (i // 2) * profundidad / 2 - profundidad / 4
+    y = (i // 2) * alto
+    z = 0
+    
+    # Crea el poste
+    bpy.ops.mesh.primitive_cube_add(size=profundidad, location=(x, y, z))
+    objeto = bpy.context.active_object
+    objeto.scale = (0.2, 0.2, profundidad)
+    
+# Crea las vigas principales
+for i in range(2):
+    # Posición de la viga principal
+    x = (i % 2) * ancho + (i // 2) * profundidad / 2 - profundidad / 4
+    y = alto
+    z = 0
+    
+    # Crea la viga principal
+    bpy.ops.mesh.primitive_cube_add(size=profundidad, location=(x, y, z))
+    objeto = bpy.context.active_object
+    objeto.scale = (ancho, 0.1, profundidad)
+
+# Crea las vigas transversales
+for i in range(5):
+    # Posición de la viga transversal
+    x = (i % 2) * ancho + (i // 2) * profundidad / 2 - profundidad / 4
+    y = alto + 0.1 + i * 0.2
+    z = 0
+    
+    # Crea la viga transversal
+    bpy.ops.mesh.primitive_cube_add(size=profundidad, location=(x, y, z))
+    objeto = bpy.context.active_object
+    objeto.scale = (ancho, 0.1, profundidad)
+
+# Guarda el archivo .blend si se especificó una ruta de salida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

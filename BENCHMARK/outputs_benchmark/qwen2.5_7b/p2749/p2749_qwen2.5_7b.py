@@ -9,7 +9,7 @@ bpy.ops.mesh.primitive_cylinder_add(radius=0.1, depth=0.8, location=(0, 0, 0))
 # Renombrar el objeto al bolardo
 bpy.context.object.name = "Bolardo"
 
-# Guardar la escena si existe la variable de entorno BLEND_OUT
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
 if 'BLEND_OUT' in os.environ:
     blend_out_path = os.environ['BLEND_OUT']
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

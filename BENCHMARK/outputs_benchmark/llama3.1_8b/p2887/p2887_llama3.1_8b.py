@@ -1,0 +1,35 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del bolardo
+alto = 0.9
+diametro = 0.3
+
+# Crea un objeto cilíndrico en el origen
+bolardo = bpy.data.objects.new("Bolardo", None)
+bolardo.location = mathutils.Vector((0, 0, alto / 2))
+
+# Define las propiedades del material de hormigón
+mat_hormigon = bpy.data.materials.new(name="Hormigón")
+mat_hormigon.use_nodes = True
+
+# Crea un nuevo nodo para el color
+bsdf_node = mat_hormigon.node_tree.nodes["Principled BSDF"]
+bsdf_node.inputs['Base Color'].default_value = (0.5, 0.5, 0.5, 1)
+
+# Aplica el material al objeto
+bolardo.data.materials.append(mat_hormigon)
+
+# Crea la geometría del bolardo
+bpy.ops.mesh.primitive_cylinder_add(radius=diametro / 2, depth=alto, location=(0, 0, alto / 2))
+
+# Selecciona y elimina el objeto original para dejar solo el bolardo
+bpy.context.collection.objects.unlink(bolardo)
+bpy.data.objects.remove(bpy.context.object)
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

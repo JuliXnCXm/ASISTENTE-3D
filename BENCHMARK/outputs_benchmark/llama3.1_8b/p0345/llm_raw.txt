@@ -1,0 +1,53 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades a metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el material de hormigón
+mat_concrete = bpy.data.materials.new(name="Concrete")
+mat_concrete.diffuse_color = (0.8, 0.8, 0.8)
+mat_concrete.specular_intensity = 0
+
+# Crea el material de metal
+mat_metal = bpy.data.materials.new(name="Metal")
+mat_metal.diffuse_color = (0.7, 0.7, 0.7)
+mat_metal.specular_intensity = 1
+mat_metal.specular_color = (0.5, 0.5, 0.5)
+
+# Crea la escalera
+escalera = bpy.data.objects.new("Escalera", None)
+bpy.context.collection.objects.link(escalera)
+
+# Crea los peldaños
+for i in range(15):
+    peldaño = bpy.data.objects.new(f"Peldaño {i+1}", None)
+    peldaño.location = mathutils.Vector((0, 1.5 + (i * 0.2), 0))
+    peldaño.scale = (1, 0.05, 0.3)
+    peldaño.rotation_euler = (math.radians(90), 0, 0)
+    bpy.context.collection.objects.link(peldaño)
+
+# Crea la baranda
+baranda = bpy.data.objects.new("Baranda", None)
+bpy.context.collection.objects.link(baranda)
+baranda.location = mathutils.Vector((0, 1.5 + (15 * 0.2), 0))
+baranda.scale = (10, 0.05, 0.3)
+baranda.rotation_euler = (math.radians(90), 0, 0)
+
+# Aplica el material de hormigón a los peldaños
+for obj in bpy.context.collection.objects:
+    if "Peldaño" in obj.name and "Metal" not in obj.name:
+        obj.data.materials.append(mat_concrete)
+
+# Aplica el material de metal a la baranda
+baranda.data.materials.append(mat_metal)
+
+# Guarda el archivo .blend si se especificó una ruta en BLEND_OUT
+if 'BLEND_OUT' in os.environ and os.environ['BLEND_OUT']:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -4,43 +4,40 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Definir las dimensiones en metros
-length = 2.0
-width = 1.5
-height = 0.8
-
 # Crear el marco de la cama (estructura de madera)
 bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
-cama = bpy.context.object
-cama.scale = (length / 2, width / 2, height / 2)
+cama_marco = bpy.context.object
 
-# Crear los patas de la cama
-for i in range(4):
-    bpy.ops.mesh.primitive_cube_add(size=0.1, location=(0, 0, -height / 2 + 0.1))
-    pata = bpy.context.object
-    pata.scale = (0.3, 0.3, height * 0.8)
-    if i % 2 == 0:
-        pata.location[0] += length / 4
-    else:
-        pata.location[0] -= length / 4
+# Ajustar el tamaño del marco para simular una cama matrimonial
+cama_marco.scale = (2.5, 1.8, 0.1)
+
+# Asignar un material de madera roble al marco
+material_roble = bpy.data.materials.new(name="MaderaRoble")
+material_roble.diffuse_color = (0.639, 0.247, 0.078, 1)
+cama_marco.data.materials.append(material_roble)
 
 # Crear el colchón
-colchon_size = (length - 0.5, width - 0.3, 0.1)
-bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, height / 2))
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, -0.9, -0.05))
 colchon = bpy.context.object
-colchon.scale = colchon_size
 
-# Asignar materiales (simplificado)
-material_madera = bpy.data.materials.new(name="Madera")
-material_colchon = bpy.data.materials.new(name="Colchón")
+# Ajustar el tamaño del colchón
+colchon.scale = (2.4, 1.7, 0.1)
 
-material_madera.diffuse_color = (0.5, 0.4, 0.2, 1)  # Color madera
-material_colchon.diffuse_color = (1, 1, 1, 1)  # Blanco
+# Asignar un material blanco al colchón
+material_blanco = bpy.data.materials.new(name="Blanco")
+material_blanco.diffuse_color = (1, 1, 1, 1)
+colchon.data.materials.append(material_blanco)
 
-cama.data.materials.append(material_madera)
-colchon.data.materials.append(material_colchon)
+# Posicionar el colchón sobre el marco de la cama
+bpy.context.view_layer.objects.active = cama_marco
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.select_all(action='DESELECT')
+bpy.ops.mesh.select_face_by_solidify_offset(offset=0.1)
+bpy.ops.object.mode_set(mode='OBJECT')
 
-# Guardar el archivo .blend si la variable BLEND_OUT está definida
-if "BLEND_OUT" in bpy.context.scene:
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene[BLEND_OUT])
+# Ajustar la posición del colchón
+colchon.location = (0, -0.9 + 0.05, 0)
+
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
 ```

@@ -1,0 +1,29 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Parámetros de la escalera
+ancho = 1.0
+huella = 0.3
+contrahuella = 0.18
+num_peldaños = 15
+altura_total = huella * num_peldaños + contrahuella * (num_peldaños - 1)
+
+# Crear el peldaño base
+bpy.ops.mesh.primitive_cube_add(size=0.3, location=(0, 0, 0))
+peldaño = bpy.context.active_object
+
+# Ajustar las dimensiones del peldaño
+peldaño.scale = (ancho / 2, huella / 2, contrahuella / 2)
+
+# Crear los peldaños restantes
+for i in range(1, num_peldaños):
+    bpy.ops.object.duplicate()
+    peldaño = bpy.context.active_object
+    peldaño.location.z += altura_total / (num_peldaños - 1) * i
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

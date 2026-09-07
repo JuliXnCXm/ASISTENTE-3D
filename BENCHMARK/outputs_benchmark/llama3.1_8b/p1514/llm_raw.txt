@@ -1,0 +1,29 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del muro y la puerta
+largo_muro = 8
+alto_muro = 2.2
+ancho_puerta = 1
+
+# Crea el muro
+bpy.ops.mesh.primitive_cube_add(size=alto_muro, location=(0, 0, alto_muro/2))
+muro = bpy.context.active_object
+muro.scale((largo_muro, alto_muro, 1))
+
+# Crea la puerta
+bpy.ops.mesh.primitive_cube_add(size=alto_muro, location=(0, ancho_puerta/2, alto_muro/2))
+puerta = bpy.context.active_object
+puerta.scale((ancho_puerta, alto_muro, 1))
+
+# Posiciona la puerta en el centro del muro
+puerta.location = (largo_muro/2 - ancho_puerta/2, 0, alto_muro/2)
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

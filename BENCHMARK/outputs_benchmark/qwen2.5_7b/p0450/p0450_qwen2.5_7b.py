@@ -5,19 +5,28 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Crear el cuerpo de la cama (estructura de madera)
 bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -0.5))
-bpy.ops.transform.resize(value=(2, 1, 0.1))
+cama = bpy.context.object
 
-# Crear el colchón (cuboido blanco)
-colchon = bpy.ops.mesh.primitive_cylinder_add(radius=0.4, depth=0.1, location=(0, 0, -0.5))
-bpy.context.object.name = "Colchon"
-bpy.data.objects["Colchon"].data.materials.append(bpy.data.materials.new(name="Blanco"))
-bpy.data.materials["Blanco"].diffuse_color = (1, 1, 1, 1)
+# Ajustar el tamaño y la posición
+cama.scale = (2, 1, 1)  # Ancho: 2m, Profundidad: 1m, Altura: 1m
+bpy.ops.transform.translate(value=(0, -0.5, 0))  # Centrar en el eje Y
 
-# Ajustar la escena
-for obj in bpy.context.scene.objects:
-    if obj.type == 'MESH':
-        obj.scale = (0.01, 0.01, 0.01)  # Convertir a metros
+# Crear el colchón (cubo blanco)
+colchon = bpy.data.objects.new(name="Colchon", object_data=bpy.data.meshes.new("Colchon"))
+bpy.context.collection.objects.link(colchon)
+colchon.scale = (1.8, 0.9, 0.2)  # Ancho: 1.8m, Profundidad: 0.9m, Altura: 0.2m
+bpy.ops.transform.translate(value=(0, -0.45, 0.6))  # Centrar en el eje Y y ajustar altura
 
-# Guardar el archivo blend si existe BLEND_OUT
-if "BLEND_OUT" in os.environ:
-    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])
+# Asignar material al colchón (blanco)
+material = bpy.data.materials.new(name="Blanco")
+material.diffuse_color = (1, 1, 1, 1)  # Color blanco
+colchon.data.materials.append(material)
+
+# Seleccionar y actualizar la escena
+bpy.context.view_layer.objects.active = cama
+bpy.ops.object.select_all(action='DESELECT')
+cama.select_set(True)
+bpy.context.view_layer.update()
+
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

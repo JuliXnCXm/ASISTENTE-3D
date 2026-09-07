@@ -5,41 +5,50 @@ import mathutils
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Define las dimensiones del dormitorio principal
-ancho = 4.5  # metros
-profundidad = 3.2  # metros
-alto_cama = 1.8  # metros
-alto_muro = 1.9  # metros
+ancho = 4.5
+profundidad = 3.8
+alto_cama = 1.9
+alto_muro = 2.0
+
+# Crea el suelo
+bpy.ops.mesh.primitive_plane_add(size=profundidad, location=(0, -ancho/2, 0))
+bpy.context.active_object.name = "Suelo"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
 
 # Crea la cama con cabecero tapizado
-bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2, 0))
+bpy.ops.mesh.primitive_cube_add(size=alto_cama, location=(0, -ancho/2 + 1.5, profundidad/2))
 cama = bpy.context.active_object
 cama.name = "Cama"
-cama.scale = (alto_cama, ancho, profundidad)
-
+bpy.ops.object.modifier_apply(modifier="Subdivision")
 # Crea el cabecero de la cama
-bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + 0.5, alto_cama))
+bpy.ops.mesh.primitive_cube_add(size=alto_cama + 0.5, location=(0, -ancho/2 + 1.5, profundidad/2))
 cabecero = bpy.context.active_object
 cabecero.name = "Cabecero"
-cabecero.scale = (alto_cama, ancho, profundidad)
-cabecero.rotation_euler = mathutils.Vector((math.radians(90), 0, 0))
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+# Ajusta la forma del cabecero para que sea un rectángulo
+cabecero.data.shape_keys.keynames.remove("Basis")
+cabecero.data.shape_keys.keynames.insert(1, "Width")
+cabecero.data.shape_keys.keynames.insert(2, "Height")
+cabecero.data.shape_keys.value_path_edit = "Width"
+cabecero.data.shape_keys.keyframes_insert_set(0)
+cabecero.data.shape_keys.keyframes_insert_set(1)
 
-# Crea el muro bajo separador para el vestidor
-bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + ancho/2, alto_cama))
+# Crea el muro bajo separador para un vestidor
+bpy.ops.mesh.primitive_cube_add(size=alto_muro, location=(0, -ancho/2 + 1.5, profundidad/2))
 muro = bpy.context.active_object
 muro.name = "Muro"
-muro.scale = (alto_muro, ancho, profundidad)
+bpy.ops.object.modifier_apply(modifier="Subdivision")
 
 # Crea los armarios empotrados
-bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + ancho/4, alto_cama))
+bpy.ops.mesh.primitive_cube_add(size=alto_muro, location=(0, -ancho/2 + 1.5, profundidad/2))
 armario_izquierdo = bpy.context.active_object
 armario_izquierdo.name = "Armario Izquierdo"
-armario_izquierdo.scale = (alto_muro, ancho/2, profundidad)
-
-bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -profundidad/2 + 3*ancho/4, alto_cama))
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+bpy.ops.mesh.primitive_cube_add(size=alto_muro, location=(0, -ancho/2 + 1.5, profundidad/2))
 armario_derecho = bpy.context.active_object
 armario_derecho.name = "Armario Derecho"
-armario_derecho.scale = (alto_muro, ancho/2, profundidad)
+bpy.ops.object.modifier_apply(modifier="Subdivision")
 
-# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
-if 'BLEND_OUT' in bpy.context.scene:
-    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene['BLEND_OUT'])
+# Guarda el archivo .blend si se especificó la ruta en la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -1,38 +1,71 @@
 import bpy
 
-# Limpia la escena
+# Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Define las dimensiones de los elementos
-pavimento_size = 20
-banco_length = 5
+# Definir las dimensiones de los objetos
+pavimento_size = 50, 50
+banca_size = 2, 1, 0.5
 farola_height = 3
-alcorque_radius = 1.5
 arbol_height = 8
 
-# Crea el pavimento de adoquines
-bpy.ops.mesh.primitive_plane_add(size=pavimento_size, location=(0, 0, -0.2))
-pavimento = bpy.context.object
-pavimento.name = "Pavimento"
+# Crear el pavimento de adoquines
+def crear_pavimento(size):
+    bpy.ops.mesh.primitive_plane_add(size=size[0], location=(size[0]/2, size[1]/2, 0))
+    pavement = bpy.context.object
+    pavement.name = "Pavimento"
+    pavement.scale = (1, 1, 0.1)
+    return pavement
 
-# Crea las bancas
-for i in range(4):
-    banco = bpy.ops.mesh.primitive_cube_add(size=1, location=(-5 + i * (banco_length + 1), -3, 0))
-    banco_obj = bpy.context.object
-    banco_obj.name = f"Banco_{i}"
+pavimento = crear_pavimento(pavimento_size)
 
-# Crea las farolas
-for i in range(4):
-    farola = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-2 + i * (2 + 1), 3, farola_height))
-    farola_obj = bpy.context.object
-    farola_obj.name = f"Farola_{i}"
+# Crear las bancas de diseño contemporáneo
+def crear_banca(size):
+    bpy.ops.mesh.primitive_cube_add(size=size[0], location=(size[1]/2, size[2]/2, 0))
+    banca = bpy.context.object
+    banca.name = "Banca"
+    return banca
 
-# Crea el alcorque con el árbol central
-bpy.ops.mesh.primitive_uv_sphere_add(radius=alcorque_radius, location=(0, 0, arbol_height + 1))
-arbol = bpy.context.object
-arbol.name = "Arbol"
+bancas = [crear_banca(banca_size) for _ in range(4)]
+for i, banca in enumerate(bancas):
+    if i == 0:
+        banca.location = (-25, -10, 0)
+    elif i == 1:
+        banca.location = (25, -10, 0)
+    elif i == 2:
+        banca.location = (-25, 10, 0)
+    else:
+        banca.location = (25, 10, 0)
 
-# Guarda la escena si BLEND_OUT está definido
+# Crear las farolas de iluminación
+def crear_farola(height):
+    bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=height, location=(0, 0, height/2))
+    farola = bpy.context.object
+    farola.name = "Farola"
+    return farola
+
+farolas = [crear_farola(farola_height) for _ in range(4)]
+for i, farola in enumerate(farolas):
+    if i == 0:
+        farola.location = (-25, -10, farola_height/2)
+    elif i == 1:
+        farola.location = (25, -10, farola_height/2)
+    elif i == 2:
+        farola.location = (-25, 10, farola_height/2)
+    else:
+        farola.location = (25, 10, farola_height/2)
+
+# Crear el árbol central
+def crear_arbol(height):
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=1.5, location=(0, 0, height))
+    arbol = bpy.context.object
+    arbol.name = "Arbol"
+    return arbol
+
+arbol = crear_arbol(arbol_height)
+arbol.location = (0, 0, -2)
+
+# Guardar la escena si existe BLEND_OUT
 if 'BLEND_OUT' in os.environ:
     blend_out_path = os.environ['BLEND_OUT']
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

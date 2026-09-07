@@ -1,6 +1,6 @@
 {
   "execution_success": false,
-  "execution_error": "CollectionObjects.link(): error with argument 1, \"object\" -  Function.object expected a Object type, not Mesh",
+  "execution_error": "bpy_struct: item.attr = val: Object.data expected a Image type, not Mesh",
   "chamfer_distance": null,
   "gt_vertices_count": 8,
   "pred_vertices_count": 0

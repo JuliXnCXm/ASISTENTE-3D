@@ -1,0 +1,11 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea un cilindro
+bpy.ops.mesh.primitive_cylinder_add(
+    radius=0.3 / 2,  # Diámetro de 0.3 metros
+    depth=0.9,       # Altura de 0.9 metros
+    location=(0, 0, 0)
+)

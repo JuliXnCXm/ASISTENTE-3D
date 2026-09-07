@@ -1,7 +1,7 @@
 {
-  "execution_success": false,
-  "execution_error": "name 'armario_length' is not defined",
-  "chamfer_distance": null,
+  "execution_success": true,
+  "execution_error": null,
+  "chamfer_distance": 34.804833316633314,
   "gt_vertices_count": 706,
-  "pred_vertices_count": 0
+  "pred_vertices_count": 64
 }

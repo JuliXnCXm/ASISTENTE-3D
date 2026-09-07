@@ -1,0 +1,54 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el poste
+def create_post():
+    bpy.ops.mesh.primitive_cube_add(size=0.2, location=(0, 0, 1.25))
+    obj = bpy.context.object
+    obj.scale = (1, 1, 5)
+    return obj
+
+# Crear la viga principal
+def create_beam():
+    bpy.ops.mesh.primitive_cube_add(size=0.2, location=(0, 0, 2.5))
+    obj = bpy.context.object
+    obj.scale = (4, 1, 1)
+    return obj
+
+# Crear la viga transversal
+def create_transverse_beam():
+    bpy.ops.mesh.primitive_cube_add(size=0.2, location=(0, 0, 2.5))
+    obj = bpy.context.object
+    obj.scale = (3, 1, 1)
+    return obj
+
+# Crear los postes
+post1 = create_post()
+post1.location = (-2, -1.5, 0)
+
+post2 = create_post()
+post2.location = (2, -1.5, 0)
+
+post3 = create_post()
+post3.location = (-2, 1.5, 0)
+
+post4 = create_post()
+post4.location = (2, 1.5, 0)
+
+# Crear las vigas principales
+beam1 = create_beam()
+beam1.location = (-2, 0, 2.5)
+
+beam2 = create_beam()
+beam2.location = (2, 0, 2.5)
+
+# Crear las vigas transversales
+for i in range(5):
+    beam = create_transverse_beam()
+    beam.location = (-1 + i * 0.6, 0, 2.5)
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

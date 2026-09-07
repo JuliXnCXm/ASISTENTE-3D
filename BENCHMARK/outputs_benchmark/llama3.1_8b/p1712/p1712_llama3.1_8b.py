@@ -1,0 +1,50 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del edificio
+ancho = 15
+alto = 10
+num_pisos = 3
+espacio_entre_columnas = 2.5
+espacio_entre_fila_y_columna = 1
+
+# Crea el suelo
+bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, 0, -alto/2))
+
+# Crea las columnas
+for i in range(int(ancho / espacio_entre_columnas) + 1):
+    columna = bpy.ops.mesh.primitive_cube_add(size=espacio_entre_fila_y_columna, location=(-ancho/2 + (i * espacio_entre_columnas), 0, -alto/2))
+    bpy.context.active_object.name = f'Columna {i}'
+
+# Crea las paredes
+for i in range(int(ancho / espacio_entre_columna) + 1):
+    for j in range(num_pisos):
+        if i == 0 or i == int(ancho / espacio_entre_columnas):
+            bpy.ops.mesh.primitive_plane_add(size=ancho, location=(-ancho/2 + (i * espacio_entre_columnas), 0, -alto/2 + (j * alto)))
+            bpy.context.active_object.name = f'Pared {i} Piso {j}'
+        elif j == num_pisos - 1:
+            bpy.ops.mesh.primitive_plane_add(size=ancho, location=(-ancho/2 + (i * espacio_entre_columnas), 0, -alto/2 + (j * alto)))
+            bpy.context.active_object.name = f'Pared {i} Piso {j}'
+        else:
+            bpy.ops.mesh.primitive_plane_add(size=ancho, location=(-ancho/2 + (i * espacio_entre_columnas), 0, -alto/2 + (j * alto)))
+            bpy.context.active_object.name = f'Pared {i} Piso {j}'
+
+# Crea las ventanas
+for i in range(int(ancho / espacio_entre_fila_y_columna) + 1):
+    for j in range(num_pisos):
+        if i == 0 or i == int(ancho / espacio_entre_fila_y_columna):
+            bpy.ops.mesh.primitive_cube_add(size=espacio_entre_fila_y_columna, location=(-ancho/2 + (i * espacio_entre_fila_y_columna), 0, -alto/2 + (j * alto)))
+            bpy.context.active_object.name = f'Ventana {i} Piso {j}'
+        elif j == num_pisos - 1:
+            bpy.ops.mesh.primitive_cube_add(size=espacio_entre_fila_y_columna, location=(-ancho/2 + (i * espacio_entre_fila_y_columna), 0, -alto/2 + (j * alto)))
+            bpy.context.active_object.name = f'Ventana {i} Piso {j}'
+        else:
+            bpy.ops.mesh.primitive_cube_add(size=espacio_entre_fila_y_columna, location=(-ancho/2 + (i * espacio_entre_fila_y_columna), 0, -alto/2 + (j * alto)))
+            bpy.context.active_object.name = f'Ventana {i} Piso {j}'
+
+# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

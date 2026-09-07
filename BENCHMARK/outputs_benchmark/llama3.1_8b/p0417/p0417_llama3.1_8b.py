@@ -1,0 +1,41 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del objeto
+sofa_length = 2.5  # metros
+sofa_width = 1.8   # metros
+mesa_length = 1.2  # metros
+mesa_width = 0.6   # metros
+
+# Crea el sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_length, location=(0, -sofa_width/2, 0))
+obj_sofo = bpy.context.active_object
+obj_sofo.name = 'Sofa'
+obj_sofo.scale = (sofa_length, sofa_width, 1)
+
+# Crea la tela para el sofá
+bpy.ops.mesh.primitive_plane_add(size=sofa_length, location=(0, -sofa_width/2, 0))
+obj_tela = bpy.context.active_object
+obj_tela.name = 'Tela'
+obj_tela.scale = (sofa_length, sofa_width, 1)
+obj_tela.data.materials.append(bpy.data.materials['Grey'])
+
+# Crea la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=mesa_length, location=(0, -mesa_width/2, 0))
+obj_mesa = bpy.context.active_object
+obj_mesa.name = 'Mesa'
+obj_mesa.scale = (mesa_length, mesa_width, 1)
+
+# Crea la madera para la mesa de centro
+bpy.ops.mesh.primitive_plane_add(size=mesa_length, location=(0, -mesa_width/2, 0))
+obj_madera = bpy.context.active_object
+obj_madera.name = 'Madera'
+obj_madera.scale = (mesa_length, mesa_width, 1)
+obj_madera.data.materials.append(bpy.data.materials['Wood'])
+
+# Guardar .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

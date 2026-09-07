@@ -1,0 +1,43 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades de la escalera
+ancho = 1.0
+alto_peldaño = 0.2
+profundidad_peldaño = 0.05
+alto_total = alto_peldaño * 16
+
+# Crea el cuerpo principal de la escalera
+bpy.ops.mesh.primitive_cube_add(size=alto_total, location=(0, 0, -alto_total/2))
+escalera = bpy.context.active_object
+escalera.name = "Escalera"
+
+# Crea los peldaños
+for i in range(16):
+    # Calcula la posición del peldaño actual
+    x = ancho / 2
+    y = (i * alto_peldaño) - (alto_total / 2)
+    
+    # Crea el peldaño
+    bpy.ops.mesh.primitive_cube_add(size=ancho, location=(x, 0, y))
+    peldaño = bpy.context.active_object
+    
+    # Ajusta la profundidad del peldaño para que coincida con la escalera
+    peldaño.scale[2] = profundidad_peldaño
+    
+    # Agrega el peldaño a la escena
+    bpy.ops.object.select_all(action='DESELECT')
+    peldaño.select_set(True)
+    bpy.context.collection.objects.link(peldaño)
+
+# Ajusta la posición de la escalera para que quede centrada en la escena
+escalera.location = (0, 0, -alto_total/2 + profundidad_peldaño/2)
+
+# Si se especificó una ruta de salida, guarda el archivo .blend
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene.BLEND_OUT)
+```

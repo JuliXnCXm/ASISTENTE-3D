@@ -4,46 +4,33 @@ import bpy
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Definir las dimensiones del edificio
-ancho = 15
-altura_piso = 3
+ancho = 15.0
+altura_piso = 3.0
 num_pisos = 3
-espacio_ventana_ancho = 2
-espacio_ventana_alto = 2
+espacio_ventana = 2.0
 
-# Crear el suelo
-bpy.ops.mesh.primitive_plane_add(size=ancho * 2, enter_editmode=False, align='WORLD', location=(0, 0, 0))
-suelo = bpy.context.object
-suelo.scale = (1, 1, 0.1)
+# Crear el piso inferior
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, 0, 0))
+piso_inferior = bpy.context.object
+piso_inferior.name = "Piso_Inferior"
 
 # Crear los pisos superiores
-for i in range(num_pisos):
-    piso = suelo.copy()
-    piso.location.z += altura_piso * (i + 1)
-    bpy.context.collection.objects.link(piso)
-
-# Crear las paredes laterales y traseras
-pared_lateral_izquierda = suelo.copy()
-pared_lateral_izquierda.location.x = -ancho / 2
-bpy.context.collection.objects.link(pared_lateral_izquierda)
-
-pared_lateral_derecha = suelo.copy()
-pared_lateral_derecha.location.x = ancho / 2
-bpy.context.collection.objects.link(pared_lateral_derecha)
-
-pared_trasera = suelo.copy()
-pared_trasera.location.z = altura_piso * num_pisos
-bpy.context.collection.objects.link(pared_trasera)
+for i in range(1, num_pisos):
+    piso_superior = piso_inferior.copy()
+    piso_superior.location.z += altura_piso * i
+    bpy.context.collection.objects.link(piso_superior)
 
 # Crear las ventanas
-for i in range(int(ancho / espacio_ventana_ancho)):
-    for j in range(int(altura_piso * num_pisos / espacio_ventana_alto)):
-        ventana = suelo.copy()
-        ventana.scale = (espacio_ventana_ancho, espacio_ventana_alto, 0.5)
-        ventana.location.x = -ancho / 2 + i * espacio_ventana_ancho
-        ventana.location.z = altura_piso * num_pisos - j * espacio_ventana_alto
-        bpy.context.collection.objects.link(ventana)
+def crear_ventana(x, y, z):
+    ventana = bpy.ops.mesh.primitive_cube_add(size=1.0, location=(x + 0.5, y + 0.5, z))
+    return ventana[0]
 
-# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
-if 'BLEND_OUT' in os.environ:
-    blend_out_path = os.environ['BLEND_OUT']
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+for piso in range(num_pisos):
+    for x in range(int(ancho / espacio_ventana)):
+        for y in range(4):  # Suponiendo que cada piso tiene 4 ventanas en ancho
+            crear_ventana(x * espacio_ventana, y * 5.0, altura_piso * piso)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if "BLEND_OUT" in os.environ:
+    blend_out = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out)

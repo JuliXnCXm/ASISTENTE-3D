@@ -1,0 +1,41 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del sofá
+sofa_length = 2.5  # metros
+sofa_width = 1.8   # metros
+sofa_height = 0.9  # metros
+
+# Crea el cuerpo del sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_length, location=(0, -sofa_width/2, sofa_height))
+obj_sofa = bpy.context.active_object
+obj_sofa.name = 'Sofa'
+
+# Duplica y gira los lados para formar el sofá
+bpy.ops.object.duplicate(obj=obj_sofa)
+bpy.context.active_object.rotation_euler = (0, mathutils.pi/2, 0)
+
+bpy.ops.object.duplicate(obj=obj_sofa)
+bpy.context.active_object.rotation_euler = (mathutils.pi, 0, 0)
+
+# Combina los tres lados en un solo objeto
+bpy.ops.object.join()
+
+# Define las propiedades de la mesa de centro
+mesa_length = 1.2  # metros
+mesa_width = 0.8   # metros
+mesa_height = 0.5  # metros
+
+# Crea la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=mesa_length, location=(0, -mesa_width/2, sofa_height + mesa_height))
+obj_mesa = bpy.context.active_object
+obj_mesa.name = 'Mesa'
+
+# Guardar el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

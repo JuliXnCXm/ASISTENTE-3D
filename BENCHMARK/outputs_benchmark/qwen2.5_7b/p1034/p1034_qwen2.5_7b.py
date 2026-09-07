@@ -4,34 +4,58 @@ import bpy
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Crear el suelo
-bpy.ops.mesh.primitive_plane_add(size=5, location=(0, 0, -0.1))
-bpy.context.object.scale = (2.0, 1.6, 1)
+bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, -0.1))
+suelo = bpy.context.object
+suelo.scale = (2.0, 1.6, 0.05)
+suelo.name = "Suelo"
 
-# Crear los patas de la cama
-for x in [-0.8, 0.8]:
-    for z in [-0.8, 0.8]:
-        bpy.ops.mesh.primitive_cylinder_add(radius=0.05, depth=1.2, location=(x, 0, z))
-        
 # Crear el marco de la cama
-bpy.ops.mesh.primitive_cube_add(size=0.2, location=(-0.4, 0, -0.4))
-bpy.context.object.scale = (1.6, 0.2, 2.0)
+bpy.ops.mesh.primitive_cube_add(size=0.05, location=(0, 0, 0))
+marco_cama = bpy.context.object
+marco_cama.scale = (1.6, 2.0, 0.05)
+marco_cama.name = "MarcoCama"
+
+# Crear las barras laterales
+bpy.ops.mesh.primitive_cube_add(size=0.05, location=(0.8, 0, 0))
+barra_lateral_izquierda = bpy.context.object
+barra_lateral_izquierda.scale = (0.05, 2.0, 1.6)
+barra_lateral_izquierda.name = "BarraLateralIzquierda"
+
+bpy.ops.mesh.primitive_cube_add(size=0.05, location=(0.8, 0, -1.6))
+barra_lateral_derecha = bpy.context.object
+barra_lateral_derecha.scale = (0.05, 2.0, 1.6)
+barra_lateral_derecha.name = "BarraLateralDerecha"
+
+# Crear las barras transversales
+bpy.ops.mesh.primitive_cube_add(size=0.05, location=(0, -1.0, 0))
+barra_transversal_superior = bpy.context.object
+barra_transversal_superior.scale = (1.6, 0.05, 2.0)
+barra_transversal_superior.name = "BarraTransversalSuperior"
+
+bpy.ops.mesh.primitive_cube_add(size=0.05, location=(0, 1.0, 0))
+barra_transversal_inferior = bpy.context.object
+barra_transversal_inferior.scale = (1.6, 0.05, 2.0)
+barra_transversal_inferior.name = "BarraTransversalInferior"
 
 # Crear el colchón
-bpy.ops.mesh.primitive_plane_add(size=1.8, location=(0, 0, 0.5))
-bpy.context.object.scale = (2.0, 1.6, 0.1)
-bpy.ops.object.shade_smooth()
+bpy.ops.mesh.primitive_cube_add(size=1.4, location=(0, -0.8, -0.1))
+colchon = bpy.context.object
+colchon.scale = (1.6, 2.0, 0.05)
+colchon.name = "Colchon"
 
 # Asignar materiales
-material_roble = bpy.data.materials.new(name="Roble")
-material_roble.diffuse_color = (0.4, 0.2, 0.05)
-for obj in [obj for obj in bpy.context.scene.objects if "cylinder" in obj.name]:
-    obj.data.materials.append(material_roble)
+madera_roble = bpy.data.materials.new(name="MaderaRoble")
+madera_roble.diffuse_color = (0.4, 0.2, 0.1, 1)
 
-material_tela = bpy.data.materials.new(name="Tela")
-material_tela.diffuse_color = (1, 1, 1)
-bpy.context.object.data.materials.append(material_tela)
+tela_blanca = bpy.data.materials.new(name="TelaBlanca")
+tela_blanca.diffuse_color = (1, 1, 1, 1)
 
-# Guardar el archivo si la variable BLEND_OUT está definida
+for obj in [marco_cama, barra_lateral_izquierda, barra_lateral_derecha, barra_transversal_superior, barra_transversal_inferior]:
+    obj.data.materials.append(madera_roble)
+
+colchon.data.materials.append(tela_blanca)
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
 if "BLEND_OUT" in os.environ:
     blend_out_path = os.environ["BLEND_OUT"]
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

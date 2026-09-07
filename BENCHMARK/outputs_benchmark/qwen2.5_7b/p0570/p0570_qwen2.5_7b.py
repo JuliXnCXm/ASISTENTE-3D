@@ -8,22 +8,28 @@ pisos = 5
 ancho = 20
 largo = 15
 
-# Crear los pisos
-for i in range(pisos):
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, i * 3))
-    piso = bpy.context.object
-    piso.scale = (ancho, largo, 3)
+# Crear el piso base
+bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, 0, -0.1))
+piso_base = bpy.context.object
+piso_base.scale = (largo, ancho, 0.1)
 
-# Crear la fachada con una retícula de ventanas
+# Crear los pisos superiores
+for i in range(1, pisos):
+    piso_superior = piso_base.copy()
+    piso_superior.location.z = -0.1 + 3 * i
+    bpy.context.collection.objects.link(piso_superior)
+    
+# Crear la fachada con ventanas simuladas por una retícula
 ventana_ancho = 2
-ventana_largo = 1.5
+ventana_largo = 2
 
-for x in range(int(ancho / ventana_ancho)):
-    for y in range(int(largo / ventana_largo)):
-        bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x * ventana_ancho - ancho / 2 + ventana_ancho / 2, y * ventana_largo - largo / 2 + ventana_largo / 2, 0))
-        ventana = bpy.context.object
-        ventana.scale = (ventana_ancho, ventana_largo, 3)
-
-# Guardar el archivo .blend si la variable BLEND_OUT está definida
-if 'BLEND_OUT' in dir():
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.path.abspath("//" + BLEND_OUT))
+for i in range(int(ancho / ventana_ancho)):
+    for j in range(int(largo / ventana_largo)):
+        ventana = bpy.ops.mesh.primitive_cube_add(size=1, location=(j * ventana_largo - largo / 2 + ventana_largo / 2, i * ventana_ancho - ancho / 2 + ventana_ancho / 2, -0.5))
+        ventana_obj = bpy.context.object
+        ventana_obj.scale = (ventana_largo, ventana_ancho, 1)
+        
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

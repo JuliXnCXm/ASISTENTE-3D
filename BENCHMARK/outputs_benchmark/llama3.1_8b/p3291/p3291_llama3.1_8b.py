@@ -1,0 +1,77 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el suelo de deck de madera
+deck = bpy.data.objects.new('Deck', bpy.data.meshes.new('Deck'))
+deck.location = (0, 0, 0)
+deck.scale = (10, 10, 0.1)
+
+verts = [
+    (-5, -5, 0),
+    (5, -5, 0),
+    (5, 5, 0),
+    (-5, 5, 0),
+]
+
+faces = [
+    (0, 1, 2, 3),
+]
+
+deck.data.from_pydata(verts, [], faces)
+bpy.context.collection.objects.link(deck)
+
+# Crea las jardineras perimetrales de hormigón
+jardinera = bpy.data.objects.new('Jardinera', bpy.data.meshes.new('Jardinera'))
+jardinera.location = (0, 0, 0.1)
+jardinera.scale = (10, 10, 0.2)
+
+verts = [
+    (-5, -5, 0.1),
+    (5, -5, 0.1),
+    (5, 5, 0.1),
+    (-5, 5, 0.1),
+]
+
+faces = [
+    (0, 1, 2, 3),
+]
+
+jardinera.data.from_pydata(verts, [], faces)
+bpy.context.collection.objects.link(jardinera)
+
+# Crea la pérgola de acero
+pérgola = bpy.data.objects.new('Pergola', bpy.data.meshes.new('Pergola'))
+pérgola.location = (0, 0, 1.5)
+pérgola.scale = (10, 10, 2)
+
+verts = [
+    (-5, -5, 1.5),
+    (5, -5, 1.5),
+    (5, 5, 1.5),
+    (-5, 5, 1.5),
+]
+
+faces = [
+    (0, 1, 2, 3),
+]
+
+pérgola.data.from_pydata(verts, [], faces)
+bpy.context.collection.objects.link(pérgola)
+
+# Agrega vegetación a las jardineras
+jardinera.modifiers.new('Displace', 'DISPLACE')
+jardinera.modifiers['Displace'].texture = bpy.data.images.load('vegetation.jpg')
+
+pérgola.modifiers.new('Displace', 'DISPLACE')
+pérgola.modifiers['Displace'].texture = bpy.data.images.load('vegetation.jpg')
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

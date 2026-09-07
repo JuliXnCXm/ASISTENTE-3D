@@ -1,0 +1,53 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades de la cama
+ancho = 1.6
+largo = 2.0
+alto_madera = 0.05
+espesor_madera = 0.02
+
+# Crea el marco superior de madera
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -largo/2, alto_madera))
+obj_marco_superior = bpy.context.active_object
+obj_marco_superior.name = "Marco Superior"
+obj_marco_superior.scale[1] = largo / ancho
+
+# Crea el marco inferior de madera
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -largo/2, 0))
+obj_marco_inferior = bpy.context.active_object
+obj_marco_inferior.name = "Marco Inferior"
+obj_marco_inferior.scale[1] = largo / ancho
+
+# Crea los laterales de madera
+bpy.ops.mesh.primitive_cube_add(size=alto_madera, location=(-ancho/2, -largo/2, 0))
+obj_lateral_derecha = bpy.context.active_object
+obj_lateral_derecha.name = "Lateral Derecha"
+obj_lateral_derecha.scale[1] = largo / ancho
+
+bpy.ops.mesh.primitive_cube_add(size=alto_madera, location=(ancho/2, -largo/2, 0))
+obj_lateral_izquierda = bpy.context.active_object
+obj_lateral_izquierda.name = "Lateral Izquierda"
+obj_lateral_izquierda.scale[1] = largo / ancho
+
+# Crea el colchón de textil blanco
+bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, -largo/2, alto_madera + espesor_madera))
+obj_colchon = bpy.context.active_object
+obj_colchon.name = "Colchon"
+obj_colchon.scale[1] = largo / ancho
+
+# Aplica materiales a los objetos
+mat_nogal = bpy.data.materials.new(name="Nogal")
+mat_nogal.diffuse_color = (0.5, 0.2, 0.1)
+obj_marco_superior.data.materials.append(mat_nogal)
+
+mat_colchon = bpy.data.materials.new(name="Colchon")
+mat_colchon.diffuse_color = (1, 1, 1)
+obj_colchon.data.materials.append(mat_colchon)
+
+# Guarda el archivo .blend si se especificó la ruta de salida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

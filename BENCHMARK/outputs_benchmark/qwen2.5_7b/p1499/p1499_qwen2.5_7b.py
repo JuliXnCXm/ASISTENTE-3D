@@ -1,32 +1,33 @@
 import bpy
 
-# Limpia la escena
+# Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crea el terreno de césped
-bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, -1))
+# Crear el terreno de césped
+bpy.ops.mesh.primitive_plane_add(size=50, location=(0, 0, -1))
 grass = bpy.context.object
-grass.scale = (5, 5, 1)
+grass.scale = (20, 20, 1)
 grass.name = "Grass"
 
-# Crea un árbol
-bpy.ops.mesh.primitive_uv_sphere_add(radius=3, location=(4, 0, 6))
+# Crear un árbol
+bpy.ops.mesh.primitive_uv_sphere_add(radius=3, location=(0, 5, 4))
 tree_trunk = bpy.context.object
-tree_trunk.scale = (1, 1, 2)
+tree_trunk.scale = (1, 1, 3)
 tree_trunk.name = "TreeTrunk"
 
-bpy.ops.mesh.primitive_cone_add(radius1=1.5, radius2=0.5, depth=8, location=(4, 0, 3))
+bpy.ops.mesh.primitive_cone_add(radius1=2, depth=6, location=(-2, 5, 0))
 tree_crown = bpy.context.object
 tree_crown.name = "TreeCrown"
-bpy.context.view_layer.objects.active = tree_trunk
+bpy.context.view_layer.objects.active = tree_crown
 bpy.ops.object.parent_set(type='OBJECT')
 
-# Crea un banco de madera
-bpy.ops.mesh.primitive_cube_add(size=2, location=(-3, 0, -1))
+# Crear un banco de madera
+bpy.ops.mesh.primitive_cube_add(size=2, location=(3, -5, 0))
 wood_bench = bpy.context.object
-wood_bench.scale = (4, 1, 0.5)
+wood_bench.scale = (1, 2, 0.5)
 wood_bench.name = "WoodBench"
 
-# Guarda la escena si BLEND_OUT está definido
+# Guardar la escena si se proporciona BLEND_OUT
 if 'BLEND_OUT' in dir(bpy.app):
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.app.properties.BLEND_OUT)
+    blend_out_path = bpy.app.config['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path, check_existing=False)

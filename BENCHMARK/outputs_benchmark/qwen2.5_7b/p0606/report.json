@@ -1,7 +1,7 @@
 {
-  "execution_success": false,
-  "execution_error": "'set' object is not subscriptable",
-  "chamfer_distance": null,
+  "execution_success": true,
+  "execution_error": null,
+  "chamfer_distance": 1.7064471813073112,
   "gt_vertices_count": 24,
-  "pred_vertices_count": 0
+  "pred_vertices_count": 36
 }

@@ -1,0 +1,83 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(size=4, location=(0, 0, 0))
+floor = bpy.context.object
+floor.name = "Floor"
+floor.scale.x = 4
+floor.scale.y = 3.5
+
+# Crear las paredes
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 2))
+wall_front = bpy.context.object
+wall_front.name = "Wall Front"
+wall_front.scale.x = 4
+wall_front.scale.y = 3.5
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -2))
+wall_back = bpy.context.object
+wall_back.name = "Wall Back"
+wall_back.scale.x = 4
+wall_back.scale.y = 3.5
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(2, 0, 1))
+wall_right = bpy.context.object
+wall_right.name = "Wall Right"
+wall_right.scale.x = 4
+wall_right.scale.y = 3.5
+
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-2, 0, 1))
+wall_left = bpy.context.object
+wall_left.name = "Wall Left"
+wall_left.scale.x = 4
+wall_left.scale.y = 3.5
+
+# Crear la cama doble
+bpy.ops.mesh.primitive_cube_add(size=2, location=(1.5, 0.75, 0))
+bed_base = bpy.context.object
+bed_base.name = "Bed Base"
+bed_base.scale.x = 2
+bed_base.scale.y = 1.5
+
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(1.5, 0.75, 1))
+bed_legs = bpy.context.object
+bed_legs.name = "Bed Legs"
+for leg in bed_legs:
+    leg.location.x += 0.25
+    leg.location.y += 0.25
+
+# Crear el armario de dos puertas
+bpy.ops.mesh.primitive_cube_add(size=1, location=(3, 0, 1))
+wardrobe = bpy.context.object
+wardrobe.name = "Wardrobe"
+wardrobe.scale.x = 2
+wardrobe.scale.y = 2
+
+# Pintar las paredes de gris
+for obj in bpy.data.objects:
+    if obj.type == 'MESH' and obj.name not in ["Floor", "Bed Base", "Bed Legs", "Wardrobe"]:
+        obj.select_set(True)
+bpy.context.view_layer.objects.active = wall_front
+bpy.ops.object.material_slot_add()
+mat = bpy.data.materials.new(name="GrayMaterial")
+mat.diffuse_color = (0.5, 0.5, 0.5, 1)
+bpy.context.object.active_material = mat
+for obj in bpy.context.selected_objects:
+    obj.active_material = mat
+
+# Pintar el suelo de parquet
+floor.select_set(True)
+bpy.ops.object.material_slot_add()
+mat = bpy.data.materials.new(name="ParquetMaterial")
+mat.diffuse_color = (0.8, 0.4, 0.2, 1)
+floor.active_material = mat
+
+# Guardar el archivo si BLEND_OUT está definido
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

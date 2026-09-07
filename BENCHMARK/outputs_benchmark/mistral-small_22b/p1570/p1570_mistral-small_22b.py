@@ -1,0 +1,28 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el tejado a dos aguas
+def create_roof():
+    # Crear la base del tejado
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 2, 0))
+    roof = bpy.context.object
+
+    # Escalar la base para que tenga 4 metros de ancho y 3 metros de fondo
+    roof.scale = (2, 1.5, 1)
+
+    # Crear los triángulos del tejado
+    bpy.ops.mesh.extrude_faces_move(TRANSFORM_OTYPE='SCALE', MIRROR=True, USE_ORIGIN=False)
+    roof.scale = (2, 1.5, 0.75)
+
+    # Crear los triángulos del tejado
+    bpy.ops.mesh.extrude_faces_move(TRANSFORM_OTYPE='SCALE', MIRROR=True, USE_ORIGIN=False)
+    roof.scale = (2, 1.5, 0.75)
+
+# Crear el tejado a dos aguas
+create_roof()
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

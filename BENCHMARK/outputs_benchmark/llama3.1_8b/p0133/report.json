@@ -1,6 +1,6 @@
 {
   "execution_success": false,
-  "execution_error": "euler[attribute] = x: assigned value not a number",
+  "execution_error": "Converting py args to operator properties:: keyword \"obj\" unrecognized",
   "chamfer_distance": null,
   "gt_vertices_count": 120,
   "pred_vertices_count": 0

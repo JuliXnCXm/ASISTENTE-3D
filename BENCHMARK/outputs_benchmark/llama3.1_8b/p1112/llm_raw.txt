@@ -1,0 +1,40 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del sofá
+sofa_length = 3.5  # metros
+sofa_width = 1.8   # metros
+sofa_height = 0.9  # metros
+
+# Crea el cuerpo principal del sofá
+bpy.ops.mesh.primitive_cube_add(size=sofa_length, location=(0, -2, 0))
+sofa_body = bpy.context.active_object
+sofa_body.scale = (sofa_length, sofa_width, sofa_height)
+
+# Agrega los asientos y respaldos al sofá
+for i in range(3):
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(i * 1.2 - 1.8, -2, 0))
+    seat = bpy.context.active_object
+    seat.scale = (sofa_length / 4, sofa_width, sofa_height)
+    
+    # Rotar el asiento para que esté en posición correcta
+    seat.rotation_euler = mathutils.Euler((math.pi/2, 0, 0), 'XYZ')
+
+# Define las propiedades de la mesa de centro
+mesa_length = 1.5  # metros
+mesa_width = 0.8   # metros
+mesa_height = 0.7  # metros
+
+# Crea la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=mesa_length, location=(0, -3.2, 0))
+mesa_centro = bpy.context.active_object
+mesa_centro.scale = (mesa_length, mesa_width, mesa_height)
+
+# Guardar el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

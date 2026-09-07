@@ -15,31 +15,23 @@ bpy.ops.mesh.primitive_cube_add(size=sofa_length, location=(0, -2, 0))
 sofa_body = bpy.context.active_object
 sofa_body.scale = (sofa_length, sofa_width, sofa_height)
 
-# Agrega la textura al sofá
-sofa_body.data.materials.append(bpy.data.materials['TelaGris'])
+# Agrega textura al sofá
+sofa_body.data.materials.append(bpy.data.materials['GreyFabric'])
 
 # Define las propiedades de la mesa de centro
-mesa_length = 1.5  # metros
-mesa_width = 0.8   # metros
-mesa_height = 0.4  # metros
+table_length = 1.5  # metros
+table_width = 0.8   # metros
+table_height = 0.7  # metros
 
-# Crea la base de la mesa
-bpy.ops.mesh.primitive_cube_add(size=mesa_length, location=(0, -2.5, -1))
-base_mesa = bpy.context.active_object
-base_mesa.scale = (mesa_length, mesa_width, mesa_height)
+# Crea el cuerpo de la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=table_length, location=(0, -2.5, table_height))
+table_body = bpy.context.active_object
+table_body.scale = (table_length, table_width, table_height)
 
-# Agrega la textura a la base de la mesa
-base_mesa.data.materials.append(bpy.data.materials['MaderaNogal'])
+# Agrega material a la mesa de centro
+table_body.data.materials.append(bpy.data.materials['WalnutWood'])
 
-# Crea el cuerpo de la mesa
-bpy.ops.mesh.primitive_cube_add(size=0.2, location=(0, -2.5, -1))
-cuerpo_mesa = bpy.context.active_object
-cuerpo_mesa.scale = (mesa_length, mesa_width, mesa_height)
-
-# Agrega la textura al cuerpo de la mesa
-cuerpo_mesa.data.materials.append(bpy.data.materials['MaderaNogal'])
-
-# Guardar el archivo .blend si se especificó la ruta en BLEND_OUT
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
 if 'BLEND_OUT' in os.environ:
     bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
 ```

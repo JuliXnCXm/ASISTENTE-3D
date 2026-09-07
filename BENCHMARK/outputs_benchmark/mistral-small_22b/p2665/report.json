@@ -1,0 +1,7 @@
+{
+  "execution_success": false,
+  "execution_error": "'MirrorModifier' object has no attribute 'axis'",
+  "chamfer_distance": null,
+  "gt_vertices_count": 96,
+  "pred_vertices_count": 0
+}

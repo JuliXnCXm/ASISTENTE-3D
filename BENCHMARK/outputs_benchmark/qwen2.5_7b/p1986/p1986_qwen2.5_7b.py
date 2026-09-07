@@ -3,35 +3,41 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear el suelo
-bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, -0.5))
-bpy.context.object.scale = (20, 30, 1)
+# Crear el piso
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, -0.2))
+floor = bpy.context.object
+floor.scale = (5, 5, 1)
 
 # Crear la isla central
-bpy.ops.mesh.primitive_cube_add(size=1.5, location=(-4, 0, 0))
-bpy.ops.transform.resize(value=(1.5, 1.5, 0.1))
+island_size = 3
+bpy.ops.mesh.primitive_cube_add(size=island_size, location=(-1.5, 0, 0))
+island = bpy.context.object
+island.scale = (island_size, island_size, 0.1)
 
 # Crear los gabinetes
-for x in range(-3, 3):
-    bpy.ops.mesh.primitive_cube_add(size=0.8, location=(x, -2, 0))
-    bpy.ops.transform.resize(value=(0.8, 2.5, 0.1))
+cabinet_length = 2.5
+cabinet_height = 0.8
+cabinet_depth = 0.4
+
+bpy.ops.mesh.primitive_cube_add(size=cabinet_depth, location=(-3, -1.25, cabinet_height / 2))
+left_cabinet = bpy.context.object
+left_cabinet.scale = (cabinet_length, cabinet_depth, cabinet_height)
+
+bpy.ops.mesh.primitive_cube_add(size=cabinet_depth, location=(3, -1.25, cabinet_height / 2))
+right_cabinet = bpy.context.object
+right_cabinet.scale = (cabinet_length, cabinet_depth, cabinet_height)
 
 # Crear la encimera de cuarzo
-bpy.ops.mesh.primitive_plane_add(size=6, location=(-4, 0, 0.05))
-bpy.context.object.scale = (6, 3, 0.05)
+bpy.ops.mesh.primitive_plane_add(size=7, location=(-0.5, -1.25, 0))
+quartz_counter = bpy.context.object
+quartz_counter.scale = (7, 3, 0.1)
 
 # Crear la campana extractora
-bpy.ops.mesh.primitive_cube_add(size=1, location=(0, -2, 1))
-bpy.ops.transform.resize(value=(1, 1, 0.2))
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 2))
+hood = bpy.context.object
+hood.scale = (2, 2, 1)
 
-# Alinear y posicionar correctamente los objetos
-for obj in bpy.context.scene.objects:
-    if obj.name not in {'Cube', 'Plane'}:
-        bpy.data.objects.remove(obj)
-
-bpy.context.view_layer.objects.active = bpy.data.objects['Plane']
-bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
-
-# Guardar el archivo .blend si la variable BLEND_OUT está definida
-if "BLEND_OUT" in dir(bpy.app):
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.app.background_save_path)
+# Guardar el archivo .blend si existe BLEND_OUT
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

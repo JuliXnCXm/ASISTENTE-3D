@@ -1,0 +1,45 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el sofá de cuero de 3 plazas
+def create_sofa():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    sofa = bpy.context.object
+    sofa.name = "Sofa"
+
+    # Añadir modificador de subdivisión para suavizar el sofá
+    bpy.ops.object.modifier_add(type='SUBSURF')
+    sofa.modifiers["Subsurf"].levels = 2
+    sofa.modifiers["Subsurf"].render_levels = 2
+
+    # Añadir material de cuero
+    mat = bpy.data.materials.new(name="Leather")
+    mat.diffuse_color = (0.5, 0.3, 0.1)
+    sofa.data.materials.append(mat)
+
+create_sofa()
+
+# Crear la mesa de centro de madera de nogal
+def create_table():
+    bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=0.3, location=(1.5, 0, 0))
+    table = bpy.context.object
+    table.name = "Table"
+
+    # Añadir modificador de subdivisión para suavizar la mesa
+    bpy.ops.object.modifier_add(type='SUBSURF')
+    table.modifiers["Subsurf"].levels = 2
+    table.modifiers["Subsurf"].render_levels = 2
+
+    # Añadir material de madera de nogal
+    mat = bpy.data.materials.new(name="Walnut")
+    mat.diffuse_color = (0.5, 0.3, 0.1)
+    table.data.materials.append(mat)
+
+create_table()
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

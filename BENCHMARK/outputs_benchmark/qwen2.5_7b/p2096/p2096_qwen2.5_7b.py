@@ -5,29 +5,33 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Crear el suelo
 bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, -0.5))
-bpy.context.object.scale = (10, 10, 1)
 
-# Crear la cama con cabecero tapizado
-bpy.ops.mesh.primitive_cube_add(size=2, location=(-3, 0, 0.8))
-bpy.ops.transform.resize(value=(2, 2, 0.5))
+# Cama con cabecero tapizado
+bpy.ops.mesh.primitive_cube_add(size=2, location=(-3, 0, 0))
+bpy.ops.transform.resize(value=(2, 2, 0.1))
+bpy.context.object.name = "Cama"
 
-# Tapicería del cabecero
-cabecero = bpy.data.objects.new(name="Cabecero", object_data=bpy.data.meshes.new("CabeceroMesh"))
-bpy.context.collection.objects.link(cabecero)
-bpy.ops.mesh.primitive_cube_add(size=2, location=(-3, 0, 1.5))
-bpy.ops.transform.resize(value=(2, 2, 0.5))
-cabecero.data = bpy.context.object.data
+# Cabecero de la cama
+bpy.ops.mesh.primitive_cube_add(size=1, location=(-3, 0, 1.5))
+bpy.ops.transform.resize(value=(1, 1, 0.2))
+bpy.context.object.name = "Cabecero_Cama"
 
-# Crear el muro bajo separador
-bpy.ops.mesh.primitive_plane_add(size=6, location=(0, -4, 0))
-bpy.context.object.scale = (6, 1, 3)
+# Tapizado del cabecero (usando un material simple)
+material = bpy.data.materials.new(name="Tapizado")
+material.diffuse_color = (0.5, 0.2, 0.8, 1)
+bpy.context.object.data.materials.append(material)
 
-# Crear los armarios empotrados
+# Muro bajo separador para vestidor
+bpy.ops.mesh.primitive_cube_add(size=4, location=(3, 0, -0.5))
+bpy.ops.transform.resize(value=(4, 0.2, 2))
+bpy.context.object.name = "Muro_Bajo_Vestidor"
+
+# Armarios empotrados
 for i in range(2):
-    bpy.ops.mesh.primitive_cube_add(size=1.5, location=(-4 + 3 * i, -4, 1.5))
-    bpy.ops.transform.resize(value=(1.5, 1.5, 2))
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(3 + (i * 1), -1, 0.5))
+    bpy.ops.transform.resize(value=(1, 2, 2.5))
+    bpy.context.object.name = f"Armario_Empotrado_{i}"
 
-# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
-if "BLEND_OUT" in os.environ:
-    blend_out = os.environ["BLEND_OUT"]
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out)
+# Guardar el archivo .blend si la variable BLEND_OUT está definida
+if "BLEND_OUT" in dir(bpy.app):
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.app.background_save_path)

@@ -4,33 +4,27 @@ import bpy
 # Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Define el tamaño de la parcela en metros
-parcel_size = 5
+# Define el tamaño del terreno
+terreno_size = 5
 
-# Crea un plano para representar la parcela
-bpy.ops.mesh.primitive_plane_add(size=parcel_size, location=(0, 0, -1))
+# Crea el terreno como un plano
+bpy.ops.mesh.primitive_plane_add(size=terreno_size, location=(0, 0, -1))
 plane = bpy.context.object
-plane.name = "Parcela"
+plane.name = "Terreno"
 
-# Define los parámetros del árbol
-tree_radius = 2.5  # Radio de la copa en metros
-tree_height = 10   # Altura del tronco en metros
+# Define la geometría del árbol (copa esférica)
+def crear_arbol_copa_esferica():
+    # Crea un esfera para representar la copa del árbol
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=1, location=(0, 0, 2))
+    arbol = bpy.context.object
+    arbol.name = "Arbol"
+    
+    # Ajusta la escala para que parezca un árbol
+    arbol.scale = (0.5, 0.5, 3)
 
-# Crea el tronco del árbro
-bpy.ops.mesh.primitive_cylinder_add(radius=0.3, depth=tree_height, location=(0, 0, tree_height / 2))
-tronco = bpy.context.object
-tronco.name = "Tronco"
+crear_arbol_copa_esferica()
 
-# Crea la copa del árbol como una esfera
-bpy.ops.mesh.primitive_uv_sphere_add(radius=tree_radius, location=(0, 0, tree_height + 1))
-copa = bpy.context.object
-copa.name = "Copa"
-
-# Alinear la copa al tronco
-copa.location = (0, 0, tree_height / 2)
-
-# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
-if 'BLEND_OUT' in os.environ:
-    blend_out_path = os.environ['BLEND_OUT']
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+# Verifica si existe la variable de entorno BLEND_OUT y guarda el archivo si es así
+if "BLEND_OUT" in locals() or "BLEND_OUT" in globals():
+    bpy.ops.wm.save_as_mainfile(filepath=BLEND_OUT)
 ```

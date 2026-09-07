@@ -1,7 +1,7 @@
 {
-  "execution_success": true,
-  "execution_error": null,
-  "chamfer_distance": 4.133115984660341,
+  "execution_success": false,
+  "execution_error": "bpy_struct: item.attr = val: Object.data expected a Image type, not Mesh",
+  "chamfer_distance": null,
   "gt_vertices_count": 56,
-  "pred_vertices_count": 546
+  "pred_vertices_count": 0
 }

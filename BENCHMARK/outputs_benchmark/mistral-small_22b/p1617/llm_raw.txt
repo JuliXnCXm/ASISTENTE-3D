@@ -1,0 +1,21 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el terreno plano
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+terrain = bpy.context.object
+terrain.scale = (20, 30, 1)
+
+# Añade un material de césped
+material = bpy.data.materials.new(name="GrassMaterial")
+material.diffuse_color = (0, 1, 0, 1)  # Color verde
+terrain.data.materials.append(material)
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

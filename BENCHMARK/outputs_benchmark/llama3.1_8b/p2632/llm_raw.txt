@@ -1,0 +1,19 @@
+```python
+import bpy
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Definir las dimensiones de la columna
+alto = 2.8
+ancho = alto
+profundo = ancho
+
+# Crear un objeto de sección cuadrada
+bpy.ops.mesh.primitive_cube_add(size=0.4, location=(0, 0, 0))
+
+# Duplicar el objeto para crear la columna completa
+for i in range(1, int(alto // 0.4) + 1):
+    bpy.ops.object.duplicate_move_linked(location=(0, 0, (i - 1) * 0.4))
+    
+# Borrar los objetos de sección cuadrada que no son parte de la columna
+bpy.context.collection.objects.unlink(bpy.data.objects[0])
+```

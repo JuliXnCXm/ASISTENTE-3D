@@ -1,0 +1,15 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea la columna interior
+bpy.ops.mesh.primitive_cube_add(size=0.4, location=(0, 0, 1.4))
+column = bpy.context.object
+column.scale.z = 7  # Altura de 2.8m
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

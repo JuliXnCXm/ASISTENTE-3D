@@ -3,18 +3,16 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear un cilindro para representar el bolardo
-bpy.ops.mesh.primitive_cylinder_add(radius=0.1, depth=0.9, location=(0, 0, 0))
+# Definir las dimensiones del bolardo en metros
+height = 0.90
+radius = 0.10
 
-# Renombrar la mesh al objeto "bolardo"
-obj = bpy.context.object
-obj.name = "bolardo"
+# Crear un cilindro
+bpy.ops.mesh.primitive_cylinder_add(radius=radius, depth=height, location=(0, 0, 0))
 
-# Ajustar el material (opcional)
-mat = bpy.data.materials.new(name="Hormigón")
-mat.diffuse_color = (0.451, 0.227, 0.098, 1)  # Color de hormigón
-obj.data.materials.append(mat)
+# Renombrar el objeto al bolardo
+bpy.context.object.name = "bolardo"
 
-# Guardar el archivo blend si la variable BLEND_OUT está definida
-if "BLEND_OUT" in bpy.context.scene:
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene[BLEND_OUT])
+# Verificar si existe la variable de entorno BLEND_OUT y guardar el archivo si es así
+if 'BLEND_OUT' in locals() or 'BLEND_OUT' in globals():
+    bpy.ops.wm.save_as_mainfile(filepath=BLEND_OUT)

@@ -1,7 +1,7 @@
 {
-  "execution_success": true,
-  "execution_error": null,
-  "chamfer_distance": 7.1247619961350495,
+  "execution_success": false,
+  "execution_error": "Vector subtraction: (Vector -= tuple) invalid type for this operation",
+  "chamfer_distance": null,
   "gt_vertices_count": 8,
-  "pred_vertices_count": 8
+  "pred_vertices_count": 0
 }

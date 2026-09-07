@@ -4,51 +4,79 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear el piso y las paredes principales
+# Crear el piso
 bpy.ops.mesh.primitive_plane_add(size=8, location=(0, 0, 0))
-bpy.ops.transform.resize(value=(8, 6, 1))
+floor = bpy.context.object
+floor.scale = (1, 1, 0.01)
+floor.name = "Floor"
 
-# Altura del techo
-bpy.ops.object.modifier_add(type='SOLIDIFY')
-bpy.context.object.modifiers["Solidify"].thickness = 2.8
+# Crear las paredes
+bpy.ops.mesh.primitive_cube_add(size=2.8, location=(-4, -3, 2.8))
+wall1 = bpy.context.object
+wall1.scale = (1, 6, 1)
+wall1.rotation_euler[0] = 1.57
+
+bpy.ops.mesh.primitive_cube_add(size=2.8, location=(4, -3, 2.8))
+wall2 = bpy.context.object
+wall2.scale = (1, 6, 1)
+wall2.rotation_euler[0] = 1.57
+
+bpy.ops.mesh.primitive_cube_add(size=2.8, location=(-4, 3, 2.8))
+wall3 = bpy.context.object
+wall3.scale = (8, 1, 1)
+
+bpy.ops.mesh.primitive_cube_add(size=2.8, location=(4, 3, 2.8))
+wall4 = bpy.context.object
+wall4.scale = (8, 1, 1)
+
+# Crear la oficina de planta abierta
+bpy.ops.mesh.primitive_plane_add(size=6, location=(-0.5, -0.5, 0))
+office_floor = bpy.context.object
+office_floor.scale = (1, 1, 0.01)
+office_floor.name = "OfficeFloor"
 
 # Crear los puestos de trabajo
 for i in range(4):
-    x_pos = -3 + (i % 2) * 1.5
-    y_pos = 1.5 - (i // 2) * 1.5
-    bpy.ops.mesh.primitive_cube_add(size=0.8, location=(x_pos, y_pos, 0))
-    
-    # Escritorio
-    desk = bpy.context.object.copy()
-    desk.location = (x_pos, y_pos, 0.3)
-    bpy.context.collection.objects.link(desk)
-    
-    # Silla ergonómica
-    chair = bpy.ops.mesh.primitive_cylinder_add(radius=0.25, depth=1, location=(x_pos, y_pos + 0.4, 0.7))
-    bpy.context.object.name = "Chair_" + str(i)
-    
-    # Cajonera
-    drawer = bpy.ops.mesh.primitive_cube_add(size=0.6, location=(x_pos - 0.25, y_pos - 0.15, 0.3))
+    desk = bpy.ops.mesh.primitive_cube_add(size=1, location=(-2 + i % 2 * 3 - 1, -2 + int(i / 2) * 2 - 1, 0))
+    desk_obj = bpy.context.object
+    desk_obj.scale = (0.5, 0.5, 0.1)
+    desk_obj.name = f"Desk{i}"
+
+    chair = bpy.ops.mesh.primitive_cube_add(size=0.8, location=(-2 + i % 2 * 3 - 1, -2 + int(i / 2) * 2 - 1, 0))
+    chair_obj = bpy.context.object
+    chair_obj.scale = (0.5, 0.5, 0.5)
+    chair_obj.name = f"Chair{i}"
+
+    drawer = bpy.ops.mesh.primitive_cube_add(size=0.6, location=(-2 + i % 2 * 3 - 1, -2 + int(i / 2) * 2 - 1, 0))
+    drawer_obj = bpy.context.object
+    drawer_obj.scale = (0.5, 0.5, 0.4)
+    drawer_obj.name = f"Drawer{i}"
+
+# Crear la sala de reuniones
+bpy.ops.mesh.primitive_plane_add(size=3, location=(-6, -2, 0))
+meeting_room_floor = bpy.context.object
+meeting_room_floor.scale = (1, 1, 0.01)
+meeting_room_floor.name = "MeetingRoomFloor"
+
+bpy.ops.mesh.primitive_cube_add(size=4, location=(-5.5, -1.5, 0))
+meeting_table = bpy.context.object
+meeting_table.scale = (2, 3, 0.1)
+meeting_table.name = "MeetingTable"
+
+for i in range(6):
+    chair = bpy.ops.mesh.primitive_cube_add(size=0.8, location=(-4 + i % 3 * 1 - 0.5, -1.5 + int(i / 3) * 2 - 0.5, 0))
+    chair_obj = bpy.context.object
+    chair_obj.scale = (0.5, 0.5, 0.5)
+    chair_obj.name = f"MeetingChair{i}"
 
 # Crear el tabique de vidrio para la sala de reuniones
-bpy.ops.mesh.primitive_plane_add(size=7, location=(-4.5, 1.5, 2.8))
-bpy.ops.transform.resize(value=(3, 4, 1))
-bpy.ops.object.modifier_add(type='SOLIDIFY')
-bpy.context.object.modifiers["Solidify"].thickness = 0.1
+bpy.ops.mesh.primitive_cube_add(size=3, location=(-6, -2, 2.8))
+glass_wall = bpy.context.object
+glass_wall.scale = (1, 4, 0.5)
+glass_wall.name = "GlassWall"
 
-# Crear la mesa para la sala de reuniones
-table = bpy.ops.mesh.primitive_cube_add(size=2, location=(-3.5, -1.5, 2))
-bpy.context.object.name = "Table"
-
-# Amueblar la sala de reuniones con sillas
-for i in range(6):
-    x_pos = -3 + (i % 3) * 0.8
-    y_pos = -1.4 - (i // 3) * 0.8
-    chair = bpy.ops.mesh.primitive_cylinder_add(radius=0.25, depth=1, location=(x_pos, y_pos, 1.7))
-    bpy.context.object.name = "Chair_" + str(i + 4)
-
-# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+# Guardar el archivo .blend si la variable BLEND_OUT está definida
 if 'BLEND_OUT' in os.environ:
     blend_out_path = os.environ['BLEND_OUT']
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path, check_existing=False)
 ```

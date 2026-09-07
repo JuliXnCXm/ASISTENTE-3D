@@ -9,28 +9,26 @@ peldaño_ancho = 1.0
 peldaño_huella = 0.3
 peldaño_contrahuella = 0.18
 
-# Definir la altura total de la escalera
-altura_total = 15 * (peldaño_huella + peldaño_contrahuella)
+# Definir la cantidad de peldaños
+num_peldaños = 15
 
-# Crear los peldaños
-for i in range(15):
-    # Posición del peldaño actual
-    x_pos = -7.5 + i * (peldaño_ancho + 0.3)
-    
-    # Crear el peldaño como un rectángulo
-    bpy.ops.mesh.primitive_plane_add(size=peldaño_ancho, location=(x_pos, 0, 0))
-    
-    # Rotar el peldaño para que apunte hacia arriba
-    obj = bpy.context.object
-    obj.rotation_euler[2] = -1.5708
-    
-    # Mover el peldaño hacia arriba
-    obj.location.z += i * (peldaño_huella + peldaño_contrahuella)
-    
-    # Ajustar la escala en z para darle altura
-    obj.scale[2] = 0.18
+# Crear el primer peldaño
+bpy.ops.mesh.primitive_cube_add(size=peldaño_ancho, location=(0, 0, 0))
+peldaño_objeto = bpy.context.object
+peldaño_objeto.name = "Peldaño_1"
 
-# Guardar el archivo .blend si existe BLEND_OUT
-if 'BLEND_OUT' in bpy.context.scene:
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene[BLEND_OUT])
+# Rotar y mover el primer peldaño para que esté en la posición correcta
+bpy.ops.transform.rotate(value=-1.5708, orient_axis='X')
+bpy.ops.transform.translate(value=(0, -peldaño_huella / 2, -peldaño_contrahuella))
+
+# Crear los demás peldaños y moverlos en el eje Y para formar la escalera
+for i in range(1, num_peldaños):
+    nuevo_peldaño = peldaño_objeto.copy()
+    nuevo_peldaño.location.y -= peldaño_huella + 0.18
+    bpy.context.collection.objects.link(nuevo_peldaño)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
 ```

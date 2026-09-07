@@ -1,0 +1,74 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades a metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el muro de ladrillo rojo
+muro = bpy.data.objects.new("Muro", None)
+muro.location = (0, 0, 0)
+
+# Crea un nuevo material para el muro
+material_muro = bpy.data.materials.new(name="MaterialLadrilloRojo")
+material_muro.use_nodes = True
+
+# Obtiene la superficie del material
+bsdf = material_muro.node_tree.nodes["Principled BSDF"]
+bsdf.inputs['Base Color'].default_value = (1, 0.25, 0.25, 1)  # Rojo intenso
+
+muro.data.materials.append(material_muro)
+
+# Crea un nuevo objeto para el muro
+bpy.context.collection.objects.link(muro)
+
+# Crea la geometría del muro
+verts = [
+    (0, 2.5, 0),
+    (10, 2.5, 0),
+    (10, -2.5, 0),
+    (0, -2.5, 0)
+]
+faces = [
+    (0, 1, 2, 3)
+]
+
+muro.data.from_pydata(verts, [], faces)
+muro.data.update()
+
+# Crea la puerta de madera
+puerta = bpy.data.objects.new("Puerta", None)
+puerta.location = (5, 0, -2.5)
+
+material_puerta = bpy.data.materials.new(name="MaterialMadera")
+material_puerta.use_nodes = True
+
+bsdf = material_puerta.node_tree.nodes["Principled BSDF"]
+bsdf.inputs['Base Color'].default_value = (1, 0.75, 0.25, 1)  # Madera clara
+
+puerta.data.materials.append(material_puerta)
+
+bpy.context.collection.objects.link(puerta)
+
+# Crea la geometría de la puerta
+verts = [
+    (-1.5, -2.5, -2.5),
+    (1.5, -2.5, -2.5),
+    (1.5, 0, -2.5),
+    (-1.5, 0, -2.5)
+]
+faces = [
+    (0, 1, 2, 3)
+]
+
+puerta.data.from_pydata(verts, [], faces)
+puerta.data.update()
+
+# Guarda el archivo .blend si se especificó la ruta de salida
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene['BLEND_OUT'])
+```

@@ -1,0 +1,30 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el edificio
+def create_building():
+    # Parámetros del edificio
+    width = 15  # Ancho en metros
+    height = 3  # Altura en pisos
+    window_width = 2  # Ancho de la ventana en metros
+    window_height = 1.5  # Altura de la ventana en metros
+    spacing = 0.5  # Espaciado entre ventanas en metros
+
+    # Crear el edificio
+    bpy.ops.mesh.primitive_cube_add(size=height, location=(width / 2, 0, height / 2))
+    building = bpy.context.object
+
+    # Añadir ventanas
+    for i in range(height):
+        for j in range(int(width / (window_width + spacing))):
+            bpy.ops.mesh.primitive_cube_add(size=(window_width, window_height, 0), location=((j * (window_width + spacing) - width / 2), i * height, 0))
+
+# Ejecutar la función para crear el edificio
+create_building()
+
+# Guardar el archivo .blend si existe BLEND_OUT
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

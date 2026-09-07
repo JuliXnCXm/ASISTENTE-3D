@@ -1,37 +1,36 @@
 import bpy
 
-# Limpiar la escena
+# Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear el suelo
-bpy.ops.mesh.primitive_plane_add(size=20, enter_editmode=False, location=(0, 0, -0.1))
-suelo = bpy.context.object
-suelo.scale = (16, 20, 1)
-suelo.name = "Suelo"
+# Define las dimensiones de la cama
+width = 1.6
+length = 2.0
+thickness = 0.05
 
-# Crear el marco de la cama
-bpy.ops.mesh.primitive_cube_add(size=1.6, enter_editmode=False, location=(0, -0.8, 0))
-marco_cama = bpy.context.object
-marco_cama.scale = (1.6, 2.0, 0.05)
-marco_cama.name = "MarcoCama"
+# Crea los lados de la cama
+bpy.ops.mesh.primitive_cube_add(size=0.05, location=(0, 0, -0.025))
+bpy.ops.transform.resize(value=(width / 2, length / 2, thickness))
+
+# Rotar el cubo para que esté horizontal
+bpy.context.object.rotation_euler = (1.5708, 0, 0)
+
+# Crear los otros lados de la cama
+for x in [-width/2, width/2]:
+    for z in [length/2, -length/2]:
+        bpy.ops.mesh.primitive_cube_add(size=0.05, location=(x, 0, z))
+        bpy.ops.transform.resize(value=(thickness, length / 2, width / 2))
 
 # Crear el colchón
-bpy.ops.mesh.primitive_cube_add(size=1.4, enter_editmode=False, location=(0, -0.8, -0.025))
-colchon = bpy.context.object
-colchon.scale = (1.6, 2.0, 0.05)
-colchon.name = "Colchon"
+bpy.ops.mesh.primitive_plane_add(size=length * 1.2, location=(0, 0, -thickness / 2))
+bpy.context.object.scale = (width * 1.5, length * 1.5, thickness / 4)
 
-# Asignar materiales
-madera_roble = bpy.data.materials.new(name="MaderaRoble")
-madera_roble.diffuse_color = (0.4, 0.2, 0.1, 1)
+# Cambiar la textura del colchón a blanco
+material = bpy.data.materials.new(name="ColchonMaterial")
+material.diffuse_color = (1, 1, 1)
+bpy.context.object.data.materials.append(material)
 
-textil_blanco = bpy.data.materials.new(name="TextilBlanco")
-textil_blanco.diffuse_color = (1, 1, 1, 1)
-
-marco_cama.data.materials.append(madera_roble)
-colchon.data.materials.append(textil_blanco)
-
-# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+# Guardar el archivo .blend si existe BLEND_OUT en las variables de entorno
 if "BLEND_OUT" in os.environ:
     blend_out_path = os.environ["BLEND_OUT"]
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

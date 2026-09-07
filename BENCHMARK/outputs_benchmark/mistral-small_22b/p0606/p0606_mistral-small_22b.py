@@ -1,0 +1,61 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el marco de la cama
+frame = bpy.data.objects.new("Frame", None)
+bpy.context.collection.objects.link(frame)
+
+# Crear los lados largos del marco
+for i in range(2):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(i * 2 - 1, 0, 0))
+    bpy.context.object.scale = (0.4, 1, 0.05)
+    bpy.context.object.name = "Side"
+    frame.objects.link(bpy.context.object)
+
+# Crear los lados cortos del marco
+for i in range(2):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, i * 2 - 1, 0))
+    bpy.context.object.scale = (0.4, 1, 0.05)
+    bpy.context.object.name = "End"
+    frame.objects.link(bpy.context.object)
+
+# Crear los postes del marco
+for i in range(4):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(i % 2 * 2 - 1, (i // 2) * 2 - 1, 0))
+    bpy.context.object.scale = (0.05, 0.05, 0.4)
+    bpy.context.object.name = "Post"
+    frame.objects.link(bpy.context.object)
+
+# Crear el colchón
+colchon = bpy.data.objects.new("Colchon", None)
+bpy.context.collection.objects.link(colchon)
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -0.4))
+bpy.context.object.scale = (2, 1.6, 0.1)
+bpy.context.object.name = "Colchon"
+colchon.objects.link(bpy.context.object)
+
+# Crear el material de madera de roble
+material_roble = bpy.data.materials.new(name="Robre")
+material_roble.diffuse_color = (0.5, 0.3, 0.1)
+
+# Aplicar el material a los objetos del marco
+for obj in frame.objects:
+    if obj.type == 'MESH':
+        for mat_slot in obj.data.materials:
+            mat_slot.material = material_roble
+
+# Crear el material blanco para el colchón
+material_blanco = bpy.data.materials.new(name="Blanco")
+material_blanco.diffuse_color = (1, 1, 1)
+
+# Aplicar el material al colchón
+for obj in colchon.objects:
+    if obj.type == 'MESH':
+        for mat_slot in obj.data.materials:
+            mat_slot.material = material_blanco
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if "BLEND_OUT" in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ["BLEND_OUT"])

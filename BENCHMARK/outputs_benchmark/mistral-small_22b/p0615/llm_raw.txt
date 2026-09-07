@@ -1,0 +1,68 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Dimensiones del espacio interior
+width = 8
+depth = 6
+height = 3
+
+# Crear el suelo de porcelanato
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, height/2))
+floor = bpy.context.object
+floor.scale = (width, depth)
+floor.name = "Floor"
+
+# Crear la zona de estar con un sofá y una estantería
+sofa_length = 2
+shelf_height = 1
+shelf_depth = 0.5
+
+# Sofá
+bpy.ops.mesh.primitive_cube_add(size=0.2, location=(width/4 - sofa_length/2, depth/2 - 1, height/8))
+sofa = bpy.context.object
+sofa.scale = (sofa_length, 0.5, 0.3)
+sofa.name = "Sofa"
+
+# Estantería
+bpy.ops.mesh.primitive_cube_add(size=0.2, location=(width/4 - shelf_depth/2, depth/2 - 1, height/8 + sofa.dimensions[2] + 0.1))
+shelf = bpy.context.object
+shelf.scale = (shelf_depth, shelf_height, 0.3)
+shelf.name = "Shelf"
+
+# Crear la zona de comedor con una mesa y cuatro sillas
+table_length = 1.5
+table_width = 0.75
+chair_size = 0.4
+
+# Mesa
+bpy.ops.mesh.primitive_cube_add(size=0.2, location=(3 * width/4 - table_length/2, depth/2 - 1, height/8))
+table = bpy.context.object
+table.scale = (table_length, table_width, 0.3)
+table.name = "Table"
+
+# Sillas
+for i in range(4):
+    bpy.ops.mesh.primitive_cube_add(size=chair_size, location=(3 * width/4 - (i % 2 + 1) * chair_size - (i // 2) * table_length / 2, depth/2 - 1 - (i // 2) * (table_width + 0.2), height/8))
+    chair = bpy.context.object
+    chair.scale = (chair_size, chair_size, 0.3 * chair_size)
+    chair.name = f"Chair{i+1}"
+
+# Crear la luz de área en el techo
+bpy.ops.mesh.primitive_plane_add(size=1, location=(width/2, depth/2, height))
+light = bpy.context.object
+light.scale = (width, depth)
+light.name = "Light"
+
+# Añadir material al suelo
+bpy.ops.material.new(name="Porcelanato")
+floor_mat = bpy.data.materials["Porcelanato"]
+floor_mat.diffuse_color = (0.8, 0.8, 0.8)
+floor.data.materials.append(floor_mat)
+
+# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

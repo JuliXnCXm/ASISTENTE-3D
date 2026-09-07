@@ -1,53 +1,62 @@
 ```python
 import bpy
 
-# Limpiar la escena
+# Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Definir las dimensiones del edificio
-plantas = 5
-ancho_planta = 20
-largo_planta = 30
-altura_planta = 4.5
-espacio_entre_columnas = 4
-altura_columna = 10
+# Define las dimensiones del edificio
+ancho = 20
+largo = 30
+altura_planta = 4
+num_plantas = 5
 
-# Crear la base de asfalto
-bpy.ops.mesh.primitive_plane_add(size=60, location=(0, 0, -2))
-base = bpy.context.object
-base.scale = (largo_planta * 3, ancho_planta * 3, 0.1)
+# Crea el suelo de asfalto
+bpy.ops.mesh.primitive_plane_add(size=100, location=(0, 0, -1))
+asfalto = bpy.context.object
+asfalto.scale = (ancho * 2, largo * 2, 0.1)
+asfalto.name = "Asfalto"
 
-# Crear las columnas
-for i in range(int(largo_planta / espacio_entre_columnas) + 1):
-    for j in range(int(ancho_planta / espacio_entre_columnas) + 1):
-        x = -largo_planta / 2 + i * espacio_entre_columnas
-        z = -ancho_planta / 2 + j * espacio_entre_columnas
-        bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=altura_columna, location=(x, 0, z))
-        columna = bpy.context.object
-        columna.scale = (1, 1, 1)
-
-# Crear las plantas superiores
-for i in range(plantas):
-    planta = bpy.ops.mesh.primitive_cube_add(size=45, location=(0, 0, i * altura_planta + altura_planta / 2))
+# Crea las plantas del edificio
+for i in range(num_plantas):
+    planta = bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, i * altura_planta))
     planta_obj = bpy.context.object
-    planta_obj.scale = (largo_planta, ancho_planta, altura_planta)
+    planta_obj.scale = (ancho, largo, altura_planta)
+    planta_obj.name = f"Planta_{i+1}"
 
-# Crear la fachada de estuco
-fachada = bpy.ops.mesh.primitive_cube_add(size=45, location=(0, 0, plantas * altura_planta + altura_planta / 2))
-fachada_obj = bpy.context.object
-fachada_obj.scale = (largo_planta, ancho_planta, 1)
+# Crea las columnas visibles
+columna_height = altura_planta / 2
+columna_width = 0.5
 
-# Crear las ventanas en la fachada principal
-for i in range(int(largo_planta / espacio_entre_columnas) - 1):
-    for j in range(int(ancho_planta / espacio_entre_columnas) - 1):
-        x = -largo_planta / 2 + (i + 0.5) * espacio_entre_columnas
-        z = -ancho_planta / 2 + (j + 0.5) * espacio_entre_columnas
-        ventana = bpy.ops.mesh.primitive_cube_add(size=1, location=(x, 0, plantas * altura_planta + altura_planta / 2))
+for i in range(4):
+    for j in range(3):
+        columna = bpy.ops.mesh.primitive_cube_add(size=1, location=(j * (ancho - columna_width) + columna_width / 2, i * (largo - columna_width) + columna_width / 2, altura_planta / 2))
+        columna_obj = bpy.context.object
+        columna_obj.scale = (columna_width, columna_width, columna_height)
+        columna_obj.name = f"Columna_{i*3+j+1}"
+
+# Crea las ventanas en la fachada principal
+ventana_size = 4
+
+for i in range(2):
+    for j in range(5):
+        ventana = bpy.ops.mesh.primitive_cube_add(size=1, location=(j * (ancho - ventana_size) + ventana_size / 2, i * (largo - ventana_size) + largo - ventana_size / 2, altura_planta))
         ventana_obj = bpy.context.object
-        ventana_obj.scale = (espacio_entre_columnas / 4, espacio_entre_columnas / 4, 1)
+        ventana_obj.scale = (ventana_size, ventana_size, altura_planta)
+        ventana_obj.name = f"Ventana_{i*5+j+1}"
 
-# Guardar el archivo si existe BLEND_OUT
+# Crea la fachada de estuco
+estuco_thickness = 0.2
+
+for i in range(4):
+    for j in range(3):
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(j * (ancho - estuco_thickness) + estuco_thickness / 2, i * (largo - estuco_thickness) + largo - estuco_thickness / 2, altura_planta))
+        estuco_obj = bpy.context.object
+        estuco_obj.scale = (estuco_thickness, estuco_thickness, estuco_thickness)
+        estuco_obj.name = f"Estuco_{i*3+j+1}"
+
+# Guarda el archivo si la variable de entorno BLEND_OUT existe
+import os
 if "BLEND_OUT" in os.environ:
-    blend_out = os.environ["BLEND_OUT"]
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out)
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
 ```

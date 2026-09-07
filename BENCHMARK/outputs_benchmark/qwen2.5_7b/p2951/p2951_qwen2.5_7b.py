@@ -3,38 +3,41 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear suelo base
-bpy.ops.mesh.primitive_plane_add(size=12, location=(0, 0, -0.1))
-suelo = bpy.context.object
-suelo.scale = (10, 12, 1)
-bpy.context.view_layer.objects.active = suelo
+# Definir las dimensiones en metros
+plaza_size = (12, 10)
+bank_length = 2.0
+bank_distance = 4.0
+wooden_planks_width = 0.1
+concrete_support_height = 0.5
 
-# Crear bancos de parque
+# Crear el suelo base
+bpy.ops.mesh.primitive_plane_add(size=plaza_size[0], location=(0, 0, 0))
+suelo_base = bpy.context.object
+suelo_base.scale = (1, 1, 0.01)
+
+# Crear los bancos de parque
 def crear_banco(x_pos, length):
-    # Soporte de hormigón
-    soporte = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_pos - 0.25, 0, 0))
-    soporte_obj = bpy.context.object
-    soporte_obj.scale = (length + 1, 0.1, 0.3)
+    # Soportes de hormigón
+    soporte_hormigon = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_pos - length / 2 + 0.25, -1.5, concrete_support_height))
+    soporte_hormigon_obj = bpy.context.object
+    soporte_hormigon_obj.scale = (length / 2 - 0.5, 0.3, concrete_support_height)
     
     # Asiento de madera
-    asiento = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_pos - 0.25, 0, -0.05))
-    asiento_obj = bpy.context.object
-    asiento_obj.scale = (length + 1, 0.1, 0.05)
+    asiento_madera = bpy.ops.mesh.primitive_cube_add(size=wooden_planks_width * length, location=(x_pos - length / 2 + wooden_planks_width / 2, -1.5, 0))
+    asiento_madera_obj = bpy.context.object
+    asiento_madera_obj.scale = (wooden_planks_width * length, wooden_planks_width, 0.1)
     
     # Respaldo de madera
-    respaldo = bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_pos - 0.25, 0, 0.05))
-    respaldo_obj = bpy.context.object
-    respaldo_obj.scale = (length + 1, 0.1, 0.05)
-    
-    return soporte_obj, asiento_obj, respaldo_obj
+    respaldo_madera = bpy.ops.mesh.primitive_cube_add(size=wooden_planks_width * length / 2, location=(x_pos - length / 2 + wooden_planks_width * length / 4, 1.5, concrete_support_height))
+    respaldo_madera_obj = bpy.context.object
+    respaldo_madera_obj.scale = (wooden_planks_width * length / 2, wooden_planks_width, 0.1)
 
-# Crear bancos
-bancos_x = -4
-for i in range(2):
-    banco = crear_banco(bancos_x, 2)
-    bancos_x += 6
+# Crear el primer banco
+crear_banco(-bank_distance / 2 - bank_length / 2, bank_length)
 
-# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
-if 'BLEND_OUT' in os.environ:
-    blend_out_path = os.environ['BLEND_OUT']
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path, check_existing=False)
+# Crear el segundo banco
+crear_banco(bank_distance / 2 + bank_length / 2, bank_length)
+
+# Guardar la escena si existe BLEND_OUT
+if "BLEND_OUT" in bpy.context.scene:
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene["BLEND_OUT"])

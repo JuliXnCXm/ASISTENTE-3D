@@ -1,41 +1,50 @@
 ```python
 import bpy
 
-# Limpia la escena
+# Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Define las dimensiones en metros
-ancho = 4.0
-fondo = 3.0
-altura_tejado = 2.5
+# Crear el suelo
+bpy.ops.mesh.primitive_plane_add(size=8, enter_editmode=False, align='WORLD', location=(0, 0, 0))
+suelo = bpy.context.object
+suelo.scale = (4, 3, 1)
+suelo.name = "Suelo"
 
-# Crea los vértices del tejado a dos aguas
-vertices = [
-    (-ancho/2, -fondo/2, 0),
-    (ancho/2, -fondo/2, 0),
-    (ancho/2, fondo/2, altura_tejado),
-    (-ancho/2, fondo/2, altura_tejado)
-]
+# Crear el tejado a dos aguas
+tejado = bpy.ops.mesh.primitive_cylinder_add(radius=2, depth=1.5, enter_editmode=False, align='WORLD', location=(0, 0, 1.5))
+bpy.context.object.name = "Tejado"
 
-# Crea los caras del tejado
-caras = [
-    (0, 1, 3), 
-    (1, 2, 3)
-]
+# Rotar el techo para formar una estructura a dos aguas
+tejado_obj = bpy.context.object
+tejado_obj.rotation_euler = (1.5708, 0, 1.5708)
 
-# Agrega la geometría al contexto de la escena
-mesh = bpy.data.meshes.new(name="Tejado")
-obj = bpy.data.objects.new("Tejado", mesh)
-bpy.context.collection.objects.link(obj)
+# Ajustar la posición del techo
+tejado_obj.location = (0, -0.25, 1.5)
 
-# Asigna los vértices y caras a la malla
-mesh.from_pydata(vertices, [], caras)
-mesh.update()
+# Crear los dos lados del tejado
+bpy.ops.mesh.primitive_cylinder_add(radius=2, depth=1.5, enter_editmode=False, align='WORLD', location=(0, 3.25, 1.5))
+lado_derecho = bpy.context.object
+lado_derecho.rotation_euler = (1.5708, 0, -1.5708)
+lado_derecho.location = (4, 3.25, 1.5)
 
-# Ajusta el origen del objeto al centro de masa
-obj.location = (0, 0, altura_tejado / 2)
+bpy.ops.mesh.primitive_cylinder_add(radius=2, depth=1.5, enter_editmode=False, align='WORLD', location=(0, -3.25, 1.5))
+lado_izquierdo = bpy.context.object
+lado_izquierdo.rotation_euler = (1.5708, 0, 1.5708)
+lado_izquierdo.location = (-4, -3.25, 1.5)
 
-# Guarda el archivo .blend si existe BLEND_OUT en las variables de entorno
+# Ajustar la escena para que el techo quede correctamente
+bpy.ops.object.select_all(action='DESELECT')
+tejado_obj.select_set(True)
+lado_derecho.select_set(True)
+lado_izquierdo.select_set(True)
+suelo.select_set(True)
+bpy.context.view_layer.objects.active = suelo
+
+# Ajustar la escena para que el techo quede correctamente
+bpy.ops.object.join()
+
+# Guardar el archivo .blend si existe BLEND_OUT
 if "BLEND_OUT" in bpy.context.scene:
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene["BLEND_OUT"])
+    blend_out_path = bpy.context.scene["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
 ```

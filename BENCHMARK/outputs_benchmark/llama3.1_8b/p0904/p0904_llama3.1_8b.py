@@ -1,0 +1,81 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la cama
+ancho = 1.6
+largo = 2.0
+
+# Crea el plano para la base de la cama
+base = bpy.data.objects.new("Base", bpy.data.meshes.new("Base"))
+verts = [
+    (-ancho/2, -largo/2, 0),
+    (ancho/2, -largo/2, 0),
+    (ancho/2, largo/2, 0),
+    (-ancho/2, largo/2, 0)
+]
+faces = [
+    (0, 1, 2, 3)
+]
+base.data.from_pydata(verts, [], faces)
+base.location = mathutils.Vector((0, 0, 0))
+bpy.context.collection.objects.link(base)
+
+# Crea el plano para el colchón
+colchon = bpy.data.objects.new("Colchon", bpy.data.meshes.new("Colchon"))
+verts_colchon = [
+    (-ancho/2, -largo/2, 0.05),
+    (ancho/2, -largo/2, 0.05),
+    (ancho/2, largo/2, 0.05),
+    (-ancho/2, largo/2, 0.05)
+]
+faces_colchon = [
+    (0, 1, 2, 3)
+]
+colchon.data.from_pydata(verts_colchon, [], faces_colchon)
+colchon.location = mathutils.Vector((0, 0, 0))
+bpy.context.collection.objects.link(colchon)
+
+# Crea la estructura de madera
+estructura = bpy.data.objects.new("Estructura", bpy.data.meshes.new("Estructura"))
+verts_estructura = [
+    (-ancho/2 + 0.05, -largo/2 + 0.05, 0),
+    (ancho/2 - 0.05, -largo/2 + 0.05, 0),
+    (ancho/2 - 0.05, largo/2 - 0.05, 0),
+    (-ancho/2 + 0.05, largo/2 - 0.05, 0)
+]
+faces_estructura = [
+    (0, 1, 2, 3)
+]
+estructura.data.from_pydata(verts_estructura, [], faces_estructura)
+estructura.location = mathutils.Vector((0, 0, 0))
+bpy.context.collection.objects.link(estructura)
+
+# Aplica materiales
+base_material = bpy.data.materials.new(name="BaseMaterial")
+base_material.use_nodes = True
+base_material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (1, 1, 1, 1)
+base_material.node_tree.nodes["Principled BSDF"].inputs[3].default_value = 0.5
+base.materials.append(base_material)
+
+colchon_material = bpy.data.materials.new(name="ColchonMaterial")
+colchon_material.use_nodes = True
+colchon_material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (1, 1, 1, 1)
+colchon_material.node_tree.nodes["Principled BSDF"].inputs[3].default_value = 0.5
+colchon.materials.append(colchon_material)
+
+estructura_material = bpy.data.materials.new(name="EstructuraMaterial")
+estructura_material.use_nodes = True
+estructura_material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (1, 1, 1, 1)
+estructura_material.node_tree.nodes["Principled BSDF"].inputs[3].default_value = 0.5
+estructura.materials.append(estructura_material)
+
+base.data.materials.append(base_material)
+colchon.data.materials.append(colchon_material)
+estructura.data.materials.append(estructura_material)
+
+# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene['BLEND_OUT'])

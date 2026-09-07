@@ -1,0 +1,54 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la habitación y los objetos
+habitacion = {
+    'longitud': 4.0,
+    'ancho': 3.5,
+    'altura_pared': 2.5,
+}
+
+cama = {
+    'longitud': 1.0,
+    'ancho': 2.0,
+    'altura': 0.8,  # altura de la cama
+}
+
+mesita_noche = {
+    'longitud': 0.4,
+    'ancho': 0.4,
+    'altura': 0.5,
+}
+
+# Crea el suelo
+bpy.ops.mesh.primitive_plane_add(size=habitacion['longitud'], location=(0, 0, -habitacion['altura_pared']))
+suelo = bpy.context.active_object
+
+# Crea las paredes
+for i in range(4):
+    if i == 0:  # pared del frente
+        bpy.ops.mesh.primitive_plane_add(size=habitacion['ancho'], location=(0, habitacion['longitud'] / 2, 0))
+    elif i == 1:  # pared de atrás
+        bpy.ops.mesh.primitive_plane_add(size=habitacion['ancho'], location=(0, -habitacion['longitud'] / 2, 0))
+    elif i == 2:  # pared izquierda
+        bpy.ops.mesh.primitive_plane_add(size=habitacion['altura_pared'], location=(-habitacion['ancho'] / 2, 0, 0))
+    else:  # pared derecha
+        bpy.ops.mesh.primitive_plane_add(size=habitacion['altura_pared'], location=(habitacion['ancho'] / 2, 0, 0))
+
+# Crea la cama y la mesita de noche
+bpy.ops.mesh.primitive_cube_add(size=cama['longitud'], location=(-cama['longitud'] / 2 + habitacion['ancho'] / 2 - cama['ancho'] / 2, 0, habitacion['altura_pared'] - cama['altura']))
+cama = bpy.context.active_object
+
+bpy.ops.mesh.primitive_cube_add(size=mesita_noche['longitud'], location=(-mesita_noche['longitud'] / 2 + habitacion['ancho'] / 2 - mesita_noche['ancho'] / 2, 0, habitacion['altura_pared'] - cama['altura']))
+mesita_noche = bpy.context.active_object
+
+# Ajusta la posición de la cama y la mesita de noche
+cama.location = (habitacion['ancho'] / 2 - cama['longitud'] / 2, 0, habitacion['altura_pared'] - cama['altura'])
+mesita_noche.location = (habitacion['ancho'] / 2 - mesita_noche['longitud'] / 2, 0, habitacion['altura_pared'] - cama['altura'])
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

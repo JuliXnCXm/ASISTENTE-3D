@@ -5,62 +5,56 @@ import mathutils
 # Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Define las propiedades del objeto
-width = 1.6  # Ancho en metros
-length = 2.0  # Longitud en metros
-thickness = 0.05  # Espesor de la madera en metros
+# Define las dimensiones de la cama
+ancho = 1.6
+largo = 2.0
 
-# Crea el marco superior de la cama
-bpy.ops.mesh.primitive_cube_add(size=width, location=(0, 0, length/2 + thickness))
-obj_superior = bpy.context.active_object
-obj_superior.name = "Cama Superior"
-obj_superior.scale[1] = 0.01  # Reduce el tamaño en la dirección Y para simular una madera delgada
+# Crea el marco de madera
+bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, 0, 0))
+marco = bpy.context.active_object
+marco.name = "Marco"
 
-# Crea el marco inferior de la cama
-bpy.ops.mesh.primitive_cube_add(size=width, location=(0, 0, -length/2))
-obj_inferior = bpy.context.active_object
-obj_inferior.name = "Cama Inferior"
-obj_inferior.scale[1] = 0.01  # Reduce el tamaño en la dirección Y para simular una madera delgada
+# Ajusta las dimensiones del marco para que coincida con la cama
+marco.scale = (ancho, largo, 0.1)
 
-# Crea las patas de la cama
-bpy.ops.mesh.primitive_cube_add(size=thickness, location=(-width/2, -length/2, length/2))
-obj_pata1 = bpy.context.active_object
-obj_pata1.name = "Pata 1"
-obj_pata1.scale[0] = 0.01  # Reduce el tamaño en la dirección X para simular una madera delgada
+# Crea los pies de la cama
+bpy.ops.mesh.primitive_cube_add(size=0.2, location=(-ancho/2, -largo/2, 0))
+pie_izquierdo = bpy.context.active_object
+pie_izquierdo.name = "Pie Izquierdo"
 
-bpy.ops.mesh.primitive_cube_add(size=thickness, location=(-width/2, length/2, length/2))
-obj_pata2 = bpy.context.active_object
-obj_pata2.name = "Pata 2"
-obj_pata2.scale[0] = 0.01  # Reduce el tamaño en la dirección X para simular una madera delgada
+bpy.ops.mesh.primitive_cube_add(size=0.2, location=(ancho/2, -largo/2, 0))
+pie_derecho = bpy.context.active_object
+pie_derecho.name = "Pie Derecho"
 
-bpy.ops.mesh.primitive_cube_add(size=thickness, location=(width/2, -length/2, length/2))
-obj_pata3 = bpy.context.active_object
-obj_pata3.name = "Pata 3"
-obj_pata3.scale[0] = 0.01  # Reduce el tamaño en la dirección X para simular una madera delgada
+# Ajusta las dimensiones de los pies para que coincida con la cama
+pie_izquierdo.scale = (0.2, 0.2, 0.1)
+pie_derecho.scale = (0.2, 0.2, 0.1)
 
-bpy.ops.mesh.primitive_cube_add(size=thickness, location=(width/2, length/2, length/2))
-obj_pata4 = bpy.context.active_object
-obj_pata4.name = "Pata 4"
-obj_pata4.scale[0] = 0.01  # Reduce el tamaño en la dirección X para simular una madera delgada
+# Crea el colchón
+bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, 0, 0))
+colchon = bpy.context.active_object
+colchon.name = "Colchon"
 
-# Crea el colchón de tela blanca
-bpy.ops.mesh.primitive_plane_add(size=width, location=(0, 0, length/2))
-obj_colchon = bpy.context.active_object
-obj_colchon.name = "Colchón"
-obj_colchon.scale[1] = 0.01  # Reduce el tamaño en la dirección Y para simular una tela delgada
+# Ajusta las dimensiones del colchón para que coincida con la cama
+colchon.scale = (ancho, largo, 0.1)
 
-# Aplica materiales a los objetos
-mat_roble = bpy.data.materials.new(name="Madera de Roble")
-mat_roble.use_nodes = True
-mat_roble.node_tree.nodes["Principio de Diffuso"].inputs[0].default_value = (1, 1, 1, 1)
-bpy.context.active_object.data.materials.append(mat_roble)
+# Crea el tejido del colchón
+bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, 0, 0))
+tejido = bpy.context.active_object
+tejido.name = "Tejido"
 
-mat_tela = bpy.data.materials.new(name="Tela Blanca")
-mat_tela.use_nodes = True
-mat_tela.node_tree.nodes["Principio de Diffuso"].inputs[0].default_value = (1, 1, 1, 1)
-bpy.context.active_object.data.materials.append(mat_tela)
+# Ajusta las dimensiones del tejido para que coincida con la cama
+tejido.scale = (ancho, largo, 0.1)
 
-# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
-if 'BLEND_OUT' in os.environ:
-    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+# Coloca el colchón sobre el marco
+colchon.location = (0, 0, 0.05)
+marco.location = (0, 0, -0.05)
+
+# Coloca los pies de la cama en su lugar
+pie_izquierdo.location = (-ancho/2, -largo/2, -0.05)
+pie_derecho.location = (ancho/2, -largo/2, -0.05)
+
+# Guarda el archivo .blend si se especificó la ruta de salida
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene['BLEND_OUT'])
 ```

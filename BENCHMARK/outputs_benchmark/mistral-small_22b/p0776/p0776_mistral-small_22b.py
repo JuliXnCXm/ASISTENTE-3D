@@ -1,0 +1,34 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el sofá
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+sofa = bpy.context.object
+sofa.name = "Sofa"
+
+# Escala el sofá para que tenga 3 plazas
+bpy.ops.transform.resize(value=(2, 1, 1))
+
+# Cambia el color del sofá a gris
+sofa_material = bpy.data.materials.new(name="GreyMaterial")
+sofa_material.diffuse_color = (0.5, 0.5, 0.5)
+sofa.data.materials.append(sofa_material)
+
+# Crea la mesa de centro
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, -2, 0))
+table = bpy.context.object
+table.name = "Table"
+
+# Escala la mesa para que tenga un tamaño adecuado
+bpy.ops.transform.resize(value=(1, 0.5, 1))
+
+# Cambia el color de la mesa a madera de nogal
+table_material = bpy.data.materials.new(name="WoodMaterial")
+table_material.diffuse_color = (0.8, 0.4, 0)
+table.data.materials.append(table_material)
+
+# Guarda el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -5,30 +5,26 @@ import bpy
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Definir las dimensiones y propiedades del edificio
-pisos = 5
-ancho = 20
-largo = 30
-espacio_ventana = 4
-altura_piso = 3.5
+building_width = 20.0  # Ancho en metros
+floors = 5             # Número de pisos
+window_size = (3.0, 2.0)  # Tamaño de cada ventana en metros
 
 # Crear los pisos
-for p in range(pisos):
-    # Paredes laterales
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(ancho / 2 - largo / 2, espacio_ventana * (p + 0.5), altura_piso * p))
-    bpy.ops.transform.resize(value=(largo, espacio_ventana, altura_piso))
-    
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-ancho / 2 + largo / 2, espacio_ventana * (p + 0.5), altura_piso * p))
-    bpy.ops.transform.resize(value=(largo, espacio_ventana, altura_piso))
+for floor in range(floors):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(0, 0, -floor * 4))
+    floor_obj = bpy.context.object
+    floor_obj.scale = (building_width, building_width, 4.0)
 
 # Crear las ventanas
-for p in range(pisos):
-    for i in range(int(ancho // espacio_ventana)):
-        x = -ancho / 2 + largo / 2 + (i + 0.5) * espacio_ventana
-        bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x, espacio_ventana * (p + 0.5), altura_piso * p))
-        bpy.ops.transform.resize(value=(espacio_ventana / 2, espacio_ventana / 2, altura_piso))
+for x in range(int(building_width / window_size[0])):
+    for y in range(int(building_width / window_size[1])):
+        for floor in range(floors):
+            bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x * window_size[0] - building_width / 2 + window_size[0] / 2, y * window_size[1] - building_width / 2 + window_size[1] / 2, -floor * 4 + 3))
+            window_obj = bpy.context.object
+            window_obj.scale = (window_size[0], window_size[1], 1.0)
 
 # Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
 if 'BLEND_OUT' in os.environ:
-    blend_out = os.environ['BLEND_OUT']
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out)
+    blend_out_path = os.environ['BLEND_OUT']
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
 ```

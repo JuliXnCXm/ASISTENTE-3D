@@ -1,40 +1,43 @@
 import bpy
 
-# Limpia la escena
+# Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Define los materiales
-asphalt_material = bpy.data.materials.new(name="Asphalt")
-asphalt_material.diffuse_color = (0.2, 0.2, 0.2, 1)
-acera_material = bpy.data.materials.new(name="Acera")
-acera_material.diffuse_color = (0.8, 0.6, 0.4, 1)
-baranda_material = bpy.data.materials.new(name="Baranda")
-baranda_material.diffuse_color = (0.5, 0.5, 1, 1)
+# Crear el tramo de acera
+acera = bpy.data.objects.new(name="Acera", object_data=None)
+bpy.context.collection.objects.link(acera)
+bpy.context.view_layer.objects.active = acera
 
-# Asfalto
-bpy.ops.mesh.primitive_plane_add(size=20, location=(0, -5, 0))
-asphalt = bpy.context.object
-asphalt.data.materials.append(asphalt_material)
+bpy.ops.mesh.primitive_plane_add(size=2, location=(5, 0, -0.1))
+bpy.ops.transform.resize(value=(10, 2, 1))
 
-# Acera
-acera_length = 10
-acera_width = 2
-bpy.ops.mesh.primitive_plane_add(size=acera_width * 2, location=(-acera_width / 2 + acera_length / 2 - acera_width / 4, -5.5, 0))
-acera = bpy.context.object
-acera.scale = (acera_length, acera_width, 1)
-acera.data.materials.append(acera_material)
+# Crear la baranda metálica
+baranda = bpy.data.objects.new(name="Baranda", object_data=None)
+bpy.context.collection.objects.link(baranda)
+bpy.context.view_layer.objects.active = baranda
 
-# Baranda
-baranda_height = 1
-bpy.ops.mesh.primitive_cube_add(size=2, location=(-acera_width / 4 + acera_length / 2 - acera_width / 8, -5.75, baranda_height / 2))
-baranda = bpy.context.object
-baranda.scale = (acera_length / 2, acera_width / 2, baranda_height)
-baranda.data.materials.append(baranda_material)
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(5, 1, 0.2))
+bpy.ops.transform.resize(value=(10, 0.1, 1))
 
-# Ajusta la escala a metros
-bpy.ops.object.select_all(action='SELECT')
-bpy.ops.transform.resize(value=(1, 1, 0.01))
+# Añadir material a la baranda
+material = bpy.data.materials.new(name="BarandaMaterial")
+material.diffuse_color = (0.8, 0.6, 0.4, 1)
+baranda.data.materials.append(material)
 
-if 'BLEND_OUT' in os.environ:
-    bpy.context.scene.render.filepath = os.environ['BLEND_OUT']
-    bpy.ops.wm.save_as_mainfile()
+# Crear la calzada de asfalto
+calzada = bpy.data.objects.new(name="Calzada", object_data=None)
+bpy.context.collection.objects.link(calzada)
+bpy.context.view_layer.objects.active = calzada
+
+bpy.ops.mesh.primitive_plane_add(size=20, location=(-5, 0, -0.1))
+bpy.ops.transform.resize(value=(20, 4, 1))
+
+# Añadir material a la calzada
+material_calzada = bpy.data.materials.new(name="CalzadaMaterial")
+material_calzada.diffuse_color = (0.5, 0.5, 0.5, 1)
+calzada.data.materials.append(material_calzada)
+
+# Guardar el archivo .blend si la variable BLEND_OUT está definida
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

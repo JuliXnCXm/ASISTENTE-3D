@@ -11,22 +11,33 @@ altura_total = 3.0  # Altura total de los peldaños en metros
 altura_peldaño = altura_total / peldaños
 
 # Crear la geometría de la escalera
-bpy.ops.mesh.primitive_cube_add(size=ancho, location=(0, -ancho/2, 0))
-cubo = bpy.context.object
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(0, -ancho/2, 0))
+ escalera = bpy.context.object
+ escalera.scale = (16 * ancho, ancho, altura_total)
 
+# Alinear los peldaños verticalmente
 for i in range(peldaños):
-    nuevo_cubo = cubo.copy()
-    nuevo_cubo.location.z += altura_peldaño + (i * altura_peldaño)
-    nuevo_cubo.name = f"peldaño_{i}"
-    bpy.context.collection.objects.link(nuevo_cubo)
+    x_offset = i * ancho / 2.0
+    bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_offset, -ancho/2, -i * altura_peldaño))
+    peldaño = bpy.context.object
+    peldaño.scale = (ancho, ancho, altura_peldaño)
 
-# Alinear los peldaños
-for i, obj in enumerate(bpy.data.objects):
-    if "peldaño_" in obj.name:
-        obj.location.y = -ancho / 2
+# Alinear los peldaños horizontalmente y verticalmente para formar la escalera
+for i in range(peldaños):
+    x_offset = -peldaños * ancho / 2.0 + i * ancho
+    for j in range(16):
+        z_offset = -altura_total / 2.0 + (j + 1) * altura_peldaño
+        bpy.ops.mesh.primitive_cube_add(size=0.5, location=(x_offset, -ancho/2, z_offset))
+        peldaño = bpy.context.object
+        peldaño.scale = (ancho, ancho, altura_peldaño)
 
-# Guardar el archivo .blend si la variable BLEND_OUT está definida
-if 'BLEND_OUT' in bpy.context.scene:
-    blend_out_path = bpy.context.scene['BLEND_OUT']
+# Ajustar la escala para que cada peldaño tenga una anchura de 1m y una altura de 0.25m
+for obj in bpy.data.objects:
+    if "Cube" in obj.name and obj.scale[0] == 0.5 and obj.scale[1] == 0.5 and obj.scale[2] == 0.5:
+        obj.scale = (ancho, ancho, altura_peldaño)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)
 ```

@@ -1,20 +1,28 @@
 import bpy
 
-# Limpiar la escena
+# Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear el piso de la terraza
-bpy.ops.mesh.primitive_plane_add(size=6, location=(0, 0, 0))
-bpy.context.object.scale = (1, 1, 0.01)  # Ajustar la altura a 0.01 metros
+# Define las dimensiones y la posición de la terraza
+length = 6.0  # Longitud en metros
+width = 4.0   # Ancho en metros
+height = 1.5  # Altura de la baranda en metros
 
-# Crear el borde de la terraza
-bpy.ops.mesh.primitive_plane_add(size=6, location=(0, -2, 0))
-bpy.context.object.scale = (1, 4, 0.01)  # Ajustar la altura a 0.01 metros
+# Crea el piso de la terraza
+bpy.ops.mesh.primitive_plane_add(size=6, enter_editmode=False, align='WORLD', location=(3, 2, 0))
+floor = bpy.context.object
+floor.scale = (1.0, 1.0, 1.0)
 
-# Crear la baranda de protección en uno de los lados largos
-bpy.ops.mesh.primitive_cube_add(size=0.5, location=(3, -2, 0.01))
-bpy.context.object.scale = (0.2, 4, 0.01)  # Ajustar la altura a 0.01 metros
+# Crea la baranda de protección en uno de los lados largos
+bpy.ops.mesh.primitive_cube_add(size=0.5, enter_editmode=False, align='WORLD', location=(3, 2 + width / 2 - 0.25, height))
+baranda = bpy.context.object
+baranda.scale = (1.0, 1.0, 1.0)
 
-# Guardar el archivo .blend si existe la variable de entorno BLEND_OUT
-if "BLEND_OUT" in dir(bpy.app):
-    bpy.ops.wm.save_as_mainfile(filepath=bpy.app.userpref_addon_prefs["BLEND_OUT"])
+# Ajusta la escena para que se vea bien en el render
+bpy.ops.view3d.view_all(use_limit=True)
+
+# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
+import os
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

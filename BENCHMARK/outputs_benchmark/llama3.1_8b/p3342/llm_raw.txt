@@ -1,0 +1,62 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones de la casa
+ancho = 15
+largo = 20
+alto = 3
+
+# Crea el suelo
+bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, -10, 0))
+bpy.context.active_object.name = "Suelo"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea la estructura de muros y losas
+for i in range(5):
+    bpy.ops.mesh.primitive_cube_add(size=alto, location=(i * ancho - largo / 2, 0, 0))
+    bpy.context.active_object.name = f"Muro {i}"
+    bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea el patio
+bpy.ops.mesh.primitive_plane_add(size=largo, location=(-ancho / 2 + largo / 4, -10, 0))
+bpy.context.active_object.name = "Patio"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+bpy.ops.mesh.primitive_cube_add(size=alto, location=(-ancho / 2 + largo / 4, -10, 0))
+bpy.context.active_object.name = "Baldosas Patio"
+
+# Crea la zona de día
+bpy.ops.mesh.primitive_cube_add(size=largo, location=(0, 0, 0))
+bpy.context.active_object.name = "Zona Día"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea el sofá
+bpy.ops.mesh.primitive_cube_add(size=2, location=(-ancho / 4, -largo / 4, alto))
+bpy.context.active_object.name = "Sofá"
+
+# Crea la isla de cocina
+bpy.ops.mesh.primitive_cube_add(size=largo / 4, location=(0, largo / 2, alto))
+bpy.context.active_object.name = "Isla Cocina"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea la mesa de comedor
+bpy.ops.mesh.primitive_cube_add(size=largo / 8, location=(-ancho / 4, -largo / 2, alto))
+bpy.context.active_object.name = "Mesa Comedor"
+
+# Crea la zona de noche
+bpy.ops.mesh.primitive_cube_add(size=largo, location=(0, 0, 0))
+bpy.context.active_object.name = "Zona Noche"
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea las camas
+for i in range(3):
+    bpy.ops.mesh.primitive_cube_add(size=2, location=(-ancho / 4 + (i * ancho) / 3, -largo / 4, alto))
+    bpy.context.active_object.name = f"Cama {i}"
+
+# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

@@ -1,7 +1,7 @@
 {
-  "execution_success": true,
-  "execution_error": null,
-  "chamfer_distance": 780.3762703822085,
+  "execution_success": false,
+  "execution_error": "In place element-wise multiplication: not supported between 'Vector' and 'tuple' types",
+  "chamfer_distance": null,
   "gt_vertices_count": 344,
-  "pred_vertices_count": 8052
+  "pred_vertices_count": 0
 }

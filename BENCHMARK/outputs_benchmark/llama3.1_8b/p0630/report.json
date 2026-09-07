@@ -1,6 +1,6 @@
 {
   "execution_success": false,
-  "execution_error": "'bpy_prop_collection[key]: key \"TelaGris\" not found'",
+  "execution_error": "'bpy_prop_collection[key]: key \"GreyFabric\" not found'",
   "chamfer_distance": null,
   "gt_vertices_count": 80,
   "pred_vertices_count": 0

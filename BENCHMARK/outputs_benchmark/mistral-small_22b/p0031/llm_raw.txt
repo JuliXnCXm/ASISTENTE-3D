@@ -1,0 +1,17 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear losa de piso rectangular
+bpy.ops.mesh.primitive_cube_add(size=1, location=(3, 2, -0.1))
+floor = bpy.context.object
+floor.scale.x = 6
+floor.scale.y = 4
+floor.scale.z = 0.2
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

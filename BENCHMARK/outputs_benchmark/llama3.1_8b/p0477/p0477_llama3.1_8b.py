@@ -1,0 +1,45 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del terreno y la casa
+terreno_ancho = 30
+terreno_largo = 25
+casa_ancho = 10
+casa_largo = 8
+
+# Crea el plano de referencia para el terreno
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+bpy.context.active_object.name = "Terreno"
+bpy.context.object.scale = (terreno_ancho, terreno_largo, 1)
+
+# Crea el plano de referencia para la casa
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+bpy.context.active_object.name = "Casa"
+bpy.context.object.scale = (casa_ancho, casa_largo, 1)
+
+# Mueve la casa al centro del terreno
+bpy.context.object.location = (terreno_ancho / 2 - casa_ancho / 2, terreno_largo / 2 - casa_largo / 2, 0)
+
+# Crea el tejado a dos aguas
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+bpy.context.active_object.name = "Tejado"
+bpy.context.object.scale = (casa_ancho, casa_largo / 2, 1)
+bpy.context.object.location = (0, casa_largo / 4, casa_largo / 2)
+
+# Duplica el tejado para crear la segunda mitad
+bpy.ops.object.duplicate_move_linked(location=(0, -casa_largo / 4, casa_largo / 2))
+
+# Combina las dos mitades del tejado en un solo objeto
+bpy.context.active_object.name = "Tejado"
+
+# Crea el árbol
+bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=5, location=(0, 0, casa_largo / 2 + 2))
+bpy.context.active_object.name = "Arbol"
+bpy.context.object.scale = (2, 2, 10)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

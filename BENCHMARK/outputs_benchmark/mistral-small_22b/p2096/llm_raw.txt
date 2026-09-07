@@ -1,0 +1,31 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el dormitorio principal
+bed = bpy.data.objects.new("Bed", None)
+bed.location = (0, 0, 0)
+bpy.context.collection.objects.link(bed)
+
+# Crear la cama con cabecero tapizado
+headboard = bpy.data.objects.new("Headboard", None)
+headboard.location = (0, -1, 2)
+bpy.context.collection.objects.link(headboard)
+
+# Crear el muro bajo separador para un vestidor
+divider_wall = bpy.data.objects.new("DividerWall", None)
+divider_wall.location = (3, -1, 0)
+bpy.context.collection.objects.link(divider_wall)
+
+# Crear armarios empotrados
+wardrobe = bpy.data.objects.new("Wardrobe", None)
+wardrobe.location = (4, -1, 0)
+bpy.context.collection.objects.link(wardrobe)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

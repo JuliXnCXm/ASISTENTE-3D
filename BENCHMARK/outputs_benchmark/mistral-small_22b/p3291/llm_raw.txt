@@ -1,0 +1,51 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo de deck de madera
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
+deck = bpy.context.object
+deck.name = "Deck"
+
+# Añadir material de madera al deck
+material = bpy.data.materials.new(name="WoodMaterial")
+material.diffuse_color = (0.8, 0.6, 0.4)
+deck.data.materials.append(material)
+
+# Crear jardineras de hormigón
+for i in range(4):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(i * 2 - 3, 0, 0))
+    jardinera = bpy.context.object
+    jardinera.name = f"Jardinera_{i}"
+    material = bpy.data.materials.new(name="ConcreteMaterial")
+    material.diffuse_color = (0.5, 0.5, 0.5)
+    jardinera.data.materials.append(material)
+
+# Añadir vegetación a las jardineras
+for jardinera in bpy.data.objects:
+    if "Jardinera" in jardinera.name:
+        bpy.ops.object.select_all(action='DESELECT')
+        jardinera.select_set(True)
+        bpy.context.view_layer.objects.active = jardinera
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=0.2, location=(0, 0, 0.5))
+        planta = bpy.context.object
+        planta.name = "Planta"
+        material = bpy.data.materials.new(name="GreenMaterial")
+        material.diffuse_color = (0, 1, 0)
+        planta.data.materials.append(material)
+
+# Crear la pérgola de acero
+bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=2, location=(4, 0, 1))
+pergola = bpy.context.object
+pergola.name = "Pergola"
+material = bpy.data.materials.new(name="SteelMaterial")
+material.diffuse_color = (0.6, 0.6, 0.6)
+pergola.data.materials.append(material)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

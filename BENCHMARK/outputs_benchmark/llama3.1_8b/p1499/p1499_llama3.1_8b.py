@@ -1,0 +1,30 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+bpy.context.scene.unit_settings.length_unit = 'METERS'
+
+# Crea el terreno de césped
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
+cubierta = bpy.context.active_object
+cubierta.name = "Césped"
+cubierta.scale = (1, 1, 0.01)
+
+# Crea el árbol
+bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=5, location=(2, 0, 0))
+arbol = bpy.context.active_object
+arbol.name = "Árbol"
+arbol.scale = (1, 1, 1)
+
+# Crea el banco de madera
+bpy.ops.mesh.primitive_cube_add(size=2, location=(-3, -2, 0))
+banco = bpy.context.active_object
+banco.name = "Banco"
+
+# Guarda la escena si se especificó un archivo de salida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

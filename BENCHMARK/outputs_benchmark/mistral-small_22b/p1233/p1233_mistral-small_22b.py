@@ -1,0 +1,61 @@
+import bpy
+from math import radians
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Configura unidades en metros
+bpy.context.scene.unit_settings.system = 'METRIC'
+
+# Crea el terreno de césped
+bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, 0))
+terreno = bpy.context.object
+terreno.name = "Terreno"
+
+# Añade material de césped al terreno
+material_cesped = bpy.data.materials.new(name="Cesped")
+material_cesped.diffuse_color = (0, 1, 0, 1)
+terreno.data.materials.append(material_cesped)
+
+# Crea la casa de dos pisos
+bpy.ops.mesh.primitive_cube_add(size=2, location=(5, -4, 0))
+casa = bpy.context.object
+casa.name = "Casa"
+
+# Añade material a la casa
+material_casa = bpy.data.materials.new(name="MaterialCasa")
+material_casa.diffuse_color = (0.8, 0.8, 0.8, 1)
+casa.data.materials.append(material_casa)
+
+# Crea el tejado a dos aguas
+bpy.ops.mesh.primitive_cone_add(vertices=4, radius1=2, depth=3, location=(5, -4, 3))
+tejado = bpy.context.object
+tejado.name = "Tejado"
+
+# Rotación del tejado para que quede a dos aguas
+tejado.rotation_euler = (radians(45), 0, 0)
+
+# Añade material al tejado
+material_tejado = bpy.data.materials.new(name="MaterialTejado")
+material_tejado.diffuse_color = (0.6, 0.3, 0.1, 1)
+tejado.data.materials.append(material_tejado)
+
+# Crea los árboles
+bpy.ops.mesh.primitive_cone_add(vertices=8, radius1=0.5, depth=2, location=(10, -4, 0))
+arbol1 = bpy.context.object
+arbol1.name = "Arbol1"
+
+bpy.ops.mesh.primitive_cone_add(vertices=8, radius1=0.5, depth=2, location=(15, -4, 0))
+arbol2 = bpy.context.object
+arbol2.name = "Arbol2"
+
+# Añade material a los árboles
+material_arbol = bpy.data.materials.new(name="MaterialArbol")
+material_arbol.diffuse_color = (0, 0.5, 0, 1)
+arbol1.data.materials.append(material_arbol)
+arbol2.data.materials.append(material_arbol)
+
+# Guarda el archivo .blend si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

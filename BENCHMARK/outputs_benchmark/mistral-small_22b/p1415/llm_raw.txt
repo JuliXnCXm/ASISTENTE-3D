@@ -1,0 +1,32 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Parámetros del edificio
+ancho = 20
+fondo = 15
+altura = 5 * 3  # 3 metros por piso
+columna_espacio = 4
+ventana_alto = 2
+ventana_ancho = 1.5
+
+# Crear el edificio
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, ancho / 2, fondo / 2))
+edificio = bpy.context.object
+
+# Añadir columnas estructurales
+for i in range(int(ancho / columna_espacio) + 1):
+    for j in range(int(fondo / columna_espacio) + 1):
+        bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=altura, location=(i * columna_espacio - ancho / 2, 0, j * columna_espacio - fondo / 2))
+
+# Añadir retícula de ventanas
+for i in range(int(ancho / ventana_ancho)):
+    for j in range(int(fondo / ventana_alto)):
+        bpy.ops.mesh.primitive_plane_add(size=1, location=(i * ventana_ancho - ancho / 2, 0, j * ventana_alto - fondo / 2))
+
+# Guardar el archivo si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

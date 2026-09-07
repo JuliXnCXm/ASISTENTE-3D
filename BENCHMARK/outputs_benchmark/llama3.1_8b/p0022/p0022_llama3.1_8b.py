@@ -4,24 +4,39 @@ import mathutils
 # Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Define las dimensiones del muro
-longitud = 5  # en metros
-altura = 2.8  # en metros
-espesor = 0.15  # en metros
+# Define las dimensiones del muro divisorio
+longitud = 5
+alto = 2.8
+espesor = 0.15
 
-# Crea un nuevo objeto para el muro
-bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, altura/2 + espesor/2))
+# Crea un nuevo objeto para el muro divisorio
+muro = bpy.data.objects.new("MuroDivisorio", None)
 
-# Selecciona el objeto creado y lo renombramos
-objeto = bpy.context.active_object
-objeto.name = "Muro"
+# Establece la posición y orientación del muro divisorio
+muro.location = mathutils.Vector((longitud/2, alto/2, 0))
+muro.rotation_euler = (0, 0, 0)
 
-# Escalamos el objeto para que tenga las dimensiones correctas
-bpy.ops.transform.resize(value=(longitud, altura, espesor))
+# Crea un nuevo mesh para el muro divisorio
+mesh = bpy.data.meshes.new("MuroDivisorioMesh")
+verts = [
+    (-espesor/2, -alto/2, 0),
+    (longitud + espesor/2, -alto/2, 0),
+    (longitud + espesor/2, alto/2, 0),
+    (-espesor/2, alto/2, 0)
+]
+faces = [
+    (0, 1, 2, 3)
+]
 
-# Rotamos el objeto 90 grados alrededor del eje Y para que esté en posición vertical
-bpy.context.object.rotation_euler = (0, mathutils.pi/2, 0)
+mesh.from_pydata(verts, [], faces)
+mesh.update(calc_edges=True)
 
-# Si existe la variable de entorno BLEND_OUT, guardamos el archivo .blend con ese nombre
+# Asigna el mesh al objeto del muro divisorio
+muro.data = mesh
+
+# Agrega el objeto a la escena
+bpy.context.collection.objects.link(muro)
+
+# Si existe la variable de entorno BLEND_OUT, guarda el archivo .blend
 if 'BLEND_OUT' in os.environ:
     bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -1,35 +1,43 @@
 import bpy
 
-# Limpiar la escena
+# Limpia la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Definir dimensiones del edificio
+# Define los parámetros del edificio
 pisos = 4
 ancho = 15
 largo = 12
+columna_espacio = 3
+ventana_tamano = 3
 
-# Crear columnas y estructura
-for piso in range(pisos):
-    for x in range(0, ancho * 3 + 1, 3):  # 3 metros entre columnas
-        bpy.ops.mesh.primitive_cube_add(location=(x - (ancho * 1.5), -largo / 2, piso * 3))
-    for y in range(0, largo * 3 + 1, 3):
-        bpy.ops.mesh.primitive_cube_add(location=(-ancho / 2, y - (largo * 1.5), piso * 3))
+# Función para crear columnas
+def crear_columnas(ancho, largo):
+    for x in range(0, ancho + columna_espacio, columna_espacio):
+        for z in range(0, largo + columna_espacio, columna_espacio):
+            bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=20, location=(x, 0, z))
 
-# Crear paredes
-for x in range(-ancho / 2, ancho / 2 + 0.5, 3):
-    for z in range(0, pisos * 3 + 1, 3):
-        bpy.ops.mesh.primitive_cube_add(location=(x, -largo / 2 - 0.5, z))
-for y in range(-largo / 2, largo / 2 + 0.5, 3):
-    for z in range(0, pisos * 3 + 1, 3):
-        bpy.ops.mesh.primitive_cube_add(location=(-ancho / 2 - 0.5, y, z))
+# Función para crear ventanas
+def crear_ventanas(ancho, largo):
+    for x in range(columna_espacio / 2, ancho + columna_espacio / 2, columna_espacio * 1.5):
+        for z in range(columna_espacio / 2, largo + columna_espacio / 2, columna_espacio * 1.5):
+            bpy.ops.mesh.primitive_cube_add(size=1, location=(x, 0, z))
+
+# Función para crear los pisos
+def crear_pisos(ancho, largo, altura):
+    for piso in range(pisos + 1):
+        bpy.ops.mesh.primitive_plane_add(size=largo * ancho, location=(0, 0, -piso * altura))
+        bpy.ops.object.shade_smooth()
+
+# Crear columnas
+crear_columnas(ancho, largo)
 
 # Crear ventanas
-for x in range(-ancho / 2 + 1.5, ancho / 2 - 1.5, 6):  # 3 metros entre columnas
-    for y in range(-largo / 2 + 1.5, largo / 2 - 1.5, 6):
-        for piso in range(0, pisos * 3, 3):
-            bpy.ops.mesh.primitive_cube_add(location=(x, y, piso), scale=(1, 1, 3))
+crear_ventanas(ancho, largo)
 
-# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
-if 'BLEND_OUT' in os.environ:
-    blend_out = os.environ['BLEND_OUT']
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out)
+# Crear pisos
+altura_piso = 3
+crear_pisos(ancho, largo, altura_piso)
+
+# Guardar el archivo si la variable BLEND_OUT está definida
+if 'BLEND_OUT' in dir(bpy.app):
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.app.data.path_save)

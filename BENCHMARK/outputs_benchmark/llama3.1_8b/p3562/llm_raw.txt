@@ -1,0 +1,52 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las proporciones de la plaza
+ancho = 20
+largo = 30
+alto_pavimento = 0.1
+alto_banca = 0.5
+alto_farola = 3
+
+# Crea el pavimento de adoquines de hormigón
+bpy.ops.mesh.primitive_cube_add(size=2, location=(ancho/2, largo/2, alto_pavimento))
+pavimento = bpy.context.active_object
+pavimento.name = "Pavimento"
+pavimento.scale = (ancho, largo, alto_pavimento)
+
+# Crea las bancas de diseño contemporáneo
+banca_x = 0.5 * ancho / 3
+banca_y = 1.2 * largo / 4
+for i in range(3):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(i*banca_x + banca_x/2, banca_y, alto_banca))
+    banco = bpy.context.active_object
+    banco.name = f"Banca {i+1}"
+    banco.scale = (0.5, 0.5, alto_banca)
+
+# Crea las farolas altas para la iluminación nocturna
+farola_x = ancho / 2
+farola_y = largo / 4
+for i in range(3):
+    bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=alto_farola, location=(i*farola_x + farola_x/2, farola_y, alto_pavimento))
+    farola = bpy.context.active_object
+    farola.name = f"Farola {i+1}"
+    farola.scale = (0.5, 0.5, alto_farola)
+
+# Crea el árbol central plantado en un alcorque elevado
+bpy.ops.mesh.primitive_cylinder_add(radius=2, depth=alto_pavimento, location=(ancho/2, largo/2, alto_pavimento))
+alcorque = bpy.context.active_object
+alcorque.name = "Alcorque"
+alcorque.scale = (1, 1, alto_pavimento)
+bpy.ops.mesh.primitive_cylinder_add(radius=0.5, depth=alto_pavimento, location=(ancho/2, largo/2, alto_pavimento + 0.5))
+arbol = bpy.context.active_object
+arbol.name = "Árbol"
+arbol.scale = (1, 1, alto_pavimento)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

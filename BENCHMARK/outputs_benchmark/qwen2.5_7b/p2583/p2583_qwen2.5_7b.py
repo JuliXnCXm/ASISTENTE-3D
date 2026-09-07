@@ -4,19 +4,19 @@ import bpy
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Crear paredes
-bpy.ops.mesh.primitive_cube_add(size=2.5, location=(2.0, 1.75, 1.25))
+bpy.ops.mesh.primitive_cube_add(size=2.5, location=(2.0, 1.75, 0))
 bpy.ops.transform.resize(value=(4.0, 3.5, 2.5))
 
 # Crear suelo
 bpy.ops.mesh.primitive_plane_add(size=8.0, location=(0, 0, 0))
 bpy.ops.transform.resize(value=(4.0, 3.5, 0.1))
 
-# Centrar cama individual contra la pared del fondo
-bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-1.5, -0.75, 0.25))
-bpy.ops.transform.resize(value=(1.0, 2.0, 0.5))
+# Centrar cama individual (1.0m x 2.0m)
+bpy.ops.mesh.primitive_cube_add(size=1.0, location=(-1.5, -0.75, 0))
+bpy.ops.transform.resize(value=(1.0, 2.0, 0.3))
 
-# Crear mesita de noche a la derecha de la cama
-bpy.ops.mesh.primitive_cube_add(size=0.25, location=(-0.75, -0.9, 0.3))
+# Crear mesita de noche (0.4m x 0.4m x 0.5m)
+bpy.ops.mesh.primitive_cube_add(size=0.5, location=(-0.6, -0.75, 0))
 bpy.ops.transform.resize(value=(0.4, 0.4, 0.5))
 
 # Guardar el archivo .blend si la variable BLEND_OUT está definida

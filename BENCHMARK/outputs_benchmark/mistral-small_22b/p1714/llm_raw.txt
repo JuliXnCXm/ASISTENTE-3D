@@ -1,0 +1,38 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crea el muro de ladrillo rojo
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+muro = bpy.context.object
+muro.scale = (10, 2.5, 0.3)  # Longitud: 10 m, Altura: 2.5 m, Grosor: 0.3 m
+muro.name = "Muro"
+
+# Crea la puerta de madera
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, -0.75, 0))
+puerta = bpy.context.object
+puerta.scale = (1.5, 2.5, 0.3)  # Ancho: 1.5 m, Altura: 2.5 m, Grosor: 0.3 m
+puerta.name = "Puerta"
+
+# Asigna materiales
+bpy.ops.object.select_all(action='DESELECT')
+muro.select_set(True)
+bpy.context.view_layer.objects.active = muro
+bpy.ops.object.material_slot_add()
+mat_muro = bpy.data.materials.new(name="MuroMaterial")
+mat_muro.diffuse_color = (1, 0, 0)  # Rojo
+muro.data.materials[0] = mat_muro
+
+puerta.select_set(True)
+bpy.context.view_layer.objects.active = puerta
+bpy.ops.object.material_slot_add()
+mat_puerta = bpy.data.materials.new(name="PuertaMaterial")
+mat_puerta.diffuse_color = (0.8, 0.4, 0)  # Marrón claro
+puerta.data.materials[0] = mat_puerta
+
+# Guardar el archivo si BLEND_OUT está definido
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

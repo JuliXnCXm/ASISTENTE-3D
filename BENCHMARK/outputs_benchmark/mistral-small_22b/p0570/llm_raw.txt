@@ -1,0 +1,35 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el edificio
+def create_building():
+    # Dimensiones del edificio
+    width = 20
+    depth = 15
+    height = 5 * 3  # 3 metros por piso
+
+    # Crear el cubo base
+    bpy.ops.mesh.primitive_cube_add(size=height, location=(width / 2, depth / 2, 0))
+    building = bpy.context.active_object
+
+    # Añadir modificador de extrusión para crear los pisos
+    bpy.ops.object.modifier_add(type='EXTRUDE')
+    extrude_mod = building.modifiers['Extrude']
+    extrude_mod.extrusion_distance = height / 5
+
+    # Crear la retícula de ventanas en la fachada
+    for i in range(width // 1):
+        for j in range(depth // 1):
+            bpy.ops.mesh.primitive_plane_add(size=0.5, location=(i + 0.25, j + 0.25, height / 2))
+
+# Crear el edificio
+create_building()
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+blend_out = bpy.context.scene.render.filepath
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

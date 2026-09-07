@@ -1,0 +1,72 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del dormitorio
+ancho = 4
+alto = 3.5
+
+# Crea el suelo de parquet
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+suelo = bpy.context.active_object
+suelo.name = "Suelo"
+suelo.scale = (ancho, alto, 0.01)
+bpy.ops.object.modifier_apply(modifier="Subdivision")
+
+# Crea las paredes del dormitorio
+pared_lateral_derecha = bpy.data.objects.new("Pared Lateral Derecha", None)
+pared_lateral_derecha.location = (ancho / 2, alto / 2, 0.01)
+bpy.context.collection.objects.link(pared_lateral_derecha)
+
+pared_frente = bpy.data.objects.new("Pared Frente", None)
+pared_frente.location = (-ancho / 2, alto / 2, 0.01)
+bpy.context.collection.objects.link(pared_frente)
+
+pared_atras = bpy.data.objects.new("Pared Atras", None)
+pared_atras.location = (ancho / 2, -alto / 2, 0.01)
+bpy.context.collection.objects.link(pared_atras)
+
+pared_lateral_izquierda = bpy.data.objects.new("Pared Lateral Izquierda", None)
+pared_lateral_izquierda.location = (-ancho / 2, alto / 2, 0.01)
+bpy.context.collection.objects.link(pared_lateral_izquierda)
+
+# Crea la cama doble
+cama = bpy.data.objects.new("Cama Doble", None)
+cama.location = (0, 0, 1)
+cama.scale = (ancho / 2, alto / 2, 1)
+bpy.context.collection.objects.link(cama)
+
+# Crea la estructura de madera de la cama
+estructura_cama = bpy.data.objects.new("Estructura Cama", None)
+estructura_cama.location = (0, 0, 1.5)
+estructura_cama.scale = (ancho / 2, alto / 2, 0.5)
+bpy.context.collection.objects.link(estructura_cama)
+
+# Crea el armario
+armario = bpy.data.objects.new("Armario", None)
+armario.location = (-ancho / 4, -alto / 4, 1)
+armario.scale = (ancho / 2, alto / 2, 1)
+bpy.context.collection.objects.link(armario)
+
+# Pinta las paredes de gris
+pared_lateral_derecha.active_material = bpy.data.materials.new("Materiales/Pared")
+pared_frente.active_material = bpy.data.materials.new("Materiales/Pared")
+pared_atras.active_material = bpy.data.materials.new("Materiales/Pared")
+pared_lateral_izquierda.active_material = bpy.data.materials.new("Materiales/Pared")
+
+# Define la textura gris
+mat_grey = bpy.data.materials.new(name="Gris")
+mat_grey.diffuse_color = (0.5, 0.5, 0.5)
+mat_grey.use_nodes = True
+
+# Aplica la textura a las paredes
+pared_lateral_derecha.active_material.node_tree.nodes["Principale Output"].inputs[0].default_value = mat_grey
+pared_frente.active_material.node_tree.nodes["Principale Output"].inputs[0].default_value = mat_grey
+pared_atras.active_material.node_tree.nodes["Principale Output"].inputs[0].default_value = mat_grey
+pared_lateral_izquierda.active_material.node_tree.nodes["Principale Output"].inputs[0].default_value = mat_grey
+
+# Guarda el archivo .blend si existe la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

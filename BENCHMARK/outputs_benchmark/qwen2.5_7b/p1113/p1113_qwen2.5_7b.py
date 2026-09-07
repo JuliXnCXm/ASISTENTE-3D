@@ -4,29 +4,35 @@ import bpy
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Crear el suelo
-bpy.ops.mesh.primitive_plane_add(size=12, location=(0, 0, 0))
+bpy.ops.mesh.primitive_plane_add(size=12, location=(0, 0, -0.1))
 bpy.context.object.scale = (4, 3.5, 1)
-bpy.ops.object.shade_smooth()
+bpy.ops.transform.resize(value=(4, 3.5, 1))
 
-# Pintar las paredes de gris
-for i in range(4):
-    bpy.ops.mesh.primitive_cube_add(size=1, location=(-2 + i * 2, -1.75, 0))
-    bpy.context.object.scale = (2, 3.5, 0.1)
-    bpy.ops.object.shade_smooth()
-    bpy.context.object.active_material = bpy.data.materials.new(name="Grise")
-    bpy.context.object.active_material.diffuse_color = (0.5, 0.5, 0.5, 1)
+# Crear las paredes
+for x in [-2, 2]:
+    bpy.ops.mesh.primitive_cube_add(size=0.1, location=(x, -1.75, 2.8))
+    bpy.context.object.scale = (0.1, 3.5, 0.1)
+bpy.ops.transform.resize(value=(4, 3.5, 0.1))
+
+for z in [0, 2.8]:
+    bpy.ops.mesh.primitive_cube_add(size=0.1, location=(-2, -1.75, z))
+    bpy.context.object.scale = (0.1, 3.5, 0.1)
+bpy.ops.transform.resize(value=(4, 3.5, 0.1))
 
 # Crear la cama doble
-bpy.ops.mesh.primitive_cube_add(size=2, location=(0, -0.75, 0))
-bpy.context.object.scale = (1.5, 1.8, 0.1)
-bpy.ops.object.shade_smooth()
-bpy.context.object.active_material = bpy.data.materials.new(name="Madera")
-bpy.context.object.active_material.diffuse_color = (0.6, 0.4, 0.2, 1)
+bpy.ops.mesh.primitive_cube_add(size=2, location=(-0.5, -0.75, -0.1))
+bpy.context.object.scale = (2, 1.5, 0.1)
+bpy.ops.transform.resize(value=(2, 1.5, 0.1))
 
-# Centrar la cama contra la pared del fondo
-bpy.ops.transform.translate(value=(0, -3.5/2 + 0.9, 0))
+# Pintar las paredes de gris
+for obj in bpy.data.objects:
+    if "Cube" in obj.name and not "Plane" in obj.name:
+        obj.scale = (4, 3.5, 0.1)
+        mat = bpy.data.materials.new(name="GrayWall")
+        mat.diffuse_color = (0.5, 0.5, 0.5, 1)
+        obj.data.materials.append(mat)
 
-# Guardar el archivo .blend si existe BLEND_OUT
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
 if "BLEND_OUT" in os.environ:
-    blend_out = os.environ["BLEND_OUT"]
-    bpy.ops.wm.save_as_mainfile(filepath=blend_out)
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

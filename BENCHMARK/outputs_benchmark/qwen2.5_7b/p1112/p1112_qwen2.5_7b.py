@@ -12,33 +12,36 @@ sofa_obj = bpy.data.objects.new(name="Sofa", object_data=sofa_mesh)
 
 # Definir la geometría del sofá (3 plazas)
 sofa_vertices = [
-    (-1, -0.5, 0), (-1, 0.5, 0), (-1, 0.8, 0),
-    (1, -0.5, 0), (1, 0.5, 0), (1, 0.8, 0),
-    (-1, -0.5, 2), (-1, 0.5, 2), (-1, 0.8, 2),
-    (1, -0.5, 2), (1, 0.5, 2), (1, 0.8, 2)
+    (-1, -0.5, 0), (-1, 0.5, 0), (-1, 1, 0),
+    (0, -0.5, 0), (0, 0.5, 0), (0, 1, 0),
+    (1, -0.5, 0), (1, 0.5, 0), (1, 1, 0)
 ]
-
 sofa_edges = [
-    (0, 1), (1, 2), (3, 4), (4, 5),
-    (6, 7), (7, 8), (9, 10), (10, 11),
-    (0, 3), (1, 4), (2, 5), (6, 9), (7, 10), (8, 11)
+    (0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 0),
+    (0, 3), (1, 4), (2, 5), (3, 6), (4, 7), (5, 8)
 ]
 
-sofa_faces = [
-    (0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11),
-    (0, 1, 4, 3), (1, 2, 5, 4), (2, 3, 6, 5),
-    (6, 7, 10, 9), (7, 8, 11, 10), (8, 9, 12, 11)
-]
-
-sofa_mesh.from_pydata(sofa_vertices, sofa_edges, sofa_faces)
+sofa_mesh.from_pydata(sofa_vertices, sofa_edges, [])
 sofa_mesh.update()
 
-# Asignar material al sofá
+# Asignar un material de tela gris
 material = bpy.data.materials.new(name="SofaMaterial")
-material.diffuse_color = (0.537, 0.486, 0.419)  # Color gris
+material.use_nodes = True
+nodes = material.node_tree.nodes
+links = material.node_tree.links
+
+nodes.clear()
+emission_node = nodes.new(type='ShaderNodeEmission')
+emission_node.inputs['Color'].default_value = (0.5, 0.5, 0.5, 1)
+emission_node.inputs['Strength'].default_value = 1
+output_node = nodes.new(type='ShaderNodeOutputMaterial')
+
+links.new(emission_node.outputs['Emission'], output_node.inputs['Surface'])
+
 sofa_obj.data.materials.append(material)
 
-bpy.context.view_layer.objects.active = sofa_obj
+# Posicionar el sofá en la escena
+sofa.location = (0, -2, 0.5)
 
 # Crear la mesa de centro de madera de nogal
 table = bpy.data.objects.new("Table", None)
@@ -47,30 +50,35 @@ bpy.context.collection.objects.link(table)
 table_mesh = bpy.data.meshes.new(name="TableMesh")
 table_obj = bpy.data.objects.new(name="Table", object_data=table_mesh)
 
-# Definir la geometría de la mesa (superficie plana)
+# Definir la geometría de la mesa
 table_vertices = [
-    (-0.5, -0.25, 0), (-0.5, 0.25, 0), (0.5, 0.25, 0), (0.5, -0.25, 0)
+    (-0.5, -0.25, 0), (0.5, -0.25, 0),
+    (-0.5, 0.25, 0), (0.5, 0.25, 0)
 ]
+table_edges = [(0, 1), (1, 3), (3, 2), (2, 0)]
 
-table_edges = [
-    (0, 1), (1, 2), (2, 3), (3, 0)
-]
-
-table_faces = [(0, 1, 2, 3)]
-
-table_mesh.from_pydata(table_vertices, table_edges, table_faces)
+table_mesh.from_pydata(table_vertices, table_edges, [])
 table_mesh.update()
 
-# Asignar material a la mesa
-material_table = bpy.data.materials.new(name="TableMaterial")
-material_table.diffuse_color = (0.647, 0.518, 0.298)  # Color nogal
-table_obj.data.materials.append(material_table)
+# Asignar un material de madera
+material = bpy.data.materials.new(name="TableMaterial")
+material.use_nodes = True
+nodes = material.node_tree.nodes
+links = material.node_tree.links
 
-bpy.context.view_layer.objects.active = table_obj
+nodes.clear()
+emission_node = nodes.new(type='ShaderNodeBsdfDiffuse')
+emission_node.inputs['Color'].default_value = (0.5, 0.35, 0.18, 1)
+output_node = nodes.new(type='ShaderNodeOutputMaterial')
 
-# Posicionar la mesa al frente del sofá
-sofa.location = (-2, 0, 0)
-table.location = (2, 0, 0.5)
+links.new(emission_node.outputs['BSDF'], output_node.inputs['Surface'])
 
-if 'BLEND_OUT' in os.environ:
-    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+table_obj.data.materials.append(material)
+
+# Posicionar la mesa en la escena
+table.location = (0, 2, 0.5)
+
+# Guardar el archivo .blend si existe BLEND_OUT
+if "BLEND_OUT" in os.environ:
+    blend_out_path = os.environ["BLEND_OUT"]
+    bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

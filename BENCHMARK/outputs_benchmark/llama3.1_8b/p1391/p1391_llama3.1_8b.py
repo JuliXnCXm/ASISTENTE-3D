@@ -1,0 +1,35 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Establece las dimensiones de la parcela en metros
+parcela_x = 5
+parcela_y = 5
+
+# Crea un plano para representar la parcela
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+plano = bpy.context.active_object
+plano.scale = (parcela_x, parcela_y, 1)
+
+# Define las propiedades del árbol
+radio_copa = 2
+altura_arbol = 5
+
+# Crea el tronco del árbol
+bpy.ops.mesh.primitive_cylinder_add(radius=0.1, depth=altura_arbol, location=(0, 0, altura_arbol))
+tronco = bpy.context.active_object
+tronco.scale = (radio_copa * 2, radio_copa * 2, altura_arbol)
+
+# Crea las ramas del árbol
+num_ramas = 10
+for i in range(num_ramas):
+    angulo = mathutils.Vector((1, 0)).rotation_difference(mathutils.Vector((math.cos(2 * math.pi * i / num_ramas), math.sin(2 * math.pi * i / num_ramas)))).to_euler()
+    bpy.ops.mesh.primitive_cylinder_add(radius=radio_copa * 0.5, depth=altura_arbol * 0.8, location=(radio_copa * math.cos(angulo[1]), radio_copa * math.sin(angulo[1]), altura_arbol))
+    rama = bpy.context.active_object
+    rama.rotation_euler = angulo
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

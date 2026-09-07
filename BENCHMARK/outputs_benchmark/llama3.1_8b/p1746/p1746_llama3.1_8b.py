@@ -1,0 +1,51 @@
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del edificio
+edificio = {
+    'altura': 5,
+    'ancho_frente': 10,
+    'ancho_tras': 8,
+    'fondo': 15,
+    'base_asfalto': 0.1,
+}
+
+# Crea la base de asfalto
+bpy.ops.mesh.primitive_cube_add(size=edificio['base_asfalto'], location=(0, 0, -edificio['altura']))
+asfalto = bpy.context.active_object
+
+# Crea las columnas del edificio
+for i in range(edificio['altura']):
+    columna = bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=2, enter_editmode=False, align='VIEW', location=(0, 0, -edificio['altura'] + i))
+    columna = bpy.context.active_object
+
+# Crea las plantas del edificio
+for i in range(edificio['altura']):
+    planta = bpy.ops.mesh.primitive_cube_add(size=2, location=(0, 0, -edificio['altura'] + i), rotation=(mathutils.pi/2, 0, mathutils.pi))
+    planta = bpy.context.active_object
+
+# Crea la fachada principal del edificio
+fachada_principal = bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -edificio['altura']), rotation=(mathutils.pi/2, 0, mathutils.pi))
+
+# Agrega ventanas a la fachada principal
+ventana_ancho = 1.5
+ventana_alto = 1
+for i in range(3):
+    for j in range(4):
+        ventana = bpy.ops.mesh.primitive_cube_add(size=1, location=(i*2-2, j*2-2, -edificio['altura']), rotation=(mathutils.pi/2, 0, mathutils.pi))
+        ventana = bpy.context.active_object
+
+# Agrega estuco a la fachada principal
+estuco_ancho = 1.5
+estuco_alto = 1
+for i in range(3):
+    for j in range(4):
+        estuco = bpy.ops.mesh.primitive_cube_add(size=1, location=(i*2-2, j*2-2, -edificio['altura']), rotation=(mathutils.pi/2, 0, mathutils.pi))
+        estuco = bpy.context.active_object
+
+# Guarda el archivo .blend si se especificó la ruta
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

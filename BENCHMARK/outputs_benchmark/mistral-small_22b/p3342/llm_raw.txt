@@ -1,0 +1,71 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear un muro
+def create_wall(location, size):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=location)
+    obj = bpy.context.object
+    obj.scale = (size[0], 3, size[1])
+    return obj
+
+# Función para crear una losa
+def create_slab(location, size):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=location)
+    obj = bpy.context.object
+    obj.scale = (size[0], 0.2, size[1])
+    return obj
+
+# Función para crear un suelo de baldosas
+def create_tiled_floor(location, size):
+    bpy.ops.mesh.primitive_plane_add(size=1, location=location)
+    obj = bpy.context.object
+    obj.scale = (size[0], 0.2, size[1])
+    return obj
+
+# Función para crear un sofá
+def create_sofa():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.scale = (2, 0.5, 1)
+    return obj
+
+# Función para crear una isla de cocina
+def create_kitchen_island():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.scale = (2, 0.5, 1)
+    return obj
+
+# Función para crear una cama
+def create_bed():
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    obj = bpy.context.object
+    obj.scale = (2, 0.5, 1)
+    return obj
+
+# Crear la estructura de muros y losas
+create_wall((-5, -5, 0), (11, 3))  # Muro exterior izquierdo
+create_wall((-5, 5, 0), (11, 3))   # Muro exterior derecho
+create_wall((5, -5, 0), (6, 7))    # Muro interior izquierdo
+create_wall((5, 5, 0), (6, 7))     # Muro interior derecho
+create_slab((-5.5, -2.5, 3), (11, 7))  # Losas superiores
+create_slab((-5.5, -8.5, 0), (11, 7)) # Losas inferiores
+
+# Crear el patio central con suelo de baldosas
+create_tiled_floor((-2.5, -2.5, 0), (5, 5))
+
+# Crear el mobiliario representativo
+create_sofa().location = (-1, -4, 0)  # Sofá en la sala de estar
+create_kitchen_island().location = (3, -2.5, 0)  # Isla de cocina
+create_bed().location = (7, -4, 0)    # Cama en el dormitorio principal
+create_bed().location = (7, -6, 0)    # Cama en otro dormitorio
+create_bed().location = (7, -8, 0)    # Cama en otro dormitorio
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+import os
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

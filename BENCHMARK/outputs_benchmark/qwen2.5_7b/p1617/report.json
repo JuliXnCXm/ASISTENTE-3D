@@ -1,7 +1,7 @@
 {
-  "execution_success": false,
-  "execution_error": "'bpy.app' object has no attribute 'background_vars'",
-  "chamfer_distance": null,
+  "execution_success": true,
+  "execution_error": null,
+  "chamfer_distance": 650.044967211421,
   "gt_vertices_count": 8,
-  "pred_vertices_count": 0
+  "pred_vertices_count": 4
 }

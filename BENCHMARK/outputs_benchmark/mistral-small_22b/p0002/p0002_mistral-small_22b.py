@@ -1,0 +1,15 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el muro divisorio interior
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 2.5/2, 0))
+wall = bpy.context.object
+
+# Escalar el cubo para obtener las dimensiones deseadas
+wall.scale = (5, 2.5, 0.15)
+
+# Si se debe guardar el archivo .blend
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

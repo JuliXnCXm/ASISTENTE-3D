@@ -5,47 +5,50 @@ import mathutils
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 # Define las propiedades de la cama
-tamaño_cama = 1.8  # metros
-ancho_colchon = 0.9  # metros
-alto_colchon = 0.2  # metros
+longitud = 2.0  # metros
+ancho = 1.5  # metros
+alto = 0.8  # metros
+espesor_madera = 0.05  # metros
 
-# Crea el marco de madera
-bpy.ops.mesh.primitive_cube_add(size=tamaño_cama, location=(0, 0, 0))
-marco_madera = bpy.context.active_object
-marco_madera.name = "Marco de Madera"
+# Crea el marco superior de la cama (estructura de madera)
+bpy.ops.mesh.primitive_cube_add(size=longitud, location=(0, 0, alto))
+obj_marco_superior = bpy.context.active_object
+obj_marco_superior.name = 'Marco Superior'
+obj_marco_superior.scale = (ancho, longitud, espesor_madera)
 
-# Duplica y gira los lados del marco para crear la estructura de madera
-for i in range(4):
-    bpy.ops.object.duplicate(obj=marco_madera)
-    obj_duplicado = bpy.context.active_object
-    if i == 0:
-        obj_duplicado.rotation_euler = mathutils.Vector((math.pi/2, 0, 0))
-    elif i == 1:
-        obj_duplicado.rotation_euler = mathutils.Vector((0, math.pi/2, 0))
-    elif i == 2:
-        obj_duplicado.location = (tamaño_cama / 2, tamaño_cama / 2, 0)
-        obj_duplicado.rotation_euler = mathutils.Vector((-math.pi/2, 0, 0))
-    else:
-        obj_duplicado.location = (-tamaño_cama / 2, -tamaño_cama / 2, 0)
-        obj_duplicado.rotation_euler = mathutils.Vector((math.pi, 0, 0))
+# Crea el marco inferior de la cama (estructura de madera)
+bpy.ops.mesh.primitive_cube_add(size=longitud, location=(0, 0, -alto))
+obj_marco_inferior = bpy.context.active_object
+obj_marco_inferior.name = 'Marco Inferior'
+obj_marco_inferior.scale = (ancho, longitud, espesor_madera)
 
-# Crea el colchón
-bpy.ops.mesh.primitive_cube_add(size=ancho_colchon, location=(0, 0, alto_colchon))
-colchon = bpy.context.active_object
-colchon.name = "Colchon"
+# Crea los laterales de la cama (estructura de madera)
+bpy.ops.mesh.primitive_cube_add(size=alto, location=(0, ancho/2, 0))
+obj_lateral_derecha = bpy.context.active_object
+obj_lateral_derecha.name = 'Lateral Derecha'
+obj_lateral_derecha.scale = (ancho, espesor_madera, longitud)
 
-# Duplica y gira el colchón para crear la estructura de madera del colchón
-for i in range(4):
-    bpy.ops.object.duplicate(obj=colchon)
-    obj_duplicado = bpy.context.active_object
-    if i == 0:
-        obj_duplicado.rotation_euler = mathutils.Vector((math.pi/2, 0, 0))
-    elif i == 1:
-        obj_duplicado.rotation_euler = mathutils.Vector((0, math.pi/2, 0))
-    else:
-        obj_duplicado.location = (ancho_colchon / 2, ancho_colchon / 2, alto_colchon)
-        obj_duplicado.rotation_euler = mathutils.Vector((-math.pi/2, 0, 0))
+bpy.ops.mesh.primitive_cube_add(size=alto, location=(0, -ancho/2, 0))
+obj_lateral_izquierda = bpy.context.active_object
+obj_lateral_izquierda.name = 'Lateral Izquierda'
+obj_lateral_izquierda.scale = (ancho, espesor_madera, longitud)
 
-# Guarda el archivo .blend si se especificó la ruta
-if 'BLEND_OUT' in bpy.context.scene:
-    bpy.ops.wm.save_mainfile(filepath=bpy.context.scene['BLEND_OUT'])
+# Crea el colchón blanco
+bpy.ops.mesh.primitive_plane_add(size=longitud, location=(0, 0, alto - espesor_madera))
+obj_colchon = bpy.context.active_object
+obj_colchon.name = 'Colchon'
+obj_colchon.scale = (ancho, longitud, 0.1)
+
+# Aplica materiales a los objetos
+mat_roble = bpy.data.materials['Material.001']
+obj_marco_superior.data.materials.append(mat_roble)
+obj_marco_inferior.data.materials.append(mat_roble)
+obj_lateral_derecha.data.materials.append(mat_roble)
+obj_lateral_izquierda.data.materials.append(mat_roble)
+
+mat_blanco = bpy.data.materials['Material.002']
+obj_colchon.data.materials.append(mat_blanco)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

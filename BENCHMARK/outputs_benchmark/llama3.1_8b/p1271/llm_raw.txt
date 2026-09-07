@@ -1,0 +1,48 @@
+```python
+import bpy
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las dimensiones del terreno y la casa
+terreno_ancho = 25
+terreno_largo = 20
+casa_ancho = 12
+casa_largo = 9
+
+# Crea el terreno de césped
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 0))
+obj_cesped = bpy.context.active_object
+obj_cesped.name = "Césped"
+obj_cesped.scale = (terreno_ancho, terreno_largo, 0.01)
+
+# Crea la casa
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+obj_casa = bpy.context.active_object
+obj_casa.name = "Casa"
+obj_casa.scale = (casa_ancho, casa_largo, 2.5)
+
+# Mueve la casa al centro del terreno
+obj_casa.location = (terreno_ancho / 2 - casa_ancho / 2, terreno_largo / 2 - casa_largo / 2, 1.25)
+
+# Crea el tejado a dos aguas
+bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 3))
+obj_techo = bpy.context.active_object
+obj_techo.name = "Tejado"
+obj_techo.scale = (casa_ancho * 2, casa_largo * 2, 0.01)
+
+# Mueve el tejado encima de la casa
+obj_techo.location = (0, 0, 3)
+obj_techo.rotation_euler = mathutils.Vector((math.pi / 4, 0, 0))
+
+# Crea el árbol en el jardín frontal
+bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=5, location=(10, -5, 0))
+obj_arbol = bpy.context.active_object
+obj_arbol.name = "Árbol"
+obj_arbol.scale = (2, 2, 2)
+
+# Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])
+```

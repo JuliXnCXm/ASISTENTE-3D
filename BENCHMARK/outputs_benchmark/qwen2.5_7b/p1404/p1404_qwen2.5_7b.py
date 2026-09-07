@@ -8,38 +8,26 @@ wall_length = 10.0
 wall_height = 1.2
 wall_depth = 0.25
 
-# Lado frontal del muro
-bpy.ops.mesh.primitive_cube_add(size=wall_depth, location=(wall_length / 2, wall_height / 2, wall_depth / 2))
-front_wall = bpy.context.object
-front_wall.scale = (wall_length, wall_height, wall_depth)
-
-# Lado trasero del muro
-back_wall = front_wall.copy()
-back_wall.location = (-wall_length / 2, back_wall.location.y, back_wall.location.z)
-bpy.context.collection.objects.link(back_wall)
-
 # Lado izquierdo del muro
-left_wall = front_wall.copy()
-left_wall.location = (left_wall.location.x, -wall_height / 2, left_wall.location.z)
-bpy.context.collection.objects.link(left_wall)
+bpy.ops.mesh.primitive_cube_add(size=wall_depth, location=(-wall_length/2 + wall_depth/2, -wall_depth/2, -wall_depth/2))
+bpy.ops.transform.resize(value=(wall_length - wall_depth, wall_depth, wall_height))
 
 # Lado derecho del muro
-right_wall = front_wall.copy()
-right_wall.location = (right_wall.location.x, right_wall.location.y, right_wall.location.z + wall_depth)
-bpy.context.collection.objects.link(right_wall)
+bpy.ops.mesh.primitive_cube_add(size=wall_depth, location=(wall_length/2 - wall_depth/2, -wall_depth/2, -wall_depth/2))
+bpy.ops.transform.resize(value=(wall_length - wall_depth, wall_depth, wall_height))
+
+# Fondo del muro
+bpy.ops.mesh.primitive_cube_add(size=wall_depth, location=(0, 0, -wall_depth/2 - wall_height/2))
+bpy.ops.transform.resize(value=(wall_length, wall_depth, wall_height + wall_depth))
 
 # Baranda metálica encima del muro
-baranda_length = 10.5  # Ligeramente más larga para cubrir los bordes
-baranda_height = 0.2
+baranda_width = 1.0
+baranda_height = 0.1
 
-bpy.ops.mesh.primitive_cube_add(size=baranda_height, location=(wall_length / 2, wall_height + baranda_height / 2, baranda_height / 2))
-baranda = bpy.context.object
-baranda.scale = (baranda_length, baranda_height, baranda_height)
+bpy.ops.mesh.primitive_cube_add(size=baranda_width, location=(-wall_length/2 + baranda_width/2, -baranda_width/2, wall_depth/2))
+bpy.ops.transform.resize(value=(wall_length - baranda_width, baranda_width, baranda_height))
 
-# Alinear la baranda con el muro
-baranda.location.x -= baranda_length / 2 - wall_length / 2
-
-# Guardar el archivo .blend si existe BLEND_OUT
-if "BLEND_OUT" in os.environ:
-    blend_out_path = os.environ["BLEND_OUT"]
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT existe
+if 'BLEND_OUT' in os.environ:
+    blend_out_path = os.environ['BLEND_OUT']
     bpy.ops.wm.save_as_mainfile(filepath=blend_out_path)

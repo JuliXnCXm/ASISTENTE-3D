@@ -4,27 +4,43 @@ import bpy
 # Limpiar la escena
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
-# Crear el marco de la cama (estructura de madera)
-bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -0.5))
-bpy.context.object.scale = (2, 1.5, 0.1)  # Ajustar a las dimensiones típicas de una cama doble
+# Definir las dimensiones en metros
+length = 2.0
+width = 1.5
+height = 0.1
 
-# Crear el colchón (tela blanca)
-bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, -0.6))
-bpy.context.object.scale = (2, 1.5, 0.05)  # Ajustar a las dimensiones típicas de un colchón
+# Crear el marco de la cama (4 patas y 4 lados)
+bpy.ops.mesh.primitive_cube_add(size=0.1, location=(0, 0, -0.05))
+bpy.ops.transform.resize(value=(length, width, height))
 
-# Asignar materiales
-material_madera = bpy.data.materials.new(name="MaderaNogal")
-material_madera.diffuse_color = (0.4, 0.2, 0.1, 1)  # Color marrón oscuro para nogal
-bpy.context.object.data.materials.append(material_madera)
+# Crear las patas
+for x in [-length/2, length/2]:
+    for z in [height/4, -3*height/4]:
+        bpy.ops.mesh.primitive_cube_add(size=0.1, location=(x, 0, z))
+        bpy.ops.transform.resize(value=(0.5, 0.5, height))
 
-material_tela = bpy.data.materials.new(name="TelaBlanca")
-material_tela.diffuse_color = (1, 1, 1, 1)  # Blanco puro
-bpy.context.object.data.materials.append(material_tela)
+# Crear el colchón (un rectángulo grande)
+bpy.ops.mesh.primitive_plane_add(size=2.5, location=(0, 0, -0.1))
+bpy.ops.transform.resize(value=(length, width, 0.05))
 
-# Asignar materiales a los objetos
-bpy.context.view_layer.objects.active = bpy.data.objects['Cube']
-bpy.data.objects['Cube'].data.materials[0] = material_madera
+# Cambiar la textura del colchón a blanco
+material = bpy.data.materials.new(name="ColchonMaterial")
+material.diffuse_color = (1, 1, 1)
+bpy.context.object.data.materials.append(material)
 
-bpy.context.view_layer.objects.active = bpy.data.objects['Cube.001']
-bpy.data.objects['Cube.001'].data.materials[0] = material_tela
+# Ajustar el material para que sea de tela
+texture = bpy.data.textures.new(name="TelaTexture", type='MUSGRAVE')
+material.use_nodes = True
+nodes = material.node_tree.nodes
+links = material.node_tree.links
+nodes.remove(nodes.get("Principled BSDF"))
+output_node = nodes.new(type='ShaderNodeOutputMaterial')
+emission_node = nodes.new(type='ShaderNodeEmission')
+texture_node = nodes.new(type='ShaderNodeTexMusgrave')
+links.new(texture_node.outputs['Fac'], emission_node.inputs['Color'])
+links.new(emission_node.outputs['Emission'], output_node.inputs['Surface'])
+
+# Guardar el archivo .blend si la variable BLEND_OUT está definida
+if 'BLEND_OUT' in bpy.context.scene:
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.context.scene[BLEND_OUT])
 ```

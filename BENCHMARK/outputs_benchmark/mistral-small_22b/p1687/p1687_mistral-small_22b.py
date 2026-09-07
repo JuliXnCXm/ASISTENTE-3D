@@ -1,0 +1,18 @@
+import bpy
+
+# Limpiar la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo (acera y calzada)
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+acera = bpy.context.object
+acera.scale = (2, 10, 0.1)
+
+# Crear la baranda metálica
+bpy.ops.mesh.primitive_cylinder_add(radius=0.05, depth=10, location=(1, 0, 0))
+baranda = bpy.context.object
+baranda.scale = (2, 1, 1)
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

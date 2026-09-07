@@ -1,7 +1,7 @@
 {
-  "execution_success": false,
-  "execution_error": "'bpy_prop_collection[key]: key \"Principio de Diffuso\" not found'",
-  "chamfer_distance": null,
+  "execution_success": true,
+  "execution_error": null,
+  "chamfer_distance": 3.0322376213553843,
   "gt_vertices_count": 24,
-  "pred_vertices_count": 0
+  "pred_vertices_count": 32
 }

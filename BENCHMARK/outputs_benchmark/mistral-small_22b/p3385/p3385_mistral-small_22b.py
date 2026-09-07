@@ -1,0 +1,51 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear una pared
+def create_wall(start, end, height):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(start[0], start[1], 0))
+    wall = bpy.context.object
+    wall.scale.x = abs(end[0] - start[0])
+    wall.scale.y = height
+    wall.location.z = (height / 2)
+
+# Función para crear una ventana
+def create_window(start, end):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(start[0], start[1], 0))
+    window = bpy.context.object
+    window.scale.x = abs(end[0] - start[0])
+    window.scale.y = 2
+    window.location.z = 3
+
+# Crear paredes y ventanas
+create_wall((0, 0), (10, 0), 3)  # Pared frontal
+create_window((4, 0), (6, 0))  # Ventana sala
+create_wall((10, 0), (10, 8), 3)  # Pared derecha
+create_wall((10, 8), (0, 8), 3)  # Pared trasera
+create_window((4, 8), (6, 8))  # Ventana dormitorio
+create_wall((0, 8), (0, 0), 3)  # Pared izquierda
+
+# Crear cocina y barra
+bpy.ops.mesh.primitive_cube_add(size=1, location=(7, 4, 0))
+kitchen = bpy.context.object
+kitchen.scale.x = 3
+kitchen.location.z = 2
+create_wall((10, 4), (7, 4), 2)  # Barra
+
+# Crear pasillo y área privada
+bpy.ops.mesh.primitive_cube_add(size=1, location=(3, 5, 0))
+passage = bpy.context.object
+passage.scale.x = 4
+passage.location.z = 2
+create_wall((3, 8), (3, 5), 2)  # Pared pasillo
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 8, 0))
+bathroom = bpy.context.object
+bathroom.scale.x = 3
+create_wall((-3, 8), (0, 8), 2)  # Pared baño
+create_wall((0, 11), (0, 8), 3)  # Pared dormitorio
+
+# Guardar el archivo si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -1,0 +1,25 @@
+ ```python
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Crear el suelo de la terraza
+bpy.ops.mesh.primitive_plane_add(size=6, location=(0, 0, 0))
+terraza = bpy.context.object
+
+# Ajustar el tamaño del suelo a 6x4 metros
+terraza.scale = (6, 4, 1)
+
+# Crear la baranda de protección en uno de los lados largos
+bpy.ops.mesh.primitive_cube_add(size=0.05, location=(3, 0, 0))
+baranda = bpy.context.object
+
+# Ajustar el tamaño y la posición de la baranda para que cubra todo el lado largo
+baranda.scale = (6, 0.05, 2)
+baranda.location = (3, 0, 1)
+
+# Guardar el archivo .blend si existe BLEND_OUT en las variables de entorno
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])
+```

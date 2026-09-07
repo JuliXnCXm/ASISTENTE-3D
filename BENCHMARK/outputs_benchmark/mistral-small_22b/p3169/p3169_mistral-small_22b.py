@@ -1,0 +1,68 @@
+import bpy
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Función para crear un cubo
+def create_cube(name, size):
+    bpy.ops.mesh.primitive_cube_add(size=size)
+    obj = bpy.context.object
+    obj.name = name
+    return obj
+
+# Función para crear un cilindro
+def create_cylinder(name, radius, depth):
+    bpy.ops.mesh.primitive_cylinder_add(radius=radius, depth=depth)
+    obj = bpy.context.object
+    obj.name = name
+    return obj
+
+# Función para crear una esfera
+def create_sphere(name, radius):
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=radius)
+    obj = bpy.context.object
+    obj.name = name
+    return obj
+
+# Crear el espacio principal de la oficina
+office_space = create_cube("OfficeSpace", 1)
+office_space.scale = (8, 6, 2.8)
+
+# Crear los puestos de trabajo
+for i in range(4):
+    desk = create_cube(f"Desk_{i}", 0.5)
+    desk.location = (1 + i * 2, 1, 0.7)
+    desk.scale = (2, 1, 0.3)
+
+    chair = create_cylinder(f"Chair_{i}", 0.2, 0.5)
+    chair.location = (1 + i * 2, 1, 0.4)
+    chair.scale = (0.6, 0.6, 0.3)
+
+    drawer = create_cube(f"Drawer_{i}", 0.5)
+    drawer.location = (1 + i * 2, 1, 0.1)
+    drawer.scale = (1, 0.5, 0.5)
+
+# Crear la sala de reuniones
+meeting_room = create_cube("MeetingRoom", 1)
+meeting_room.location = (7, 2, 0.7)
+meeting_room.scale = (3, 4, 2.8)
+
+# Crear el tabique de vidrio
+glass_wall = create_cube("GlassWall", 1)
+glass_wall.location = (7, 6, 0.7)
+glass_wall.rotation_euler = (0, 1.5708, 0)
+glass_wall.scale = (3, 4, 2.8)
+
+# Amueblar la sala de reuniones
+meeting_table = create_cube("MeetingTable", 0.5)
+meeting_table.location = (8, 4, 0.7)
+meeting_table.scale = (2, 1.2, 0.3)
+
+for i in range(6):
+    meeting_chair = create_cylinder(f"MeetingChair_{i}", 0.2, 0.5)
+    meeting_chair.location = (8 + i * 0.4, 4 - i * 0.2, 0.4)
+    meeting_chair.scale = (0.6, 0.6, 0.3)
+
+# Guardar el archivo .blend si la variable de entorno BLEND_OUT está definida
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_as_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -9,25 +9,25 @@ bpy.context.scene.unit_settings.system = 'METRIC'
 bpy.context.scene.unit_settings.length_unit = 'METERS'
 
 # Crea el suelo
-bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, -1))
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
 
 # Crea la alfombra
-bpy.ops.mesh.primitive_cube_add(size=5, location=(0, 0, -2))
+bpy.ops.mesh.primitive_cube_add(size=5, location=(0, -2.5, 0))
 bpy.context.active_object.name = 'Alfombra'
 bpy.context.object.data.materials.append(bpy.data.materials['Material.001'])
 
 # Crea el sofá modular
 sofa = bpy.data.objects.new('Sofa', bpy.data.meshes.new('Sofa'))
-sofa.location = (0, 0, -3)
-sofa.scale = (2, 1, 1)
+sofa.location = (0, 2.5, 0)
+sofa.scale = (10, 3, 1)
 
 verts = [
-    (-1.5, -1.5, 0),
-    (1.5, -1.5, 0),
-    (1.5, 1.5, 0),
-    (-1.5, 1.5, 0),
-    (-2.5, 0, 0),
-    (2.5, 0, 0)
+    (-5, -1.5, 0),
+    (5, -1.5, 0),
+    (5, 1.5, 0),
+    (-5, 1.5, 0),
+    (-2.5, 0, 1),
+    (2.5, 0, 1)
 ]
 
 edges = [
@@ -35,20 +35,12 @@ edges = [
     (1, 2),
     (2, 3),
     (3, 0),
-    (4, 5),
-    (0, 4),
-    (1, 5),
-    (2, 4),
-    (3, 5)
+    (4, 5)
 ]
 
 faces = [
     (0, 1, 2, 3),
-    (4, 5, 0, 1),
-    (0, 1, 5, 4),
-    (1, 2, 4, 5),
-    (2, 3, 5, 4),
-    (3, 0, 4, 5)
+    (4, 5)
 ]
 
 sofa.data.from_pydata(verts, edges, faces)
@@ -56,35 +48,36 @@ bpy.context.collection.objects.link(sofa)
 
 # Crea la estantería
 estanteria = bpy.data.objects.new('Estanteria', bpy.data.meshes.new('Estanteria'))
-estanteria.location = (3, 0, -4)
-estanteria.scale = (2, 1.5, 1)
+estanteria.location = (2.5, 0, 1)
+estanteria.scale = (3, 2, 1)
 
 verts = [
-    (-1.5, -1.5, 0),
-    (1.5, -1.5, 0),
-    (1.5, 1.5, 0),
-    (-1.5, 1.5, 0)
+    (-1.5, -1, 0),
+    (1.5, -1, 0),
+    (1.5, 1, 0),
+    (-1.5, 1, 0),
+    (-1, 0, 1)
 ]
 
 edges = [
     (0, 1),
     (1, 2),
     (2, 3),
-    (3, 0)
+    (3, 0),
+    (4, 0)
 ]
 
 faces = [
-    (0, 1, 2, 3)
+    (0, 1, 2, 3),
+    (4, 0)
 ]
 
 estanteria.data.from_pydata(verts, edges, faces)
 bpy.context.collection.objects.link(estanteria)
 
 # Aplica modificadores a la estantería
-modificador_curva = bpy.data.objects.new('Curva', None)
-modificador_curva.type = 'CURVE'
-modificador_curva.data = bpy.data.curves.new('Estanteria_Curva', type='NURBS_CURVE')
-estanteria.modifiers.link(modificador_curva)
+mod_subdiv = bpy.data.objects['Estanteria'].modifiers.new('Subdivision', 'SUBSURF')
+mod_subdiv.levels = 2
 
 # Guarda el archivo .blend si se especificó la variable de entorno BLEND_OUT
 if 'BLEND_OUT' in os.environ:

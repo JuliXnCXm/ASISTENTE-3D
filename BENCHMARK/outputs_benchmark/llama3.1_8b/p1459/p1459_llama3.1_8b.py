@@ -1,0 +1,50 @@
+import bpy
+import bmesh
+import mathutils
+
+# Limpia la escena
+bpy.ops.wm.read_factory_settings(use_empty=True)
+
+# Define las propiedades del edificio
+edificio = {
+    'longitud': 20,
+    'ancho': 15,
+    'altura': 4,
+    'piso_altura': 3.5,
+    'columna_diametro': 0.5,
+    'ventana_ancho': 1.5,
+    'ventana_alto': 2
+}
+
+# Crea el suelo del edificio
+bpy.ops.mesh.primitive_cube_add(size=edificio['longitud'], enter_editmode=False, align='WORLD', location=(0, 0, 0))
+obj_suelo = bpy.context.active_object
+
+# Crea las columnas estructurales
+for i in range(int(edificio['ancho'] / edificio['columna_diametro'])):
+    for j in range(int(edificio['longitud'] / edificio['columna_diametro'])):
+        columna_x = (i + 0.5) * edificio['columna_diametro']
+        columna_y = (j + 0.5) * edificio['columna_diametro']
+        bpy.ops.mesh.primitive_cylinder_add(radius=edificio['columna_diametro'] / 2, depth=edificio['altura'], enter_editmode=False, align='WORLD', location=(columna_x, columna_y, 0))
+        obj_columna = bpy.context.active_object
+        obj_columna.location = (columna_x, columna_y, edificio['altura'])
+
+# Crea las fachadas del edificio
+for i in range(int(edificio['ancho'] / edificio['ventana_ancho'])):
+    for j in range(int(edificio['longitud'] / edificio['ventana_alto'])):
+        ventana_x = (i + 0.5) * edificio['ventana_ancho']
+        ventana_y = (j + 0.5) * edificio['ventana_alto']
+        bpy.ops.mesh.primitive_rectangle_add(size=edificio['ventana_ancho'], depth=edificio['ventana_alto'], enter_editmode=False, align='WORLD', location=(ventana_x, ventana_y, 0))
+        obj_fachada = bpy.context.active_object
+        obj_fachada.location = (ventana_x, ventana_y, edificio['altura'])
+
+# Crea los pisos del edificio
+for i in range(edificio['altura']):
+    piso_altura = i * edificio['piso_altura']
+    bpy.ops.mesh.primitive_cube_add(size=edificio['longitud'], enter_editmode=False, align='WORLD', location=(0, 0, piso_altura))
+    obj_piso = bpy.context.active_object
+    obj_piso.location = (0, 0, piso_altura)
+
+# Guarda el archivo .blend si se especificó la ruta de salida en la variable de entorno BLEND_OUT
+if 'BLEND_OUT' in os.environ:
+    bpy.ops.wm.save_mainfile(filepath=os.environ['BLEND_OUT'])

@@ -35,10 +35,12 @@ echo "📈 Configurando Weights & Biases (wandb)..."
 echo "(Presiona Ctrl+C si no quieres usar wandb, el entrenamiento seguirá funcionando sin él)"
 wandb login
 
+echo "export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True" >> venv_tesis/bin/activate
+
 echo "=============================================================================="
 echo "✅ Entorno listo."
 echo "Para comenzar el entrenamiento, asegúrate de activar el entorno virtual con:"
 echo "source venv_tesis/bin/activate"
 echo "Y luego lanza el script en background usando nohup:"
-echo "nohup python ASISTENTE-3D/TRAINING/train_qlora_multimodal.py --model_name_or_path \"Qwen/Qwen2.5-VL-7B-Instruct\" --push_to_hub --hub_model_id \"TU_USUARIO_DE_HF/qwen2.5-vl-aec-lora\" > entrenamiento.log 2>&1 &"
+echo "nohup python ASISTENTE-3D/TRAINING/train_qlora_multimodal.py --model_name_or_path \"Qwen/Qwen2.5-VL-7B-Instruct\" --batch_size 1 --push_to_hub --hub_model_id \"TU_USUARIO_DE_HF/qwen2.5-vl-aec-lora\" > entrenamiento.log 2>&1 &"
 echo "=============================================================================="

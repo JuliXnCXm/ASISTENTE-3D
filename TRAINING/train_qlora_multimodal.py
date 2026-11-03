@@ -125,7 +125,7 @@ def main():
     parser.add_argument("--train_file", type=str, default="TRAINING/data/train_multimodal.jsonl")
     parser.add_argument("--val_file", type=str, default="TRAINING/data/validation_multimodal.jsonl")
     parser.add_argument("--output_dir", type=str, default="./checkpoints")
-    parser.add_argument("--batch_size", type=int, default=2, help="Usa 2 para L4/RTX4090 (24GB). Usa 4 o superior para A100 (80GB).")
+    parser.add_argument("--batch_size", type=int, default=1, help="Usa 1 para L4 (24GB). Usa 2 para 4090/A6000. Usa 4 para A100 (80GB).")
     parser.add_argument("--push_to_hub", action="store_true", help="Subir el adaptador LoRA a Hugging Face al terminar")
     parser.add_argument("--hub_model_id", type=str, default=None, help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
     args = parser.parse_args()

@@ -189,7 +189,7 @@ def main():
         bf16=use_bf16,
         fp16=use_fp16,
         logging_steps=10,
-        evaluation_strategy="epoch",
+        eval_strategy="epoch",
         save_strategy="epoch",
         remove_unused_columns=False, # Vital para los modelos Multimodales
         report_to="wandb"

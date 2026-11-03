@@ -28,7 +28,7 @@ pip install -r TRAINING/requirements_training.txt
 echo "🤗 Configurando Hugging Face..."
 pip install -U "huggingface_hub[cli]"
 echo "Por favor, pega tu token de Hugging Face (permisos WRITE) a continuación:"
-python3 -m huggingface_hub.commands.huggingface_cli login
+hf auth login
 
 # 6. Iniciar sesión en Weights & Biases
 echo "📈 Configurando Weights & Biases (wandb)..."

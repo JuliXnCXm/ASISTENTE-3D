@@ -103,12 +103,13 @@ class QwenVLDataset(Dataset):
                         image_inputs.append(Image.open(img_path).convert("RGB"))
                     
         # Tokenizar (Text + Imagen)
+        # Reducimos max_length de 4096 a 2048 para salvar muchísima VRAM
         inputs = self.processor(
             text=[text_prompt],
             images=image_inputs if image_inputs else None,
             padding="max_length",
             truncation=True,
-            max_length=4096,
+            max_length=2048, 
             return_tensors="pt"
         )
         
@@ -157,7 +158,7 @@ def main():
     peft_config = LoraConfig(
         r=64,
         lora_alpha=128,
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+        target_modules=["q_proj", "v_proj"], # Drástica reducción de módulos a entrenar para que quepa en la L4
         lora_dropout=0.05,
         bias="none",
         task_type="CAUSAL_LM"

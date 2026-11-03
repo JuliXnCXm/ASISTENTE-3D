@@ -76,7 +76,7 @@ class QwenVLDataset(Dataset):
             else:
                 qwen_messages.append({"role": msg["role"], "content": [{"type": "text", "text": msg["content"]}]})
         
-        # Procesar con el tokenizer
+        # Procesar con el tokenizer y controlar estrictamente la resolución máxima de la imagen para salvar VRAM
         text_prompt = self.processor.apply_chat_template(qwen_messages, tokenize=False, add_generation_prompt=False)
         
         # Cargar las imágenes físicas en memoria
@@ -86,30 +86,26 @@ class QwenVLDataset(Dataset):
                 if c["type"] == "image":
                     img_path = c["image"]
                     if img_path.endswith(".exr"):
-                        # Leer EXR (32-bit floats) y normalizarlo a una imagen RGB de 8-bits para el Vision Encoder
+                        # Leer EXR (32-bit floats) y normalizarlo
                         exr_data = cv2.imread(img_path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
                         if exr_data is not None:
-                            # Normalización Min-Max para que la red neuronal lo vea como un gradiente
                             exr_min, exr_max = np.min(exr_data), np.max(exr_data)
                             if exr_max > exr_min:
                                 norm_img = (exr_data - exr_min) / (exr_max - exr_min) * 255.0
                             else:
                                 norm_img = exr_data * 0
-                            # Convertir a imagen PIL RGB
                             img_pil = Image.fromarray(norm_img.astype(np.uint8)).convert("RGB")
                             image_inputs.append(img_pil)
                     else:
-                        # Leer PNG/JPG normal
                         image_inputs.append(Image.open(img_path).convert("RGB"))
                     
         # Tokenizar (Text + Imagen)
-        # Reducimos max_length de 4096 a 2048 para salvar muchísima VRAM
         inputs = self.processor(
             text=[text_prompt],
             images=image_inputs if image_inputs else None,
             padding="max_length",
             truncation=True,
-            max_length=2048, 
+            max_length=4096, 
             return_tensors="pt"
         )
         
@@ -158,7 +154,7 @@ def main():
     peft_config = LoraConfig(
         r=64,
         lora_alpha=128,
-        target_modules=["q_proj", "v_proj"], # Drástica reducción de módulos a entrenar para que quepa en la L4
+        target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"], 
         lora_dropout=0.05,
         bias="none",
         task_type="CAUSAL_LM"

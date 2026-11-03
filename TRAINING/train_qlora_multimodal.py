@@ -47,18 +47,18 @@ class QwenVLDataset(Dataset):
             if msg["role"] == "user":
                 content = []
                 # 1. Inyectar Imagen RGB normal
-                if "image" in multimodal and os.path.exists(multimodal["image"]):
+                if multimodal.get("image") and os.path.exists(multimodal["image"]):
                     content.append({"type": "text", "text": "Fotografía de referencia (RGB):"})
                     content.append({"type": "image", "image": multimodal["image"]})
                     
                 # 2. Inyectar EXR (Profundidad Métrica) como segunda imagen
-                if "metric_depth" in multimodal and os.path.exists(multimodal["metric_depth"]):
+                if multimodal.get("metric_depth") and os.path.exists(multimodal["metric_depth"]):
                     content.append({"type": "text", "text": "Mapa de Profundidad de la escena (en metros reales):"})
                     content.append({"type": "image", "image": multimodal["metric_depth"]})
                     
                 # 3. Leer inyectar los metadatos de cámara (JSON) como texto matemático
                 camera_info = ""
-                if "camera" in multimodal and os.path.exists(multimodal["camera"]):
+                if multimodal.get("camera") and os.path.exists(multimodal["camera"]):
                     try:
                         with open(multimodal["camera"], "r") as cam_f:
                             cam_data = json.load(cam_f)

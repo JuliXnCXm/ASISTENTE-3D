@@ -179,12 +179,16 @@ def main():
         output_dir=args.output_dir,
         num_train_epochs=3,
         per_device_train_batch_size=args.batch_size,
+        per_device_eval_batch_size=1,  # Previene picos de OOM durante la evaluación
         gradient_accumulation_steps=grad_acc,
-        gradient_checkpointing=True,   # Salva muchísima VRAM
+        eval_accumulation_steps=2,     # Descarga los tensores gigantes (logits) de la VRAM a la CPU
+        gradient_checkpointing=True,   # Salva muchísima VRAM en entrenamiento
         optim="paged_adamw_32bit",
         learning_rate=2e-4,
         bf16=use_bf16,
         fp16=use_fp16,
+        bf16_full_eval=use_bf16,       # Fuerza a que el evaluador no descomprima los tensores a 32-bits
+        fp16_full_eval=use_fp16,
         logging_steps=10,
         eval_strategy="epoch",
         save_strategy="epoch",

@@ -122,8 +122,8 @@ class QwenVLDataset(Dataset):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name_or_path", type=str, default="Qwen/Qwen2.5-VL-7B-Instruct")
-    parser.add_argument("--train_file", type=str, default="data/train_multimodal.jsonl")
-    parser.add_argument("--val_file", type=str, default="data/validation_multimodal.jsonl")
+    parser.add_argument("--train_file", type=str, default="TRAINING/data/train_multimodal.jsonl")
+    parser.add_argument("--val_file", type=str, default="TRAINING/data/validation_multimodal.jsonl")
     parser.add_argument("--output_dir", type=str, default="./checkpoints")
     parser.add_argument("--batch_size", type=int, default=2, help="Usa 2 para L4/RTX4090 (24GB). Usa 4 o superior para A100 (80GB).")
     parser.add_argument("--push_to_hub", action="store_true", help="Subir el adaptador LoRA a Hugging Face al terminar")
@@ -170,6 +170,12 @@ def main():
     train_dataset = QwenVLDataset(args.train_file, processor)
     val_dataset = QwenVLDataset(args.val_file, processor)
 
+    # Determinar si la GPU soporta BFloat16 (Ampere o superior como A100, L4, RTX 3090+)
+    # Si es una T4 (Turing) o anterior, se fuerza a usar FP16 estándar.
+    use_bf16 = torch.cuda.is_bf16_supported() if torch.cuda.is_available() else False
+    use_fp16 = not use_bf16
+    print(f"Hardware Compute Type: {'BFloat16' if use_bf16 else 'Float16 (T4/Antiguas)'}")
+
     # Trainer
     grad_acc = 16 // args.batch_size # Mantiene el batch efectivo total en 16
     training_args = TrainingArguments(
@@ -180,7 +186,8 @@ def main():
         gradient_checkpointing=True,   # Salva muchísima VRAM
         optim="paged_adamw_32bit",
         learning_rate=2e-4,
-        bf16=True,
+        bf16=use_bf16,
+        fp16=use_fp16,
         logging_steps=10,
         evaluation_strategy="epoch",
         save_strategy="epoch",

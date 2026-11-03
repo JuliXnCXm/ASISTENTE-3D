@@ -7,3 +7,4 @@ bitsandbytes>=0.43.0
 accelerate>=0.29.0
 wandb>=0.16.6
 scipy
+opencv-python-headless>=4.9.0

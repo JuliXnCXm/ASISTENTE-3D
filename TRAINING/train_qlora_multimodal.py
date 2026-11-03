@@ -9,7 +9,11 @@ import os
 import argparse
 import torch
 import json
+import numpy as np
 from PIL import Image
+# Habilitar OpenCV para leer EXR
+os.environ["OPENCV_IO_ENABLE_OPENEXR"] = "1"
+import cv2
 from torch.utils.data import Dataset
 from transformers import (
     Qwen2_5_VLForConditionalGeneration,
@@ -38,31 +42,65 @@ class QwenVLDataset(Dataset):
         messages = item["messages"]
         multimodal = item.get("multimodal", {})
         
-        # Formato de Qwen-VL: Espera [{"role": "user", "content": [{"type": "image", "image": "path"}, {"type": "text", "text": "Crea..."}]}]
         qwen_messages = []
         for msg in messages:
             if msg["role"] == "user":
                 content = []
-                # Si hay imagen, la inyectamos en el mensaje del usuario
+                # 1. Inyectar Imagen RGB normal
                 if "image" in multimodal and os.path.exists(multimodal["image"]):
+                    content.append({"type": "text", "text": "Fotografía de referencia (RGB):"})
                     content.append({"type": "image", "image": multimodal["image"]})
-                # El texto sin el tag crudo <image> (Qwen-VL lo maneja internamente con el dict)
+                    
+                # 2. Inyectar EXR (Profundidad Métrica) como segunda imagen
+                if "metric_depth" in multimodal and os.path.exists(multimodal["metric_depth"]):
+                    content.append({"type": "text", "text": "Mapa de Profundidad de la escena (en metros reales):"})
+                    content.append({"type": "image", "image": multimodal["metric_depth"]})
+                    
+                # 3. Leer inyectar los metadatos de cámara (JSON) como texto matemático
+                camera_info = ""
+                if "camera" in multimodal and os.path.exists(multimodal["camera"]):
+                    try:
+                        with open(multimodal["camera"], "r") as cam_f:
+                            cam_data = json.load(cam_f)
+                            # Extraer datos vitales para razonamiento espacial
+                            focal = cam_data.get("focal_length_mm", "N/A")
+                            pos = [round(x, 2) for x in cam_data.get("cam_to_world", [[0,0,0,0]])[0][:3]] # Fallback simplificado
+                            camera_info = f"\n[Datos Físicos de Cámara -> Focal: {focal}mm]"
+                    except Exception:
+                        pass
+                    
                 clean_text = msg["content"].replace("<image>\n", "").strip()
-                content.append({"type": "text", "text": clean_text})
+                content.append({"type": "text", "text": f"Instrucción del usuario: {clean_text}{camera_info}"})
                 
                 qwen_messages.append({"role": "user", "content": content})
             else:
                 qwen_messages.append({"role": msg["role"], "content": [{"type": "text", "text": msg["content"]}]})
         
-        # Procesar con el tokenizer y el image processor de Qwen
+        # Procesar con el tokenizer
         text_prompt = self.processor.apply_chat_template(qwen_messages, tokenize=False, add_generation_prompt=False)
         
-        # Cargar las imágenes en memoria
+        # Cargar las imágenes físicas en memoria
         image_inputs = []
         for msg in qwen_messages:
             for c in msg["content"]:
                 if c["type"] == "image":
-                    image_inputs.append(Image.open(c["image"]).convert("RGB"))
+                    img_path = c["image"]
+                    if img_path.endswith(".exr"):
+                        # Leer EXR (32-bit floats) y normalizarlo a una imagen RGB de 8-bits para el Vision Encoder
+                        exr_data = cv2.imread(img_path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
+                        if exr_data is not None:
+                            # Normalización Min-Max para que la red neuronal lo vea como un gradiente
+                            exr_min, exr_max = np.min(exr_data), np.max(exr_data)
+                            if exr_max > exr_min:
+                                norm_img = (exr_data - exr_min) / (exr_max - exr_min) * 255.0
+                            else:
+                                norm_img = exr_data * 0
+                            # Convertir a imagen PIL RGB
+                            img_pil = Image.fromarray(norm_img.astype(np.uint8)).convert("RGB")
+                            image_inputs.append(img_pil)
+                    else:
+                        # Leer PNG/JPG normal
+                        image_inputs.append(Image.open(img_path).convert("RGB"))
                     
         # Tokenizar (Text + Imagen)
         inputs = self.processor(
@@ -87,6 +125,9 @@ def main():
     parser.add_argument("--train_file", type=str, default="data/train_multimodal.jsonl")
     parser.add_argument("--val_file", type=str, default="data/validation_multimodal.jsonl")
     parser.add_argument("--output_dir", type=str, default="./checkpoints")
+    parser.add_argument("--batch_size", type=int, default=2, help="Usa 2 para L4/RTX4090 (24GB). Usa 4 o superior para A100 (80GB).")
+    parser.add_argument("--push_to_hub", action="store_true", help="Subir el adaptador LoRA a Hugging Face al terminar")
+    parser.add_argument("--hub_model_id", type=str, default=None, help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
     args = parser.parse_args()
 
     # Configurar Quantización (4-bits) para que quepa en memoria
@@ -130,11 +171,12 @@ def main():
     val_dataset = QwenVLDataset(args.val_file, processor)
 
     # Trainer
+    grad_acc = 16 // args.batch_size # Mantiene el batch efectivo total en 16
     training_args = TrainingArguments(
         output_dir=args.output_dir,
         num_train_epochs=3,
-        per_device_train_batch_size=2,
-        gradient_accumulation_steps=8, # Efectivo Batch = 16
+        per_device_train_batch_size=args.batch_size,
+        gradient_accumulation_steps=grad_acc,
         gradient_checkpointing=True,   # Salva muchísima VRAM
         optim="paged_adamw_32bit",
         learning_rate=2e-4,
@@ -160,7 +202,16 @@ def main():
     # Guardar Modelo
     trainer.model.save_pretrained(os.path.join(args.output_dir, "final_qwen_vl_lora"))
     processor.save_pretrained(os.path.join(args.output_dir, "final_qwen_vl_lora"))
-    print("Entrenamiento Multimodal Finalizado y Adapters Guardados.")
+    print("Entrenamiento Multimodal Finalizado y Adapters Guardados Localmente.")
+
+    if args.push_to_hub and args.hub_model_id:
+        print(f"Subiendo los adaptadores LoRA a Hugging Face Hub: {args.hub_model_id}...")
+        try:
+            trainer.model.push_to_hub(args.hub_model_id, private=False)
+            processor.push_to_hub(args.hub_model_id, private=False)
+            print("Modelos subidos exitosamente al Hub.")
+        except Exception as e:
+            print(f"Error al subir al Hub: {e}")
 
 if __name__ == "__main__":
     main()

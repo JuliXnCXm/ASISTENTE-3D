@@ -82,7 +82,7 @@ def ensure_metric_units():
     scene.unit_settings.scale_length = 1.0  # 1 unidad = 1 m
 
 DSL_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__),
-    "..", "DSL", "blender"))
+    "..", "..", "DSL", "blender"))
 
 def limited_exec(code_str):
     import traceback, builtins as _bi, sys as _sys

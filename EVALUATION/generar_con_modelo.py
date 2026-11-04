@@ -10,7 +10,7 @@ Uso:
   python EVALUATION/generar_con_modelo.py --out EVALUATION/resultados_local
   python EVALUATION/generar_con_modelo.py --solo_lora --n_test 10
 """
-import argparse, json, os, re, time
+import argparse, json, os, re, sys, time
 import torch
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor, BitsAndBytesConfig
 from peft import PeftModel
@@ -55,13 +55,33 @@ def resolver_imagen(p):
     return None
 
 
-def construir_mensajes(texto, imagen=None):
+def preparar_multimodal(mm):
+    """Mismo formato que train_qlora_multimodal.py: RGB + profundidad métrica + texto de cámara."""
+    sys.path.insert(0, os.path.join(ROOT, "TRAINING"))
+    import train_qlora_multimodal as T
+    bloques, cam_txt = [], ""
+    rgb = resolver_imagen(mm.get("image"))
+    if rgb:
+        bloques.append(("Fotografía de referencia (RGB):", Image.open(rgb).convert("RGB")))
+    exr = resolver_imagen(mm.get("metric_depth"))
+    if exr:
+        res = T.cargar_profundidad(exr)
+        if res:
+            dimg, lo, hi = res
+            bloques.append((f"Mapa de profundidad métrica (claro = cerca; rango {lo:.1f}–{hi:.1f} m):", dimg))
+    cam = resolver_imagen(mm.get("camera"))
+    if cam:
+        cam_txt = T.texto_camara(cam)
+    return bloques, cam_txt
+
+
+def construir_mensajes(texto, bloques=(), cam_txt=""):
     content = []
-    if imagen:
-        content.append({"type": "text", "text": "Fotografía de referencia (RGB):"})
-        content.append({"type": "image", "image": imagen})
+    for intro, _ in bloques:
+        content.append({"type": "text", "text": intro})
+        content.append({"type": "image"})
     texto = texto.replace("<image>\n", "").strip()
-    content.append({"type": "text", "text": f"Instrucción del usuario: {texto}"})
+    content.append({"type": "text", "text": f"Instrucción del usuario: {texto}{cam_txt}"})
     return [{"role": "system", "content": [{"type": "text", "text": SYSTEM}]},
             {"role": "user", "content": content}]
 
@@ -88,11 +108,11 @@ def main():
     for r in [r for r in test if r["task_type"] == "creation"][:args.n_test]:
         user = next(m["content"] for m in r["messages"] if m["role"] == "user")
         ref = next(m["content"] for m in r["messages"] if m["role"] == "assistant")
-        img = resolver_imagen(r.get("multimodal", {}).get("image")) if args.con_imagen else None
+        mm = r.get("multimodal", {}) if args.con_imagen else {}
         casos.append(dict(id=f"test_{r['id']}", tipo="test", prompt=user.replace("<image>\n", ""),
-                          imagen=img, referencia=ref))
+                          mm=mm, referencia=ref))
     for cid, p in GENERALIZACION:
-        casos.append(dict(id=cid, tipo="generalizacion", prompt=p, imagen=None, referencia=None))
+        casos.append(dict(id=cid, tipo="generalizacion", prompt=p, mm={}, referencia=None))
 
     print(f"Cargando {args.base} en 4 bits + LoRA {args.lora} ...")
     bnb = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
@@ -107,9 +127,10 @@ def main():
     variantes = ["lora"] if args.solo_lora else ["lora", "base"]
     resultados = []
     for caso in casos:
-        msgs = construir_mensajes(caso["prompt"], caso["imagen"])
+        bloques, cam_txt = preparar_multimodal(caso["mm"]) if caso["mm"] else ([], "")
+        msgs = construir_mensajes(caso["prompt"], bloques, cam_txt)
         text = processor.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
-        imgs = [Image.open(caso["imagen"]).convert("RGB")] if caso["imagen"] else None
+        imgs = [im for _, im in bloques] or None
         inputs = processor(text=[text], images=imgs, return_tensors="pt").to(model.device)
         for var in variantes:
             t0 = time.time()
@@ -129,7 +150,7 @@ def main():
             with open(os.path.join(args.out, nombre + ".py"), "w") as f:
                 f.write(code)
             r = dict(id=caso["id"], tipo=caso["tipo"], variante=var, prompt=caso["prompt"],
-                     con_imagen=bool(caso["imagen"]), tokens=len(gen), segundos=round(dt, 1),
+                     n_imagenes=len(bloques), tokens=len(gen), segundos=round(dt, 1),
                      truncado=len(gen) >= args.max_new_tokens, archivo=nombre + ".py")
             resultados.append(r)
             print(f"[{nombre}] {len(gen)} tokens en {dt:.0f}s{'  (TRUNCADO)' if r['truncado'] else ''}", flush=True)

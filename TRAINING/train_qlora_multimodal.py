@@ -65,18 +65,56 @@ def _es_identidad(m):
         return False
 
 
+def texto_camara(path):
+    """Texto con datos físicos de la cámara (vacío si el JSON es inválido/identidad)."""
+    try:
+        cam = json.load(open(path))
+        c2w = cam.get("cam_to_world")
+        if not c2w or _es_identidad(c2w):
+            return ""
+        m = np.array(c2w, dtype=float)
+        fwd = -m[:3, 2]                              # la cámara mira hacia -Z local
+        pitch = np.degrees(np.arcsin(np.clip(fwd[2], -1, 1)))
+        K = cam.get("intrinsics") or [[0]]
+        W = (cam.get("resolution") or [0])[0]
+        fov = np.degrees(2 * np.arctan(W / (2 * K[0][0]))) if K[0][0] else 0
+        return (f"\n[Cámara: focal {cam.get('focal_length_mm', 35):.0f} mm, FOV {fov:.0f}°, "
+                f"altura {m[2, 3]:.1f} m, inclinación {pitch:.0f}°]")
+    except Exception:
+        return ""
+
+
+def cargar_profundidad(path):
+    """EXR métrico → (PIL RGB normalizada claro=cerca, min_m, max_m) o None si no es un pase Z válido."""
+    d = cv2.imread(path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
+    if d is None:
+        return None
+    if d.ndim == 3:
+        # Un pase Z real tiene los 3 canales iguales; si difieren es un render RGB (assets viejos).
+        if not (np.allclose(d[..., 0], d[..., 1]) and np.allclose(d[..., 1], d[..., 2])):
+            return None
+        d = d[..., 0]
+    valid = np.isfinite(d) & (d > 0) & (d < 1e4)
+    if valid.mean() < 0.01:
+        return None
+    lo, hi = float(d[valid].min()), float(d[valid].max())
+    norm = np.zeros_like(d, dtype=np.float32)
+    norm[valid] = 255.0 * (1.0 - (d[valid] - lo) / max(hi - lo, 1e-6))  # cerca = claro
+    return Image.fromarray(norm.astype(np.uint8)).convert("RGB"), lo, hi
+
+
 class QwenVLDataset(Dataset):
     """Dataset Custom para cargar el JSONL Multimodal.
 
     - Las rutas de `multimodal` son relativas a `assets_dir` (DATASET/).
     - La imagen va SOLO en el primer turno de usuario.
     - La loss se calcula sobre TODOS los turnos del assistant (multi-turno incluido).
-    - Profundidad/cámara desactivadas por defecto: los *_depth.exr actuales son una
-      copia del render RGB (bug de generate_metric_depth.py con Blender ≥4) y el
-      2136/2408 de camera.json tienen matriz identidad. Ver DATASET/reports/.
+    - Profundidad y cámara ACTIVADAS por defecto (assets generator_version ≥ 2.1,
+      DATASET/scripts/generate_multimodal_assets.py). Si detecta EXR viejos (copia
+      del RGB, bug previo) o cámaras identidad, los descarta y avisa.
     """
     def __init__(self, jsonl_path, processor, max_length=6144, assets_dir=DEFAULT_ASSETS_DIR,
-                 usar_profundidad=False, usar_camara=False):
+                 usar_profundidad=True, usar_camara=True):
         self.processor = processor
         self.max_length = max_length
         self.assets_dir = assets_dir
@@ -114,21 +152,7 @@ class QwenVLDataset(Dataset):
         return len(self.data)
 
     def _cargar_profundidad(self, path):
-        d = cv2.imread(path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
-        if d is None:
-            return None
-        if d.ndim == 3:
-            # Un pase Z real tiene los 3 canales iguales; si difieren es un render RGB.
-            if not (np.allclose(d[..., 0], d[..., 1]) and np.allclose(d[..., 1], d[..., 2])):
-                return None
-            d = d[..., 0]
-        valid = np.isfinite(d) & (d > 0) & (d < 1e4)
-        if valid.mean() < 0.01:
-            return None
-        lo, hi = float(d[valid].min()), float(d[valid].max())
-        norm = np.zeros_like(d, dtype=np.float32)
-        norm[valid] = 255.0 * (1.0 - (d[valid] - lo) / max(hi - lo, 1e-6))  # cerca = claro
-        return Image.fromarray(norm.astype(np.uint8)).convert("RGB")
+        return cargar_profundidad(path)
 
     def __getitem__(self, idx):
         item = self.data[idx]
@@ -144,17 +168,15 @@ class QwenVLDataset(Dataset):
             except Exception as e:
                 print(f"[WARN] {item.get('id')}: RGB ilegible ({e})")
         if item.get("_depth"):
-            dimg = self._cargar_profundidad(item["_depth"])
-            if dimg is not None:
-                bloques.append(("Mapa de profundidad de la escena (claro = cerca):", dimg))
-        camera_info = ""
-        if item.get("_cam"):
-            try:
-                cam = json.load(open(item["_cam"]))
-                if not _es_identidad(cam.get("cam_to_world")):
-                    camera_info = f"\n[Cámara -> Focal: {cam.get('focal_length_mm', 'N/A')}mm]"
-            except Exception:
-                pass
+            res = self._cargar_profundidad(item["_depth"])
+            if res is not None:
+                dimg, lo, hi = res
+                bloques.append((f"Mapa de profundidad métrica (claro = cerca; rango {lo:.1f}–{hi:.1f} m):", dimg))
+            else:
+                self._n_depth_mala = getattr(self, "_n_depth_mala", 0) + 1
+                if self._n_depth_mala <= 5:
+                    print(f"[WARN] {item.get('id')}: EXR de profundidad inválido (¿assets viejos?), se omite")
+        camera_info = texto_camara(item["_cam"]) if item.get("_cam") else ""
 
         qwen_messages, primer_user = [], True
         for msg in messages:
@@ -268,9 +290,10 @@ def main():
                         help="Carpeta que contiene out_assets/ (rutas del JSONL son relativas a ella)")
     parser.add_argument("--descargar_assets", action="store_true",
                         help=f"Descargar renders desde HF ({HF_ASSETS_REPO}) a --assets_dir antes de entrenar")
-    parser.add_argument("--usar_profundidad", action="store_true",
-                        help="Incluir mapa de profundidad EXR (desactivado: los EXR actuales no son profundidad real)")
-    parser.add_argument("--usar_camara", action="store_true", help="Incluir focal de cámara como texto")
+    parser.add_argument("--usar_profundidad", action=argparse.BooleanOptionalAction, default=True,
+                        help="Incluir mapa de profundidad métrica EXR como 2ª imagen (--no-usar_profundidad para desactivar)")
+    parser.add_argument("--usar_camara", action=argparse.BooleanOptionalAction, default=True,
+                        help="Incluir datos de cámara como texto (--no-usar_camara para desactivar)")
     parser.add_argument("--min_pct_imagenes", type=float, default=0.7,
                         help="Aborta si menos de esta fracción de ejemplos tiene imagen (evita entrenar solo-texto sin querer). 0 = desactivar")
     parser.add_argument("--max_pixels", type=int, default=768 * 768, help="Resolución máxima por imagen (controla tokens visuales)")
@@ -281,7 +304,7 @@ def main():
     args = parser.parse_args()
 
     if args.descargar_assets:
-        descargar_assets(args.assets_dir, con_profundidad=args.usar_profundidad)
+        descargar_assets(args.assets_dir, con_profundidad=args.usar_profundidad or args.usar_camara)
 
     # Configurar Quantización (4-bits) para que quepa en memoria
     print("Configurando BitsAndBytes (4-bits)...")

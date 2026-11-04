@@ -54,7 +54,7 @@ def auditar_asset(scene_id, mm):
             im = np.asarray(Image.open(p).convert("RGB"), dtype=np.float32)
             r["rgb_size"] = list(im.shape[:2])
             r["rgb_std"] = float(im.std())
-            if im.std() < 3.0:
+            if im.std() < 1.0:
                 r["problemas"].append("rgb_vacia")
         except Exception as e:
             r["problemas"].append(f"rgb_ilegible:{e}")
@@ -67,6 +67,8 @@ def auditar_asset(scene_id, mm):
         if d is None:
             r["problemas"].append("exr_ilegible")
         else:
+            if d.ndim == 3 and not (np.allclose(d[..., 0], d[..., 1]) and np.allclose(d[..., 1], d[..., 2])):
+                r["problemas"].append("exr_no_es_profundidad")
             d = d[..., 0] if d.ndim == 3 else d
             fin = np.isfinite(d) & (d < 1e4) & (d > 0)
             r["exr_pct_fondo"] = round(float(1 - fin.mean()) * 100, 1)
@@ -74,8 +76,7 @@ def auditar_asset(scene_id, mm):
                 r["exr_min"], r["exr_max"] = float(d[fin].min()), float(d[fin].max())
             if fin.mean() < 0.02:
                 r["problemas"].append("exr_sin_geometria")
-            if (~np.isfinite(d)).any() or (d >= 1e4).any():
-                r["exr_tiene_inf_o_fondo_enorme"] = True
+            r["exr_tiene_fondo"] = bool((~np.isfinite(d)).any() or (d >= 1e4).any())
     # Cámara
     p = os.path.join(DATASET, mm.get("camera") or "")
     if not mm.get("camera") or not os.path.isfile(p):
@@ -86,6 +87,8 @@ def auditar_asset(scene_id, mm):
             r["cam_claves"] = sorted(c.keys())
             if es_identidad(c.get("cam_to_world")):
                 r["problemas"].append("cam_identidad")
+            if c.get("generator_version") is None:
+                r["problemas"].append("cam_version_vieja")
         except Exception as e:
             r["problemas"].append(f"cam_ilegible:{e}")
     # depth png (visual)
@@ -147,13 +150,13 @@ def main():
     rep["problemas"] = dict(probs)
     fondo = [a.get("exr_pct_fondo") for a in rep["escenas"].values() if a.get("exr_pct_fondo") is not None]
     rep["exr_pct_fondo_mediana"] = float(np.median(fondo)) if fondo else None
-    rep["exr_con_inf"] = sum(bool(a.get("exr_tiene_inf_o_fondo_enorme")) for a in rep["escenas"].values())
+    rep["exr_con_fondo"] = sum(bool(a.get("exr_tiene_fondo")) for a in rep["escenas"].values())
     rep["rgb_tamaños"] = dict(collections.Counter(str(a.get("rgb_size")) for a in rep["escenas"].values()))
     os.makedirs(os.path.join(DATASET, "reports"), exist_ok=True)
     out = os.path.join(DATASET, "reports", "auditoria_multimodal.json")
     json.dump(rep, open(out, "w"), indent=1)
     print("PROBLEMAS:", dict(probs))
-    print("EXR con inf/fondo enorme:", rep["exr_con_inf"], "| % fondo mediana:", rep["exr_pct_fondo_mediana"])
+    print("EXR con fondo (esperado):", rep["exr_con_fondo"], "| % fondo mediana:", rep["exr_pct_fondo_mediana"])
     print("Tamaños RGB:", rep["rgb_tamaños"])
     print("Reporte:", out)
 

@@ -1,0 +1,14 @@
+{
+ "train:descartados": 187,
+ "train:imports_arreglados": 6,
+ "train:final": 2997,
+ "train:original": 3184,
+ "validation:descartados": 30,
+ "validation:imports_arreglados": 2,
+ "validation:final": 748,
+ "validation:original": 778,
+ "test:descartados": 60,
+ "test:imports_arreglados": 6,
+ "test:final": 731,
+ "test:original": 791
+}

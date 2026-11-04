@@ -78,8 +78,9 @@ def texto_camara(path):
         K = cam.get("intrinsics") or [[0]]
         W = (cam.get("resolution") or [0])[0]
         fov = np.degrees(2 * np.arctan(W / (2 * K[0][0]))) if K[0][0] else 0
+        corte = "; vista de corte sin techo" if cam.get("techo_oculto") else ""
         return (f"\n[Cámara: focal {cam.get('focal_length_mm', 35):.0f} mm, FOV {fov:.0f}°, "
-                f"altura {m[2, 3]:.1f} m, inclinación {pitch:.0f}°]")
+                f"altura {m[2, 3]:.1f} m, inclinación {pitch:.0f}°{corte}]")
     except Exception:
         return ""
 

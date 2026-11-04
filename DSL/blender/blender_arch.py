@@ -1098,17 +1098,29 @@ def crear_cama(nombre="Cama",
     _set_meta(root, tipo="cama", ancho=ancho, largo=largo,
               alto_base=alto_base, alto_cabecero=alto_cabecero)
 
+    # Zócalo apoyado en el suelo (retranqueado 5 cm) + tablero a la altura alto_base.
+    grosor_base = min(grosor_base, alto_base)
+    alto_zocalo = max(0.0, alto_base - grosor_base)
+    if alto_zocalo > 1e-3:
+        zoc = _box(f"{nombre}_Zocalo", max(0.1, ancho - 0.10), max(0.1, largo - 0.10), alto_zocalo)
+        zoc.location = Vector((0.05, 0.05, 0.0))
+        asignar_material(zoc, material_base)
+        _parent(zoc, root)
+
     base = _box(f"{nombre}_Base", ancho, largo, grosor_base)
+    base.location = Vector((0, 0, alto_zocalo))
     asignar_material(base, material_base)
     _parent(base, root)
 
     colchon = _box(f"{nombre}_Colchon", ancho - 0.04, largo - 0.04, grosor_colchon)
-    colchon.location = Vector((0.02, 0.02, grosor_base))
+    colchon.location = Vector((0.02, 0.02, alto_base))
     asignar_material(colchon, material_colchon)
     _parent(colchon, root)
 
-    cab = _box(f"{nombre}_Cabecero", ancho, 0.06, max(0.01, alto_cabecero - alto_base))
-    cab.location = Vector((0, 0, alto_base))
+    # Cabecero desde el suelo hasta alto_cabecero (nunca por debajo del colchón)
+    alto_cab = max(alto_cabecero, alto_base + grosor_colchon + 0.05)
+    cab = _box(f"{nombre}_Cabecero", ancho, 0.06, alto_cab)
+    cab.location = Vector((0, 0, 0.0))
     asignar_material(cab, material_base)
     _parent(cab, root)
     return root

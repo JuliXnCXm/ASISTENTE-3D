@@ -26,7 +26,7 @@ import argparse
 import traceback
 from mathutils import Vector, Matrix
 
-GENERATOR_VERSION = "2.1"
+GENERATOR_VERSION = "2.3"
 HERE = os.path.dirname(os.path.abspath(__file__))
 DSL_DIR = os.path.abspath(os.path.join(HERE, "..", "..", "DSL", "blender"))
 
@@ -88,6 +88,66 @@ def bbox_world(objs, exclude_terrain=True):
     return mins, maxs
 
 
+MUEBLES = {"cama", "mesa", "silla", "sofa", "armario", "estanteria"}
+TECHOS = {"techo_plano", "tejado_dos_aguas"}
+PALABRAS_TECHO = ("techo", "cubierta", "tejado", "roof", "ceiling", "cielo_raso", "cieloraso")
+
+
+def _categorias_ancestros(ob):
+    cats, names = set(), [ob.name.lower()]
+    p = ob
+    while p is not None:
+        c = p.get("arch_categoria")
+        if c:
+            cats.add(c)
+        names.append(p.name.lower())
+        p = p.parent
+    return cats, names
+
+
+ESTRUCTURA = ("muro", "wall", "piso", "suelo", "losa", "floor", "slab", "terreno", "fachada",
+              "columna", "viga", "zocalo", "rodapie", "cimiento", "pared")
+
+
+def _bbox(ob):
+    pts = [ob.matrix_world @ Vector(p) for p in ob.bound_box]
+    return (min(p.x for p in pts), min(p.y for p in pts), min(p.z for p in pts),
+            max(p.x for p in pts), max(p.y for p in pts), max(p.z for p in pts))
+
+
+def ocultar_techos_si_interior(scene):
+    """Vista de corte: si hay contenido (muebles, sanitarios, cocina...) BAJO un
+    techo/cubierta, oculta techos y cubiertas SOLO en el render."""
+    geoms = [o for o in scene.objects if o.type in GEOM_TYPES]
+    techos, otros = [], []
+    for ob in geoms:
+        cats, names = _categorias_ancestros(ob)
+        if cats & TECHOS or any(k in n for n in names for k in PALABRAS_TECHO):
+            techos.append(ob)
+        elif not (cats & {"muro", "terreno", "columna", "ventana", "puerta"}) and \
+                not any(k in n for n in names[:2] for k in ESTRUCTURA):
+            otros.append(ob)
+    if not techos or not otros:
+        return False
+    hay_contenido = False
+    for t in techos:
+        tb = _bbox(t)
+        for o in otros:
+            ob_ = _bbox(o)
+            cx, cy = (ob_[0] + ob_[3]) / 2, (ob_[1] + ob_[4]) / 2
+            if tb[0] <= cx <= tb[3] and tb[1] <= cy <= tb[4] and ob_[5] <= tb[2] + 0.05:
+                hay_contenido = True
+                break
+        if hay_contenido:
+            break
+    if not hay_contenido:
+        return False
+    for t in techos:
+        t.hide_render = True
+        t.hide_set(True)
+    return True
+
+
 def look_at(cam_obj, target):
     d = target - cam_obj.location
     cam_obj.rotation_euler = d.to_track_quat('-Z', 'Y').to_euler()
@@ -99,7 +159,7 @@ def intrinsics(cam, res_x, res_y):
     return [[f_px, 0.0, res_x / 2.0], [0.0, f_px, res_y / 2.0], [0.0, 0.0, 1.0]]
 
 
-def setup_camera_and_light(scene, res_x, res_y):
+def setup_camera_and_light(scene, res_x, res_y, elevacion=30.0):
     for ob in [o for o in scene.objects if o.type in ('CAMERA', 'LIGHT')]:
         bpy.data.objects.remove(ob, do_unlink=True)
 
@@ -122,7 +182,7 @@ def setup_camera_and_light(scene, res_x, res_y):
     fov = 2.0 * math.atan((cam.data.sensor_width / 2.0) / cam.data.lens)
     radius = 0.5 * size.length
     dist = max(radius / math.sin(fov / 2.0) * 1.02, 0.5)
-    az, el = math.radians(45.0), math.radians(30.0)
+    az, el = math.radians(45.0), math.radians(elevacion)
     cam.location = center + Vector((dist * math.cos(el) * math.sin(az),
                                     -dist * math.cos(el) * math.cos(az),
                                     dist * math.sin(el)))
@@ -257,7 +317,7 @@ def depth_preview_png(exr_path, png_path):
     return stats
 
 
-def save_camera_meta(scene, cam, res_x, res_y, path, center, max_dim):
+def save_camera_meta(scene, cam, res_x, res_y, path, center, max_dim, techo_oculto=False):
     bpy.context.view_layer.update()
     c2w = cam.matrix_world.copy()
     meta = {
@@ -276,6 +336,7 @@ def save_camera_meta(scene, cam, res_x, res_y, path, center, max_dim):
         "clip_end": cam.data.clip_end,
         "scene_center": list(center),
         "scene_max_dim": max_dim,
+        "techo_oculto": techo_oculto,
     }
     with open(path, "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2)
@@ -322,7 +383,8 @@ def process_item(pid, item, dataset_dir, res, build_missing, rebuild=False):
     scene = bpy.context.scene
     setup_render(scene, *res)
     setup_world(scene)
-    cam, center, max_dim = setup_camera_and_light(scene, *res)
+    techo_oculto = ocultar_techos_si_interior(scene)
+    cam, center, max_dim = setup_camera_and_light(scene, *res, elevacion=55.0 if techo_oculto else 30.0)
     setup_depth_output(scene, out_dir, pid)
 
     scene.render.filepath = paths["rgb.png"]
@@ -331,7 +393,7 @@ def process_item(pid, item, dataset_dir, res, build_missing, rebuild=False):
     if not find_and_rename(out_dir, pid, paths["depth.exr"]):
         return {"id": pid, "ok": False, "error": "no se generó el EXR de profundidad"}
     stats = depth_preview_png(paths["depth.exr"], paths["depth.png"])
-    save_camera_meta(scene, cam, res[0], res[1], paths["camera.json"], center, max_dim)
+    save_camera_meta(scene, cam, res[0], res[1], paths["camera.json"], center, max_dim, techo_oculto)
 
     rel = lambda p: os.path.relpath(p, dataset_dir).replace("\\", "/")
     return {"id": pid, "ok": stats.get("valid_frac", 0) > 0.005, "aviso": aviso,

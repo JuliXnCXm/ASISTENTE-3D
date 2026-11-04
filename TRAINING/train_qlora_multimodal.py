@@ -21,7 +21,8 @@ from transformers import (
     BitsAndBytesConfig,
     TrainingArguments,
     Trainer,
-    DataCollatorForSeq2Seq
+    DataCollatorForSeq2Seq,
+    EarlyStoppingCallback
 )
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 
@@ -155,7 +156,7 @@ def main():
         r=64,
         lora_alpha=128,
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"], 
-        lora_dropout=0.05,
+        lora_dropout=0.1, # Aumentado de 0.05 a 0.10 para evitar memorización
         bias="none",
         task_type="CAUSAL_LM"
     )
@@ -177,22 +178,25 @@ def main():
     grad_acc = 16 // args.batch_size # Mantiene el batch efectivo total en 16
     training_args = TrainingArguments(
         output_dir=args.output_dir,
-        num_train_epochs=3,
+        num_train_epochs=2,            # Reducido de 3 a 2 para evitar overfitting post-paso 400
         per_device_train_batch_size=args.batch_size,
-        per_device_eval_batch_size=1,  # Previene picos de OOM durante la evaluación
+        per_device_eval_batch_size=1,  
         gradient_accumulation_steps=grad_acc,
-        eval_accumulation_steps=2,     # Descarga los tensores gigantes (logits) de la VRAM a la CPU
-        gradient_checkpointing=True,   # Salva muchísima VRAM en entrenamiento
+        eval_accumulation_steps=2,     
+        gradient_checkpointing=True,   
         optim="paged_adamw_32bit",
-        learning_rate=2e-4,
+        learning_rate=1e-4,            # Bajado de 2e-4 a 1e-4 para una caída más suave
+        weight_decay=0.01,             # Penalización para evitar memorización bruta
         bf16=use_bf16,
         fp16=use_fp16,
-        bf16_full_eval=use_bf16,       # Fuerza a que el evaluador no descomprima los tensores a 32-bits
+        bf16_full_eval=use_bf16,       
         fp16_full_eval=use_fp16,
         logging_steps=10,
         eval_strategy="epoch",
         save_strategy="epoch",
-        remove_unused_columns=False, # Vital para los modelos Multimodales
+        metric_for_best_model="eval_loss",
+        load_best_model_at_end=True,   # Garantiza que el modelo final sea el mejor, no el último
+        remove_unused_columns=False, 
         report_to="wandb"
     )
 
@@ -201,7 +205,8 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        data_collator=DataCollatorForSeq2Seq(processor.tokenizer, pad_to_multiple_of=8)
+        data_collator=DataCollatorForSeq2Seq(processor.tokenizer, pad_to_multiple_of=8),
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=1)] # Se detiene si el eval/loss sube en 1 época
     )
 
     print("Iniciando Entrenamiento...")

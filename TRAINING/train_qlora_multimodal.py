@@ -21,14 +21,17 @@ from transformers import (
     BitsAndBytesConfig,
     TrainingArguments,
     Trainer,
-    DataCollatorForSeq2Seq,
     EarlyStoppingCallback
 )
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 
 class QwenVLDataset(Dataset):
     """Dataset Custom para cargar el JSONL Multimodal."""
-    def __init__(self, jsonl_path, processor):
+    def __init__(self, jsonl_path, processor, max_length=6144):
+        self.max_length = max_length
+        # Tokens de "<|im_start|>assistant\n" para enmascarar todo lo previo
+        self.assistant_prefix = processor.tokenizer.encode(
+            "<|im_start|>assistant\n", add_special_tokens=False)
         self.data = []
         with open(jsonl_path, "r", encoding="utf-8") as f:
             for line in f:
@@ -100,21 +103,72 @@ class QwenVLDataset(Dataset):
                     else:
                         image_inputs.append(Image.open(img_path).convert("RGB"))
                     
-        # Tokenizar (Text + Imagen)
+        # Tokenizar (Text + Imagen) SIN padding ni truncado: el collator hace
+        # padding dinámico. Truncar aquí podía cortar tokens de imagen o el código.
         inputs = self.processor(
             text=[text_prompt],
             images=image_inputs if image_inputs else None,
-            padding="max_length",
-            truncation=True,
-            max_length=4096, 
+            padding=False,
             return_tensors="pt"
         )
-        
-        # Remover la dimensión batch extra
-        inputs = {k: v.squeeze(0) for k, v in inputs.items()}
-        inputs["labels"] = inputs["input_ids"].clone() # El modelo auto-enmascara el padding en el Trainer
-        
+        inputs = {k: v.squeeze(0) if k in ("input_ids", "attention_mask") else v
+                  for k, v in inputs.items()}
+
+        input_ids = inputs["input_ids"]
+        labels = torch.full_like(input_ids, -100)
+
+        # Solo calculamos loss sobre la respuesta del assistant (el código).
+        # Plantilla Qwen: <|im_start|>assistant\n ... <|im_end|>
+        start = _find_last_subseq(input_ids.tolist(), self.assistant_prefix)
+        if start is not None:
+            ini = start + len(self.assistant_prefix)
+            labels[ini:] = input_ids[ini:]
+        else:
+            print(f"[WARN] item {item.get('id')}: no se encontró el turno del assistant")
+
+        # Truncado seguro: solo recorta la cola (código), nunca los tokens de imagen
+        if input_ids.shape[0] > self.max_length:
+            n_trunc = getattr(self, "_n_trunc", 0) + 1
+            self._n_trunc = n_trunc
+            if n_trunc <= 20:
+                print(f"[WARN] item {item.get('id')}: {input_ids.shape[0]} tokens > "
+                      f"{self.max_length}, se trunca la cola del código")
+            inputs["input_ids"] = input_ids[:self.max_length]
+            inputs["attention_mask"] = inputs["attention_mask"][:self.max_length]
+            labels = labels[:self.max_length]
+
+        inputs["labels"] = labels
         return inputs
+
+
+def _find_last_subseq(seq, sub):
+    n = len(sub)
+    for i in range(len(seq) - n, -1, -1):
+        if seq[i:i + n] == sub:
+            return i
+    return None
+
+
+class QwenVLCollator:
+    """Padding dinámico. pixel_values/image_grid_thw se CONCATENAN (formato Qwen2.5-VL),
+    no se apilan; los labels de padding van a -100."""
+    def __init__(self, pad_token_id):
+        self.pad_token_id = pad_token_id
+
+    def __call__(self, features):
+        max_len = max(f["input_ids"].shape[0] for f in features)
+        batch = {"input_ids": [], "attention_mask": [], "labels": []}
+        for f in features:
+            pad = max_len - f["input_ids"].shape[0]
+            batch["input_ids"].append(torch.nn.functional.pad(f["input_ids"], (0, pad), value=self.pad_token_id))
+            batch["attention_mask"].append(torch.nn.functional.pad(f["attention_mask"], (0, pad), value=0))
+            batch["labels"].append(torch.nn.functional.pad(f["labels"], (0, pad), value=-100))
+        batch = {k: torch.stack(v) for k, v in batch.items()}
+        for key in ("pixel_values", "image_grid_thw"):
+            vals = [f[key] for f in features if key in f]
+            if vals:
+                batch[key] = torch.cat(vals, dim=0)
+        return batch
 
 
 def main():
@@ -126,6 +180,7 @@ def main():
     parser.add_argument("--batch_size", type=int, default=1, help="Usa 1 para L4 (24GB). Usa 2 para 4090/A6000. Usa 4 para A100 (80GB).")
     parser.add_argument("--push_to_hub", action="store_true", help="Subir el adaptador LoRA a Hugging Face al terminar")
     parser.add_argument("--hub_model_id", type=str, default=None, help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
+    parser.add_argument("--max_length", type=int, default=6144, help="Tokens máximos por ejemplo (imagen+texto+código)")
     args = parser.parse_args()
 
     # Configurar Quantización (4-bits) para que quepa en memoria
@@ -165,8 +220,8 @@ def main():
 
     # Datasets
     print("Cargando y procesando Datasets (Esto puede tomar tiempo)...")
-    train_dataset = QwenVLDataset(args.train_file, processor)
-    val_dataset = QwenVLDataset(args.val_file, processor)
+    train_dataset = QwenVLDataset(args.train_file, processor, args.max_length)
+    val_dataset = QwenVLDataset(args.val_file, processor, args.max_length)
 
     # Determinar si la GPU soporta BFloat16 (Ampere o superior como A100, L4, RTX 3090+)
     # Si es una T4 (Turing) o anterior, se fuerza a usar FP16 estándar.
@@ -205,7 +260,7 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        data_collator=DataCollatorForSeq2Seq(processor.tokenizer, pad_to_multiple_of=8),
+        data_collator=QwenVLCollator(processor.tokenizer.pad_token_id),
         callbacks=[EarlyStoppingCallback(early_stopping_patience=1)] # Se detiene si el eval/loss sube en 1 época
     )
 

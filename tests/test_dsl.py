@@ -112,6 +112,21 @@ class TestBlenderArch(unittest.TestCase):
         edif = A.crear_edificio_n_pisos("Edificio", pisos=2)
         self.assertMeshValid(edif)
 
+    def test_edificio_columnas_por_defecto(self):
+        from mathutils import Vector
+        edif = A.crear_edificio_n_pisos("E", pisos=3, ancho=12, fondo=15)
+        bpy.context.view_layer.update()
+        cols = [o for o in edif.children if o.get("arch_categoria") == "columna"]
+        # rejilla completa: ≥ 4 esquinas por piso
+        self.assertGreaterEqual(len(cols), 4 * 3)
+        for c in cols:
+            m = A._first_mesh_child(c)
+            pts = [m.matrix_world @ Vector(v) for v in m.bound_box]
+            self.assertGreaterEqual(min(p.x for p in pts), 0.2 - 1e-4)   # dentro de muros
+            self.assertLessEqual(max(p.x for p in pts), 12 - 0.2 + 1e-4)
+            self.assertGreaterEqual(min(p.y for p in pts), 0.2 - 1e-4)
+            self.assertLessEqual(max(p.y for p in pts), 15 - 0.2 + 1e-4)
+
     def test_geometria_generica(self):
         extr = A.extruir_perfil("Extr", [(0,0), (1,0), (1,1), (0,1)])
         self.assertMeshValid(extr)
@@ -133,6 +148,26 @@ class TestBlenderArch(unittest.TestCase):
         silla = A.crear_silla("SillaAncla")
         A.anclar_a(silla, muro, punto_anchor="centro", offset=(1,0,0))
         self.assertAlmostEqual(silla.location.x, 2.5 + 1.0 + 0) # muro x center is 2.5
+
+    def test_torre(self):
+        from mathutils import Vector
+        for kw in (dict(pisos=30), dict(pisos=12, giro_por_piso=3.0),
+                   dict(pisos=20, escala_superior=0.6, seccion_columna="circ")):
+            A.limpiar_escena()
+            torre = A.crear_torre("T", ancho=24, fondo=24, **kw)
+            bpy.context.view_layer.update()
+            pisos = [c for c in torre.children if c.get("arch_categoria") == "piso_torre"]
+            self.assertEqual(len(pisos), kw["pisos"])
+            for piso in pisos:
+                meshes = [m for m in piso.children_recursive if m.type == 'MESH']
+                losas = [m for m in meshes if m.name.endswith("_Losa")]
+                cols = [m for m in meshes if "_Col_" in m.name]
+                self.assertEqual(len(losas), 1, piso.name)
+                self.assertGreaterEqual(len(cols), 4, piso.name)
+                z_losa = min((losas[0].matrix_world @ Vector(c)).z for c in losas[0].bound_box)
+                for c in cols:
+                    z_top = max((c.matrix_world @ Vector(v)).z for v in c.bound_box)
+                    self.assertAlmostEqual(z_top, z_losa, places=3, msg=c.name)
 
 if __name__ == '__main__':
     # run tests

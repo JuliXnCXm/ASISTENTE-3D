@@ -1,0 +1,687 @@
+{
+  "gen_casa_2p__base": {
+    "ok": false,
+    "error": "TypeError: Converting py args to operator properties:: keyword \"name\" unrecognized",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_casa_2p__base.py\", line 4, in <module>",
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_casa_2p__base.png"
+  },
+  "gen_casa_2p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 25,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "puerta": 1,
+      "ventana": 2
+    },
+    "bbox": [
+      -0.5,
+      -0.5,
+      0.0,
+      8.5,
+      10.5,
+      7.734164237976074
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 204,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_casa_2p__lora.png"
+  },
+  "gen_escalera__base": {
+    "ok": false,
+    "error": "AttributeError: 'UnitSettings' object has no attribute 'scale_type'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_escalera__base.py\", line 43, in <module>",
+    "n_meshes": 45,
+    "categorias": {},
+    "bbox": [
+      -1.399999976158142,
+      -1.399999976158142,
+      -1.399999976158142,
+      10.800000190734863,
+      1.399999976158142,
+      40.60000228881836
+    ],
+    "aislados": 40,
+    "ejemplos_aislados": [
+      "Piso Superior",
+      "Peldaño 1",
+      "Peldaño 2",
+      "Peldaño 3",
+      "Peldaño 4"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 360,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_escalera__base.png"
+  },
+  "gen_escalera__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 48,
+    "categorias": {
+      "escalera_recta": 1,
+      "baranda": 2
+    },
+    "bbox": [
+      -1.5,
+      -0.20000000298023224,
+      0.0,
+      6.960000038146973,
+      1.399999976158142,
+      2.450000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 384,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_escalera__lora.png"
+  },
+  "gen_habitacion__base": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {},
+    "bbox": [
+      -8.0,
+      -7.0,
+      -5.0,
+      8.0,
+      7.0,
+      5.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_habitacion__base.png"
+  },
+  "gen_habitacion__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 22,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "armario": 1,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.15000015497207642,
+      0.0,
+      -0.20000000298023224,
+      4.300000190734863,
+      4.349999904632568,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 176,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_habitacion__lora.png"
+  },
+  "gen_oficinas_8p__base": {
+    "ok": false,
+    "error": "TypeError: Converting py args to operator properties:: keyword \"name\" unrecognized",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_oficinas_8p__base.py\", line 4, in <module>",
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_oficinas_8p__base.png"
+  },
+  "gen_oficinas_8p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 306,
+    "categorias": {
+      "edificio": 1,
+      "muro": 32,
+      "ventana": 40,
+      "losa": 8,
+      "columna": 48,
+      "techo_plano": 1,
+      "terreno": 1,
+      "arbol": 8
+    },
+    "bbox": [
+      -12.0,
+      -10.0,
+      -0.15000000596046448,
+      40.0,
+      30.0,
+      27.399999618530273
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 3088,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_oficinas_8p__lora.png"
+  },
+  "gen_rascacielos_30p__base": {
+    "ok": false,
+    "error": "TypeError: Converting py args to operator properties:: keyword \"name\" unrecognized",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_rascacielos_30p__base.py\", line 4, in <module>",
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_rascacielos_30p__base.png"
+  },
+  "gen_rascacielos_30p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1202,
+    "categorias": {
+      "edificio": 1,
+      "muro": 120,
+      "ventana": 210,
+      "losa": 30,
+      "techo_plano": 1,
+      "columna": 1
+    },
+    "bbox": [
+      -0.30000102519989014,
+      0.0,
+      0.0,
+      24.0,
+      24.0,
+      105.19999694824219
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 11476,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/gen_rascacielos_30p__lora.png"
+  },
+  "test_p0944__base": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {},
+    "bbox": [
+      -18.0,
+      -12.0,
+      -7.5,
+      18.0,
+      12.0,
+      7.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 272,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p0944__base.png"
+  },
+  "test_p0944__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 52,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "mesa": 1,
+      "silla": 6,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.1500001847743988,
+      0.0,
+      -0.20000000298023224,
+      6.300000190734863,
+      4.300000190734863,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 416,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p0944__lora.png"
+  },
+  "test_p0944__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 52,
+    "categorias": {
+      "piso": 1,
+      "techo_plano": 1,
+      "muro": 4,
+      "ventana": 1,
+      "mesa": 1,
+      "silla": 6
+    },
+    "bbox": [
+      -3.1000003814697266,
+      -2.0,
+      0.0,
+      6.0,
+      4.0,
+      3.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 424,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p0944__referencia.png"
+  },
+  "test_p1926__base": {
+    "ok": false,
+    "error": "SyntaxError: unterminated string literal (detected at line 123)",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p1926__base.py\", line 123",
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p1926__base.png"
+  },
+  "test_p1926__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 77,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "silla": 1,
+      "mesa": 1,
+      "estanteria": 10
+    },
+    "bbox": [
+      -0.1500001847743988,
+      0.0,
+      -0.20000000298023224,
+      3.799999952316284,
+      4.300000190734863,
+      4.180000305175781
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 616,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p1926__lora.png"
+  },
+  "test_p1926__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 26,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "silla": 1,
+      "extrusion": 1
+    },
+    "bbox": [
+      -0.10000013560056686,
+      0.0,
+      -0.20000000298023224,
+      3.700000047683716,
+      3.1999998092651367,
+      2.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 380,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p1926__referencia.png"
+  },
+  "test_p2187__base": {
+    "ok": false,
+    "error": "NameError: name 'math' is not defined. Did you forget to import 'math'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2187__base.py\", line 20, in <module>",
+    "n_meshes": 4,
+    "categorias": {},
+    "bbox": [
+      -5.0,
+      -5.0,
+      -5.0,
+      5.0,
+      5.0,
+      10.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 32,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2187__base.png"
+  },
+  "test_p2187__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 9,
+    "categorias": {
+      "muro": 1,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -2.799999952316284,
+      -0.6200000047683716,
+      0.0,
+      2.799999952316284,
+      0.6000000238418579,
+      3.325000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 348,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2187__lora.png"
+  },
+  "test_p2187__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {
+      "piso": 1,
+      "muro": 1,
+      "columna": 2,
+      "extrusion": 1
+    },
+    "bbox": [
+      -2.5,
+      -1.25,
+      -0.8329170942306519,
+      2.5,
+      1.25,
+      2.4000000953674316
+    ],
+    "aislados": 7,
+    "ejemplos_aislados": [
+      "Costilla_0",
+      "Costilla_1",
+      "Costilla_2",
+      "Costilla_3",
+      "Costilla_4"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 160,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2187__referencia.png"
+  },
+  "test_p2267__base": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 24,
+    "categorias": {},
+    "bbox": [
+      -2.5,
+      -2.5,
+      -2.5,
+      15.0,
+      12.5,
+      6.25
+    ],
+    "aislados": 1,
+    "ejemplos_aislados": [
+      "Cube.004"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 192,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2267__base.png"
+  },
+  "test_p2267__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'get_objects'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2267__lora.py\", line 18, in <module>",
+    "n_meshes": 2,
+    "categorias": {
+      "terreno": 1,
+      "extrusion": 2
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      -0.10000000149011612,
+      20.0,
+      20.0,
+      0.10000000149011612
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2267__lora.png"
+  },
+  "test_p2267__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 31,
+    "categorias": {
+      "terreno": 1,
+      "columna": 6,
+      "extrusion": 4
+    },
+    "bbox": [
+      -10.0,
+      -10.0,
+      -0.20000000298023224,
+      10.0,
+      10.0,
+      3.5
+    ],
+    "aislados": 14,
+    "ejemplos_aislados": [
+      "ChorroAgua",
+      "VigaSecundaria_0",
+      "VigaSecundaria_2",
+      "VigaSecundaria_3",
+      "VigaSecundaria_4"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 978,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p2267__referencia.png"
+  },
+  "test_p3052__base": {
+    "ok": false,
+    "error": "TypeError: Converting py args to operator properties:: keyword \"name\" unrecognized",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3052__base.py\", line 4, in <module>",
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3052__base.png"
+  },
+  "test_p3052__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 91,
+    "categorias": {
+      "losa": 1,
+      "techo_plano": 1,
+      "muro": 8,
+      "sofa": 1,
+      "mesa": 2,
+      "silla": 6,
+      "cama": 1,
+      "armario": 1,
+      "puerta": 1,
+      "ventana": 3
+    },
+    "bbox": [
+      -3.1500003337860107,
+      -4.599999904632568,
+      -0.20000000298023224,
+      6.0,
+      9.199999809265137,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 728,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3052__lora.png"
+  },
+  "test_p3052__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 70,
+    "categorias": {
+      "losa": 1,
+      "techo_plano": 1,
+      "muro": 6,
+      "puerta": 3,
+      "ventana": 2,
+      "extrusion": 1,
+      "sofa": 1,
+      "mesa": 1,
+      "silla": 2,
+      "cama": 1,
+      "armario": 1
+    },
+    "bbox": [
+      -0.3000108599662781,
+      0.0,
+      0.0,
+      15.300000190734863,
+      10.000000953674316,
+      3.6000001430511475
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 583,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3052__referencia.png"
+  },
+  "test_p3247__base": {
+    "ok": false,
+    "error": "SyntaxError: invalid syntax",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3247__base.py\", line 1",
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3247__base.png"
+  },
+  "test_p3247__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 38,
+    "categorias": {
+      "muro": 27,
+      "puerta": 1,
+      "ventana": 1,
+      "techo_plano": 1,
+      "terreno": 1
+    },
+    "bbox": [
+      -0.15000000596046448,
+      -0.15000000596046448,
+      -0.10000000149011612,
+      20.0,
+      20.0,
+      6.599999904632568
+    ],
+    "aislados": 2,
+    "ejemplos_aislados": [
+      "Muro_PA_Cuerpo",
+      "Cubierta_Cuerpo"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 304,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3247__lora.png"
+  },
+  "test_p3247__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 80,
+    "categorias": {
+      "muro": 2,
+      "losa": 1,
+      "puerta": 1,
+      "techo_plano": 1,
+      "ventana": 1,
+      "terreno": 1
+    },
+    "bbox": [
+      -4.925000190734863,
+      -7.5,
+      -0.05000000074505806,
+      20.0,
+      7.5,
+      6.0
+    ],
+    "aislados": 33,
+    "ejemplos_aislados": [
+      "LamaMadera",
+      "LamaMadera.001",
+      "LamaMadera.002",
+      "LamaMadera.003",
+      "LamaMadera.004"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 648,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local/test_p3247__referencia.png"
+  }
+}

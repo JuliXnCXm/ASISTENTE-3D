@@ -47,6 +47,7 @@ __all__ = [
     "crear_habitacion",
     "crear_casa_n_pisos",
     "crear_edificio_n_pisos",
+    "crear_torre",
     # -- Geometría genérica --
     "extruir_perfil",
     "extruir_con_huecos",
@@ -151,17 +152,49 @@ def _apply_boolean(target_mesh, cutter_mesh, operation='DIFFERENCE'):
 #  MATERIALES
 # ---------------------------------------------------------
 
+# Presets por palabra clave en el nombre del material. Se usan solo para los
+# parámetros que el usuario NO pasa explícitamente.
+_MAT_PRESETS = [
+    ("vidrio",    dict(base_color=(0.75, 0.85, 0.92, 1.0), roughness=0.05, metallic=0.0, transmission=0.9, ior=1.45)),
+    ("glass",     dict(base_color=(0.75, 0.85, 0.92, 1.0), roughness=0.05, metallic=0.0, transmission=0.9, ior=1.45)),
+    ("acero",     dict(base_color=(0.62, 0.64, 0.66, 1.0), roughness=0.3,  metallic=1.0)),
+    ("aluminio",  dict(base_color=(0.75, 0.76, 0.78, 1.0), roughness=0.35, metallic=1.0)),
+    ("metal",     dict(base_color=(0.6, 0.6, 0.62, 1.0),   roughness=0.35, metallic=1.0)),
+    ("hormigon",  dict(base_color=(0.62, 0.61, 0.58, 1.0), roughness=0.85)),
+    ("concreto",  dict(base_color=(0.62, 0.61, 0.58, 1.0), roughness=0.85)),
+    ("ladrillo",  dict(base_color=(0.55, 0.27, 0.18, 1.0), roughness=0.8)),
+    ("madera",    dict(base_color=(0.45, 0.30, 0.18, 1.0), roughness=0.6)),
+    ("parquet",   dict(base_color=(0.50, 0.34, 0.20, 1.0), roughness=0.5)),
+    ("cesped",    dict(base_color=(0.20, 0.40, 0.12, 1.0), roughness=0.9)),
+    ("gris",      dict(base_color=(0.45, 0.45, 0.45, 1.0), roughness=0.6)),
+]
+_MAT_DEFAULT = dict(base_color=(0.8, 0.8, 0.8, 1.0), roughness=0.5,
+                    metallic=0.0, transmission=0.0, ior=1.45)
+
+
+def _resolver_material(nombre, **explicitos):
+    vals = dict(_MAT_DEFAULT)
+    n = (nombre or "").lower()
+    for clave, preset in _MAT_PRESETS:
+        if clave in n:
+            vals.update(preset)
+            break
+    vals.update({k: v for k, v in explicitos.items() if v is not None})
+    return vals
+
+
 def asignar_material(obj, nombre="Mat",
-                     base_color=(0.8, 0.8, 0.8, 1.0),
-                     roughness=0.5, metallic=0.0,
-                     transmission=0.0, ior=1.45):
+                     base_color=None,
+                     roughness=None, metallic=None,
+                     transmission=None, ior=None):
     """
     Crea o reutiliza un material Principled BSDF y lo asigna al objeto.
 
     Args:
         obj: objeto Blender al que se asigna el material.
         nombre (str): nombre del material (se reutiliza si ya existe).
-        base_color (tuple): RGBA en [0,1].
+        base_color (tuple): RGBA en [0,1]. Si se omite, se infiere del nombre
+            (p.ej. "Vidrio_*" → transparente, "Acero_*" → metálico).
         roughness (float): rugosidad [0,1].
         metallic (float): metalicidad [0,1].
         transmission (float): transmisión (vidrio) [0,1].
@@ -170,6 +203,10 @@ def asignar_material(obj, nombre="Mat",
     Returns:
         bpy.types.Material
     """
+    v = _resolver_material(nombre, base_color=base_color, roughness=roughness,
+                           metallic=metallic, transmission=transmission, ior=ior)
+    base_color, roughness, metallic = v["base_color"], v["roughness"], v["metallic"]
+    transmission, ior = v["transmission"], v["ior"]
     mat = bpy.data.materials.get(nombre)
     if mat is None:
         mat = bpy.data.materials.new(nombre)
@@ -1509,9 +1546,9 @@ def crear_edificio_n_pisos(nombre="Edificio",
                             grosor_muro=0.20,
                             grosor_losa=0.20,
                             con_techo_plano=True,
-                            con_columnas=False,
+                            con_columnas=True,
                             seccion_columna="rect",
-                            dim_columna=0.30,
+                            dim_columna=None,
                             modulo_columna_x=4.0,
                             modulo_columna_y=5.0,
                             ventanas_fachada=True,
@@ -1540,11 +1577,14 @@ def crear_edificio_n_pisos(nombre="Edificio",
         grosor_muro (float): grosor de muros exteriores (m).
         grosor_losa (float): espesor de losas (m).
         con_techo_plano (bool): añadir losa de cubierta plana.
-        con_columnas (bool): generar columnas interiores en rejilla.
+        con_columnas (bool): generar columnas en rejilla completa (perímetro,
+            esquinas e interior). Activado por defecto.
         seccion_columna (str): 'rect' o 'circ'.
         dim_columna (float): lado (rect) o diámetro (circ) de la columna (m).
-        modulo_columna_x (float): separación entre columnas en X (m).
-        modulo_columna_y (float): separación entre columnas en Y (m).
+            None = automático según número de pisos (0.30 m hasta 4 pisos,
+            crece con la altura).
+        modulo_columna_x (float): separación máxima entre columnas en X (m).
+        modulo_columna_y (float): separación máxima entre columnas en Y (m).
         ventanas_fachada (bool): abrir rejilla de ventanas en fachada Sur.
         ventana_ancho (float): ancho de cada ventana (m).
         ventana_alto (float): alto de cada ventana (m).
@@ -1569,6 +1609,17 @@ def crear_edificio_n_pisos(nombre="Edificio",
 
     alto_libre = alto_piso - grosor_losa
     g = grosor_muro
+    if dim_columna is None:
+        dim_columna = min(1.2, max(0.30, 0.15 + 0.035 * pisos))
+
+    # Rejilla de columnas (perímetro + interior), dentro de los muros.
+    # Equiespaciada con separación ≤ módulo; incluye siempre las esquinas.
+    def _ejes(largo_util, modulo):
+        n = max(1, int(-(-largo_util // modulo)))
+        return [largo_util * k / n for k in range(n + 1)]
+    _xs = [g + x for x in _ejes(ancho - 2 * g - dim_columna, modulo_columna_x)]
+    _ys = [g + y for y in _ejes(fondo - 2 * g - dim_columna, modulo_columna_y)]
+    _circ = seccion_columna.lower().startswith('c')
 
     for p in range(pisos):
         z_base = p * alto_piso
@@ -1627,14 +1678,13 @@ def crear_edificio_n_pisos(nombre="Edificio",
                                       material=material_losa)
         _parent(losa, root)
 
-        # ── Columnas interiores (rejilla) ──────────────────────────────
+        # ── Columnas en rejilla (perímetro + interior) ─────────────────
         if con_columnas:
-            nx = max(1, int(ancho / modulo_columna_x) - 1)
-            ny = max(1, int(fondo / modulo_columna_y) - 1)
-            for ix in range(nx):
-                for iy in range(ny):
-                    cx = modulo_columna_x * (ix + 1)
-                    cy = modulo_columna_y * (iy + 1)
+            for ix, x0 in enumerate(_xs):
+                for iy, y0 in enumerate(_ys):
+                    # x0,y0 = esquina mínima de la columna; circ usa el centro
+                    cx = x0 + dim_columna / 2.0 if _circ else x0
+                    cy = y0 + dim_columna / 2.0 if _circ else y0
                     col = crear_columna(
                         f"{prefijo}_Col_{ix}_{iy}",
                         seccion=seccion_columna,
@@ -1656,6 +1706,254 @@ def crear_edificio_n_pisos(nombre="Edificio",
                                    material=material_losa)
         _parent(techo, root)
 
+    return root
+
+
+def _mesh_cajas(nombre, cajas):
+    """Une varias cajas en UNA sola malla (menos objetos en escena).
+    cajas: lista de (cx, cy, z_min, sx, sy, sz) en coordenadas locales,
+    centradas en XY y con base en z_min."""
+    verts, faces = [], []
+    for (cx, cy, z0, sx, sy, sz) in cajas:
+        x0, x1 = cx - sx / 2.0, cx + sx / 2.0
+        y0, y1 = cy - sy / 2.0, cy + sy / 2.0
+        z1 = z0 + sz
+        b = len(verts)
+        verts += [(x0, y0, z0), (x1, y0, z0), (x1, y1, z0), (x0, y1, z0),
+                  (x0, y0, z1), (x1, y0, z1), (x1, y1, z1), (x0, y1, z1)]
+        faces += [(b+0, b+3, b+2, b+1), (b+4, b+5, b+6, b+7),
+                  (b+0, b+1, b+5, b+4), (b+1, b+2, b+6, b+5),
+                  (b+2, b+3, b+7, b+6), (b+3, b+0, b+4, b+7)]
+    return _new_mesh_object(nombre, verts, faces)
+
+
+def _ejes_modulados(largo, modulo):
+    """Posiciones equiespaciadas en [-largo/2, largo/2] con separación ≤ modulo."""
+    n = max(1, int(-(-largo // modulo)))  # ceil
+    return [-largo / 2.0 + largo * k / n for k in range(n + 1)]
+
+
+def crear_torre(nombre="Torre",
+                pisos=30,
+                ancho=24.0,
+                fondo=24.0,
+                alto_piso=3.6,
+                alto_planta_baja=5.0,
+                grosor_losa=0.30,
+                modulo_columnas=8.0,
+                retiro_columnas=1.0,
+                dim_columna=None,
+                seccion_columna="rect",
+                reducir_columnas=True,
+                con_nucleo=True,
+                ancho_nucleo=None,
+                fondo_nucleo=None,
+                grosor_nucleo=0.35,
+                fachada="muro_cortina",
+                modulo_parteluz=1.5,
+                giro_por_piso=0.0,
+                escala_superior=1.0,
+                con_coronamiento=True,
+                origen=(0, 0, 0),
+                material_losa="Hormigon",
+                material_columna="Hormigon",
+                material_nucleo="Hormigon_Nucleo",
+                material_vidrio="Vidrio_Templado",
+                material_parteluz="Aluminio_Parteluz"):
+    """
+    Genera una torre / rascacielos estructuralmente coherente.
+
+    CONVENCIÓN: `origen` es el CENTRO de la huella a nivel de suelo (z=0).
+    La planta va de -ancho/2..+ancho/2 en X y -fondo/2..+fondo/2 en Y.
+
+    Por cada piso crea: losa completa, columnas perimetrales en rejilla
+    (incluye esquinas), y fachada (muro cortina con parteluces o nada).
+    El núcleo de hormigón (ascensores/escaleras) es continuo desde el suelo
+    hasta la cubierta. Las columnas son continuas entre losas (sin huecos).
+
+    Variantes de forma:
+      - giro_por_piso (grados): torre retorcida (twisting tower). Cada planta
+        completa (losa+columnas+fachada) gira alrededor del CENTRO.
+      - escala_superior (0.4–1.0): ahusamiento; el último piso mide
+        ancho*escala_superior. 1.0 = prisma recto.
+
+    Args:
+        nombre (str): nombre del activo raíz.
+        pisos (int): número de plantas (≥ 1).
+        ancho (float): dimensión X de la planta baja (m).
+        fondo (float): dimensión Y de la planta baja (m).
+        alto_piso (float): altura de entrepiso típica, losa a losa (m).
+        alto_planta_baja (float): altura de la planta baja (m). None = alto_piso.
+        grosor_losa (float): espesor de losas (m).
+        modulo_columnas (float): separación máxima entre columnas (m), típico 6–9.
+        retiro_columnas (float): distancia de las columnas al borde de losa (m).
+        dim_columna (float): lado/diámetro de columna en planta baja (m).
+            None = automático según número de pisos.
+        seccion_columna (str): 'rect' o 'circ'.
+        reducir_columnas (bool): columnas más esbeltas en pisos altos.
+        con_nucleo (bool): núcleo central de hormigón continuo.
+        ancho_nucleo, fondo_nucleo (float): dimensiones del núcleo (m). None = auto.
+        grosor_nucleo (float): espesor de los muros del núcleo (m).
+        fachada (str): 'muro_cortina' (vidrio + parteluces) o 'ninguna'.
+        modulo_parteluz (float): separación entre parteluces verticales (m).
+        giro_por_piso (float): rotación acumulada por piso en grados.
+        escala_superior (float): factor de escala del último piso (ahusamiento).
+        con_coronamiento (bool): losa de cubierta + parapeto + cuarto de máquinas.
+        origen (tuple): centro de la huella a nivel de suelo.
+        material_* (str): nombres de materiales (se infieren colores por nombre).
+
+    Returns:
+        bpy.types.Object: root (Empty) de la torre. Cada piso es un Empty hijo
+        llamado '<nombre>_P<n>' con sus elementos como hijos.
+
+    Ejemplo:
+        A.crear_torre("Torre", pisos=30, ancho=24, fondo=24)
+        A.crear_torre("Twist", pisos=40, ancho=26, fondo=26, giro_por_piso=2.0)
+    """
+    pisos = max(1, int(pisos))
+    if alto_planta_baja is None:
+        alto_planta_baja = alto_piso
+    escala_superior = min(1.0, max(0.3, float(escala_superior)))
+    if dim_columna is None:
+        # Regla empírica (pre-dimensionado): ~0.5 m hasta 10 pisos,
+        # crece ~2.5 cm por piso, máximo 1.4 m.
+        dim_columna = min(1.4, max(0.5, 0.25 + 0.03 * pisos))
+
+    # Núcleo: debe caber en la planta más pequeña dejando ≥ 6 m útiles.
+    min_lado_sup = min(ancho, fondo) * escala_superior
+    if ancho_nucleo is None:
+        ancho_nucleo = max(4.0, 0.35 * ancho * escala_superior)
+    if fondo_nucleo is None:
+        fondo_nucleo = max(4.0, 0.35 * fondo * escala_superior)
+    limite = max(3.0, min_lado_sup - 2 * (retiro_columnas + dim_columna) - 4.0)
+    ancho_nucleo = min(ancho_nucleo, limite)
+    fondo_nucleo = min(fondo_nucleo, limite)
+
+    root = _empty_root(nombre, "torre")
+    root.location = Vector(origen)
+
+    def z_de(p):
+        return 0.0 if p == 0 else alto_planta_baja + (p - 1) * alto_piso
+
+    def alto_de(p):
+        return alto_planta_baja if p == 0 else alto_piso
+
+    altura_total = z_de(pisos)
+
+    # ── Núcleo continuo (no gira: es la columna vertebral de la torre) ──
+    if con_nucleo:
+        g, an, fn = grosor_nucleo, ancho_nucleo, fondo_nucleo
+        h = altura_total + (2.5 if con_coronamiento else 0.0)
+        nucleo = _mesh_cajas(f"{nombre}_Nucleo", [
+            (0, -fn / 2 + g / 2, 0, an, g, h),
+            (0,  fn / 2 - g / 2, 0, an, g, h),
+            (-an / 2 + g / 2, 0, 0, g, fn - 2 * g, h),
+            ( an / 2 - g / 2, 0, 0, g, fn - 2 * g, h),
+            (0, 0, 0, g, fn - 2 * g, h),          # muro divisorio ascensores/escaleras
+        ])
+        asignar_material(nucleo, material_nucleo)
+        _parent(nucleo, root)
+
+    # ── Losa de cimentación / planta baja ──
+    base = _mesh_cajas(f"{nombre}_Losa_Base",
+                       [(0, 0, -grosor_losa, ancho + 2.0, fondo + 2.0, grosor_losa)])
+    asignar_material(base, material_losa)
+    _parent(base, root)
+
+    n_columnas = 0
+    for p in range(pisos):
+        t = p / (pisos - 1) if pisos > 1 else 0.0
+        esc = 1.0 + (escala_superior - 1.0) * t
+        aw, af = ancho * esc, fondo * esc
+        z0, hp = z_de(p), alto_de(p)
+
+        piso = _empty_root(f"{nombre}_P{p + 1:02d}", "piso_torre")
+        piso.location = Vector((0, 0, z0))
+        piso.rotation_euler.z = radians(giro_por_piso * p)
+        _parent(piso, root)
+        piso["arch_nivel"] = p + 1
+
+        # Losa superior de este piso (= piso del siguiente)
+        losa = _mesh_cajas(f"{nombre}_P{p + 1:02d}_Losa",
+                           [(0, 0, hp - grosor_losa, aw, af, grosor_losa)])
+        asignar_material(losa, material_losa)
+        _parent(losa, piso)
+
+        # Columnas perimetrales en rejilla (de losa inferior a losa superior)
+        d = dim_columna * ((1.0 - 0.45 * t) if reducir_columnas else 1.0)
+        d = max(0.35, d)
+        hx = aw / 2.0 - retiro_columnas - d / 2.0
+        hy = af / 2.0 - retiro_columnas - d / 2.0
+        xs = _ejes_modulados(2 * hx, modulo_columnas)
+        ys = _ejes_modulados(2 * hy, modulo_columnas)
+        puntos = set()
+        for x in xs:
+            puntos.add((round(x, 4), round(-hy, 4)))
+            puntos.add((round(x, 4), round(hy, 4)))
+        for y in ys:
+            puntos.add((round(-hx, 4), round(y, 4)))
+            puntos.add((round(hx, 4), round(y, 4)))
+        alto_col = hp - grosor_losa
+        for k, (x, y) in enumerate(sorted(puntos)):
+            col = crear_columna(f"{nombre}_P{p + 1:02d}_Col_{k:02d}",
+                                seccion=seccion_columna,
+                                ancho=d, fondo=d, diametro=d,
+                                alto=alto_col,
+                                origen=(x - d / 2, y - d / 2, 0) if not seccion_columna.lower().startswith('c') else (x, y, 0),
+                                material=material_columna)
+            _parent(col, piso)
+            n_columnas += 1
+
+        # Fachada: muro cortina en el borde de losa + parteluces verticales
+        if fachada == "muro_cortina":
+            gv = 0.06
+            hv = hp - grosor_losa
+            vidrio = _mesh_cajas(f"{nombre}_P{p + 1:02d}_Vidrio", [
+                (0, -af / 2 + gv / 2, 0, aw, gv, hv),
+                (0,  af / 2 - gv / 2, 0, aw, gv, hv),
+                (-aw / 2 + gv / 2, 0, 0, gv, af - 2 * gv, hv),
+                ( aw / 2 - gv / 2, 0, 0, gv, af - 2 * gv, hv),
+            ])
+            asignar_material(vidrio, material_vidrio)
+            _parent(vidrio, piso)
+
+            m, pr = 0.08, 0.25  # ancho y profundidad del parteluz
+            cajas = []
+            for x in _ejes_modulados(aw, modulo_parteluz):
+                cajas.append((x, -af / 2 - pr / 2, 0, m, pr, hp))
+                cajas.append((x,  af / 2 + pr / 2, 0, m, pr, hp))
+            for y in _ejes_modulados(af, modulo_parteluz):
+                cajas.append((-aw / 2 - pr / 2, y, 0, pr, m, hp))
+                cajas.append(( aw / 2 + pr / 2, y, 0, pr, m, hp))
+            parteluz = _mesh_cajas(f"{nombre}_P{p + 1:02d}_Parteluces", cajas)
+            asignar_material(parteluz, material_parteluz)
+            _parent(parteluz, piso)
+
+    # ── Coronamiento: parapeto + cuarto de máquinas ──
+    if con_coronamiento:
+        aw, af = ancho * escala_superior, fondo * escala_superior
+        top = _empty_root(f"{nombre}_Coronamiento", "coronamiento")
+        top.location = Vector((0, 0, altura_total))
+        top.rotation_euler.z = radians(giro_por_piso * (pisos - 1))
+        _parent(top, root)
+        gp, hpp = 0.25, 1.2
+        parapeto = _mesh_cajas(f"{nombre}_Parapeto", [
+            (0, -af / 2 + gp / 2, 0, aw, gp, hpp),
+            (0,  af / 2 - gp / 2, 0, aw, gp, hpp),
+            (-aw / 2 + gp / 2, 0, 0, gp, af - 2 * gp, hpp),
+            ( aw / 2 - gp / 2, 0, 0, gp, af - 2 * gp, hpp),
+        ])
+        asignar_material(parapeto, material_losa)
+        _parent(parapeto, top)
+
+    _set_meta(root, tipo="torre", pisos=pisos, ancho=ancho, fondo=fondo,
+              alto_piso=alto_piso, alto_planta_baja=alto_planta_baja,
+              altura_total=round(altura_total, 3),
+              dim_columna=round(dim_columna, 3), n_columnas=n_columnas,
+              con_nucleo=con_nucleo, ancho_nucleo=round(ancho_nucleo, 3),
+              fondo_nucleo=round(fondo_nucleo, 3),
+              giro_por_piso=giro_por_piso, escala_superior=escala_superior,
+              origen=list(origen))
     return root
 
 

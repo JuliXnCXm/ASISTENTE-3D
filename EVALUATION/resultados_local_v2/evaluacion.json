@@ -1,0 +1,56 @@
+{
+  "gen_oficinas_8p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 418,
+    "categorias": {
+      "edificio": 1,
+      "muro": 32,
+      "ventana": 40,
+      "losa": 8,
+      "columna": 160,
+      "techo_plano": 1,
+      "terreno": 1,
+      "arbol": 8
+    },
+    "bbox": [
+      -12.0,
+      -10.0,
+      -0.15000000596046448,
+      40.0,
+      30.0,
+      27.399999618530273
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 3984,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local_v2/gen_oficinas_8p__lora.png"
+  },
+  "gen_rascacielos_30p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 2462,
+    "categorias": {
+      "edificio": 1,
+      "muro": 120,
+      "ventana": 210,
+      "losa": 30,
+      "columna": 1261,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.30000102519989014,
+      0.0,
+      0.0,
+      24.0,
+      24.0,
+      105.19999694824219
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 21556,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/resultados_local_v2/gen_rascacielos_30p__lora.png"
+  }
+}

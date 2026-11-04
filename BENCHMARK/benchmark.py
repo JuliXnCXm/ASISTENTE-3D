@@ -4,17 +4,32 @@ from pathlib import Path
 import requests, py_compile
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT_DIR))
+
+try:
+    from RAG.retrieval import Retriever
+except ImportError:
+    Retriever = None
 
 SYSTEM_PROMPT = textwrap.dedent("""
-Eres un asistente que GENERA SOLO CÓDIGO PYTHON para Blender.
+Eres un asistente experto en arquitectura y desarrollo CAD procedural-paramétrico.
+Genera SOLO CÓDIGO PYTHON ejecutable en Blender usando la librería `blender_arch` importada como `A`, o la API `bpy`.
 
 REQUISITOS:
-- Devuelve ÚNICAMENTE un bloque de código dentro de triple backticks: ```python ... ```
-- Usa bpy y funciona en headless (-b), sin operadores que requieran UI.
-- Limpia la escena: bpy.ops.wm.read_factory_settings(use_empty=True)
-- Crea la geometría solicitada en metros.
-- Si deseas guardar .blend, usa la variable de entorno BLEND_OUT si existe.
-- No uses add-ons externos, ni internet, ni UI modal.
+- Devuelve ÚNICAMENTE el bloque de código Python, dentro de triple backticks: ```python ... ```
+- La primera línea debe ser siempre: import blender_arch as A
+- Inicia limpiando la escena: A.limpiar_escena()
+- No uses paquetes externos, ni internet, ni UI modal.
+""").strip()
+
+REPAIR_PROMPT = textwrap.dedent("""
+El código Python que generaste falló al ejecutarse. 
+Este fue el error exacto:
+
+{error}
+
+Por favor, analiza el error y devuelve el script de Python completo, corregido y funcional.
+Recuerda devolver SOLO el bloque de código Python.
 """).strip()
 
 CODE_BLOCK_RE = re.compile(r"```(?:python)?\s*([\s\S]*?)```", re.IGNORECASE)
@@ -87,13 +102,15 @@ def run_blender_runner(blender_bin: str, runner: Path, gt_script: Path, pred_scr
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--models", required=True, help="Modelos Ollama separados por coma (ej: llama3:8b-instruct,mistral:7b-instruct,gemma2:9b-instruct)")
+    ap.add_argument("--models", required=True, help="Modelos Ollama/vLLM separados por coma")
     ap.add_argument("--prompts", default=str(ROOT_DIR / "BENCHMARK" / "prompts.json"))
     ap.add_argument("--outdir", default=str(ROOT_DIR / "BENCHMARK" / "outputs_benchmark"))
     ap.add_argument("--runner", default=str(ROOT_DIR / "EVALUATION" / "evaluate_geometry.py"))
-    ap.add_argument("--ollama-host", default=os.environ.get("OLLAMA_HOST", "http://localhost:11434"),
-                help="Base URL de Ollama sin /api (ej: http://localhost:11434)")
-    ap.add_argument("--use_arch_dir", default=str(ROOT_DIR / "DSL" / "blender"), help="Opcional: carpeta con blender_arch.py; se añade a PYTHONPATH en Blender.")
+    ap.add_argument("--ollama-host", default=os.environ.get("OLLAMA_HOST", "http://localhost:11434"))
+    ap.add_argument("--use_arch_dir", default=str(ROOT_DIR / "DSL" / "blender"))
+    ap.add_argument("--use-rag", action="store_true", help="Habilita la inyección de contexto RAG")
+    ap.add_argument("--use-agent", action="store_true", help="Habilita la autorreparación de código hasta 3 intentos")
+    ap.add_argument("--max-retries", type=int, default=3, help="Intentos máximos del agente")
     args = ap.parse_args()
 
     models = [m.strip() for m in args.models.split(",") if m.strip()]
@@ -101,6 +118,14 @@ def main():
     outdir = Path(args.outdir); ensure_dir(outdir)
     runner = Path(args.runner)
     if not runner.exists(): raise SystemExit(f"No se encontró {runner}")
+
+    rag_retriever = None
+    if args.use_rag:
+        if Retriever is None:
+            print("ADVERTENCIA: --use-rag activado pero no se encontró ASISTENTE-3D/RAG/retrieval.py. Se omitirá.")
+        else:
+            print("Cargando base vectorial del RAG...")
+            rag_retriever = Retriever(k=3)
 
     # --- 1) Cargar resumen histórico si existe ---
     summary_json_path = outdir / "results_summary.json"
@@ -113,18 +138,17 @@ def main():
         try:
             summary = json.loads(summary_json_path.read_text(encoding="utf-8"))
             for entry in summary:
-                # Usamos la combinación de modelo + id para saber si ya se evaluó
-                procesados.add(f"{entry['model']}_{entry['id']}")
+                # Modificamos la clave de procesados para incluir las flags experimentales
+                key = f"{entry['model']}_{entry['id']}_rag{entry.get('used_rag',False)}_agt{entry.get('used_agent',False)}"
+                procesados.add(key)
         except Exception:
             pass
 
-    cols = ["model","id","titulo","ollama_ok","compile_ok","rc","chamfer_distance","execution_error"]
+    cols = ["model","id","titulo","used_rag","used_agent","ollama_ok","compile_ok","rc","chamfer_distance","agent_attempts","execution_error"]
 
     def guardar_resumen():
         """Guarda tanto el JSON como el CSV de manera segura."""
-        # JSON
         summary_json_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
-        # CSV
         lines = [",".join(cols)]
         for r in summary:
             row = [str(r.get(k,"")) for k in cols]
@@ -134,72 +158,91 @@ def main():
     for model in models:
         for item in prompts:
             pid = str(item["id"])
+            experiment_key = f"{model}_{pid}_rag{args.use_rag}_agt{args.use_agent}"
             
-            # --- 2) Lógica de Saltar (Skip) ---
-            if f"{model}_{pid}" in procesados:
-                print(f"[SKIP] {model} ya procesó el caso {pid}")
+            if experiment_key in procesados:
+                print(f"[SKIP] Ya evaluado: {experiment_key}")
                 continue
                 
             titulo = item.get("titulo","")
-            prompt = item["prompt"]
-            case_dir = outdir / model.replace(":", "_") / pid
+            base_prompt = item["prompt"]
+            dificultad = item.get("dificultad", "N/A")
+            
+            case_dir = outdir / f"{model.replace(':', '_')}_RAG{args.use_rag}_AGT{args.use_agent}" / pid
             ensure_dir(case_dir)
 
-            # 1) Query modelo
-            try:
-                raw = call_ollama(model, prompt, base_url=args.ollama_host, system_prompt=SYSTEM_PROMPT, debug=False)
-            except Exception as e:
-                (case_dir/"error_ollama.txt").write_text(str(e), encoding="utf-8")
-                summary.append({"model":model,"id":pid,"titulo":titulo,"ollama_ok":False,"compile_ok":False,"rc":None})
-                guardar_resumen()
-                continue
+            # RAG Context Injection
+            final_prompt = base_prompt
+            if args.use_rag and rag_retriever:
+                docs = rag_retriever.search(base_prompt)
+                context = "\n".join([d.page_content for d in docs])
+                final_prompt = f"{base_prompt}\n\n[CONTEXTO DOCUMENTACIÓN DSL]:\n{context}"
 
-            (case_dir/"llm_raw.txt").write_text(raw, encoding="utf-8")
-            code = extract_code(raw)
-            script = case_dir / f"{pid}_{model.replace(':','_')}.py"
-            script.write_text(code, encoding="utf-8")
+            max_attempts = args.max_retries if args.use_agent else 1
+            attempt = 0
+            success = False
+            last_error = ""
+            current_prompt = final_prompt
+            system_p = SYSTEM_PROMPT
+            best_chamfer = None
 
-            # 2) Compilación Python
-            comp_ok, comp_msg = py_compile_file(script)
-            (case_dir/"compile.log").write_text(comp_msg, encoding="utf-8")
-            if not comp_ok:
-                summary.append({"model":model,"id":pid,"titulo":titulo,"ollama_ok":True,"compile_ok":False,"rc":None})
-                guardar_resumen()
-                continue
+            while attempt < max_attempts and not success:
+                attempt += 1
+                try:
+                    raw = call_ollama(model, current_prompt, base_url=args.ollama_host, system_prompt=system_p, debug=False)
+                except Exception as e:
+                    last_error = f"Ollama connection error: {str(e)}"
+                    break
 
-            # 3) Ejecutar Blender runner
-            report = case_dir / "report.json"
+                (case_dir/f"llm_raw_att{attempt}.txt").write_text(raw, encoding="utf-8")
+                code = extract_code(raw)
+                script = case_dir / f"{pid}_script.py"
+                script.write_text(code, encoding="utf-8")
 
-            env_arch_dir = args.use_arch_dir.strip()
-            if not env_arch_dir:
-                env_arch_dir = "../DSL/blender"
+                comp_ok, comp_msg = py_compile_file(script)
+                (case_dir/f"compile_att{attempt}.log").write_text(comp_msg, encoding="utf-8")
+                
+                if not comp_ok:
+                    last_error = f"Python Syntax Error: {comp_msg}"
+                    current_prompt = REPAIR_PROMPT.format(error=last_error)
+                    system_p = SYSTEM_PROMPT + "\n\nESTÁS EN MODO REPARACIÓN DE ERRORES SINTÁCTICOS."
+                    continue
 
-            # Create dummy GT script for testing if real not available
-            gt_script = case_dir / "gt_script.py"
-            if "python_code" in item:
-                gt_script.write_text(item["python_code"], encoding="utf-8")
-            else:
-                gt_script.write_text("import blender_arch\n", encoding="utf-8")
+                env_arch_dir = args.use_arch_dir.strip() or "../DSL/blender"
+                gt_script = case_dir / "gt_script.py"
+                gt_script.write_text(item.get("python_code", "import blender_arch\n"), encoding="utf-8")
+                report = case_dir / f"report_att{attempt}.json"
 
-            rc, out, err = run_blender_runner(BLENDER_BIN, runner, gt_script, script, env_arch_dir, report)
-            (case_dir/"blender_stdout.log").write_text(out, encoding="utf-8")
-            (case_dir/"blender_stderr.log").write_text(err, encoding="utf-8")
+                rc, out, err = run_blender_runner(BLENDER_BIN, runner, gt_script, script, env_arch_dir, report)
+                (case_dir/f"blender_stdout_att{attempt}.log").write_text(out, encoding="utf-8")
+                (case_dir/f"blender_stderr_att{attempt}.log").write_text(err, encoding="utf-8")
 
-            # 4) Leer reporte
-            rep = {}
-            if report.exists():
-                rep = json.loads(report.read_text(encoding="utf-8"))
+                rep = {}
+                if report.exists():
+                    rep = json.loads(report.read_text(encoding="utf-8"))
+                    last_error = rep.get("execution_error", "")
+                    best_chamfer = rep.get("chamfer_distance", None)
 
+                if rc == 0 and not last_error:
+                    success = True
+                else:
+                    # Preparar iteración del agente si falló Blender
+                    blender_full_err = last_error if last_error else err
+                    current_prompt = REPAIR_PROMPT.format(error=blender_full_err)
+                    system_p = SYSTEM_PROMPT + "\n\nESTÁS EN MODO REPARACIÓN DE ERRORES DE EJECUCIÓN (Runtime)."
+            
             summary.append({
-                "model": model, "id": pid, "titulo": titulo,
-                "ollama_ok": True, "compile_ok": True, "rc": rc,
-                "mesh_objects": rep.get("pred_vertices_count",0) > 0, # Simplify to bool for now
-                "chamfer_distance": rep.get("chamfer_distance", None),
-                "execution_error": rep.get("execution_error", "")
+                "model": model, "id": pid, "titulo": titulo, "dificultad": dificultad,
+                "used_rag": args.use_rag, "used_agent": args.use_agent,
+                "ollama_ok": True if attempt > 0 and "Ollama connection error" not in last_error else False,
+                "compile_ok": success or ("Python Syntax Error" not in last_error),
+                "rc": 0 if success else rc,
+                "chamfer_distance": best_chamfer,
+                "agent_attempts": attempt,
+                "execution_error": last_error if not success else ""
             })
             
-            # --- 3) Guardado Iterativo Inmediato ---
-            procesados.add(f"{model}_{pid}")
+            procesados.add(experiment_key)
             guardar_resumen()
 
     print(f"Listo. Resultados en {outdir}")

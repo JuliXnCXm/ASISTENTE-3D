@@ -14,16 +14,19 @@ fuser -k 8000/tcp
 fuser -k 8080/tcp
 fuser -k /dev/nvidia0
 
+# Encontrar entorno virtual de Python
+VENV_PATH=$(find . -type d -name "venv_tesis" -o -name ".venv" | head -n 1)
+
 # 2. Crear sesión de tmux para el LLM
 echo "Levantando vLLM en segundo plano (tmux session: vllm_server)..."
-tmux new-session -d -s vllm_server 'bash ASISTENTE-3D/LANZAR_VLLM_GCP.sh'
+tmux new-session -d -s vllm_server "source $VENV_PATH/bin/activate && bash ASISTENTE-3D/LANZAR_VLLM_GCP.sh"
 
 echo "Esperando 30 segundos para que vLLM cargue los pesos en la GPU..."
 sleep 30
 
 # 3. Crear sesión de tmux para el Backend
 echo "Levantando Backend FastAPI en segundo plano (tmux session: backend_server)..."
-tmux new-session -d -s backend_server 'cd asistente-3d-UI/asistente-3d-UI-back && source ../../venv_tesis/bin/activate && uvicorn main:app --host 0.0.0.0 --port 8080'
+tmux new-session -d -s backend_server "cd asistente-3d-UI/asistente-3d-UI-back && source ../../$VENV_PATH/bin/activate && uvicorn main:app --host 0.0.0.0 --port 8080"
 
 echo "==========================================================================="
 echo "¡SISTEMA EN LÍNEA!"

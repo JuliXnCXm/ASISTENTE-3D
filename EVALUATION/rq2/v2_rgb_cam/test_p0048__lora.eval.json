@@ -1,0 +1,1 @@
+{"ok": true, "error": null, "n_meshes": 1, "categorias": {"techo_plano": 1}, "bbox": [0.0, 0.0, 3.0, 6.0, 4.0, 3.049999952316284], "aislados": 1, "ejemplos_aislados": ["TechoReticular_Cuerpo"], "bajo_suelo": 0, "n_vertices": 8, "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISE\u00d1O/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2/v2_rgb_cam/test_p0048__lora.png"}

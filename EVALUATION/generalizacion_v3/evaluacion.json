@@ -1,0 +1,243 @@
+{
+  "gen_casa_1p__lora": {
+    "ok": false,
+    "error": "TypeError: crear_casa_n_pisos() got an unexpected keyword argument 'con_techo_plano'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_casa_1p__lora.py\", line 6, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "gen_casa_2p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 25,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "ventana": 2,
+      "puerta": 1
+    },
+    "bbox": [
+      -0.5,
+      -0.5,
+      0.0,
+      8.750000953674316,
+      10.5,
+      8.134163856506348
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 204,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_casa_2p__lora.png"
+  },
+  "gen_cocina__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 42,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "losa": 2,
+      "mesa": 1,
+      "silla": 4,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000013709068298,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.4000000953674316,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 336,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_cocina__lora.png"
+  },
+  "gen_escalera__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 42,
+    "categorias": {
+      "escalera_recta": 1,
+      "baranda": 2
+    },
+    "bbox": [
+      -1.9600000381469727,
+      -0.10000000149011612,
+      0.0,
+      5.920000076293945,
+      1.100000023841858,
+      2.450000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 336,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_escalera__lora.png"
+  },
+  "gen_habitacion__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 23,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "armario": 1,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000015199184418,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.9000000953674316,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 184,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_habitacion__lora.png"
+  },
+  "gen_nave_industrial__lora": {
+    "ok": false,
+    "error": "TypeError: 'float' object cannot be interpreted as an integer",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_nave_industrial__lora.py\", line 23, in <module>",
+    "n_meshes": 4,
+    "categorias": {
+      "muro": 4
+    },
+    "bbox": [
+      -0.4000008702278137,
+      -1.7484556025237907e-08,
+      0.0,
+      30.0,
+      20.0,
+      8.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 32,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_nave_industrial__lora.png"
+  },
+  "gen_oficinas_8p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 401,
+    "categorias": {
+      "edificio": 1,
+      "muro": 32,
+      "ventana": 40,
+      "losa": 8,
+      "columna": 160,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.25000062584877014,
+      0.0,
+      0.0,
+      20.0,
+      15.0,
+      25.799999237060547
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 3464,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_oficinas_8p__lora.png"
+  },
+  "gen_rascacielos_30p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1951,
+    "categorias": {
+      "edificio": 1,
+      "muro": 120,
+      "ventana": 210,
+      "losa": 30,
+      "columna": 750,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.30000102519989014,
+      0.0,
+      0.0,
+      24.0,
+      24.0,
+      105.19999694824219
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 17348,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_rascacielos_30p__lora.png"
+  },
+  "gen_sala__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 33,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1,
+      "mesa": 1,
+      "silla": 2,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000022649765015,
+      0.0,
+      -0.20000000298023224,
+      6.400000095367432,
+      5.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 264,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_sala__lora.png"
+  },
+  "gen_torre_girada__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_torre_n_pisos'. Did you mean: 'crear_casa_n_pisos'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_torre_girada__lora.py\", line 5, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "gen_torre_nucleo__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_hueco'. Did you mean: 'crear_muro'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/generalizacion_v3/gen_torre_nucleo__lora.py\", line 12, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  }
+}

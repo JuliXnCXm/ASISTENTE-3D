@@ -56,6 +56,41 @@ def descargar_assets(assets_dir, con_profundidad=False):
     print(f"Descargando assets de {HF_ASSETS_REPO} -> {assets_dir} ({patrones})")
     snapshot_download(repo_id=HF_ASSETS_REPO, repo_type="dataset",
                       local_dir=assets_dir, allow_patterns=patrones, max_workers=16)
+    if con_profundidad:
+        _reemplazar_assets_viejos(assets_dir)
+
+
+def _reemplazar_assets_viejos(assets_dir, version_min=2.3):
+    """snapshot_download NO sobreescribe archivos que ya existían en local_dir (p.ej. de un
+    entrenamiento anterior). Detecta escenas con assets viejos (camera.json sin
+    generator_version >= version_min) y fuerza la re-descarga de sus RGB/EXR/cámara."""
+    import glob
+    from concurrent.futures import ThreadPoolExecutor
+    from huggingface_hub import hf_hub_download
+    viejas = []
+    for cam in glob.glob(os.path.join(assets_dir, "out_assets", "*", "*_camera.json")):
+        try:
+            v = float(json.load(open(cam)).get("generator_version") or 0)
+        except Exception:
+            v = 0
+        if v < version_min:
+            viejas.append(os.path.basename(os.path.dirname(cam)))
+    if not viejas:
+        print("[ASSETS] Todos los assets locales están en la versión actual.")
+        return
+    print(f"[ASSETS] {len(viejas)} escenas con assets viejos en {assets_dir}: re-descargando...")
+
+    def bajar(sid):
+        for suf in ("_rgb.png", "_depth.exr", "_camera.json"):
+            try:
+                hf_hub_download(HF_ASSETS_REPO, f"out_assets/{sid}/{sid}{suf}", repo_type="dataset",
+                                local_dir=assets_dir, force_download=True)
+            except Exception as e:
+                print(f"[ASSETS] no se pudo bajar {sid}{suf}: {e}")
+
+    with ThreadPoolExecutor(16) as ex:
+        list(ex.map(bajar, viejas))
+    print("[ASSETS] Listo.")
 
 
 def _es_identidad(m):
@@ -302,6 +337,11 @@ def main():
     parser.add_argument("--max_steps", type=int, default=-1, help="Para pruebas rápidas (smoke test)")
     parser.add_argument("--report_to", type=str, default="wandb", help="wandb | none")
     parser.add_argument("--lora_r", type=int, default=64, help="Rango LoRA (alpha = 2*r)")
+    parser.add_argument("--save_steps", type=int, default=0,
+                        help="Si >0: evalúa y guarda checkpoint cada N pasos (en vez de por época), "
+                             "para no perder progreso si se cae")
+    parser.add_argument("--resume_from_checkpoint", type=str, default=None,
+                        help="Ruta a checkpoint-XXX (o 'last' = el más reciente en output_dir)")
     args = parser.parse_args()
 
     if args.descargar_assets:
@@ -333,7 +373,8 @@ def main():
 
     # LoRA (Fine-Tuning Adaptativo)
     print("Configurando LoRA Multimodal...")
-    # Solo entrenaremos las capas lineales del LLM (Dejamos congelado el Encoder Visual pre-entrenado de Qwen)
+    # Ojo: estos nombres también coinciden con el MLP del encoder visual (gate/up/down_proj),
+    # así que el LoRA adapta el LLM y, en menor medida, la parte visual.
     peft_config = LoraConfig(
         r=args.lora_r,
         lora_alpha=2 * args.lora_r,
@@ -383,8 +424,11 @@ def main():
         bf16_full_eval=use_bf16,       
         fp16_full_eval=use_fp16,
         logging_steps=10,
-        eval_strategy="epoch",
-        save_strategy="epoch",
+        eval_strategy="steps" if args.save_steps > 0 else "epoch",
+        save_strategy="steps" if args.save_steps > 0 else "epoch",
+        eval_steps=args.save_steps if args.save_steps > 0 else None,
+        save_steps=args.save_steps if args.save_steps > 0 else 500,
+        save_total_limit=3,
         metric_for_best_model="eval_loss",
         load_best_model_at_end=True,   # Garantiza que el modelo final sea el mejor, no el último
         remove_unused_columns=False, 
@@ -401,7 +445,10 @@ def main():
     )
 
     print("Iniciando Entrenamiento...")
-    trainer.train()
+    resume = args.resume_from_checkpoint
+    if resume == "last":
+        resume = True  # Trainer busca el checkpoint más reciente en output_dir
+    trainer.train(resume_from_checkpoint=resume)
     
     # Guardar Modelo
     trainer.model.save_pretrained(os.path.join(args.output_dir, "final_qwen_vl_lora"))

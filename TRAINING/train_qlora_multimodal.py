@@ -52,7 +52,8 @@ def descargar_assets(assets_dir, con_profundidad=False):
     from huggingface_hub import snapshot_download
     patrones = ["out_assets/*/*_rgb.png"]
     if con_profundidad:
-        patrones += ["out_assets/*/*_depth.exr", "out_assets/*/*_camera.json"]
+        patrones += ["out_assets/*/*_depth.exr", "out_assets/*/*_camera.json",
+                     "out_assets/*/*_depth_est.npz", "out_assets/*/*_depth_est.json"]
     print(f"Descargando assets de {HF_ASSETS_REPO} -> {assets_dir} ({patrones})")
     snapshot_download(repo_id=HF_ASSETS_REPO, repo_type="dataset",
                       local_dir=assets_dir, allow_patterns=patrones, max_workers=16)
@@ -142,6 +143,37 @@ def leer_exr(path):
     return cv2.imread(path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
 
 
+def profundidad_a_imagen(d, valid=None):
+    """Profundidad en metros → (PIL RGB claro=cerca, lo, hi). Sin máscara (caso estimado,
+    igual que con una foto real) usa percentiles 2–98 para ignorar extremos/fondo."""
+    if valid is None:
+        valid = np.isfinite(d) & (d > 0)
+        if valid.mean() < 0.01:
+            return None
+        lo, hi = (float(x) for x in np.percentile(d[valid], [2, 98]))
+    else:
+        lo, hi = float(d[valid].min()), float(d[valid].max())
+    norm = np.zeros_like(d, dtype=np.float32)
+    dv = np.clip(d[valid], lo, hi)
+    norm[valid] = 255.0 * (1.0 - (dv - lo) / max(hi - lo, 1e-6))  # cerca = claro
+    return Image.fromarray(norm.astype(np.uint8)).convert("RGB"), lo, hi
+
+
+def cargar_profundidad_estimada(npz_path, escala=None):
+    """Profundidad monocular (Depth Anything, DATASET/scripts/estimar_profundidad.py)
+    escalada con el ancla métrica. escala=None → usa escala_ancla del .json (si existe)."""
+    try:
+        d = np.load(npz_path)["depth"].astype(np.float32)
+    except Exception:
+        return None
+    if escala is None:
+        try:
+            escala = json.load(open(npz_path.replace(".npz", ".json"))).get("escala_ancla", 1.0)
+        except Exception:
+            escala = 1.0
+    return profundidad_a_imagen(d * float(escala))
+
+
 def cargar_profundidad(path):
     """EXR métrico → (PIL RGB normalizada claro=cerca, min_m, max_m) o None si no es un pase Z válido."""
     d = leer_exr(path)
@@ -172,7 +204,19 @@ class QwenVLDataset(Dataset):
       del RGB, bug previo) o cámaras identidad, los descarta y avisa.
     """
     def __init__(self, jsonl_path, processor, max_length=6144, assets_dir=DEFAULT_ASSETS_DIR,
-                 usar_profundidad=True, usar_camara=True):
+                 usar_profundidad=True, usar_camara=True, fuente_profundidad="estimada",
+                 aumentar=False, ruido_escala=0.15, p_sin_profundidad=0.0, p_sin_camara=0.0):
+        """fuente_profundidad: 'gt' (EXR de Blender, exacto) o 'estimada' (Depth Anything +
+        ancla métrica: lo que habrá en inferencia con fotos reales).
+        aumentar=True (solo train): ruido multiplicativo de ±ruido_escala sobre el ancla
+        (simula una medida del usuario imprecisa) y dropout de profundidad / cámara."""
+        import random
+        self._rng = random.Random(1234)
+        self.fuente_profundidad = fuente_profundidad
+        self.aumentar = aumentar
+        self.ruido_escala = ruido_escala
+        self.p_sin_profundidad = p_sin_profundidad
+        self.p_sin_camara = p_sin_camara
         self.processor = processor
         self.max_length = max_length
         self.assets_dir = assets_dir
@@ -188,7 +232,10 @@ class QwenVLDataset(Dataset):
         for item in self.data:
             mm = item.get("multimodal") or {}
             item["_img"] = self._resolver(mm.get("image"))
-            item["_depth"] = self._resolver(mm.get("metric_depth")) if usar_profundidad else None
+            dep = mm.get("metric_depth")
+            if dep and fuente_profundidad == "estimada":
+                dep = dep.replace("_depth.exr", "_depth_est.npz")
+            item["_depth"] = self._resolver(dep) if usar_profundidad else None
             item["_cam"] = self._resolver(mm.get("camera")) if usar_camara else None
             n_ref += bool(mm.get("image"))
             n_img += bool(item["_img"])
@@ -196,18 +243,23 @@ class QwenVLDataset(Dataset):
         self.n_con_imagen = n_img
         print(f"[DATA] {os.path.basename(jsonl_path)}: {len(self.data)} ejemplos | "
               f"con imagen RGB encontrada: {n_img}/{n_ref} referenciadas"
-              + (f" | profundidad: {n_depth}" if usar_profundidad else ""))
+              + (f" | profundidad ({fuente_profundidad}): {n_depth}" if usar_profundidad else "")
+              + (f" | aumentos: ruido escala ±{ruido_escala:.0%}, sin prof. {p_sin_profundidad:.0%}, "
+                 f"sin cámara {p_sin_camara:.0%}" if aumentar else ""))
 
         # Verificación real: que existan no basta, hay que poder LEER los EXR.
         if usar_profundidad and n_depth:
             muestra = [it["_depth"] for it in self.data if it["_depth"]][:: max(1, n_depth // 40)][:40]
-            ok = sum(cargar_profundidad(p) is not None for p in muestra)
-            print(f"[DATA] EXR legibles en muestra: {ok}/{len(muestra)}")
+            ok = sum(self._cargar_profundidad(p) is not None for p in muestra)
+            print(f"[DATA] Profundidades legibles en muestra: {ok}/{len(muestra)}")
             if ok < 0.9 * len(muestra):
                 raise SystemExit(
-                    f"[ERROR] Solo {ok}/{len(muestra)} EXR de profundidad se pudieron leer. "
-                    "Instala el lector: pip install OpenEXR  (OpenCV 5 no lee EXR). "
-                    "Para entrenar sin profundidad a propósito: --no-usar_profundidad")
+                    f"[ERROR] Solo {ok}/{len(muestra)} mapas de profundidad se pudieron leer. "
+                    "EXR: pip install OpenEXR (OpenCV 5 no lee EXR). Estimada: faltan *_depth_est.npz "
+                    "(--descargar_assets). Para entrenar sin profundidad a propósito: --no-usar_profundidad")
+        if usar_profundidad and n_depth < 0.9 * max(1, n_ref):
+            raise SystemExit(f"[ERROR] Solo {n_depth}/{n_ref} ejemplos tienen archivo de profundidad "
+                             f"({fuente_profundidad}). ¿Falta --descargar_assets?")
 
     def _resolver(self, rel):
         if not rel:
@@ -220,7 +272,13 @@ class QwenVLDataset(Dataset):
     def __len__(self):
         return len(self.data)
 
-    def _cargar_profundidad(self, path):
+    def _cargar_profundidad(self, path, ruido=1.0):
+        if path.endswith(".npz"):
+            try:
+                escala = json.load(open(path.replace(".npz", ".json"))).get("escala_ancla", 1.0)
+            except Exception:
+                escala = 1.0
+            return cargar_profundidad_estimada(path, escala * ruido)
         return cargar_profundidad(path)
 
     def __getitem__(self, idx):
@@ -236,16 +294,26 @@ class QwenVLDataset(Dataset):
                                 Image.open(item["_img"]).convert("RGB")))
             except Exception as e:
                 print(f"[WARN] {item.get('id')}: RGB ilegible ({e})")
-        if item.get("_depth"):
-            res = self._cargar_profundidad(item["_depth"])
+        rng = self._rng
+        quitar_prof = self.aumentar and rng.random() < self.p_sin_profundidad
+        quitar_cam = self.aumentar and rng.random() < self.p_sin_camara
+        if item.get("_depth") and not quitar_prof:
+            ruido = 1.0
+            if self.aumentar and self.ruido_escala > 0:
+                ruido = float(np.exp(rng.uniform(-np.log1p(self.ruido_escala), np.log1p(self.ruido_escala))))
+            res = self._cargar_profundidad(item["_depth"], ruido)
             if res is not None:
                 dimg, lo, hi = res
-                bloques.append((f"Mapa de profundidad métrica (claro = cerca; rango {lo:.1f}–{hi:.1f} m):", dimg))
+                if item["_depth"].endswith(".npz"):
+                    intro = f"Mapa de profundidad estimada (claro = cerca; rango aprox. {lo:.1f}–{hi:.1f} m):"
+                else:
+                    intro = f"Mapa de profundidad métrica (claro = cerca; rango {lo:.1f}–{hi:.1f} m):"
+                bloques.append((intro, dimg))
             else:
                 self._n_depth_mala = getattr(self, "_n_depth_mala", 0) + 1
                 if self._n_depth_mala <= 5:
-                    print(f"[WARN] {item.get('id')}: EXR de profundidad inválido (¿assets viejos?), se omite")
-        camera_info = texto_camara(item["_cam"]) if item.get("_cam") else ""
+                    print(f"[WARN] {item.get('id')}: profundidad ilegible ({item['_depth']}), se omite")
+        camera_info = texto_camara(item["_cam"]) if item.get("_cam") and not quitar_cam else ""
 
         qwen_messages, primer_user = [], True
         for msg in messages:
@@ -375,6 +443,14 @@ def main():
                              "para no perder progreso si se cae")
     parser.add_argument("--resume_from_checkpoint", type=str, default=None,
                         help="Ruta a checkpoint-XXX (o 'last' = el más reciente en output_dir)")
+    parser.add_argument("--fuente_profundidad", choices=["estimada", "gt"], default="estimada",
+                        help="estimada = Depth Anything + ancla métrica (como en inferencia); gt = EXR de Blender")
+    parser.add_argument("--ruido_escala", type=float, default=0.15,
+                        help="Ruido ± sobre el ancla métrica en train (medida del usuario imprecisa)")
+    parser.add_argument("--p_sin_profundidad", type=float, default=0.15,
+                        help="Prob. de quitar el mapa de profundidad en un ejemplo de train")
+    parser.add_argument("--p_sin_camara", type=float, default=0.15,
+                        help="Prob. de quitar el texto de cámara en un ejemplo de train")
     args = parser.parse_args()
 
     if args.descargar_assets:
@@ -423,7 +499,10 @@ def main():
     print("Cargando y procesando Datasets (Esto puede tomar tiempo)...")
     ds_kw = dict(max_length=args.max_length, assets_dir=args.assets_dir,
                  usar_profundidad=args.usar_profundidad, usar_camara=args.usar_camara)
-    train_dataset = QwenVLDataset(args.train_file, processor, **ds_kw)
+    ds_kw["fuente_profundidad"] = args.fuente_profundidad
+    train_dataset = QwenVLDataset(args.train_file, processor, aumentar=True, ruido_escala=args.ruido_escala,
+                                  p_sin_profundidad=args.p_sin_profundidad, p_sin_camara=args.p_sin_camara,
+                                  **ds_kw)
     val_dataset = QwenVLDataset(args.val_file, processor, **ds_kw)
     pct = train_dataset.n_con_imagen / max(1, len(train_dataset))
     if pct < args.min_pct_imagenes:

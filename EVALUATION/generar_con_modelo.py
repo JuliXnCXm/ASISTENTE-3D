@@ -61,17 +61,26 @@ def resolver_imagen(p):
     return None
 
 
-def preparar_multimodal(mm):
-    """Mismo formato que train_qlora_multimodal.py: RGB + profundidad métrica + texto de cámara."""
+def preparar_multimodal(mm, fuente_profundidad="estimada"):
+    """Mismo formato que train_qlora_multimodal.py: RGB + profundidad + texto de cámara.
+    fuente_profundidad='estimada' usa Depth Anything + ancla (*_depth_est.npz); 'gt' el EXR."""
     sys.path.insert(0, os.path.join(ROOT, "TRAINING"))
     import train_qlora_multimodal as T
     bloques, cam_txt = [], ""
     rgb = resolver_imagen(mm.get("image"))
     if rgb:
         bloques.append(("Fotografía de referencia (RGB):", Image.open(rgb).convert("RGB")))
-    exr = resolver_imagen(mm.get("metric_depth"))
-    if exr:
-        res = T.cargar_profundidad(exr)
+    dep = mm.get("metric_depth")
+    if dep and fuente_profundidad == "estimada":
+        dep = dep.replace("_depth.exr", "_depth_est.npz")
+    dep = resolver_imagen(dep)
+    if dep and fuente_profundidad == "estimada":
+        res = T.cargar_profundidad_estimada(dep)
+        if res:
+            dimg, lo, hi = res
+            bloques.append((f"Mapa de profundidad estimada (claro = cerca; rango aprox. {lo:.1f}–{hi:.1f} m):", dimg))
+    elif dep:
+        res = T.cargar_profundidad(dep)
         if res:
             dimg, lo, hi = res
             bloques.append((f"Mapa de profundidad métrica (claro = cerca; rango {lo:.1f}–{hi:.1f} m):", dimg))
@@ -105,6 +114,7 @@ def main():
     ap.add_argument("--n_test", type=int, default=6, help="prompts 'creation' del test split")
     ap.add_argument("--con_imagen", action="store_true", help="pasar la imagen RGB del test split")
     ap.add_argument("--solo_lora", action="store_true")
+    ap.add_argument("--fuente_profundidad", choices=["estimada", "gt", "ninguna"], default="estimada")
     ap.add_argument("--max_new_tokens", type=int, default=2048)
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
@@ -133,7 +143,9 @@ def main():
     variantes = ["lora"] if args.solo_lora else ["lora", "base"]
     resultados = []
     for caso in casos:
-        bloques, cam_txt = preparar_multimodal(caso["mm"]) if caso["mm"] else ([], "")
+        bloques, cam_txt = preparar_multimodal(
+            {k: v for k, v in caso["mm"].items() if not (k == "metric_depth" and args.fuente_profundidad == "ninguna")},
+            args.fuente_profundidad) if caso["mm"] else ([], "")
         msgs = construir_mensajes(caso["prompt"], bloques, cam_txt)
         text = processor.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
         imgs = [im for _, im in bloques] or None

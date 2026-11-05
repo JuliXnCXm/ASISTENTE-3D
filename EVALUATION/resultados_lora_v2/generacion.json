@@ -1,0 +1,123 @@
+[
+  {
+    "id": "test_p3052",
+    "tipo": "test",
+    "variante": "lora",
+    "prompt": "Genera una vivienda unifamiliar compacta de 55 m². El programa arquitectónico consiste en una zona de día con sala-comedor y cocina integrados en un único espacio, un baño completo y un dormitorio principal. Modela los muros, el suelo, el techo y el mobiliario esencial para definir cada una de las zonas funcionales.",
+    "n_imagenes": 0,
+    "tokens": 1335,
+    "segundos": 43.0,
+    "truncado": false,
+    "archivo": "test_p3052__lora.py"
+  },
+  {
+    "id": "test_p0944",
+    "tipo": "test",
+    "variante": "lora",
+    "prompt": "Construye una escena de comedor completa dentro de una habitación de 6x4 metros. Incluye una mesa rectangular para 6 personas con sus sillas, una ventana grande en la pared larga y una lámpara de techo tipo área.",
+    "n_imagenes": 0,
+    "tokens": 358,
+    "segundos": 11.6,
+    "truncado": false,
+    "archivo": "test_p0944__lora.py"
+  },
+  {
+    "id": "test_p1926",
+    "tipo": "test",
+    "variante": "lora",
+    "prompt": "Modela una oficina en casa con un escritorio de esquina personalizado, una silla ergonómica y una librería paramétrica generada por código que se adapta a la pared.",
+    "n_imagenes": 0,
+    "tokens": 598,
+    "segundos": 19.2,
+    "truncado": false,
+    "archivo": "test_p1926__lora.py"
+  },
+  {
+    "id": "test_p3247",
+    "tipo": "test",
+    "variante": "lora",
+    "prompt": "Genera la fachada de un edificio contemporáneo de 10 metros de ancho y dos plantas. La planta baja será un muro de estuco blanco con una entrada principal acristalada. La planta alta, retranqueada 0.5 metros, estará completamente cubierta por una celosía de lamas verticales de madera como filtro solar y de privacidad, por detrás de la cual hay un gran ventanal. La cubierta del edificio es plana.",
+    "n_imagenes": 0,
+    "tokens": 939,
+    "segundos": 30.1,
+    "truncado": false,
+    "archivo": "test_p3247__lora.py"
+  },
+  {
+    "id": "test_p3248",
+    "tipo": "test",
+    "variante": "lora",
+    "prompt": "Modela la fachada de un edificio de apartamentos de 4 plantas y 15 metros de ancho. La fachada presenta un patrón regular de balcones en voladizo, cada uno con una gran puerta vidriera y una barandilla de vidrio con postes de acero. La cubierta es plana y está diseñada como una terraza ajardinada con jardineras perimetrales.",
+    "n_imagenes": 0,
+    "tokens": 596,
+    "segundos": 19.1,
+    "truncado": false,
+    "archivo": "test_p3248__lora.py"
+  },
+  {
+    "id": "test_p3321",
+    "tipo": "test",
+    "variante": "lora",
+    "prompt": "Diseña una terraza ajardinada en la azotea de un edificio. La terraza debe contar con un suelo de deck de madera, jardineras de hormigón en el perímetro con vegetación variada, y una pérgola de acero que cubra una zona de estar con un sofá y una mesa.",
+    "n_imagenes": 0,
+    "tokens": 719,
+    "segundos": 23.0,
+    "truncado": false,
+    "archivo": "test_p3321__lora.py"
+  },
+  {
+    "id": "gen_casa_2p",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Diseña una casa de dos pisos de 8x10 metros con tejado a dos aguas, una puerta principal y ventanas en la fachada frontal.",
+    "n_imagenes": 0,
+    "tokens": 415,
+    "segundos": 13.3,
+    "truncado": false,
+    "archivo": "gen_casa_2p__lora.py"
+  },
+  {
+    "id": "gen_oficinas_8p",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Genera un edificio de oficinas de 8 pisos de 20x15 metros con columnas estructurales de hormigón y ventanas en la fachada.",
+    "n_imagenes": 0,
+    "tokens": 305,
+    "segundos": 9.9,
+    "truncado": false,
+    "archivo": "gen_oficinas_8p__lora.py"
+  },
+  {
+    "id": "gen_rascacielos_30p",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Diseña un rascacielos de 30 pisos con planta cuadrada de 24x24 metros, estructura de columnas y fachada de vidrio.",
+    "n_imagenes": 0,
+    "tokens": 303,
+    "segundos": 9.7,
+    "truncado": false,
+    "archivo": "gen_rascacielos_30p__lora.py"
+  },
+  {
+    "id": "gen_habitacion",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Crea un dormitorio de 4x3.5 metros con una cama doble, un armario y una ventana.",
+    "n_imagenes": 0,
+    "tokens": 353,
+    "segundos": 11.3,
+    "truncado": false,
+    "archivo": "gen_habitacion__lora.py"
+  },
+  {
+    "id": "gen_escalera",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Modela una escalera recta de 14 peldaños con barandas a ambos lados que conecte dos pisos de 2.8 m.",
+    "n_imagenes": 0,
+    "tokens": 236,
+    "segundos": 7.6,
+    "truncado": false,
+    "archivo": "gen_escalera__lora.py"
+  }
+]

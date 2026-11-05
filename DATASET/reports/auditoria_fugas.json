@@ -1,0 +1,250 @@
+{
+ "escenas_train_test": {
+  "escenas_comunes": 0,
+  "escenas_en_test": 397,
+  "filas_test_afectadas": 0,
+  "ejemplos": []
+ },
+ "escenas_train_validation": {
+  "escenas_comunes": 0,
+  "escenas_en_validation": 407,
+  "filas_validation_afectadas": 0,
+  "ejemplos": []
+ },
+ "escenas_validation_test": {
+  "escenas_comunes": 0,
+  "escenas_en_test": 397,
+  "filas_test_afectadas": 0,
+  "ejemplos": []
+ },
+ "similitud_validation_vs_train": {
+  "prompt_identico": 115,
+  "codigo_identico": 1,
+  "prompt_jaccard": {
+   "mediana": 0.321,
+   "p90": 1.0,
+   ">0.8": 123,
+   ">0.95": 115,
+   "n": 748
+  },
+  "codigo_jaccard": {
+   "mediana": 0.032,
+   "p90": 0.195,
+   ">0.8": 4,
+   ">0.95": 1,
+   "n": 748
+  },
+  "pares_prompt_>0.8": [
+   [
+    "p2977",
+    "p2770",
+    0.82
+   ],
+   [
+    "p2992",
+    "p2770",
+    0.82
+   ],
+   [
+    "p1005",
+    "p0602",
+    0.81
+   ],
+   [
+    "e0051",
+    "e0874",
+    1.0
+   ],
+   [
+    "e0058",
+    "e1295",
+    1.0
+   ],
+   [
+    "e0079",
+    "e2115",
+    1.0
+   ],
+   [
+    "e0084",
+    "e1024",
+    1.0
+   ],
+   [
+    "e0107",
+    "e2726",
+    1.0
+   ],
+   [
+    "e0321",
+    "e2213",
+    1.0
+   ],
+   [
+    "e0327",
+    "e2012",
+    1.0
+   ]
+  ]
+ },
+ "similitud_test_vs_train": {
+  "prompt_identico": 151,
+  "codigo_identico": 4,
+  "prompt_jaccard": {
+   "mediana": 0.393,
+   "p90": 1.0,
+   ">0.8": 157,
+   ">0.95": 151,
+   "n": 731
+  },
+  "codigo_jaccard": {
+   "mediana": 0.049,
+   "p90": 0.283,
+   ">0.8": 4,
+   ">0.95": 4,
+   "n": 731
+  },
+  "pares_prompt_>0.8": [
+   [
+    "p1470",
+    "p1515",
+    0.88
+   ],
+   [
+    "e0069",
+    "e2296",
+    1.0
+   ],
+   [
+    "e0093",
+    "e2040",
+    1.0
+   ],
+   [
+    "e0117",
+    "e1591",
+    1.0
+   ],
+   [
+    "e0125",
+    "e2243",
+    1.0
+   ],
+   [
+    "e0341",
+    "e2737",
+    1.0
+   ],
+   [
+    "e0353",
+    "e2744",
+    1.0
+   ],
+   [
+    "e0360",
+    "e0241",
+    1.0
+   ],
+   [
+    "e0364",
+    "e2048",
+    1.0
+   ],
+   [
+    "e0365",
+    "e0379",
+    1.0
+   ]
+  ]
+ },
+ "generalizacion_vs_train": [
+  {
+   "id": "gen_casa_2p",
+   "max_jaccard_train(3-gramas)": 0.205,
+   "mas_parecido": "p1385"
+  },
+  {
+   "id": "gen_oficinas_8p",
+   "max_jaccard_train(3-gramas)": 0.143,
+   "mas_parecido": "p1442"
+  },
+  {
+   "id": "gen_rascacielos_30p",
+   "max_jaccard_train(3-gramas)": 0.094,
+   "mas_parecido": "p1630"
+  },
+  {
+   "id": "gen_habitacion",
+   "max_jaccard_train(3-gramas)": 0.364,
+   "mas_parecido": "p0414"
+  },
+  {
+   "id": "gen_escalera",
+   "max_jaccard_train(3-gramas)": 0.136,
+   "mas_parecido": "p0433"
+  },
+  {
+   "id": "gen_torre_nucleo",
+   "max_jaccard_train(3-gramas)": 0.077,
+   "mas_parecido": "p1621"
+  },
+  {
+   "id": "gen_torre_girada",
+   "max_jaccard_train(3-gramas)": 0.043,
+   "mas_parecido": "p1412"
+  },
+  {
+   "id": "gen_cocina",
+   "max_jaccard_train(3-gramas)": 0.083,
+   "mas_parecido": "p1052"
+  },
+  {
+   "id": "gen_sala",
+   "max_jaccard_train(3-gramas)": 0.346,
+   "mas_parecido": "p0436"
+  },
+  {
+   "id": "gen_nave_industrial",
+   "max_jaccard_train(3-gramas)": 0.083,
+   "mas_parecido": "p2999"
+  },
+  {
+   "id": "gen_casa_1p",
+   "max_jaccard_train(3-gramas)": 0.108,
+   "mas_parecido": "p1539"
+  }
+ ],
+ "pisos_en_train": {
+  "2": 13,
+  "3": 28,
+  "4": 8,
+  "5": 24,
+  "6": 13,
+  "7": 17,
+  "8": 13,
+  "9": 12,
+  "10": 12,
+  "11": 13,
+  "12": 17,
+  "13": 10,
+  "14": 7,
+  "15": 14
+ },
+ "creation_con_codigo_o_funciones_en_prompt": {
+  "train": 1,
+  "ejemplos": [
+   [
+    "p2284",
+    [
+     "blender_arch"
+    ]
+   ]
+  ]
+ },
+ "funciones_inexistentes_en_respuestas": {},
+ "funciones_dsl_nunca_usadas": [
+  "crear_torre",
+  "exportar_escena",
+  "validar_malla"
+ ]
+}

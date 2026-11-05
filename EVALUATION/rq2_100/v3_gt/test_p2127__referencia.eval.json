@@ -1,0 +1,1 @@
+{"ok": true, "error": null, "n_meshes": 24, "categorias": {"piso": 1, "arbol": 3}, "bbox": [-0.5, -0.5, 0.0, 15.0, 12.0, 4.5], "aislados": 0, "ejemplos_aislados": [], "bajo_suelo": 0, "n_vertices": 592, "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISE\u00d1O/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_gt/test_p2127__referencia.png"}

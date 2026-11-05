@@ -1,0 +1,32 @@
+import blender_arch as A
+A.limpiar_escena()
+
+# --- ESTRUCTURA Y MUEBLES COMUNES ---
+habitacion = A.crear_habitacion('Habitacion', ancho=8, fondo=9, alto=2.8, material_muro='Muro_Pintura_Gris', material_suelo='Parquet')
+A.crear_puerta('PuertaEntrada', ancho=0.9, alto=2.1, origen=(0, 0, 0), material_panel='Madera_Nogal', material_marco='Marco_Negro')
+A.crear_mesa('MesaComedor', ancho=1.8, fondo=0.9, alto=0.75, origen=(6.5, 2.5, 0), material_tablero='Madera_Roble')
+A.crear_sofa('Sofa', ancho=2.5, fondo=0.9, origen=(1.5, 1.5, 0), material='Tela_Beige')
+
+# --- ZONA PRIVADA ---
+dormitorio1 = A.crear_dormitorio('DormitorioPrincipal', ancho=3.5, fondo=4.0, alto=2.8, origen=(0, 4.5, 0), material_losa='Concreto_Piso', material_muro='Muro_Pintura_Gris', material_techo='Yeso')
+dormitorio1.agregar_cama('CamaDoble', ancho=1.6, largo=2.0, origen=(1.45, 2.0, 0), material_base='Madera_Nogal', material_colchon='Textil_Blanco')
+dormitorio1.agregar_armario('ArmarioDormitorio', ancho=1.8, alto=2.4, fondo=0.6, origen=(1.45, 0.2, 0), material_cuerpo='MDF_Blanco')
+dormitorio1.agregar_ventana('VentanaDormitorio', ancho=1.8, alto=1.2, origen=(1.45, 0.2, 1.2), material_marco='Marco_Negro', material_vidrio='Vidrio')
+dormitorio1.agregar_bano('BanoDormitorio', ancho=2.5, fondo=2.5, alto=2.8, origen=(6.0, 0, 0), material_muro='Muro_Pintura_Gris', material_suelo='Porcelanato')
+bano_dormitorio = A.extruir_con_huecos(dormitorio1, [((0, 0, 0), (2.5, 2.5, 2.8))], material_vano='Vano_Bano')
+bano_dormitorio.modificar_material('Muro_Pintura_Gris', 'Porcelanato')
+bano_dormitorio.modificar_material('Muro_Pintura_Gris', 'Vano_Bano')
+
+dormitorio2 = A.crear_dormitorio('DormitorioSecundario', ancho=3.5, fondo=4.0, alto=2.8, origen=(0, 0, 0), material_losa='Concreto_Piso', material_muro='Muro_Pintura_Gris', material_techo='Yeso')
+dormitorio2.agregar_cama('CamaIndividual', ancho=1.0, largo=2.0, origen=(1.75, 2.0, 0), material_base='Madera_Nogal', material_colchon='Textil_Blanco')
+dormitorio2.agregar_armario('ArmarioDormitorioSecundario', ancho=1.8, alto=2.4, fondo=0.6, origen=(1.75, 0.2, 0), material_cuerpo='MDF_Blanco')
+
+# --- COCINA ---
+cocina = A.crear_cocina('Cocina', ancho=4.5, fondo=2.5, alto=2.8, origen=(0, 9.0, 0), material_mueble='MDF_Blanco', material_encimera='Porcelanato', material_piso='Parquet')
+cocina.agregar_horno('Horno', ancho=0.8, fondo=0.5, origen=(3.5, 1.5, 0))
+cocina.agregar_encimera('Encimera', ancho=4.5, fondo=0.6, origen=(0, 2.2, 0))
+
+# --- PASILLO ---
+pasillo = A.crear_habitacion('Pasillo', ancho=1.5, fondo=9.0, alto=2.8, origen=(8.0, 0, 0), material_muro='Muro_Pintura_Gris', material_suelo='Parquet')
+pasillo.agregar_puerta('PuertaDormitorioSecundario', ancho=0.9, alto=2.1, origen=(8.0, 0, 0), material_panel='Madera_Nogal', material_marco='Marco_Negro')
+pasillo.agregar_puerta('PuertaBanoGeneral', ancho=0.9, alto=2.1, origen=(8.0, 7.5, 0), material_panel='Madera_Nogal', material_marco='Marco_Negro')

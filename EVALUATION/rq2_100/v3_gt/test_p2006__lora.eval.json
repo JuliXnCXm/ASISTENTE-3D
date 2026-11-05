@@ -1,0 +1,1 @@
+{"ok": true, "error": null, "n_meshes": 7, "categorias": {"piso": 2, "muro": 2, "columna": 2}, "bbox": [-5.0, -3.0, -0.20000000298023224, 15.0, 8.0, 6.0], "aislados": 0, "ejemplos_aislados": [], "bajo_suelo": 0, "n_vertices": 56, "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISE\u00d1O/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_gt/test_p2006__lora.png"}

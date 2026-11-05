@@ -1,0 +1,4907 @@
+{
+  "gen_casa_1p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 59,
+    "categorias": {
+      "casa": 1,
+      "muro": 24,
+      "losa": 1,
+      "tejado_dos_aguas": 1,
+      "habitacion": 5,
+      "piso": 5,
+      "techo_plano": 5,
+      "cama": 2,
+      "estanteria": 1,
+      "mesa": 1
+    },
+    "bbox": [
+      -0.4000000059604645,
+      -0.4000000059604645,
+      -0.20000000298023224,
+      12.399999618530273,
+      9.399999618530273,
+      4.623693466186523
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 476,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_casa_1p__lora.png"
+  },
+  "gen_casa_2p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 25,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "ventana": 2,
+      "puerta": 1
+    },
+    "bbox": [
+      -0.5,
+      -0.5,
+      0.0,
+      8.750000953674316,
+      10.5,
+      8.134163856506348
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 204,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_casa_2p__lora.png"
+  },
+  "gen_cocina__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 42,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "losa": 2,
+      "mesa": 1,
+      "silla": 4,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000013709068298,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.4000000953674316,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 336,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_cocina__lora.png"
+  },
+  "gen_escalera__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 42,
+    "categorias": {
+      "escalera_recta": 1,
+      "baranda": 2
+    },
+    "bbox": [
+      -1.9600000381469727,
+      -0.10000000149011612,
+      0.0,
+      5.920000076293945,
+      1.100000023841858,
+      2.450000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 336,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_escalera__lora.png"
+  },
+  "gen_habitacion__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 23,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "armario": 1,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000015199184418,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.9000000953674316,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 184,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_habitacion__lora.png"
+  },
+  "gen_nave_industrial__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 29,
+    "categorias": {
+      "muro": 4,
+      "columna": 24,
+      "losa": 1
+    },
+    "bbox": [
+      -15.0,
+      -1.7484556025237907e-08,
+      0.0,
+      30.0,
+      20.0,
+      12.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 232,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_nave_industrial__lora.png"
+  },
+  "gen_oficinas_8p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 401,
+    "categorias": {
+      "edificio": 1,
+      "muro": 32,
+      "ventana": 40,
+      "losa": 8,
+      "columna": 160,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.25000062584877014,
+      0.0,
+      0.0,
+      20.0,
+      15.0,
+      25.799999237060547
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 3464,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_oficinas_8p__lora.png"
+  },
+  "gen_rascacielos_30p__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1951,
+    "categorias": {
+      "edificio": 1,
+      "muro": 120,
+      "ventana": 210,
+      "losa": 30,
+      "columna": 750,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.30000102519989014,
+      0.0,
+      0.0,
+      24.0,
+      24.0,
+      105.19999694824219
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 17348,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_rascacielos_30p__lora.png"
+  },
+  "gen_sala__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 33,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1,
+      "mesa": 1,
+      "silla": 2,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000022649765015,
+      0.0,
+      -0.20000000298023224,
+      6.400000095367432,
+      5.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 264,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_sala__lora.png"
+  },
+  "gen_torre_girada__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'asignar_rotacion_z'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_torre_girada__lora.py\", line 4, in <module>",
+    "n_meshes": 1751,
+    "categorias": {
+      "edificio": 1,
+      "muro": 100,
+      "ventana": 175,
+      "losa": 25,
+      "columna": 750,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.3000008463859558,
+      0.0,
+      0.0,
+      20.0,
+      20.0,
+      75.19999694824219
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 15458,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_torre_girada__lora.png"
+  },
+  "gen_torre_nucleo__lora": {
+    "ok": false,
+    "error": "ValueError: No se encontró objeto MESH válido. Pasa el root del activo o el MESH directamente.",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/gen_torre_nucleo__lora.py\", line 7, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "test_p0016__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {},
+    "bbox": [
+      -1.1800000667572021,
+      -0.15000000596046448,
+      0.0,
+      1.1399999856948853,
+      0.15000000596046448,
+      1.809999942779541
+    ],
+    "aislados": 4,
+    "ejemplos_aislados": [
+      "Estante_2",
+      "Estante_3",
+      "Estante_4",
+      "Estante_5"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0016__lora.png"
+  },
+  "test_p0016__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      1.2000000476837158,
+      0.30000001192092896,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0016__referencia.png"
+  },
+  "test_p0023__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 10,
+    "categorias": {},
+    "bbox": [
+      -0.44999998807907104,
+      -0.15000000596046448,
+      -0.8999999761581421,
+      0.44999998807907104,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 1,
+    "n_vertices": 80,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0023__lora.png"
+  },
+  "test_p0023__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      -0.30000001192092896,
+      -0.8999999761581421,
+      -0.8999999761581421,
+      0.30000001192092896,
+      0.8999999761581421,
+      2.6999998092651367
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0023__referencia.png"
+  },
+  "test_p0048__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 36,
+    "categorias": {},
+    "bbox": [
+      -6.025000095367432,
+      -4.0,
+      2.299999952316284,
+      3.0250000953674316,
+      2.0250000953674316,
+      3.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 288,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0048__lora.png"
+  },
+  "test_p0048__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 36,
+    "categorias": {},
+    "bbox": [
+      -3.0,
+      -2.0,
+      2.7799999713897705,
+      9.0,
+      6.0,
+      2.859999895095825
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 288,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0048__referencia.png"
+  },
+  "test_p0053__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {},
+    "bbox": [
+      -0.4000000059604645,
+      -0.15000000596046448,
+      0.0,
+      0.4000000059604645,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0053__lora.png"
+  },
+  "test_p0053__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      0.800000011920929,
+      0.30000001192092896,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0053__referencia.png"
+  },
+  "test_p0091__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 11,
+    "categorias": {},
+    "bbox": [
+      -0.5099999904632568,
+      -0.15000000596046448,
+      0.0,
+      0.5099999904632568,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 88,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0091__lora.png"
+  },
+  "test_p0091__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.5,
+      -0.15000000596046448,
+      0.0,
+      0.5,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0091__referencia.png"
+  },
+  "test_p0128__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.3999999761581421,
+      -0.15000000596046448,
+      0.0,
+      0.3999999761581421,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0128__lora.png"
+  },
+  "test_p0128__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.7599999904632568,
+      -0.30000001192092896,
+      -0.8999999761581421,
+      0.7599999904632568,
+      0.30000001192092896,
+      2.6999998092651367
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0128__referencia.png"
+  },
+  "test_p0147__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.5099999904632568,
+      -0.15000000596046448,
+      0.0,
+      0.5099999904632568,
+      0.15000000596046448,
+      1.9600000381469727
+    ],
+    "aislados": 1,
+    "ejemplos_aislados": [
+      "Estante_5"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0147__lora.png"
+  },
+  "test_p0147__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.5,
+      0.0,
+      0.0,
+      0.5,
+      0.30000001192092896,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0147__referencia.png"
+  },
+  "test_p0196__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {},
+    "bbox": [
+      -3.049999952316284,
+      -0.05000000074505806,
+      -0.05000000074505806,
+      3.049999952316284,
+      0.05000000074505806,
+      4.050000190734863
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0196__lora.png"
+  },
+  "test_p0196__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {},
+    "bbox": [
+      -0.02500000037252903,
+      -0.05000000074505806,
+      -0.02500000037252903,
+      6.025000095367432,
+      0.05000000074505806,
+      4.025000095367432
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0196__referencia.png"
+  },
+  "test_p0209__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {
+      "muro": 1,
+      "techo_plano": 1,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.07500000298023224,
+      -0.07500000298023224,
+      0.0,
+      3.0,
+      2.924999952316284,
+      2.700000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0209__lora.png"
+  },
+  "test_p0209__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 3,
+    "categorias": {},
+    "bbox": [
+      -1.5,
+      -0.75,
+      0.0,
+      1.5,
+      0.75,
+      2.4000000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 24,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0209__referencia.png"
+  },
+  "test_p0218__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.5,
+      -0.10000000149011612,
+      0.0,
+      1.5,
+      0.10000000149011612,
+      5.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 698,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0218__lora.png"
+  },
+  "test_p0218__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      3.0,
+      0.20000000298023224,
+      5.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1210,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0218__referencia.png"
+  },
+  "test_p0232__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_banco'. Did you mean: 'crear_cama'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0232__lora.py\", line 3, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "test_p0232__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 10,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -0.02500000037252903,
+      0.0,
+      1.0,
+      0.5800000429153442,
+      0.8262500166893005
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 80,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0232__referencia.png"
+  },
+  "test_p0270__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {},
+    "bbox": [
+      -3.049999952316284,
+      -0.05000000074505806,
+      -1.5499999523162842,
+      3.049999952316284,
+      0.05000000074505806,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 4,
+    "n_vertices": 128,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0270__lora.png"
+  },
+  "test_p0270__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 21,
+    "categorias": {},
+    "bbox": [
+      -3.049999952316284,
+      -0.05000000074505806,
+      -0.05000000074505806,
+      3.049999952316284,
+      0.05000000074505806,
+      3.049999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 168,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0270__referencia.png"
+  },
+  "test_p0277__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 11,
+    "categorias": {},
+    "bbox": [
+      -2.0999999046325684,
+      -1.600000023841858,
+      0.0,
+      2.0999999046325684,
+      1.600000023841858,
+      2.8500001430511475
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 88,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0277__lora.png"
+  },
+  "test_p0277__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 11,
+    "categorias": {},
+    "bbox": [
+      -2.0999999046325684,
+      -1.600000023841858,
+      0.0,
+      2.0999999046325684,
+      1.600000023841858,
+      2.8500001430511475
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 88,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0277__referencia.png"
+  },
+  "test_p0296__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 26,
+    "categorias": {
+      "escalera_recta": 1
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      3.5999999046325684,
+      1.5,
+      2.1600000858306885
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 208,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0296__lora.png"
+  },
+  "test_p0296__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -0.0771743655204773,
+      0.0,
+      -0.12862393260002136,
+      3.5999999046325684,
+      1.2000000476837158,
+      2.1600000858306885
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 54,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0296__referencia.png"
+  },
+  "test_p0571__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 3,
+    "categorias": {
+      "terreno": 1,
+      "losa": 1,
+      "extrusion": 2
+    },
+    "bbox": [
+      -4.0,
+      -2.0,
+      -0.10000000149011612,
+      10.0,
+      10.0,
+      1.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 32,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0571__lora.png"
+  },
+  "test_p0571__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 3,
+    "categorias": {
+      "terreno": 1,
+      "extrusion": 2,
+      "losa": 1
+    },
+    "bbox": [
+      4.5,
+      6.5,
+      -1.7000000476837158,
+      30.0,
+      30.0,
+      0.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 1,
+    "n_vertices": 32,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0571__referencia.png"
+  },
+  "test_p0708__lora": {
+    "ok": false,
+    "error": "ValueError: No se encontró objeto MESH válido. Pasa el root del activo o el MESH directamente.",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0708__lora.py\", line 9, in <module>",
+    "n_meshes": 6,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.15000014007091522,
+      0.0,
+      -0.20000000298023224,
+      4.300000190734863,
+      3.3000001907348633,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0708__lora.png"
+  },
+  "test_p0708__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 9,
+    "categorias": {
+      "muro": 4,
+      "piso": 1,
+      "puerta": 1
+    },
+    "bbox": [
+      -2.1500000953674316,
+      -1.5,
+      0.0,
+      2.0,
+      1.649999976158142,
+      2.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 80,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0708__referencia.png"
+  },
+  "test_p0944__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 54,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "mesa": 1,
+      "silla": 6,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000018179416656,
+      0.0,
+      -0.20000000298023224,
+      6.400000095367432,
+      4.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 432,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0944__lora.png"
+  },
+  "test_p0944__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 52,
+    "categorias": {
+      "piso": 1,
+      "techo_plano": 1,
+      "muro": 4,
+      "ventana": 1,
+      "mesa": 1,
+      "silla": 6
+    },
+    "bbox": [
+      -3.1000003814697266,
+      -2.0,
+      0.0,
+      6.0,
+      4.0,
+      3.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 424,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p0944__referencia.png"
+  },
+  "test_p1145__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 45,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "armario": 1,
+      "mesa": 3,
+      "silla": 2
+    },
+    "bbox": [
+      -0.15000022947788239,
+      0.0,
+      -0.20000000298023224,
+      6.300000190734863,
+      5.300000190734863,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 360,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1145__lora.png"
+  },
+  "test_p1145__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 36,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "armario": 1,
+      "mesa": 1,
+      "silla": 2,
+      "extrusion": 1
+    },
+    "bbox": [
+      -0.15000022947788239,
+      0.0,
+      -0.20000000298023224,
+      6.300000190734863,
+      5.300000190734863,
+      3.0999999046325684
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 292,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1145__referencia.png"
+  },
+  "test_p1249__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 182,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 16,
+      "ventana": 16,
+      "losa": 4,
+      "columna": 80,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.30000051856040955,
+      0.0,
+      -0.30000001192092896,
+      30.0,
+      30.0,
+      13.199999809265137
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1592,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1249__lora.png"
+  },
+  "test_p1249__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 182,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 16,
+      "ventana": 16,
+      "losa": 4,
+      "columna": 80,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.2500005066394806,
+      0.0,
+      -0.20000000298023224,
+      25.0,
+      22.0,
+      13.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1592,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1249__referencia.png"
+  },
+  "test_p1272__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 252,
+    "categorias": {
+      "piso": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.3000006377696991,
+      0.0,
+      0.0,
+      25.0,
+      25.0,
+      16.350000381469727
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2226,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1272__lora.png"
+  },
+  "test_p1272__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 252,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -20.0,
+      -15.0,
+      -0.20000000298023224,
+      20.0,
+      15.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2016,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1272__referencia.png"
+  },
+  "test_p1292__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 110,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 12,
+      "ventana": 9,
+      "losa": 3,
+      "columna": 48,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.3000006377696991,
+      0.0,
+      -0.30000001192092896,
+      20.0,
+      20.0,
+      9.800000190734863
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 952,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1292__lora.png"
+  },
+  "test_p1292__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 110,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 12,
+      "ventana": 9,
+      "losa": 3,
+      "columna": 48,
+      "techo_plano": 1
+    },
+    "bbox": [
+      19.69999885559082,
+      20.0,
+      -0.10000000149011612,
+      60.0,
+      60.0,
+      9.800000190734863
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 880,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1292__referencia.png"
+  },
+  "test_p1297__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 2
+    },
+    "bbox": [
+      -5.5,
+      -4.5,
+      -0.30000001192092896,
+      25.0,
+      20.0,
+      7.375283718109131
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 212,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1297__lora.png"
+  },
+  "test_p1297__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 2
+    },
+    "bbox": [
+      -9.800000190734863,
+      -9.0,
+      -0.15000000596046448,
+      25.0,
+      20.0,
+      7.7264909744262695
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 212,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1297__referencia.png"
+  },
+  "test_p1305__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {
+      "muro": 1,
+      "puerta": 1
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      12.0,
+      0.20000000298023224,
+      2.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1305__lora.png"
+  },
+  "test_p1305__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {
+      "muro": 1,
+      "puerta": 1
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      12.0,
+      0.25,
+      2.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1305__referencia.png"
+  },
+  "test_p1326__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 3,
+      "tejado_dos_aguas": 1
+    },
+    "bbox": [
+      -4.0,
+      -2.0,
+      -0.30000001192092896,
+      20.0,
+      15.0,
+      7.425283432006836
+    ],
+    "aislados": 1,
+    "ejemplos_aislados": [
+      "CaminoAcceso_Solido"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 108,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1326__lora.png"
+  },
+  "test_p1326__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 3,
+      "tejado_dos_aguas": 1
+    },
+    "bbox": [
+      -10.0,
+      -12.5,
+      -0.10000000149011612,
+      20.0,
+      12.5,
+      7.225283622741699
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 108,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1326__referencia.png"
+  },
+  "test_p1330__lora": {
+    "ok": false,
+    "error": "TypeError: crear_casa_n_pisos() got an unexpected keyword argument 'num_pisos'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1330__lora.py\", line 5, in <module>",
+    "n_meshes": 1,
+    "categorias": {
+      "terreno": 1
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      -0.30000001192092896,
+      20.0,
+      16.0,
+      -0.10000000894069672
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1330__lora.png"
+  },
+  "test_p1330__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 2
+    },
+    "bbox": [
+      -7.5,
+      -15.0,
+      -0.20000000298023224,
+      17.5,
+      15.0,
+      7.729243755340576
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 212,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1330__referencia.png"
+  },
+  "test_p1392__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 41,
+    "categorias": {
+      "muro": 1,
+      "ventana": 8
+    },
+    "bbox": [
+      -4.25,
+      0.0,
+      0.0,
+      10.0,
+      0.30000001192092896,
+      6.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 328,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1392__lora.png"
+  },
+  "test_p1392__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {
+      "muro": 1,
+      "ventana": 1
+    },
+    "bbox": [
+      0.3999999761581421,
+      0.0,
+      0.44999998807907104,
+      8.799999237060547,
+      0.25,
+      4.049999713897705
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1392__referencia.png"
+  },
+  "test_p1429__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 252,
+    "categorias": {
+      "losa": 6,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "columna": 100,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -9.250000953674316,
+      -7.5,
+      -0.15000000596046448,
+      40.0,
+      40.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2016,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1429__lora.png"
+  },
+  "test_p1429__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 232,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 5,
+      "columna": 80,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.20000064373016357,
+      0.0,
+      -0.10000000149011612,
+      40.0,
+      40.0,
+      17.700000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2016,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1429__referencia.png"
+  },
+  "test_p1454__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 305,
+    "categorias": {
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 35,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1,
+      "puerta": 1
+    },
+    "bbox": [
+      -0.3000006377696991,
+      0.0,
+      0.0,
+      20.0,
+      15.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2730,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1454__lora.png"
+  },
+  "test_p1454__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 309,
+    "categorias": {
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 35,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1,
+      "puerta": 2
+    },
+    "bbox": [
+      -0.20000064373016357,
+      0.0,
+      0.0,
+      20.0,
+      15.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2762,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1454__referencia.png"
+  },
+  "test_p1492__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {
+      "columna": 4,
+      "losa": 1
+    },
+    "bbox": [
+      -2.0,
+      -1.5,
+      0.0,
+      4.199999809265137,
+      3.200000047683716,
+      2.950000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1492__lora.png"
+  },
+  "test_p1492__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {
+      "columna": 4,
+      "losa": 1
+    },
+    "bbox": [
+      -1.899999976158142,
+      -1.399999976158142,
+      0.0,
+      4.0,
+      3.0,
+      2.6500000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1492__referencia.png"
+  },
+  "test_p1512__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 161,
+    "categorias": {
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 15,
+      "losa": 5,
+      "columna": 60,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.3000004291534424,
+      0.0,
+      0.0,
+      12.0,
+      10.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1408,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1512__lora.png"
+  },
+  "test_p1512__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 226,
+    "categorias": {
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 5,
+      "columna": 75,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.20000050961971283,
+      0.0,
+      0.0,
+      20.0,
+      12.0,
+      15.199999809265137
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2008,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1512__referencia.png"
+  },
+  "test_p1514__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {
+      "muro": 1,
+      "puerta": 1
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      8.0,
+      0.20000000298023224,
+      2.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1514__lora.png"
+  },
+  "test_p1514__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {
+      "muro": 1,
+      "puerta": 1
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      8.0,
+      0.15000000596046448,
+      2.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1514__referencia.png"
+  },
+  "test_p1591__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 302,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 35,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -10.300000190734863,
+      -7.5,
+      -0.10000000149011612,
+      30.0,
+      20.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2416,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1591__lora.png"
+  },
+  "test_p1591__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 322,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 35,
+      "losa": 5,
+      "columna": 120,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.20000064373016357,
+      -15.0,
+      0.0,
+      20.0,
+      15.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2886,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1591__referencia.png"
+  },
+  "test_p1616__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 252,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.3000006377696991,
+      0.0,
+      -0.30000001192092896,
+      50.0,
+      50.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2226,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1616__lora.png"
+  },
+  "test_p1616__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 302,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 35,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.20000077784061432,
+      0.0,
+      -0.30000001192092896,
+      50.0,
+      50.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2726,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1616__referencia.png"
+  },
+  "test_p1673__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 18,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 3
+    },
+    "bbox": [
+      -9.0,
+      -7.199999809265137,
+      -0.30000001192092896,
+      20.0,
+      15.0,
+      7.378159999847412
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 268,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1673__lora.png"
+  },
+  "test_p1673__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 18,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 3
+    },
+    "bbox": [
+      -12.0,
+      -11.5,
+      -0.15000000596046448,
+      30.0,
+      25.0,
+      7.5252838134765625
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 268,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1673__referencia.png"
+  },
+  "test_p1694__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "terreno": 1,
+      "arbol": 2
+    },
+    "bbox": [
+      -12.5,
+      -10.0,
+      0.0,
+      12.600000381469727,
+      10.0,
+      7.7264909744262695
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 212,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1694__lora.png"
+  },
+  "test_p1694__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 2
+    },
+    "bbox": [
+      -11.199999809265137,
+      -9.199999809265137,
+      -0.25,
+      25.0,
+      20.0,
+      7.7264909744262695
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 212,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1694__referencia.png"
+  },
+  "test_p1695__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 152,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 5,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.3000006377696991,
+      0.0,
+      -0.30000001192092896,
+      40.0,
+      30.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1426,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1695__lora.png"
+  },
+  "test_p1695__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 272,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 5,
+      "columna": 120,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -10.300000190734863,
+      -7.5,
+      -0.15000000596046448,
+      40.0,
+      30.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2176,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1695__referencia.png"
+  },
+  "test_p1700__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 162,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 15,
+      "losa": 5,
+      "columna": 60,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.3000004291534424,
+      0.0,
+      -0.15000000596046448,
+      20.0,
+      20.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1416,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1700__lora.png"
+  },
+  "test_p1700__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 302,
+    "categorias": {
+      "terreno": 1,
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 35,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -10.200000762939453,
+      -4.0,
+      0.0,
+      25.0,
+      11.0,
+      16.30000114440918
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2416,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1700__referencia.png"
+  },
+  "test_p1754__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 2
+    },
+    "bbox": [
+      -5.5,
+      -4.5,
+      -0.30000001192092896,
+      20.0,
+      15.0,
+      7.425283432006836
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 212,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1754__lora.png"
+  },
+  "test_p1754__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "terreno": 1,
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "arbol": 2
+    },
+    "bbox": [
+      -11.0,
+      -9.0,
+      -0.15000000596046448,
+      25.0,
+      20.0,
+      7.729243755340576
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 212,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1754__referencia.png"
+  },
+  "test_p1780__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 227,
+    "categorias": {
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 20,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1,
+      "terreno": 1
+    },
+    "bbox": [
+      -0.25000086426734924,
+      -10.0,
+      -0.15000000596046448,
+      15.0,
+      20.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1976,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1780__lora.png"
+  },
+  "test_p1780__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 177,
+    "categorias": {
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 10,
+      "losa": 5,
+      "columna": 100,
+      "techo_plano": 1,
+      "terreno": 1
+    },
+    "bbox": [
+      -0.3000008463859558,
+      -5.0,
+      -0.10000000149011612,
+      15.0,
+      30.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1416,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1780__referencia.png"
+  },
+  "test_p1810__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_caja'. Did you mean: 'crear_cama'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1810__lora.py\", line 8, in <module>",
+    "n_meshes": 17,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "mesa": 1,
+      "silla": 1
+    },
+    "bbox": [
+      -0.20000013709068298,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.4000000953674316,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 136,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1810__lora.png"
+  },
+  "test_p1810__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 22,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "silla": 1
+    },
+    "bbox": [
+      -0.20000015199184418,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.9000000953674316,
+      2.9000000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 136,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1810__referencia.png"
+  },
+  "test_p1816__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 28,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "mesa": 4,
+      "losa": 2
+    },
+    "bbox": [
+      -0.20000019669532776,
+      0.0,
+      -0.20000000298023224,
+      9.199999809265137,
+      4.950000286102295,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 224,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1816__lora.png"
+  },
+  "test_p1816__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 42,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "armario": 3
+    },
+    "bbox": [
+      -0.15000019967556,
+      0.0,
+      -0.20000000298023224,
+      5.300000190734863,
+      4.800000190734863,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 587,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1816__referencia.png"
+  },
+  "test_p1861__lora": {
+    "ok": false,
+    "error": "AttributeError: 'NoneType' object has no attribute 'operation' and no __dict__ for setting new attributes",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1861__lora.py\", line 9, in <module>",
+    "n_meshes": 26,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1,
+      "mesa": 1,
+      "estanteria": 1
+    },
+    "bbox": [
+      -0.20000018179416656,
+      0.0,
+      -0.20000000298023224,
+      4.900000095367432,
+      4.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 208,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1861__lora.png"
+  },
+  "test_p1861__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1
+    },
+    "bbox": [
+      -0.20000019669532776,
+      0.0,
+      -0.20000000298023224,
+      6.400000095367432,
+      4.899999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 128,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1861__referencia.png"
+  },
+  "test_p1867__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 27,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "mesa": 1,
+      "estanteria": 1,
+      "silla": 1
+    },
+    "bbox": [
+      -0.20000015199184418,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.9000000953674316,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 216,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1867__lora.png"
+  },
+  "test_p1867__referencia": {
+    "ok": false,
+    "error": "RuntimeError: Error: Object 'Base_Cilindro' not in collection 'Scene Collection'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1867__referencia.py\", line 79, in <module>",
+    "n_meshes": 25,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "estanteria": 1
+    },
+    "bbox": [
+      -0.20000015199184418,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      3.9000000953674316,
+      2.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 268,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1867__referencia.png"
+  },
+  "test_p1879__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_alfombra'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1879__lora.py\", line 4, in <module>",
+    "n_meshes": 6,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.20000018179416656,
+      0.0,
+      -0.20000000298023224,
+      4.900000095367432,
+      4.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1879__lora.png"
+  },
+  "test_p1879__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 19,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1,
+      "mesa": 1
+    },
+    "bbox": [
+      -2.000002384185791,
+      0.0,
+      -0.20000000298023224,
+      5.400000095367432,
+      6.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 668,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1879__referencia.png"
+  },
+  "test_p1916__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 26,
+    "categorias": {
+      "muro": 2,
+      "mesa": 1,
+      "estanteria": 1,
+      "silla": 1
+    },
+    "bbox": [
+      -1.100000023841858,
+      -4.0,
+      0.0,
+      5.0,
+      1.149999976158142,
+      2.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 208,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1916__lora.png"
+  },
+  "test_p1916__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 52,
+    "categorias": {
+      "piso": 1,
+      "muro": 2,
+      "estanteria": 1
+    },
+    "bbox": [
+      0.0,
+      -3.0,
+      0.0,
+      3.700000047683716,
+      3.200000047683716,
+      2.5999999046325684
+    ],
+    "aislados": 2,
+    "ejemplos_aislados": [
+      "Libro_19",
+      "Libro_20"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 760,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1916__referencia.png"
+  },
+  "test_p1926__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 27,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "mesa": 1,
+      "silla": 1,
+      "estanteria": 1
+    },
+    "bbox": [
+      -0.2000001072883606,
+      0.0,
+      -0.20000000298023224,
+      3.4000000953674316,
+      2.9000000953674316,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 216,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1926__lora.png"
+  },
+  "test_p1926__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 26,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "silla": 1,
+      "extrusion": 1
+    },
+    "bbox": [
+      -0.10000013560056686,
+      0.0,
+      -0.20000000298023224,
+      3.700000047683716,
+      3.1999998092651367,
+      2.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 380,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1926__referencia.png"
+  },
+  "test_p1934__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 20,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "mesa": 2
+    },
+    "bbox": [
+      -0.20000018179416656,
+      0.0,
+      -0.20000000298023224,
+      3.4000000953674316,
+      4.399999618530273,
+      2.9000000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 160,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1934__lora.png"
+  },
+  "test_p1934__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 18,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1
+    },
+    "bbox": [
+      -0.20000022649765015,
+      -0.05011618137359619,
+      -1.3327605724334717,
+      4.900000095367432,
+      5.399999618530273,
+      3.0999999046325684
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 1,
+    "n_vertices": 3129,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p1934__referencia.png"
+  },
+  "test_p2006__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 10,
+    "categorias": {
+      "losa": 1,
+      "muro": 2,
+      "columna": 2
+    },
+    "bbox": [
+      -6.0,
+      -5.050000190734863,
+      -0.10000000149011612,
+      12.0,
+      10.0,
+      7.019999980926514
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 192,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2006__lora.png"
+  },
+  "test_p2006__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {
+      "piso": 1,
+      "muro": 2,
+      "losa": 1,
+      "columna": 2
+    },
+    "bbox": [
+      -8.0,
+      -10.0,
+      0.0,
+      8.0,
+      10.0,
+      5.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 100,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2006__referencia.png"
+  },
+  "test_p2018__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 17,
+    "categorias": {
+      "muro": 1,
+      "piso": 1,
+      "losa": 2
+    },
+    "bbox": [
+      -1.75,
+      -0.02500000037252903,
+      -0.10000000149011612,
+      3.5,
+      0.6000000238418579,
+      2.700000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 136,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2018__lora.png"
+  },
+  "test_p2018__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 10,
+    "categorias": {
+      "muro": 2,
+      "losa": 2
+    },
+    "bbox": [
+      -0.4711945652961731,
+      -0.5,
+      -0.20000000298023224,
+      4.339999675750732,
+      2.799999952316284,
+      5.599999904632568
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 120,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2018__referencia.png"
+  },
+  "test_p2020__lora": {
+    "ok": false,
+    "error": "AttributeError: 'NoneType' object has no attribute 'count' and no __dict__ for setting new attributes",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2020__lora.py\", line 17, in <module>",
+    "n_meshes": 13,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "armario": 1
+    },
+    "bbox": [
+      -0.15000014007091522,
+      -1.2999999523162842,
+      -0.20000000298023224,
+      4.300000190734863,
+      3.5,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2020__lora.png"
+  },
+  "test_p2020__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1
+    },
+    "bbox": [
+      -0.250002384185791,
+      0.0,
+      -0.20000000298023224,
+      4.900000095367432,
+      5.899999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2020__referencia.png"
+  },
+  "test_p2054__lora": {
+    "ok": false,
+    "error": "TypeError: cannot unpack non-iterable int object",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2054__lora.py\", line 4, in <module>",
+    "n_meshes": 6,
+    "categorias": {
+      "mesa": 1,
+      "extrusion": 1
+    },
+    "bbox": [
+      -0.20000000298023224,
+      -0.10000000149011612,
+      -0.05000000074505806,
+      2.0,
+      1.0,
+      0.9000000357627869
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2054__lora.png"
+  },
+  "test_p2054__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 20,
+    "categorias": {
+      "armario": 1,
+      "piso": 1
+    },
+    "bbox": [
+      -1.899999976158142,
+      -2.5,
+      0.0,
+      4.099999904632568,
+      3.5,
+      2.8000001907348633
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 515,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2054__referencia.png"
+  },
+  "test_p2076__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 52,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 2,
+      "techo_plano": 1,
+      "sofa": 1,
+      "estanteria": 4
+    },
+    "bbox": [
+      -0.20000022649765015,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      5.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 416,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2076__lora.png"
+  },
+  "test_p2076__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 20,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1
+    },
+    "bbox": [
+      -0.20000018179416656,
+      -0.30000001192092896,
+      -0.20000000298023224,
+      6.400000095367432,
+      4.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 220,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2076__referencia.png"
+  },
+  "test_p2095__lora": {
+    "ok": false,
+    "error": "AttributeError: 'NoneType' object has no attribute 'width' and no __dict__ for setting new attributes",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2095__lora.py\", line 8, in <module>",
+    "n_meshes": 22,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 2,
+      "techo_plano": 1,
+      "sofa": 1,
+      "estanteria": 1
+    },
+    "bbox": [
+      -1.0,
+      0.0,
+      -0.20000000298023224,
+      6.400000095367432,
+      4.899999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 176,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2095__lora.png"
+  },
+  "test_p2095__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 21,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1
+    },
+    "bbox": [
+      -2.950000047683716,
+      -2.25,
+      -1.5,
+      6.400000095367432,
+      5.399999618530273,
+      4.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 164,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2095__referencia.png"
+  },
+  "test_p2096__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 27,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 5,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "armario": 2
+    },
+    "bbox": [
+      -0.20000022649765015,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      5.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 216,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2096__lora.png"
+  },
+  "test_p2096__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 44,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 5,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "mesa": 2,
+      "armario": 2
+    },
+    "bbox": [
+      -2.25,
+      -3.009999990463257,
+      -0.20000000298023224,
+      4.900000095367432,
+      6.399999618530273,
+      2.9000000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2248,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2096__referencia.png"
+  },
+  "test_p2126__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_cono'. Did you mean: 'crear_cama'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2126__lora.py\", line 19, in <module>",
+    "n_meshes": 17,
+    "categorias": {
+      "piso": 1,
+      "columna": 4,
+      "losa": 12
+    },
+    "bbox": [
+      -10.0,
+      -7.5,
+      0.0,
+      10.199999809265137,
+      12.199999809265137,
+      3.200000047683716
+    ],
+    "aislados": 6,
+    "ejemplos_aislados": [
+      "VigaTransversal_1_Solido",
+      "VigaTransversal_2_Solido",
+      "VigaTransversal_3_Solido",
+      "VigaTransversal_4_Solido",
+      "VigaTransversal_5_Solido"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 136,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2126__lora.png"
+  },
+  "test_p2126__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 24,
+    "categorias": {
+      "losa": 2,
+      "arbol": 2
+    },
+    "bbox": [
+      -2.246188163757324,
+      -0.10000000149011612,
+      -0.10000000149011612,
+      8.246188163757324,
+      4.099999904632568,
+      2.950000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 272,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2126__referencia.png"
+  },
+  "test_p2127__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 30,
+    "categorias": {
+      "terreno": 1,
+      "columna": 3,
+      "arbol": 3,
+      "sofa": 4
+    },
+    "bbox": [
+      -8.0,
+      -7.5,
+      -0.30000001192092896,
+      20.0,
+      20.0,
+      5.300000190734863
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 528,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2127__lora.png"
+  },
+  "test_p2127__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 24,
+    "categorias": {
+      "piso": 1,
+      "arbol": 3
+    },
+    "bbox": [
+      -0.5,
+      -0.5,
+      0.0,
+      15.0,
+      12.0,
+      4.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 592,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2127__referencia.png"
+  },
+  "test_p2161__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {
+      "losa": 7
+    },
+    "bbox": [
+      -1.5,
+      0.0,
+      -0.15000000596046448,
+      10.0,
+      10.0,
+      1.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2161__lora.png"
+  },
+  "test_p2161__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 11,
+    "categorias": {
+      "terreno": 1,
+      "piso": 1
+    },
+    "bbox": [
+      -10.0,
+      -10.0,
+      -1.9000000953674316,
+      10.0,
+      10.0,
+      0.1499999761581421
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 5,
+    "n_vertices": 84,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2161__referencia.png"
+  },
+  "test_p2191__lora": {
+    "ok": false,
+    "error": "SyntaxError: '(' was never closed",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2191__lora.py\", line 150",
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 8,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2191__lora.png"
+  },
+  "test_p2191__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 23,
+    "categorias": {
+      "terreno": 1,
+      "columna": 4
+    },
+    "bbox": [
+      -4.0,
+      -4.0,
+      -0.20000000298023224,
+      4.0,
+      28.5,
+      3.6000001430511475
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 7290,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2191__referencia.png"
+  },
+  "test_p2200__lora": {
+    "ok": false,
+    "error": "TypeError: bpy_struct: item.attr = val: enum \"WAVE\" not found in ('TWIST', 'BEND', 'TAPER', 'STRETCH')",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2200__lora.py\", line 25, in <module>",
+    "n_meshes": 7,
+    "categorias": {
+      "columna": 4,
+      "losa": 2
+    },
+    "bbox": [
+      -2.4000000953674316,
+      -1.6629830598831177,
+      0.0,
+      2.4000000953674316,
+      1.6629830598831177,
+      2.791341543197632
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 52,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2200__lora.png"
+  },
+  "test_p2200__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {
+      "piso": 1,
+      "columna": 4,
+      "losa": 7
+    },
+    "bbox": [
+      -4.0,
+      -4.0,
+      -0.10000000149011612,
+      4.0,
+      4.0,
+      3.2341818809509277
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2800,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2200__referencia.png"
+  },
+  "test_p2225__lora": {
+    "ok": false,
+    "error": "NameError: name 'np' is not defined",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2225__lora.py\", line 19, in <module>",
+    "n_meshes": 2,
+    "categorias": {
+      "losa": 1
+    },
+    "bbox": [
+      -3.0,
+      -3.0,
+      0.0,
+      10.0,
+      10.0,
+      1.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 72,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2225__lora.png"
+  },
+  "test_p2225__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 4,
+    "categorias": {
+      "piso": 1
+    },
+    "bbox": [
+      -6.0,
+      -6.0,
+      -0.40000003576278687,
+      6.0,
+      6.0,
+      2.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2320,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2225__referencia.png"
+  },
+  "test_p2426__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {},
+    "bbox": [
+      -0.800000011920929,
+      -0.15000000596046448,
+      0.0,
+      0.800000011920929,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2426__lora.png"
+  },
+  "test_p2426__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -0.3999999761581421,
+      -0.15000002086162567,
+      0.0,
+      0.40000009536743164,
+      0.15000002086162567,
+      1.8000000715255737
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2426__referencia.png"
+  },
+  "test_p2451__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.5999999642372131,
+      -0.15000000596046448,
+      0.0,
+      0.5999999642372131,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2451__lora.png"
+  },
+  "test_p2451__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      1.2000000476837158,
+      0.30000001192092896,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2451__referencia.png"
+  },
+  "test_p2460__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {},
+    "bbox": [
+      -0.5,
+      -0.15000000596046448,
+      -0.09000000357627869,
+      1.0,
+      0.15000000596046448,
+      0.8100000619888306
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2460__lora.png"
+  },
+  "test_p2460__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      0.0,
+      -0.5,
+      0.0,
+      1.5,
+      0.5,
+      0.9000000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2460__referencia.png"
+  },
+  "test_p2480__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.6000000238418579,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2480__lora.png"
+  },
+  "test_p2480__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -0.5999999642372131,
+      -0.15000002086162567,
+      0.0,
+      0.5999999642372131,
+      0.15000002086162567,
+      1.8000000715255737
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2480__referencia.png"
+  },
+  "test_p2481__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 3,
+    "categorias": {},
+    "bbox": [
+      -2.5999999046325684,
+      -2.0999999046325684,
+      -0.20000000298023224,
+      5.0,
+      4.0,
+      2.700000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 24,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2481__lora.png"
+  },
+  "test_p2481__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 3,
+    "categorias": {},
+    "bbox": [
+      0.0,
+      0.0,
+      -0.20000000298023224,
+      5.0,
+      4.0,
+      2.700000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 24,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2481__referencia.png"
+  },
+  "test_p2527__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.5999999642372131,
+      -0.15000000596046448,
+      0.0,
+      0.5999999642372131,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2527__lora.png"
+  },
+  "test_p2527__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.6000000238418579,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2527__referencia.png"
+  },
+  "test_p2546__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.6000000238418579,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2546__lora.png"
+  },
+  "test_p2546__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.6000000238418579,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2546__referencia.png"
+  },
+  "test_p2549__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 35,
+    "categorias": {
+      "escalera_recta": 1,
+      "columna": 1
+    },
+    "bbox": [
+      -0.10000000149011612,
+      -0.10000000149011612,
+      0.0,
+      4.480000019073486,
+      1.399999976158142,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 336,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2549__lora.png"
+  },
+  "test_p2549__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 17,
+    "categorias": {},
+    "bbox": [
+      -0.9486559629440308,
+      -0.9486559629440308,
+      0.0,
+      0.9486559629440308,
+      0.9486559629440308,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 192,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2549__referencia.png"
+  },
+  "test_p2571__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.6000000238418579,
+      0.15000000596046448,
+      6.610000133514404
+    ],
+    "aislados": 4,
+    "ejemplos_aislados": [
+      "Balda_2",
+      "Balda_3",
+      "Balda_4",
+      "Balda_5"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2571__lora.png"
+  },
+  "test_p2571__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      -0.5999999642372131,
+      -0.15000000596046448,
+      0.0,
+      0.5999999642372131,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2571__referencia.png"
+  },
+  "test_p2586__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.6000000238418579,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2586__lora.png"
+  },
+  "test_p2586__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.5999999642372131,
+      -0.15000000596046448,
+      0.0,
+      0.5999999642372131,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2586__referencia.png"
+  },
+  "test_p2603__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.550000011920929,
+      -0.15000000596046448,
+      0.0,
+      0.550000011920929,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2603__lora.png"
+  },
+  "test_p2603__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      -0.5999999642372131,
+      -0.15000000596046448,
+      0.0,
+      0.5999999642372131,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2603__referencia.png"
+  },
+  "test_p2608__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.4099999964237213,
+      -0.15000000596046448,
+      0.0,
+      0.3799999952316284,
+      0.15000000596046448,
+      1.215000033378601
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2608__lora.png"
+  },
+  "test_p2608__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -0.3999999761581421,
+      -0.15000000596046448,
+      0.0,
+      0.3999999761581421,
+      0.15000000596046448,
+      1.2000000476837158
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2608__referencia.png"
+  },
+  "test_p2637__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.6000000238418579,
+      0.15000000596046448,
+      2.8433332443237305
+    ],
+    "aislados": 2,
+    "ejemplos_aislados": [
+      "Balda_4",
+      "Balda_5"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 48,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2637__lora.png"
+  },
+  "test_p2637__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -0.6000000238418579,
+      -0.15000000596046448,
+      0.0,
+      0.5999999642372131,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2637__referencia.png"
+  },
+  "test_p2642__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.30000001192092896,
+      -0.15000000596046448,
+      0.0,
+      0.30000001192092896,
+      0.15000000596046448,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2642__lora.png"
+  },
+  "test_p2642__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -0.3999999463558197,
+      -0.15000002086162567,
+      0.0,
+      0.3999999761581421,
+      0.15000002086162567,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2642__referencia.png"
+  },
+  "test_p2650__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 5,
+    "categorias": {},
+    "bbox": [
+      -0.6200000047683716,
+      -0.17000000178813934,
+      0.0,
+      0.6200000047683716,
+      0.17000000178813934,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 40,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2650__lora.png"
+  },
+  "test_p2650__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -0.5999999046325684,
+      -0.14999999105930328,
+      0.0,
+      0.5999999642372131,
+      0.14999999105930328,
+      1.7999999523162842
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 64,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2650__referencia.png"
+  },
+  "test_p2658__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 7,
+    "categorias": {},
+    "bbox": [
+      -0.5999999642372131,
+      -0.15000000596046448,
+      0.0,
+      0.5999999642372131,
+      0.15000000596046448,
+      2.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2658__lora.png"
+  },
+  "test_p2658__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      -1.1600000858306885,
+      -0.15000000596046448,
+      -1.0,
+      1.159999966621399,
+      0.45000001788139343,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 56,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2658__referencia.png"
+  },
+  "test_p2660__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1,
+      "mesa": 1
+    },
+    "bbox": [
+      -0.1500001847743988,
+      0.0,
+      -0.20000000298023224,
+      5.300000190734863,
+      4.300000190734863,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 128,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2660__lora.png"
+  },
+  "test_p2660__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 8,
+    "categorias": {},
+    "bbox": [
+      -2.5,
+      -2.000000238418579,
+      -1.399999976158142,
+      7.5,
+      6.0,
+      4.199999809265137
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 72,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2660__referencia.png"
+  },
+  "test_p2767__lora": {
+    "ok": false,
+    "error": "NameError: name 'crear_barra' is not defined",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2767__lora.py\", line 13, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "test_p2767__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 11,
+    "categorias": {},
+    "bbox": [
+      -2.049999952316284,
+      -1.7000000476837158,
+      0.0,
+      2.049999952316284,
+      1.7000000476837158,
+      3.1500000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 88,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2767__referencia.png"
+  },
+  "test_p2780__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {},
+    "bbox": [
+      1.5,
+      -0.7999998927116394,
+      4.5,
+      3.0,
+      0.6999999284744263,
+      7.5
+    ],
+    "aislados": 1,
+    "ejemplos_aislados": [
+      "PerfilH"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 24,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2780__lora.png"
+  },
+  "test_p2780__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 21,
+    "categorias": {},
+    "bbox": [
+      -0.05000000074505806,
+      -0.009999999776482582,
+      -0.05000000074505806,
+      6.050000190734863,
+      0.10000000149011612,
+      9.050000190734863
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 168,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2780__referencia.png"
+  },
+  "test_p2791__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 1,
+    "categorias": {
+      "muro": 1
+    },
+    "bbox": [
+      -1.100000023841858,
+      -0.007499992847442627,
+      0.4500000476837158,
+      1.5999999046325684,
+      0.3075000047683716,
+      1.9500000476837158
+    ],
+    "aislados": 1,
+    "ejemplos_aislados": [
+      "Fachada_Principal_Cuerpo"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 47,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2791__lora.png"
+  },
+  "test_p2791__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 9,
+    "categorias": {},
+    "bbox": [
+      -5.0,
+      -0.15000000596046448,
+      0.0,
+      5.0,
+      0.15000000596046448,
+      6.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2791__referencia.png"
+  },
+  "test_p2818__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {},
+    "bbox": [
+      -2.0999999046325684,
+      -2.0999999046325684,
+      0.0,
+      2.0999999046325684,
+      2.0999999046325684,
+      2.7300000190734863
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2818__lora.png"
+  },
+  "test_p2818__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {},
+    "bbox": [
+      -2.049999952316284,
+      -1.7000000476837158,
+      0.0,
+      2.049999952316284,
+      1.7000000476837158,
+      2.9000000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2818__referencia.png"
+  },
+  "test_p2833__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 11,
+    "categorias": {},
+    "bbox": [
+      -2.075000047683716,
+      -1.5750000476837158,
+      0.0,
+      2.075000047683716,
+      1.5750000476837158,
+      3.1499998569488525
+    ],
+    "aislados": 5,
+    "ejemplos_aislados": [
+      "Vigueta_1",
+      "Vigueta_2",
+      "Vigueta_3",
+      "Vigueta_4",
+      "Vigueta_5"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 88,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2833__lora.png"
+  },
+  "test_p2833__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 11,
+    "categorias": {},
+    "bbox": [
+      -2.0,
+      -1.5,
+      0.0,
+      2.0,
+      1.5,
+      3.1500000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 88,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2833__referencia.png"
+  },
+  "test_p2861__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 76,
+    "categorias": {},
+    "bbox": [
+      -2.1500000953674316,
+      -1.649999976158142,
+      0.0,
+      2.1500000953674316,
+      1.649999976158142,
+      5.8532257080078125
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 608,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2861__lora.png"
+  },
+  "test_p2861__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 13,
+    "categorias": {},
+    "bbox": [
+      -2.0,
+      -1.5399999618530273,
+      0.0,
+      2.0,
+      1.5399999618530273,
+      3.0999999046325684
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 104,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2861__referencia.png"
+  },
+  "test_p2881__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 6,
+    "categorias": {
+      "muro": 1,
+      "losa": 3,
+      "columna": 2
+    },
+    "bbox": [
+      -2.549999952316284,
+      -0.3500000238418579,
+      0.0,
+      8.0,
+      1.2000000476837158,
+      6.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 160,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2881__lora.png"
+  },
+  "test_p2881__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 9,
+    "categorias": {},
+    "bbox": [
+      -8.0,
+      -0.40000003576278687,
+      -3.0,
+      8.0,
+      2.0,
+      9.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 296,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2881__referencia.png"
+  },
+  "test_p2993__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 14,
+    "categorias": {
+      "losa": 1,
+      "sofa": 1,
+      "arbol": 4
+    },
+    "bbox": [
+      -6.0,
+      -6.0,
+      0.0,
+      15.0,
+      15.0,
+      5.699999809265137
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 272,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2993__lora.png"
+  },
+  "test_p2993__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 12,
+    "categorias": {},
+    "bbox": [
+      -7.5,
+      -7.5,
+      -0.20000000298023224,
+      7.5,
+      7.5,
+      5.739999771118164
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 456,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p2993__referencia.png"
+  },
+  "test_p3052__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 34,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 6,
+      "piso": 1,
+      "techo_plano": 1,
+      "sofa": 1,
+      "mesa": 2,
+      "losa": 3,
+      "armario": 1
+    },
+    "bbox": [
+      -0.20000043511390686,
+      0.0,
+      -0.20000000298023224,
+      6.699999809265137,
+      10.600000381469727,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 272,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3052__lora.png"
+  },
+  "test_p3052__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 71,
+    "categorias": {
+      "losa": 1,
+      "techo_plano": 1,
+      "muro": 6,
+      "puerta": 3,
+      "ventana": 2,
+      "extrusion": 1,
+      "sofa": 1,
+      "mesa": 1,
+      "silla": 2,
+      "cama": 1,
+      "armario": 1
+    },
+    "bbox": [
+      -0.3000108599662781,
+      0.0,
+      0.0,
+      15.300000190734863,
+      10.000000953674316,
+      3.6000001430511475
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 591,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3052__referencia.png"
+  },
+  "test_p3076__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_dormitorio'. Did you mean: 'crear_armario'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3076__lora.py\", line 7, in <module>",
+    "n_meshes": 20,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "puerta": 1,
+      "mesa": 1,
+      "sofa": 1
+    },
+    "bbox": [
+      -0.20000039041042328,
+      0.0,
+      -0.20000000298023224,
+      8.399999618530273,
+      9.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 160,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3076__lora.png"
+  },
+  "test_p3076__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 118,
+    "categorias": {
+      "muro": 9,
+      "piso": 1,
+      "sofa": 1,
+      "mesa": 3,
+      "silla": 4,
+      "cama": 2,
+      "armario": 2,
+      "puerta": 5,
+      "ventana": 4
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      0.0,
+      17.0,
+      9.149999618530273,
+      2.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 944,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3076__referencia.png"
+  },
+  "test_p3247__lora": {
+    "ok": false,
+    "error": "NameError: name 'mat_techo' is not defined",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3247__lora.py\", line 19, in <module>",
+    "n_meshes": 9,
+    "categorias": {
+      "muro": 4,
+      "ventana": 1
+    },
+    "bbox": [
+      -1.0,
+      -0.10000000149011612,
+      0.0,
+      10.0,
+      0.800000011920929,
+      6.400000095367432
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 75,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3247__lora.png"
+  },
+  "test_p3247__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 80,
+    "categorias": {
+      "muro": 2,
+      "losa": 1,
+      "puerta": 1,
+      "techo_plano": 1,
+      "ventana": 1,
+      "terreno": 1
+    },
+    "bbox": [
+      -4.925000190734863,
+      -7.5,
+      -0.05000000074505806,
+      20.0,
+      7.5,
+      6.0
+    ],
+    "aislados": 33,
+    "ejemplos_aislados": [
+      "LamaMadera",
+      "LamaMadera.001",
+      "LamaMadera.002",
+      "LamaMadera.003",
+      "LamaMadera.004"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 648,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3247__referencia.png"
+  },
+  "test_p3248__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 129,
+    "categorias": {
+      "edificio": 1,
+      "muro": 16,
+      "ventana": 20,
+      "losa": 12,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -6.599999904632568,
+      -10.0,
+      0.0,
+      15.0,
+      20.0,
+      13.0
+    ],
+    "aislados": 4,
+    "ejemplos_aislados": [
+      "Jardinera_1_Solido",
+      "Jardinera_2_Solido",
+      "Jardinera_3_Solido",
+      "Jardinera_4_Solido"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 1192,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3248__lora.png"
+  },
+  "test_p3248__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 132,
+    "categorias": {
+      "muro": 2,
+      "losa": 13,
+      "ventana": 8,
+      "arbol": 10,
+      "terreno": 1
+    },
+    "bbox": [
+      -7.0,
+      -11.5,
+      -0.10000000149011612,
+      25.0,
+      10.0,
+      13.09999942779541
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1448,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3248__referencia.png"
+  },
+  "test_p3321__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 67,
+    "categorias": {
+      "piso": 1,
+      "techo_plano": 1,
+      "columna": 20,
+      "losa": 3,
+      "sofa": 1,
+      "mesa": 1,
+      "arbol": 16
+    },
+    "bbox": [
+      -2.299999952316284,
+      -2.299999952316284,
+      0.0,
+      15.0,
+      8.300000190734863,
+      3.6500000953674316
+    ],
+    "aislados": 2,
+    "ejemplos_aislados": [
+      "Poste_Pergola_2_Cuerpo",
+      "Poste_Pergola_4_Cuerpo"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 1176,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3321__lora.png"
+  },
+  "test_p3321__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 73,
+    "categorias": {
+      "techo_plano": 1,
+      "muro": 2,
+      "extrusion": 4,
+      "arbol": 17,
+      "columna": 4,
+      "losa": 19,
+      "sofa": 1,
+      "mesa": 1
+    },
+    "bbox": [
+      -6.0,
+      -4.0,
+      0.0,
+      17.51997947692871,
+      8.0,
+      3.1500000953674316
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1280,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3321__referencia.png"
+  },
+  "test_p3330__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 14,
+    "categorias": {
+      "piso": 1,
+      "columna": 4,
+      "losa": 9
+    },
+    "bbox": [
+      -5.0,
+      -5.0,
+      0.0,
+      12.0,
+      10.0,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 112,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3330__lora.png"
+  },
+  "test_p3330__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 39,
+    "categorias": {
+      "losa": 1,
+      "muro": 3,
+      "piso": 1,
+      "columna": 4,
+      "sofa": 1
+    },
+    "bbox": [
+      -10.800000190734863,
+      -6.800000190734863,
+      -0.30000001192092896,
+      14.0,
+      8.0,
+      2.990000009536743
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 652,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3330__referencia.png"
+  },
+  "test_p3378__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 67,
+    "categorias": {
+      "piso": 2,
+      "losa": 1,
+      "escalera_recta": 1,
+      "muro": 4,
+      "sofa": 1,
+      "mesa": 1,
+      "armario": 1,
+      "cama": 2
+    },
+    "bbox": [
+      -0.15000039339065552,
+      -9.0,
+      -0.009999999776482582,
+      9.0,
+      10.0,
+      3.799999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 544,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3378__lora.png"
+  },
+  "test_p3378__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 100,
+    "categorias": {
+      "losa": 1,
+      "muro": 13,
+      "escalera_recta": 1,
+      "sofa": 1,
+      "mesa": 1,
+      "silla": 4,
+      "extrusion": 2,
+      "piso": 1,
+      "cama": 2,
+      "armario": 1
+    },
+    "bbox": [
+      -0.2500036060810089,
+      -6.556708509464215e-09,
+      0.0,
+      9.280000686645508,
+      11.25,
+      5.599999904632568
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 808,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3378__referencia.png"
+  },
+  "test_p3385__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 69,
+    "categorias": {
+      "habitacion": 6,
+      "muro": 24,
+      "piso": 6,
+      "techo_plano": 6,
+      "armario": 1,
+      "mesa": 1,
+      "sofa": 1,
+      "ventana": 3
+    },
+    "bbox": [
+      -0.20000022649765015,
+      0.0,
+      -0.20000000298023224,
+      6.799999713897705,
+      9.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 552,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3385__lora.png"
+  },
+  "test_p3385__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 86,
+    "categorias": {
+      "piso": 1,
+      "muro": 7,
+      "sofa": 1,
+      "mesa": 3,
+      "silla": 4,
+      "cama": 1,
+      "armario": 1,
+      "puerta": 3,
+      "ventana": 2
+    },
+    "bbox": [
+      -0.07500030845403671,
+      0.07500000298023224,
+      0.0,
+      13.5,
+      10.5,
+      2.700000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 714,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3385__referencia.png"
+  },
+  "test_p3431__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_muros'. Did you mean: 'crear_muro'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3431__lora.py\", line 4, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "test_p3431__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 36,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "extrusion": 1,
+      "silla": 2
+    },
+    "bbox": [
+      -0.20000019669532776,
+      0.0,
+      -0.20000000298023224,
+      5.400000095367432,
+      4.899999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 292,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3431__referencia.png"
+  },
+  "test_p3439__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 89,
+    "categorias": {
+      "habitacion": 2,
+      "muro": 8,
+      "piso": 2,
+      "techo_plano": 2,
+      "mesa": 5,
+      "silla": 8,
+      "puerta": 1
+    },
+    "bbox": [
+      -0.20000027120113373,
+      0.0,
+      -0.20000000298023224,
+      8.399999618530273,
+      6.399999618530273,
+      3.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 712,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3439__lora.png"
+  },
+  "test_p3439__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 94,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "losa": 2,
+      "puerta": 1,
+      "mesa": 5,
+      "silla": 8,
+      "armario": 1
+    },
+    "bbox": [
+      -0.10000026226043701,
+      0.0,
+      -0.20000000298023224,
+      8.399999618530273,
+      6.199999809265137,
+      3.200000047683716
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 752,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3439__referencia.png"
+  },
+  "test_p3498__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 171,
+    "categorias": {
+      "edificio": 1,
+      "muro": 20,
+      "ventana": 25,
+      "losa": 25,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -0.8999999761581421,
+      -0.44999998807907104,
+      0.0,
+      16.0,
+      8.0,
+      16.200000762939453
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1568,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3498__lora.png"
+  },
+  "test_p3498__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 182,
+    "categorias": {
+      "muro": 1,
+      "techo_plano": 1,
+      "losa": 20,
+      "ventana": 20
+    },
+    "bbox": [
+      0.0,
+      -1.649999976158142,
+      0.0,
+      17.5,
+      0.30000001192092896,
+      16.07499885559082
+    ],
+    "aislados": 20,
+    "ejemplos_aislados": [
+      "Barandilla_P0M0",
+      "Barandilla_P0M1",
+      "Barandilla_P0M2",
+      "Barandilla_P0M3",
+      "Barandilla_P1M0"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 1626,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3498__referencia.png"
+  },
+  "test_p3516__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 339,
+    "categorias": {
+      "edificio": 1,
+      "muro": 16,
+      "ventana": 20,
+      "losa": 17,
+      "columna": 60,
+      "techo_plano": 1,
+      "terreno": 1,
+      "baranda": 24
+    },
+    "bbox": [
+      -0.25000032782554626,
+      -0.10000000149011612,
+      0.0,
+      15.039999961853027,
+      8.0,
+      12.399999618530273
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2872,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3516__lora.png"
+  },
+  "test_p3516__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 247,
+    "categorias": {
+      "muro": 2,
+      "losa": 4,
+      "puerta": 12,
+      "baranda": 36,
+      "piso": 1
+    },
+    "bbox": [
+      0.0,
+      -1.350000023841858,
+      0.0,
+      15.0,
+      0.20000000298023224,
+      13.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1968,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3516__referencia.png"
+  },
+  "test_p3523__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 16,
+    "categorias": {
+      "muro": 2,
+      "ventana": 1,
+      "techo_plano": 1
+    },
+    "bbox": [
+      0.0,
+      -1.0,
+      0.0,
+      10.0,
+      9.0,
+      5.800000190734863
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 128,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3523__lora.png"
+  },
+  "test_p3523__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 27,
+    "categorias": {
+      "muro": 2,
+      "puerta": 1,
+      "losa": 1,
+      "ventana": 1,
+      "techo_plano": 1
+    },
+    "bbox": [
+      -4.275000095367432,
+      -6.0,
+      0.0,
+      10.0,
+      1.0,
+      7.200000286102295
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 227,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3523__referencia.png"
+  },
+  "test_p3541__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_barra'. Did you mean: 'crear_cama'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3541__lora.py\", line 5, in <module>",
+    "n_meshes": 2,
+    "categorias": {
+      "piso": 1,
+      "losa": 1
+    },
+    "bbox": [
+      0.0,
+      0.0,
+      -0.10000000149011612,
+      8.0,
+      6.0,
+      0.15000000596046448
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 16,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3541__lora.png"
+  },
+  "test_p3541__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 25,
+    "categorias": {
+      "losa": 1,
+      "extrusion": 8,
+      "piso": 3,
+      "arbol": 3,
+      "columna": 4,
+      "sofa": 1
+    },
+    "bbox": [
+      -5.25,
+      -4.000000953674316,
+      -0.15000000596046448,
+      10.0,
+      8.0,
+      2.8499999046325684
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 344,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3541__referencia.png"
+  },
+  "test_p3551__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 26,
+    "categorias": {
+      "losa": 4,
+      "muro": 8,
+      "columna": 4,
+      "sofa": 1,
+      "mesa": 1
+    },
+    "bbox": [
+      -4.0,
+      -4.0,
+      -0.20000000298023224,
+      12.0,
+      8.0,
+      2.700000047683716
+    ],
+    "aislados": 4,
+    "ejemplos_aislados": [
+      "Jardinera_2_largo_Cuerpo",
+      "Jardinera_3_largo_Cuerpo",
+      "Pergola_Columna_2_Cuerpo",
+      "Pergola_Columna_3_Cuerpo"
+    ],
+    "bajo_suelo": 0,
+    "n_vertices": 208,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3551__lora.png"
+  },
+  "test_p3551__referencia": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 46,
+    "categorias": {
+      "techo_plano": 1,
+      "piso": 2,
+      "extrusion": 2,
+      "arbol": 12,
+      "columna": 4,
+      "sofa": 1,
+      "mesa": 1
+    },
+    "bbox": [
+      -6.0,
+      -5.0,
+      0.0,
+      12.0,
+      10.0,
+      2.924999952316284
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 856,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/rq2_100/v3_estimada_reparar_saneado/test_p3551__referencia.png"
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "foto_apartamentos__lora": {
+    "ok": false,
+    "error": "ValueError: No se encontró objeto MESH válido. Pasa el root del activo o el MESH directamente.",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_apartamentos__lora.py\", line 22, in <module>",
+    "n_meshes": 25,
+    "categorias": {
+      "losa": 5,
+      "muro": 20
+    },
+    "bbox": [
+      0.0,
+      -5.0,
+      0.0,
+      24.0,
+      5.0,
+      17.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 200,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_apartamentos__lora.png"
+  },
+  "foto_bodega__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 268,
+    "categorias": {
+      "edificio": 1,
+      "muro": 16,
+      "ventana": 28,
+      "losa": 5,
+      "columna": 96,
+      "techo_plano": 1,
+      "sofa": 2
+    },
+    "bbox": [
+      -25.0,
+      -15.0,
+      0.0,
+      25.0,
+      15.0,
+      13.100000381469727
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 2400,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_bodega__lora.png"
+  },
+  "foto_casa_usuario__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_patio'. Did you mean: 'crear_piso'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_casa_usuario__lora.py\", line 4, in <module>",
+    "n_meshes": 11,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1
+    },
+    "bbox": [
+      -0.5,
+      -0.5,
+      0.0,
+      14.5,
+      10.5,
+      7.724802017211914
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 92,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_casa_usuario__lora.png"
+  },
+  "foto_casa_wiki__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_pavimento'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_casa_wiki__lora.py\", line 5, in <module>",
+    "n_meshes": 12,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1,
+      "terreno": 1
+    },
+    "bbox": [
+      -0.6000000238418579,
+      -0.6000000238418579,
+      -0.30000001192092896,
+      17.399999618530273,
+      14.300000190734863,
+      8.425202369689941
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 100,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_casa_wiki__lora.png"
+  },
+  "foto_dormitorio__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 37,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1,
+      "mesa": 2,
+      "armario": 1,
+      "puerta": 1,
+      "ventana": 1
+    },
+    "bbox": [
+      -0.20000022649765015,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      5.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 296,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_dormitorio__lora.png"
+  },
+  "foto_rascacielos__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_coche'. Did you mean: 'crear_torre'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_rascacielos__lora.py\", line 7, in <module>",
+    "n_meshes": 1138,
+    "categorias": {
+      "edificio": 1,
+      "muro": 100,
+      "ventana": 100,
+      "losa": 25,
+      "columna": 500,
+      "techo_plano": 1,
+      "arbol": 1,
+      "sofa": 1,
+      "mesa": 1
+    },
+    "bbox": [
+      -12.5,
+      -12.5,
+      0.0,
+      16.0,
+      16.0,
+      92.80000305175781
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 9994,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_rascacielos__lora.png"
+  },
+  "foto_sala__lora": {
+    "ok": true,
+    "error": null,
+    "n_meshes": 124,
+    "categorias": {
+      "edificio": 1,
+      "muro": 12,
+      "ventana": 9,
+      "losa": 3,
+      "columna": 36,
+      "techo_plano": 1,
+      "sofa": 2,
+      "silla": 2,
+      "mesa": 1
+    },
+    "bbox": [
+      -0.2000003308057785,
+      0.0,
+      0.0,
+      10.0,
+      8.0,
+      9.199999809265137
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 1064,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3_reparar_saneado/foto_sala__lora.png"
+  }
+}

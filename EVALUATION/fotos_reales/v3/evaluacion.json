@@ -1,0 +1,137 @@
+{
+  "foto_apartamentos__lora": {
+    "ok": false,
+    "error": "ValueError: No se encontró objeto MESH válido. Pasa el root del activo o el MESH directamente.",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_apartamentos__lora.py\", line 27, in <module>",
+    "n_meshes": 25,
+    "categorias": {
+      "losa": 5,
+      "muro": 20
+    },
+    "bbox": [
+      0.0,
+      -5.0,
+      0.0,
+      24.0,
+      5.0,
+      17.5
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 200,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_apartamentos__lora.png"
+  },
+  "foto_bodega__lora": {
+    "ok": false,
+    "error": "TypeError: crear_edificio_n_pisos() got an unexpected keyword argument 'con_tejado'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_bodega__lora.py\", line 6, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "foto_casa_usuario__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_patio'. Did you mean: 'crear_piso'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_casa_usuario__lora.py\", line 17, in <module>",
+    "n_meshes": 11,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1
+    },
+    "bbox": [
+      -0.5,
+      -0.5,
+      0.0,
+      14.5,
+      10.5,
+      7.724802017211914
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 92,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_casa_usuario__lora.png"
+  },
+  "foto_casa_wiki__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_área_con_huecos'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_casa_wiki__lora.py\", line 16, in <module>",
+    "n_meshes": 11,
+    "categorias": {
+      "casa": 1,
+      "muro": 8,
+      "losa": 2,
+      "tejado_dos_aguas": 1
+    },
+    "bbox": [
+      -0.6000000238418579,
+      -0.6000000238418579,
+      0.0,
+      17.399999618530273,
+      14.300000190734863,
+      8.425202369689941
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 92,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_casa_wiki__lora.png"
+  },
+  "foto_dormitorio__lora": {
+    "ok": false,
+    "error": "AttributeError: module 'blender_arch' has no attribute 'crear_noche'. Did you mean: 'crear_torre'?",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_dormitorio__lora.py\", line 24, in <module>",
+    "n_meshes": 10,
+    "categorias": {
+      "habitacion": 1,
+      "muro": 4,
+      "piso": 1,
+      "techo_plano": 1,
+      "cama": 1
+    },
+    "bbox": [
+      -0.20000022649765015,
+      0.0,
+      -0.20000000298023224,
+      4.400000095367432,
+      5.399999618530273,
+      3.0
+    ],
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 80,
+    "render": "/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_dormitorio__lora.png"
+  },
+  "foto_rascacielos__lora": {
+    "ok": false,
+    "error": "TypeError: crear_edificio_n_pisos() got an unexpected keyword argument 'con_tejado'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_rascacielos__lora.py\", line 5, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  },
+  "foto_sala__lora": {
+    "ok": false,
+    "error": "TypeError: crear_edificio_n_pisos() got an unexpected keyword argument 'con_tejado'",
+    "linea": "File \"/home/juliandev/Desktop/PROGRAMACION_Y_DISEÑO/MISIS/5TO_SEMESTRE/TESIS_1/ASISTENTE-3D/EVALUATION/fotos_reales/v3/foto_sala__lora.py\", line 6, in <module>",
+    "n_meshes": 0,
+    "categorias": {},
+    "bbox": null,
+    "aislados": 0,
+    "ejemplos_aislados": [],
+    "bajo_suelo": 0,
+    "n_vertices": 0
+  }
+}

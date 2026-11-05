@@ -1,0 +1,25 @@
+import blender_arch as A
+
+A.limpiar_escena()
+
+# Casa tipo familiar
+casa = A.crear_casa_n_pisos(
+    nombre="CasaFamiliar",
+    pisos=2,
+    ancho=14.0, fondo=10.0, alto_piso=2.8,
+    grosor_muro=0.2, grosor_losa=0.2,
+    con_tejado=True, altura_cumbrera=2.0, voladizo=0.5,
+    material_muro="Ladrillo_Rojo", material_losa="Hormigon", material_tejado="Teja",
+    origen=(0, 0, 0)
+)
+
+# Mobiliario exterior
+A.crear_patio("Patio", ancho=14.0, fondo=10.0, espesor=0.15, origen=(-7, -5, 0), material="Concreto_Piso")
+A.crear_puerta("PuertaPrincipal", ancho=2.0, alto=2.1, origen=(4.5, -0.15, 0), material_panel="Madera_Roble", material_marco="Marco_Negro")
+A.crear_ventana("VentanaPrincipal", ancho=1.5, alto=1.2, origen=(6.0, -0.15, 0.9), material_vidrio="Vidrio", material_marco="Marco_Negro")
+A.crear_arbol_simple("Arbol1", origen=(10, 3, 0))
+A.crear_arbol_simple("Arbol2", origen=(10, -3, 0))
+
+# Iluminación y cámara
+A.agregar_luz("LuzSol", tipo="SUN", ubicacion=(5, -10, 10), energia=2.5)
+A.crear_camara("CamaraFachada", ubicacion=(15, -12, 6), rotacion=(75, 0, 0))

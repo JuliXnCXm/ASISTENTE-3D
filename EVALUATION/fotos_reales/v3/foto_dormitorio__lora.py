@@ -1,0 +1,90 @@
+import blender_arch as A
+
+A.limpiar_escena()
+
+# --- ESTRUCTURA Y VOLUPTERIA ---
+A.crear_habitacion(
+    nombre="Dormitorio",
+    ancho=4.0,
+    fondo=5.0,
+    alto=2.8,
+    material_muro="Muro_Pintura",
+    material_suelo="Parquet"
+)
+
+# --- MOBILIARIO ---
+A.crear_cama(
+    nombre="Cama_Doble",
+    ancho=1.6,
+    largo=2.0,
+    origen=(1.2, 2.0, 0),
+    material_colchon="Textil_Blanco",
+    material_base="Madera_Roble"
+)
+A.crear_noche(
+    nombre="Luz_Cama",
+    origen=(1.2, 2.0, 0.9),
+    material="Luz"
+)
+A.crear_noche(
+    nombre="Luz_Cama_2",
+    origen=(2.8, 2.0, 0.9),
+    material="Luz"
+)
+
+A.crear_mesa(
+    nombre="Mesa_Noche_1",
+    ancho=0.4,
+    fondo=0.4,
+    alto=0.6,
+    origen=(0.8, 1.5, 0),
+    material_tablero="Madera_Roble"
+)
+A.crear_mesa(
+    nombre="Mesa_Noche_2",
+    ancho=0.4,
+    fondo=0.4,
+    alto=0.6,
+    origen=(3.2, 1.5, 0),
+    material_tablero="Madera_Roble"
+)
+
+A.crear_armario(
+    nombre="Armario",
+    ancho=1.8,
+    alto=2.4,
+    fondo=0.6,
+    origen=(0.1, 0.1, 0),
+    material_cuerpo="MDF_Blanco"
+)
+
+A.crear_puerta(
+    nombre="Puerta_Acceso",
+    ancho=0.9,
+    alto=2.1,
+    origen=(0.1, 0.1, 0),
+    material="Madera_Roble"
+)
+
+A.crear_ventana(
+    nombre="Ventana_Frente",
+    ancho=2.0,
+    alto=1.2,
+    origen=(1.0, 0.1, 1.2),
+    material_marco="Marco_Negro",
+    material_vidrio="Vidrio"
+)
+
+# --- ILUMINACION Y CÁMARA ---
+A.agregar_luz(
+    nombre="Luz_Principal",
+    tipo="AREA",
+    ubicacion=(2.0, 2.5, 2.7),
+    energia=500
+)
+A.crear_camara(
+    nombre="Camara_Dormitorio",
+    ubicacion=(2.0, -3, 1.5),
+    rotacion=(80, 0, 0),
+    activa=True
+)

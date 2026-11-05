@@ -1,0 +1,10 @@
+import blender_arch as A
+A.limpiar_escena()
+edificio = A.crear_edificio_n_pisos(nombre='Apartamento', pisos=3, ancho=10, fondo=8, alto_piso=3.0, grosor_muro=0.2, grosor_losa=0.2, material_muro='Muro_Pintura_Gris', material_losa='Hormigon')
+A.crear_sofa('Sofa_Principal', ancho=2.5, origen=(1.5, 2.0, 0.2), material='Tela_Blanca')
+A.crear_sofa('Sofa_Secundario', ancho=2.5, origen=(6.5, 2.0, 0.2), material='Tela_Blanca')
+A.crear_silla('Silla_1', origen=(3.0, 3.5, 0.2), material='Cuero')
+A.crear_silla('Silla_2', origen=(5.0, 3.5, 0.2), material='Cuero')
+A.crear_mesa('Mesa_Central', ancho=1.2, fondo=0.6, alto=0.45, origen=(4.5, 4.5, 0.2), material_tablero='Madera_Roble')
+A.agregar_luz('Luz_Solar', tipo='SUN', ubicacion=(-5, -5, 10), energia=2.5)
+A.crear_camara('Camara', ubicacion=(5, -6, 4), rotacion=(70, 0, 0), activa=True)

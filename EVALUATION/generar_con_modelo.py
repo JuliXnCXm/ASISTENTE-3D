@@ -46,6 +46,30 @@ GENERALIZACION = [
     ("gen_casa_1p", "Diseña una casa de un piso de 12x9 metros con tres habitaciones, un baño, cocina y sala comedor."),
 ]
 
+# Pedido fijo para fotos reales (idéntico para todas: no describe la foto)
+PROMPT_FOTO = ("Modela en Blender el edificio o espacio de la fotografía de referencia, "
+               "con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.")
+
+
+def profundidad_fotos(fotos, carpeta):
+    """Depth Anything V2 Metric sobre fotos reales -> <carpeta>/<stem>_depth_est.npz (sin ancla:
+    escala 1.0, como un usuario que solo manda la foto). Libera la GPU al terminar."""
+    import numpy as np
+    sys.path.insert(0, os.path.join(ROOT, "DATASET", "scripts"))
+    from estimar_profundidad import Estimador
+    os.makedirs(carpeta, exist_ok=True)
+    est, out = Estimador("depth-anything/Depth-Anything-V2-Metric-Indoor-Large-hf"), {}
+    for f in fotos:
+        stem = os.path.splitext(os.path.basename(f))[0]
+        d = est(Image.open(f).convert("RGB"))
+        npz = os.path.join(carpeta, f"{stem}_depth_est.npz")
+        np.savez_compressed(npz, depth=d.astype(np.float16))
+        out[f] = npz
+        print(f"  profundidad {stem}: {np.percentile(d, 2):.1f}–{np.percentile(d, 98):.1f} m (sin ancla)")
+    del est
+    torch.cuda.empty_cache()
+    return out
+
 
 def leer_jsonl_tolerante(path):
     s = open(path, encoding="utf-8").read()
@@ -170,6 +194,9 @@ def main():
     ap.add_argument("--reparar", type=int, default=0, help="rondas máximas de validación + corrección")
     ap.add_argument("--blender", default="/snap/bin/blender", help="'' = solo validación estática")
     ap.add_argument("--sanear", action="store_true", help="quitar argumentos inexistentes del DSL (sin modelo)")
+    ap.add_argument("--fotos", nargs="*", default=[], help="fotos reales (generalización con imagen)")
+    ap.add_argument("--prompt_foto", default=PROMPT_FOTO)
+    ap.add_argument("--sin_generalizacion", action="store_true", help="omitir los 11 prompts de texto")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
     sys.path.insert(0, HERE)
@@ -189,8 +216,14 @@ def main():
         mm = r.get("multimodal", {}) if args.con_imagen else {}
         casos.append(dict(id=f"test_{r['id']}", tipo="test", prompt=user.replace("<image>\n", ""),
                           mm=mm, referencia=ref))
-    for cid, p in GENERALIZACION:
+    for cid, p in ([] if args.sin_generalizacion else GENERALIZACION):
         casos.append(dict(id=cid, tipo="generalizacion", prompt=p, mm={}, referencia=None))
+    if args.fotos:
+        deps = profundidad_fotos(args.fotos, os.path.join(args.out, "profundidad"))
+        for f in args.fotos:
+            mm = {"image": os.path.abspath(f), "metric_depth": deps[f]}
+            casos.append(dict(id="foto_" + os.path.splitext(os.path.basename(f))[0], tipo="foto",
+                              prompt=args.prompt_foto, mm=mm, referencia=None))
 
     print(f"Cargando {args.base} en 4 bits + LoRA {args.lora} ...")
     bnb = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
@@ -208,6 +241,9 @@ def main():
         bloques, cam_txt = preparar_multimodal(
             {k: v for k, v in caso["mm"].items() if not (k == "metric_depth" and args.fuente_profundidad == "ninguna")},
             args.fuente_profundidad) if caso["mm"] else ([], "")
+        if caso["tipo"] == "foto":
+            bloques = [(i, im.resize((im.width * 640 // max(im.size), im.height * 640 // max(im.size))))
+                       for i, im in bloques]
         pedido = caso["prompt"]
         if recuperador and args.rag_firmas:
             pedido = pedido.replace("<image>\n", "").strip() + texto_rag(caso["prompt"], recuperador, args.rag_firmas)

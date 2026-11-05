@@ -1,0 +1,155 @@
+[
+  {
+    "id": "foto_apartamentos",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela en Blender el edificio o espacio de la fotografía de referencia, con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.",
+    "n_imagenes": 2,
+    "tokens": 2454,
+    "segundos": 79.4,
+    "truncado": false,
+    "archivo": "foto_apartamentos__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 40: la función A.crear_tejado_plano no existe en blender_arch"
+      ],
+      [
+        "ValueError: No se encontró objeto MESH válido. Pasa el root del activo o el MESH directamente. (en: line 20)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_bodega",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela en Blender el edificio o espacio de la fotografía de referencia, con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.",
+    "n_imagenes": 2,
+    "tokens": 383,
+    "segundos": 13.7,
+    "truncado": false,
+    "archivo": "foto_bodega__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'con_tejado'",
+      "A.crear_edificio_n_pisos: quitado 'altura_cumbrera'",
+      "A.crear_edificio_n_pisos: quitado 'voladizo'",
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "foto_casa_usuario",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela en Blender el edificio o espacio de la fotografía de referencia, con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.",
+    "n_imagenes": 2,
+    "tokens": 1284,
+    "segundos": 41.4,
+    "truncado": false,
+    "archivo": "foto_casa_usuario__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 17: la función A.crear_patio no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.crear_patio no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_casa_wiki",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela en Blender el edificio o espacio de la fotografía de referencia, con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.",
+    "n_imagenes": 2,
+    "tokens": 2817,
+    "segundos": 88.6,
+    "truncado": false,
+    "archivo": "foto_casa_wiki__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 16: la función A.crear_área_con_huecos no existe en blender_arch",
+        "línea 17: la función A.crear_pavimento no existe en blender_arch"
+      ],
+      [
+        "línea 5: la función A.crear_pavimento no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_dormitorio",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela en Blender el edificio o espacio de la fotografía de referencia, con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.",
+    "n_imagenes": 2,
+    "tokens": 1195,
+    "segundos": 39.2,
+    "truncado": false,
+    "archivo": "foto_dormitorio__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 5: la función A.crear_noche no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": [
+      "A.crear_puerta: quitado 'material'"
+    ]
+  },
+  {
+    "id": "foto_rascacielos",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela en Blender el edificio o espacio de la fotografía de referencia, con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.",
+    "n_imagenes": 2,
+    "tokens": 1213,
+    "segundos": 39.4,
+    "truncado": false,
+    "archivo": "foto_rascacielos__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 4: la función A.crear_árbol_simple no existe en blender_arch",
+        "línea 7: la función A.crear_coche no existe en blender_arch"
+      ],
+      [
+        "línea 7: la función A.crear_coche no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'con_tejado'",
+      "A.crear_edificio_n_pisos: quitado 'altura_cumbrera'",
+      "A.crear_edificio_n_pisos: quitado 'voladizo'",
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "foto_sala",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela en Blender el edificio o espacio de la fotografía de referencia, con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.",
+    "n_imagenes": 2,
+    "tokens": 438,
+    "segundos": 15.2,
+    "truncado": false,
+    "archivo": "foto_sala__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'con_tejado'",
+      "A.crear_edificio_n_pisos: quitado 'altura_cumbrera'",
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  }
+]

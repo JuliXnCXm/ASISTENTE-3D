@@ -1,0 +1,123 @@
+[
+  {
+    "id": "gen_casa_2p",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Diseña una casa de dos pisos de 8x10 metros con tejado a dos aguas, una puerta principal y ventanas en la fachada frontal.",
+    "n_imagenes": 0,
+    "tokens": 415,
+    "segundos": 14.7,
+    "truncado": false,
+    "archivo": "gen_casa_2p__lora.py"
+  },
+  {
+    "id": "gen_oficinas_8p",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Genera un edificio de oficinas de 8 pisos de 20x15 metros con columnas estructurales de hormigón y ventanas en la fachada.",
+    "n_imagenes": 0,
+    "tokens": 305,
+    "segundos": 10.4,
+    "truncado": false,
+    "archivo": "gen_oficinas_8p__lora.py"
+  },
+  {
+    "id": "gen_rascacielos_30p",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Diseña un rascacielos de 30 pisos con planta cuadrada de 24x24 metros, estructura de columnas y fachada de vidrio.",
+    "n_imagenes": 0,
+    "tokens": 303,
+    "segundos": 10.9,
+    "truncado": false,
+    "archivo": "gen_rascacielos_30p__lora.py"
+  },
+  {
+    "id": "gen_habitacion",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Crea un dormitorio de 4x3.5 metros con una cama doble, un armario y una ventana.",
+    "n_imagenes": 0,
+    "tokens": 353,
+    "segundos": 11.9,
+    "truncado": false,
+    "archivo": "gen_habitacion__lora.py"
+  },
+  {
+    "id": "gen_escalera",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Modela una escalera recta de 14 peldaños con barandas a ambos lados que conecte dos pisos de 2.8 m.",
+    "n_imagenes": 0,
+    "tokens": 236,
+    "segundos": 7.9,
+    "truncado": false,
+    "archivo": "gen_escalera__lora.py"
+  },
+  {
+    "id": "gen_torre_nucleo",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Diseña una torre de 20 pisos de 30x30 metros con núcleo central de hormigón, columnas perimetrales y muro cortina de vidrio.",
+    "n_imagenes": 0,
+    "tokens": 410,
+    "segundos": 13.9,
+    "truncado": false,
+    "archivo": "gen_torre_nucleo__lora.py"
+  },
+  {
+    "id": "gen_torre_girada",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Crea una torre residencial de 25 pisos con planta de 20x20 metros que gire 2 grados en cada piso.",
+    "n_imagenes": 0,
+    "tokens": 82,
+    "segundos": 2.9,
+    "truncado": false,
+    "archivo": "gen_torre_girada__lora.py"
+  },
+  {
+    "id": "gen_cocina",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Diseña una cocina de 4x3 metros con mesón en L, una mesa con cuatro sillas y una ventana.",
+    "n_imagenes": 0,
+    "tokens": 620,
+    "segundos": 20.9,
+    "truncado": false,
+    "archivo": "gen_cocina__lora.py"
+  },
+  {
+    "id": "gen_sala",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Modela una sala de estar de 6x5 metros con un sofá, una mesa de centro, dos sillas y una ventana grande.",
+    "n_imagenes": 0,
+    "tokens": 354,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "gen_sala__lora.py"
+  },
+  {
+    "id": "gen_nave_industrial",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Genera una nave industrial de 30x20 metros y 8 metros de altura con columnas de acero cada 6 metros y cubierta plana.",
+    "n_imagenes": 0,
+    "tokens": 562,
+    "segundos": 18.7,
+    "truncado": false,
+    "archivo": "gen_nave_industrial__lora.py"
+  },
+  {
+    "id": "gen_casa_1p",
+    "tipo": "generalizacion",
+    "variante": "lora",
+    "prompt": "Diseña una casa de un piso de 12x9 metros con tres habitaciones, un baño, cocina y sala comedor.",
+    "n_imagenes": 0,
+    "tokens": 461,
+    "segundos": 15.2,
+    "truncado": false,
+    "archivo": "gen_casa_1p__lora.py"
+  }
+]

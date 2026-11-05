@@ -30,6 +30,12 @@ GENERALIZACION = [
     ("gen_rascacielos_30p", "Diseña un rascacielos de 30 pisos con planta cuadrada de 24x24 metros, estructura de columnas y fachada de vidrio."),
     ("gen_habitacion", "Crea un dormitorio de 4x3.5 metros con una cama doble, un armario y una ventana."),
     ("gen_escalera", "Modela una escalera recta de 14 peldaños con barandas a ambos lados que conecte dos pisos de 2.8 m."),
+    ("gen_torre_nucleo", "Diseña una torre de 20 pisos de 30x30 metros con núcleo central de hormigón, columnas perimetrales y muro cortina de vidrio."),
+    ("gen_torre_girada", "Crea una torre residencial de 25 pisos con planta de 20x20 metros que gire 2 grados en cada piso."),
+    ("gen_cocina", "Diseña una cocina de 4x3 metros con mesón en L, una mesa con cuatro sillas y una ventana."),
+    ("gen_sala", "Modela una sala de estar de 6x5 metros con un sofá, una mesa de centro, dos sillas y una ventana grande."),
+    ("gen_nave_industrial", "Genera una nave industrial de 30x20 metros y 8 metros de altura con columnas de acero cada 6 metros y cubierta plana."),
+    ("gen_casa_1p", "Diseña una casa de un piso de 12x9 metros con tres habitaciones, un baño, cocina y sala comedor."),
 ]
 
 

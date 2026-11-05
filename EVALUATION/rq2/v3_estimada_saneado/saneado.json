@@ -1,0 +1,12 @@
+{
+ "gen_casa_1p__lora.py": [
+  "A.crear_casa_n_pisos: quitado 'con_techo_plano'"
+ ],
+ "test_p3248__lora.py": [
+  "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+ ],
+ "test_p3516__lora.py": [
+  "A.crear_edificio_n_pisos: quitado 'modulo_x'",
+  "A.crear_edificio_n_pisos: quitado 'modulo_y'"
+ ]
+}

@@ -9,6 +9,14 @@ de mensajes que train_qlora_multimodal.py. Genera también con el modelo base
 Uso:
   python EVALUATION/generar_con_modelo.py --out EVALUATION/resultados_local
   python EVALUATION/generar_con_modelo.py --solo_lora --n_test 10
+  # inferencia aumentada (no toca el entrenamiento):
+  python EVALUATION/generar_con_modelo.py --solo_lora --rag_firmas 6 --reparar 2
+
+--rag_firmas K : añade al pedido las K firmas del DSL más relevantes (RAG sobre blender_arch.py)
+--sanear       : quita de forma determinista (sin modelo) los argumentos que el DSL no acepta
+--reparar N    : hasta N rondas de validación (estática de API + ejecución en Blender) y
+                 corrección; el modelo recibe su propio código como 'Código base' (formato
+                 de las tareas de edición del dataset) junto al error y las firmas reales.
 """
 import argparse, json, os, re, sys, time
 import torch
@@ -101,6 +109,48 @@ def construir_mensajes(texto, bloques=(), cam_txt=""):
             {"role": "user", "content": content}]
 
 
+def texto_rag(prompt, recuperador, k):
+    from dsl_api import formatear_firmas
+    return "\n\nFunciones del DSL blender_arch relevantes (firmas exactas):\n" + \
+        formatear_firmas(recuperador.buscar(prompt, k))
+
+
+def texto_reparacion(code, errs, prompt, recuperador):
+    from dsl_api import FIRMAS, formatear_firmas
+    firmas = []
+    for e in errs:
+        firmas += recuperador.para_error(e)
+    firmas = list(dict.fromkeys(firmas))[:6]
+    lista = ", ".join(sorted(FIRMAS))
+    instr = ("Corrige el código para que se ejecute sin errores en Blender.\nErrores:\n" +
+             "\n".join(f"- {e['msg']}" for e in errs[:6]) +
+             f"\nFunciones que existen en blender_arch (no hay otras): {lista}.")
+    if firmas:
+        instr += "\nFirmas exactas útiles:\n" + formatear_firmas(firmas)
+    instr += ("\nUsa solo funciones y argumentos que existan; lo que no tenga función propia "
+              "constrúyelo con las funciones existentes o con bpy. Mantén el resto del código y lo "
+              f"pedido originalmente: \"{prompt.strip()}\"")
+    return f"Código base:\n```python\n{code}\n```\nInstrucción: {instr}"
+
+
+def validar(code, blender, carpeta, nombre):
+    """Errores de API (estáticos) o de ejecución en Blender. [] = el código corre."""
+    from dsl_api import validar_estatico
+    errs = validar_estatico(code)
+    if errs or not blender:
+        return errs
+    from ejecutar_en_blender import evaluar
+    py = os.path.join(carpeta, nombre + ".py")
+    open(py, "w").write(code)
+    r = evaluar(py, blender, timeout=120)
+    if r.get("ok"):
+        return []
+    msg = str(r.get("error"))
+    if r.get("linea"):
+        msg += f" (en: {r['linea'].split(', in ')[0].split(', ')[-1]})"
+    return [dict(tipo="ejecucion", msg=msg)]
+
+
 def limpiar_codigo(txt):
     m = re.search(r"```(?:python)?\s*(.*?)```", txt, re.DOTALL)
     return (m.group(1) if m else txt).strip()
@@ -116,8 +166,20 @@ def main():
     ap.add_argument("--solo_lora", action="store_true")
     ap.add_argument("--fuente_profundidad", choices=["estimada", "gt", "ninguna"], default="estimada")
     ap.add_argument("--max_new_tokens", type=int, default=2048)
+    ap.add_argument("--rag_firmas", type=int, default=0, help="K firmas del DSL recuperadas por pedido")
+    ap.add_argument("--reparar", type=int, default=0, help="rondas máximas de validación + corrección")
+    ap.add_argument("--blender", default="/snap/bin/blender", help="'' = solo validación estática")
+    ap.add_argument("--sanear", action="store_true", help="quitar argumentos inexistentes del DSL (sin modelo)")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
+    sys.path.insert(0, HERE)
+    recuperador = None
+    if args.rag_firmas or args.reparar:
+        from dsl_api import RecuperadorFirmas
+        recuperador = RecuperadorFirmas()
+    dir_intentos = os.path.join(args.out, "intentos")
+    if args.reparar:
+        os.makedirs(dir_intentos, exist_ok=True)
 
     casos = []
     test = leer_jsonl_tolerante(os.path.join(ROOT, "TRAINING/data/test_multimodal.jsonl"))
@@ -146,12 +208,15 @@ def main():
         bloques, cam_txt = preparar_multimodal(
             {k: v for k, v in caso["mm"].items() if not (k == "metric_depth" and args.fuente_profundidad == "ninguna")},
             args.fuente_profundidad) if caso["mm"] else ([], "")
-        msgs = construir_mensajes(caso["prompt"], bloques, cam_txt)
-        text = processor.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+        pedido = caso["prompt"]
+        if recuperador and args.rag_firmas:
+            pedido = pedido.replace("<image>\n", "").strip() + texto_rag(caso["prompt"], recuperador, args.rag_firmas)
         imgs = [im for _, im in bloques] or None
-        inputs = processor(text=[text], images=imgs, return_tensors="pt").to(model.device)
-        for var in variantes:
-            t0 = time.time()
+
+        def generar(texto_usuario, var):
+            msgs = construir_mensajes(texto_usuario, bloques, cam_txt)
+            text = processor.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+            inputs = processor(text=[text], images=imgs, return_tensors="pt").to(model.device)
             with torch.no_grad():
                 if var == "base":
                     with model.disable_adapter():
@@ -161,17 +226,45 @@ def main():
                     out = model.generate(**inputs, max_new_tokens=args.max_new_tokens,
                                          do_sample=False, repetition_penalty=1.05)
             gen = out[0][inputs.input_ids.shape[1]:]
-            txt = processor.decode(gen, skip_special_tokens=True)
-            code = limpiar_codigo(txt)
-            dt = time.time() - t0
+            return limpiar_codigo(processor.decode(gen, skip_special_tokens=True)), len(gen)
+
+        for var in variantes:
+            t0 = time.time()
             nombre = f"{caso['id']}__{var}"
+            code, ntok = generar(pedido, var)
+            tokens, truncado, historial, saneos = ntok, ntok >= args.max_new_tokens, [], []
+
+            def _sanear(c):
+                if not (args.sanear and var == "lora"):
+                    return c
+                from dsl_api import sanear
+                c, cambios = sanear(c)
+                saneos.extend(cambios)
+                return c
+
+            code = _sanear(code)
+            if var == "lora":
+                for it in range(args.reparar):
+                    errs = validar(code, args.blender, dir_intentos, f"{nombre}_i{it}")
+                    historial.append([e["msg"] for e in errs])
+                    if not errs:
+                        break
+                    print(f"  [{nombre}] ronda {it + 1}: {errs[0]['msg'][:110]}", flush=True)
+                    code, ntok = generar(texto_reparacion(code, errs, caso["prompt"], recuperador), var)
+                    code = _sanear(code)
+                    tokens += ntok
+                    truncado = ntok >= args.max_new_tokens
+            dt = time.time() - t0
             with open(os.path.join(args.out, nombre + ".py"), "w") as f:
                 f.write(code)
             r = dict(id=caso["id"], tipo=caso["tipo"], variante=var, prompt=caso["prompt"],
-                     n_imagenes=len(bloques), tokens=len(gen), segundos=round(dt, 1),
-                     truncado=len(gen) >= args.max_new_tokens, archivo=nombre + ".py")
+                     n_imagenes=len(bloques), tokens=tokens, segundos=round(dt, 1),
+                     truncado=truncado, archivo=nombre + ".py",
+                     rondas_reparacion=max(0, len(historial) - (0 if historial and historial[-1] else 1))
+                     if historial else 0, errores_por_ronda=historial, saneado=saneos)
             resultados.append(r)
-            print(f"[{nombre}] {len(gen)} tokens en {dt:.0f}s{'  (TRUNCADO)' if r['truncado'] else ''}", flush=True)
+            print(f"[{nombre}] {tokens} tokens en {dt:.0f}s rondas={r['rondas_reparacion']}"
+                  f"{'  (TRUNCADO)' if r['truncado'] else ''}", flush=True)
         if caso["referencia"]:
             with open(os.path.join(args.out, f"{caso['id']}__referencia.py"), "w") as f:
                 f.write(limpiar_codigo(caso["referencia"]))

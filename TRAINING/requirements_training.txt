@@ -9,4 +9,5 @@ accelerate>=0.29.0
 wandb>=0.16.6
 scipy
 opencv-python-headless>=4.9.0
+OpenEXR>=3.3          # lector de los EXR de profundidad (OpenCV 5 ya no lee EXR)
 Pillow>=9.0.0

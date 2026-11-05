@@ -120,9 +120,31 @@ def texto_camara(path):
         return ""
 
 
+def leer_exr(path):
+    """EXR → ndarray float32 (H,W[,C]) o None.
+    Usa el paquete `OpenEXR` (pip install OpenEXR): OpenCV 5.x de pip NO trae soporte EXR
+    (cv2.imread devuelve None en silencio, así fue como el LoRA v2 entrenó sin profundidad).
+    OpenCV queda solo como respaldo."""
+    try:
+        import OpenEXR
+        with OpenEXR.File(path) as f:
+            ch = f.channels()
+            if "RGB" in ch:
+                return np.asarray(ch["RGB"].pixels, dtype=np.float32)
+            for nombre in ("Z", "V", "R", "Y"):
+                if nombre in ch:
+                    return np.asarray(ch[nombre].pixels, dtype=np.float32)
+            return np.asarray(next(iter(ch.values())).pixels, dtype=np.float32)
+    except ImportError:
+        pass
+    except Exception:
+        return None
+    return cv2.imread(path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
+
+
 def cargar_profundidad(path):
     """EXR métrico → (PIL RGB normalizada claro=cerca, min_m, max_m) o None si no es un pase Z válido."""
-    d = cv2.imread(path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
+    d = leer_exr(path)
     if d is None:
         return None
     if d.ndim == 3:
@@ -175,6 +197,17 @@ class QwenVLDataset(Dataset):
         print(f"[DATA] {os.path.basename(jsonl_path)}: {len(self.data)} ejemplos | "
               f"con imagen RGB encontrada: {n_img}/{n_ref} referenciadas"
               + (f" | profundidad: {n_depth}" if usar_profundidad else ""))
+
+        # Verificación real: que existan no basta, hay que poder LEER los EXR.
+        if usar_profundidad and n_depth:
+            muestra = [it["_depth"] for it in self.data if it["_depth"]][:: max(1, n_depth // 40)][:40]
+            ok = sum(cargar_profundidad(p) is not None for p in muestra)
+            print(f"[DATA] EXR legibles en muestra: {ok}/{len(muestra)}")
+            if ok < 0.9 * len(muestra):
+                raise SystemExit(
+                    f"[ERROR] Solo {ok}/{len(muestra)} EXR de profundidad se pudieron leer. "
+                    "Instala el lector: pip install OpenEXR  (OpenCV 5 no lee EXR). "
+                    "Para entrenar sin profundidad a propósito: --no-usar_profundidad")
 
     def _resolver(self, rel):
         if not rel:

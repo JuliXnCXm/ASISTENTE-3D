@@ -1,0 +1,13 @@
+import blender_arch as A
+A.limpiar_escena()
+casa = A.crear_casa_n_pisos(nombre='CasaFamiliar', pisos=2, ancho=12.0, fondo=15.0, alto_piso=2.8, con_tejado=True, altura_cumbrera=2.0, voladizo=0.5, origen=(0, 0, 0), material_muro='Ladrillo_Rojo', material_losa='Hormigon', material_tejado='Teja')
+A.crear_puerta('PuertaPrincipal', ancho=1.0, alto=2.1, origen=(4.5, 0.15, 0), material_panel='Madera', material_marco='Marco_Negro')
+A.crear_puerta('PuertaGaraje1', ancho=2.1, alto=2.1, origen=(2.5, 0.15, 0), material_panel='Metal', material_marco='Marco_Negro')
+A.crear_puerta('PuertaGaraje2', ancho=2.1, alto=2.1, origen=(9.4, 0.15, 0), material_panel='Metal', material_marco='Marco_Negro')
+A.crear_ventana('VentanaFrontal1', ancho=1.5, alto=1.2, origen=(4.5, 3.5, 0.9), material_marco='Marco_Negro', material_vidrio='Vidrio')
+A.crear_ventana('VentanaFrontal2', ancho=1.5, alto=1.2, origen=(10.5, 3.5, 0.9), material_marco='Marco_Negro', material_vidrio='Vidrio')
+A.crear_ventana('VentanaLateral1', ancho=1.5, alto=1.2, origen=(4.5, 7.5, 0.9), material_marco='Marco_Negro', material_vidrio='Vidrio')
+A.crear_ventana('VentanaLateral2', ancho=1.5, alto=1.2, origen=(10.5, 7.5, 0.9), material_marco='Marco_Negro', material_vidrio='Vidrio')
+A.crear_escalera_recta('EscaleraExterior', huella=0.28, contrahuella=0.175, ancho=1.1, num_peldanos=16, origen=(11.8, 14.8, 0), material='Madera')
+A.crear_arbol_simple('Arbol1', radio_copa=2.0, altura_copa=3.5, altura_tronco=2.0, origen=(3.0, 14.0, 0))
+A.crear_arbol_simple('Arbol2', radio_copa=1.5, altura_copa=2.5, altura_tronco=1.5, origen=(10.5, 14.0, 0))

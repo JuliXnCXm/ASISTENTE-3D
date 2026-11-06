@@ -1,0 +1,164 @@
+[
+  {
+    "id": "foto_apartamentos",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela un edificio de apartamentos de 4 pisos. Ancho x fondo: 15m x 10m. Tejado plano. 24 ventanas, 8 puertas, 1 garaje, 1 escalera, 24 barandas.",
+    "n_imagenes": 2,
+    "tokens": 2801,
+    "segundos": 93.5,
+    "truncado": false,
+    "archivo": "foto_apartamentos__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "ValueError: No se encontró objeto MESH válido. Pasa el root del activo o el MESH directamente. (en: line 25)"
+      ],
+      [
+        "ValueError: No se encontró objeto MESH válido. Pasa el root del activo o el MESH directamente. (en: line 25)"
+      ]
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "foto_bodega",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela un edificio industrial de tres pisos, 25x15 metros de ancho x fondo, con techo plano y chimenea. Incluye dos muros laterales, tres ventanas por piso, una puerta principal, dos columnas laterales, y un techo plano.",
+    "n_imagenes": 2,
+    "tokens": 370,
+    "segundos": 13.7,
+    "truncado": false,
+    "archivo": "foto_bodega__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_casa_usuario",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una casa de dos pisos con 12 metros de ancho por 15 metros de fondo. Tejado inclinado. 4 ventanas, 2 puertas, 2 garajes, 1 escalera, 2 árboles.",
+    "n_imagenes": 2,
+    "tokens": 1430,
+    "segundos": 47.9,
+    "truncado": false,
+    "archivo": "foto_casa_usuario__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 32: la función A.crear_escalera no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_casa_wiki",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una casa de dos pisos con un ancho de 15m x fondo de 20m y altura de 6m. Tejado inclinado. 12 ventanas, 4 puertas, 1 garaje, 1 chimenea, 1 árbol grande.",
+    "n_imagenes": 2,
+    "tokens": 1058,
+    "segundos": 35.8,
+    "truncado": false,
+    "archivo": "foto_casa_wiki__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 4: la función A.crear_horno no existe en blender_arch",
+        "línea 7: la función A.crear_camino no existe en blender_arch"
+      ],
+      [
+        "línea 6: la función A.crear_camino no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_casa_n_pisos: quitado 'ventanas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'ventana_ancho'",
+      "A.crear_casa_n_pisos: quitado 'ventana_alto'",
+      "A.crear_casa_n_pisos: quitado 'ventana_alfeizar'",
+      "A.crear_casa_n_pisos: quitado 'ventana_separacion'",
+      "A.crear_casa_n_pisos: quitado 'num_ventanas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'puertas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'puerta_ancho'",
+      "A.crear_casa_n_pisos: quitado 'puerta_alto'",
+      "A.crear_casa_n_pisos: quitado 'num_puertas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'puerta_origen'",
+      "A.crear_casa_n_pisos: quitado 'con_garaje'",
+      "A.crear_casa_n_pisos: quitado 'garaje_ancho'",
+      "A.crear_casa_n_pisos: quitado 'garaje_fondo'",
+      "A.crear_casa_n_pisos: quitado 'garaje_alto'",
+      "A.crear_casa_n_pisos: quitado 'garaje_material'"
+    ]
+  },
+  {
+    "id": "foto_dormitorio",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una habitación de hotel con dos camas individuales, dos mesas de noche, dos lámparas, dos ventanas, dos puertas, dos muros y un techo plano.",
+    "n_imagenes": 2,
+    "tokens": 950,
+    "segundos": 32.2,
+    "truncado": false,
+    "archivo": "foto_dormitorio__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_rascacielos",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela un rascacielos moderno de 45 pisos. Ancho x fondo: 100x100 metros. Tejado plano. Elementos principales: 200 muros, 400 ventanas, 10 columnas, 10 barandas, 100 losas, 10 escaleras.",
+    "n_imagenes": 2,
+    "tokens": 1329,
+    "segundos": 164.4,
+    "truncado": false,
+    "archivo": "foto_rascacielos__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 34: la función A.crear_escalera_rectangular no existe en blender_arch"
+      ],
+      [
+        "timeout 120s"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_sala",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una casa de dos pisos con un techo plano. Muros blancos, dos grandes ventanas, dos sofás blancos, una mesa baja rectangular, dos sillones tapizados, una televisión en el salón, dos árboles altos en macetas, dos armarios de madera, dos estanterías de madera, dos escaleras de caracol ocultas detrás de los árboles.",
+    "n_imagenes": 2,
+    "tokens": 1980,
+    "segundos": 64.5,
+    "truncado": false,
+    "archivo": "foto_sala__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 7: la función A.crear_sillon no existe en blender_arch",
+        "línea 9: la función A.crear_tv no existe en blender_arch",
+        "línea 14: la función A.crear_escalera no existe en blender_arch"
+      ],
+      [
+        "línea 9: la función A.crear_tv no existe en blender_arch",
+        "línea 14: la función A.crear_escalera no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_casa_n_pisos: quitado 'con_techo_plano'",
+      "A.crear_casa_n_pisos: quitado 'con_columnas'",
+      "A.crear_casa_n_pisos: quitado 'material_techo'"
+    ]
+  }
+]

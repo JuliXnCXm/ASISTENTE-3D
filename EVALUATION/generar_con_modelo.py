@@ -58,6 +58,16 @@ INSTR_DESCRIPCION = (
     "de edificio o espacio, número de pisos, dimensiones aproximadas en metros (ancho x fondo y "
     "altura), tipo de tejado o techo, y los elementos principales con su cantidad (puertas, "
     "ventanas, garaje, columnas, balcones o muebles). Máximo 70 palabras, sin explicaciones.")
+# v2: igual, pero restringida al vocabulario de elementos que el DSL sabe construir
+INSTR_DESCRIPCION_V2 = (
+    "Mira la fotografía y escribe UNA sola instrucción en español para un modelador 3D que "
+    "deba reconstruir lo que se ve. Empieza con un verbo (Modela, Diseña o Crea). Indica: tipo "
+    "de edificio o espacio, número de pisos, dimensiones aproximadas en metros (ancho x fondo y "
+    "altura), tipo de tejado o techo, y los elementos principales con su cantidad. Menciona SOLO "
+    "elementos de esta lista: muros, ventanas, puertas, garaje, tejado, losas, columnas, "
+    "escaleras, barandas, camas, sofás, mesas, sillas, armarios, estanterías, árboles. Omite "
+    "todo lo demás (vehículos, electrodomésticos, decoración, objetos pequeños). Sé realista "
+    "con las medidas: un piso mide unos 3 m de alto. Máximo 70 palabras, sin explicaciones.")
 
 
 def profundidad_fotos(fotos, carpeta):
@@ -208,6 +218,8 @@ def main():
     ap.add_argument("--sin_generalizacion", action="store_true", help="omitir los 11 prompts de texto")
     ap.add_argument("--describir_foto", action="store_true",
                     help="paso 1: Qwen base describe la foto y esa descripción es el pedido para el LoRA")
+    ap.add_argument("--descripcion", choices=["v1", "v2"], default="v1",
+                    help="v2 restringe la descripción a elementos que el DSL construye")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
     sys.path.insert(0, HERE)
@@ -257,7 +269,7 @@ def main():
                        for i, im in bloques]
         if caso["tipo"] == "foto" and args.describir_foto:
             foto_img = [im for t, im in bloques if t.startswith("Fotografía")]
-            m_desc = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": INSTR_DESCRIPCION}]}]
+            m_desc = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": INSTR_DESCRIPCION_V2 if args.descripcion == "v2" else INSTR_DESCRIPCION}]}]
             t_desc = processor.apply_chat_template(m_desc, tokenize=False, add_generation_prompt=True)
             inp = processor(text=[t_desc], images=foto_img, return_tensors="pt").to(model.device)
             with torch.no_grad(), model.disable_adapter():

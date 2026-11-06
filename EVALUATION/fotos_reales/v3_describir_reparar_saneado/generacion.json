@@ -1,0 +1,201 @@
+[
+  {
+    "id": "foto_apartamentos",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela un edificio residencial de 4 pisos, con dimensiones aproximadas de 20m x 15m x 18m. Techo plano. 24 ventanas, 6 balcones, 2 puertas de entrada, 1 garaje subterráneo.",
+    "n_imagenes": 2,
+    "tokens": 573,
+    "segundos": 21.1,
+    "truncado": false,
+    "archivo": "foto_apartamentos__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 4: la función A.crear_vehiculo no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'balcones_fachada'",
+      "A.crear_edificio_n_pisos: quitado 'balcon_ancho'",
+      "A.crear_edificio_n_pisos: quitado 'balcon_alfeizar'",
+      "A.crear_edificio_n_pisos: quitado 'puertas_fachada'",
+      "A.crear_edificio_n_pisos: quitado 'puerta_ancho'",
+      "A.crear_edificio_n_pisos: quitado 'puerta_alto'",
+      "A.crear_edificio_n_pisos: quitado 'material_balcon'",
+      "A.crear_edificio_n_pisos: quitado 'material_puerta'"
+    ]
+  },
+  {
+    "id": "foto_bodega",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela un edificio industrial de dos pisos con una fachada rectangular de 20x15 metros y un techo plano. Incluye dos chimeneas altas, tres grandes ventanas en cada piso, una puerta principal grande y varias pequeñas ventanas adicionales.",
+    "n_imagenes": 2,
+    "tokens": 625,
+    "segundos": 21.3,
+    "truncado": false,
+    "archivo": "foto_bodega__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_casa_usuario",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una casa de dos pisos con un ancho de 15x20 metros y una altura de 8 metros. Tejado inclinado. Puertas: 4, ventanas: 6, garaje: 2, columnas: 0, balcones: 0, muebles: 0.",
+    "n_imagenes": 2,
+    "tokens": 869,
+    "segundos": 29.0,
+    "truncado": false,
+    "archivo": "foto_casa_usuario__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 22: la función A.crear_coche no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.crear_coche no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_casa_wiki",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una casa de dos pisos con un ancho de 20m x fondo de 15m y altura de 8m. Techo inclinado con tejas negras. 16 ventanas, 4 puertas, 1 garaje, 2 chimeneas, 1 balcón grande y 1 pequeña terraza.",
+    "n_imagenes": 2,
+    "tokens": 578,
+    "segundos": 19.9,
+    "truncado": false,
+    "archivo": "foto_casa_wiki__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_casa_n_pisos: quitado 'ventanas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'ventana_ancho'",
+      "A.crear_casa_n_pisos: quitado 'ventana_alto'",
+      "A.crear_casa_n_pisos: quitado 'ventana_alfeizar'",
+      "A.crear_casa_n_pisos: quitado 'ventana_separacion'",
+      "A.crear_casa_n_pisos: quitado 'num_ventanas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'num_ventanas_lateral'",
+      "A.crear_casa_n_pisos: quitado 'puertas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'puerta_ancho'",
+      "A.crear_casa_n_pisos: quitado 'puerta_alto'",
+      "A.crear_casa_n_pisos: quitado 'num_puertas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'num_puertas_lateral'",
+      "A.crear_casa_n_pisos: quitado 'con_garaje'",
+      "A.crear_casa_n_pisos: quitado 'ancho_garaje'",
+      "A.crear_casa_n_pisos: quitado 'fondo_garaje'",
+      "A.crear_casa_n_pisos: quitado 'alto_cochera'",
+      "A.crear_casa_n_pisos: quitado 'material_garaje'",
+      "A.crear_casa_n_pisos: quitado 'con_chimenea'",
+      "A.crear_casa_n_pisos: quitado 'chimenea_fachada'",
+      "A.crear_casa_n_pisos: quitado 'chimenea_alto'",
+      "A.crear_casa_n_pisos: quitado 'chimenea_base'",
+      "A.crear_casa_n_pisos: quitado 'con_balcon'",
+      "A.crear_casa_n_pisos: quitado 'balcon_ancho'",
+      "A.crear_casa_n_pisos: quitado 'balcon_fondo'",
+      "A.crear_casa_n_pisos: quitado 'balcon_alfeizar'",
+      "A.crear_casa_n_pisos: quitado 'balcon_material'",
+      "A.crear_casa_n_pisos: quitado 'con_terrazas'",
+      "A.crear_casa_n_pisos: quitado 'terrazas_fachada'",
+      "A.crear_casa_n_pisos: quitado 'terrazas_alfeizar'",
+      "A.crear_casa_n_pisos: quitado 'terrazas_uso'"
+    ]
+  },
+  {
+    "id": "foto_dormitorio",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una habitación de hotel con una cama doble, dos mesillas de noche con lámparas, un espejo grande, una ventana con vista a árboles, dos cuadros en la pared, una alfombra de color claro, una mochila en el suelo y una toalla plegada sobre la cama.",
+    "n_imagenes": 2,
+    "tokens": 2153,
+    "segundos": 69.5,
+    "truncado": false,
+    "archivo": "foto_dormitorio__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 25: la función A.crear_toalla no existe en blender_arch",
+        "línea 30: la función A.crear_lampara no existe en blender_arch",
+        "línea 33: la función A.crear_espejo no existe en blender_arch",
+        "línea 37: la función A.agregar_textura no existe en blender_arch",
+        "línea 40: la función A.crear_cuadro no existe en blender_arch",
+        "línea 44: la función A.crear_alfombra no existe en blender_arch",
+        "línea 45: la función A.crear_mochila no existe en blender_arch"
+      ],
+      [
+        "línea 5: la función A.crear_toalla no existe en blender_arch",
+        "línea 8: la función A.crear_lampara no existe en blender_arch",
+        "línea 10: la función A.crear_espejo no existe en blender_arch",
+        "línea 12: la función A.agregar_textura no existe en blender_arch",
+        "línea 13: la función A.crear_cuadro no existe en blender_arch",
+        "línea 15: la función A.crear_alfombra no existe en blender_arch",
+        "línea 16: la función A.crear_mochila no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "foto_rascacielos",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela un rascacielos moderno de 45 pisos, 100x50 metros de base, techo plano, 200 ventanas, 10 puertas, 2 garajes, 10 columnas, 5 balcones.",
+    "n_imagenes": 2,
+    "tokens": 845,
+    "segundos": 101.9,
+    "truncado": false,
+    "archivo": "foto_rascacielos__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 5: la función A.crear_coche no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'puertas_fachada'",
+      "A.crear_edificio_n_pisos: quitado 'puerta_ancho'",
+      "A.crear_edificio_n_pisos: quitado 'puerta_alto'",
+      "A.crear_edificio_n_pisos: quitado 'puerta_origen'",
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "foto_sala",
+    "tipo": "foto",
+    "variante": "lora",
+    "prompt": "Modela una sala de estar en un edificio de apartamentos de dos pisos, con dimensiones aproximadas de 12m x 8m x 3m. Techo plano. 2 ventanas grandes, 1 puerta principal, 2 sillones, 1 sofá, 1 mesa baja, 1 televisor, 1 caja antigua, 1 planta artificial, 1 espejo grande.",
+    "n_imagenes": 2,
+    "tokens": 2432,
+    "segundos": 79.4,
+    "truncado": false,
+    "archivo": "foto_sala__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 45: la función A.crear_sillón no existe en blender_arch",
+        "línea 63: la función A.crear_tv no existe en blender_arch",
+        "línea 72: la función A.crear_caja no existe en blender_arch",
+        "línea 80: la función A.crear_planta no existe en blender_arch",
+        "línea 86: la función A.crear_espejo no existe en blender_arch"
+      ],
+      [
+        "línea 10: la función A.crear_tv no existe en blender_arch",
+        "línea 11: la función A.crear_caja no existe en blender_arch",
+        "línea 13: la función A.crear_espejo no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_arbol_simple: quitado 'altura'"
+    ]
+  }
+]

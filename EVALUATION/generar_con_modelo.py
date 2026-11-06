@@ -50,6 +50,15 @@ GENERALIZACION = [
 PROMPT_FOTO = ("Modela en Blender el edificio o espacio de la fotografía de referencia, "
                "con su volumetría, tejado o techo, puertas, ventanas y mobiliario visible.")
 
+# Paso 1 opcional (--describir_foto): el MISMO Qwen base (adaptador desactivado) convierte la
+# foto en un pedido textual con el estilo del dataset. Instrucción fija para todas las fotos.
+INSTR_DESCRIPCION = (
+    "Mira la fotografía y escribe UNA sola instrucción en español para un modelador 3D que "
+    "deba reconstruir lo que se ve. Empieza con un verbo (Modela, Diseña o Crea). Indica: tipo "
+    "de edificio o espacio, número de pisos, dimensiones aproximadas en metros (ancho x fondo y "
+    "altura), tipo de tejado o techo, y los elementos principales con su cantidad (puertas, "
+    "ventanas, garaje, columnas, balcones o muebles). Máximo 70 palabras, sin explicaciones.")
+
 
 def profundidad_fotos(fotos, carpeta):
     """Depth Anything V2 Metric sobre fotos reales -> <carpeta>/<stem>_depth_est.npz (sin ancla:
@@ -197,6 +206,8 @@ def main():
     ap.add_argument("--fotos", nargs="*", default=[], help="fotos reales (generalización con imagen)")
     ap.add_argument("--prompt_foto", default=PROMPT_FOTO)
     ap.add_argument("--sin_generalizacion", action="store_true", help="omitir los 11 prompts de texto")
+    ap.add_argument("--describir_foto", action="store_true",
+                    help="paso 1: Qwen base describe la foto y esa descripción es el pedido para el LoRA")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
     sys.path.insert(0, HERE)
@@ -244,6 +255,15 @@ def main():
         if caso["tipo"] == "foto":
             bloques = [(i, im.resize((im.width * 640 // max(im.size), im.height * 640 // max(im.size))))
                        for i, im in bloques]
+        if caso["tipo"] == "foto" and args.describir_foto:
+            foto_img = [im for t, im in bloques if t.startswith("Fotografía")]
+            m_desc = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": INSTR_DESCRIPCION}]}]
+            t_desc = processor.apply_chat_template(m_desc, tokenize=False, add_generation_prompt=True)
+            inp = processor(text=[t_desc], images=foto_img, return_tensors="pt").to(model.device)
+            with torch.no_grad(), model.disable_adapter():
+                o = model.generate(**inp, max_new_tokens=200, do_sample=False, repetition_penalty=1.05)
+            caso["prompt"] = processor.decode(o[0][inp.input_ids.shape[1]:], skip_special_tokens=True).strip()
+            print(f"  [{caso['id']}] descripción: {caso['prompt']}", flush=True)
         pedido = caso["prompt"]
         if recuperador and args.rag_firmas:
             pedido = pedido.replace("<image>\n", "").strip() + texto_rag(caso["prompt"], recuperador, args.rag_firmas)

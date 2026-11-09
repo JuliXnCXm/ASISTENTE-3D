@@ -216,6 +216,7 @@ def main():
     ap.add_argument("--fotos", nargs="*", default=[], help="fotos reales (generalización con imagen)")
     ap.add_argument("--prompt_foto", default=PROMPT_FOTO)
     ap.add_argument("--sin_generalizacion", action="store_true", help="omitir los 11 prompts de texto")
+    ap.add_argument("--tareas", default="", help="jsonl de tareas (id, prompt), p.ej. benchmark_espacial/tareas.jsonl")
     ap.add_argument("--describir_foto", action="store_true",
                     help="paso 1: Qwen base describe la foto y esa descripción es el pedido para el LoRA")
     ap.add_argument("--descripcion", choices=["v1", "v2"], default="v1",
@@ -241,6 +242,9 @@ def main():
                           mm=mm, referencia=ref))
     for cid, p in ([] if args.sin_generalizacion else GENERALIZACION):
         casos.append(dict(id=cid, tipo="generalizacion", prompt=p, mm={}, referencia=None))
+    if args.tareas:
+        for t in map(json.loads, open(args.tareas)):
+            casos.append(dict(id=t["id"], tipo="tarea", prompt=t["prompt"], mm={}, referencia=None))
     if args.fotos:
         deps = profundidad_fotos(args.fotos, os.path.join(args.out, "profundidad"))
         for f in args.fotos:
@@ -311,6 +315,9 @@ def main():
                 return c
 
             code = _sanear(code)
+            if var == "lora" and args.reparar:  # primer intento (sin reparar), para comparar
+                with open(os.path.join(args.out, f"{caso['id']}__inicial.py"), "w") as f:
+                    f.write(code)
             if var == "lora":
                 for it in range(args.reparar):
                     errs = validar(code, args.blender, dir_intentos, f"{nombre}_i{it}")

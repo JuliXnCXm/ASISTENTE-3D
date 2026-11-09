@@ -1,0 +1,4 @@
+*.escena.json
+*.runner_tmp.py
+__pycache__/
+resultados/*/intentos/

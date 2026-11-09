@@ -1,0 +1,2698 @@
+[
+  {
+    "id": "esp_001",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 14 x 10 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada frontal, a la altura del primer piso.",
+    "n_imagenes": 0,
+    "tokens": 302,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_001__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_002",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 8 metros con altura de piso de 3 m y techo plano. Adosa en la fachada frontal un anexo de un piso de 6 metros de largo (a lo largo de la fachada) por 3 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 273,
+    "segundos": 10.4,
+    "truncado": false,
+    "archivo": "esp_002__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_003",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 8 metros con altura de piso de 3 m y techo plano. Sobre la entrada de el lado sur coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 319,
+    "segundos": 11.7,
+    "truncado": false,
+    "archivo": "esp_003__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_004",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 10 x 10 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a el lado sur, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 207,
+    "segundos": 8.1,
+    "truncado": false,
+    "archivo": "esp_004__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_005",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 10 x 8 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada trasera, a la altura del tercer piso.",
+    "n_imagenes": 0,
+    "tokens": 296,
+    "segundos": 10.9,
+    "truncado": false,
+    "archivo": "esp_005__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_006",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 18 x 14 metros con altura de piso de 3 m y techo plano. Adosa en la fachada posterior un anexo de un piso de 4 metros de largo (a lo largo de la fachada) por 3 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 264,
+    "segundos": 9.9,
+    "truncado": false,
+    "archivo": "esp_006__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_007",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 14 x 14 metros con altura de piso de 3 m y techo plano. Sobre la entrada de la fachada trasera coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 248,
+    "segundos": 9.3,
+    "truncado": false,
+    "archivo": "esp_007__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_008",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a la fachada trasera, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 217,
+    "segundos": 8.4,
+    "truncado": false,
+    "archivo": "esp_008__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_009",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 10 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada izquierda, a la altura del primer piso.",
+    "n_imagenes": 0,
+    "tokens": 280,
+    "segundos": 10.5,
+    "truncado": false,
+    "archivo": "esp_009__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_010",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 18 x 8 metros con altura de piso de 3 m y techo plano. Adosa en el lado oeste un anexo de un piso de 6 metros de largo (a lo largo de la fachada) por 4 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 278,
+    "segundos": 10.3,
+    "truncado": false,
+    "archivo": "esp_010__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_011",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 14 x 14 metros con altura de piso de 3 m y techo plano. Sobre la entrada de la fachada oeste coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 295,
+    "segundos": 10.9,
+    "truncado": false,
+    "archivo": "esp_011__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_012",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 14 x 10 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a el costado izquierdo, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 202,
+    "segundos": 7.9,
+    "truncado": false,
+    "archivo": "esp_012__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_013",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada este, a la altura del cuarto piso.",
+    "n_imagenes": 0,
+    "tokens": 298,
+    "segundos": 11.0,
+    "truncado": false,
+    "archivo": "esp_013__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_014",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 14 x 8 metros con altura de piso de 3 m y techo plano. Adosa en el lado este un anexo de un piso de 4 metros de largo (a lo largo de la fachada) por 4 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 264,
+    "segundos": 9.8,
+    "truncado": false,
+    "archivo": "esp_014__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_015",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 12 x 14 metros con altura de piso de 3 m y techo plano. Sobre la entrada de la fachada derecha coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 291,
+    "segundos": 10.7,
+    "truncado": false,
+    "archivo": "esp_015__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_016",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 20 x 8 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a la fachada este, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 209,
+    "segundos": 8.4,
+    "truncado": false,
+    "archivo": "esp_016__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_017",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en el lado sur, a la altura del primer piso.",
+    "n_imagenes": 0,
+    "tokens": 293,
+    "segundos": 10.9,
+    "truncado": false,
+    "archivo": "esp_017__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_018",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano. Adosa en la fachada frontal un anexo de un piso de 4 metros de largo (a lo largo de la fachada) por 4 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 269,
+    "segundos": 10.0,
+    "truncado": false,
+    "archivo": "esp_018__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_019",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 20 x 14 metros con altura de piso de 3 m y techo plano. Sobre la entrada de el lado sur coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 298,
+    "segundos": 10.9,
+    "truncado": false,
+    "archivo": "esp_019__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_020",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a el lado sur, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 207,
+    "segundos": 8.0,
+    "truncado": false,
+    "archivo": "esp_020__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_021",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 14 x 10 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en el lado norte, a la altura del primer piso.",
+    "n_imagenes": 0,
+    "tokens": 290,
+    "segundos": 10.6,
+    "truncado": false,
+    "archivo": "esp_021__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_022",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 12 x 12 metros con altura de piso de 3 m y techo plano. Adosa en la fachada posterior un anexo de un piso de 5 metros de largo (a lo largo de la fachada) por 4 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 293,
+    "segundos": 10.7,
+    "truncado": false,
+    "archivo": "esp_022__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_023",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 16 x 8 metros con altura de piso de 3 m y techo plano. Sobre la entrada de el lado norte coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 291,
+    "segundos": 10.7,
+    "truncado": false,
+    "archivo": "esp_023__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_024",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 16 x 12 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a el lado norte, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 223,
+    "segundos": 8.6,
+    "truncado": false,
+    "archivo": "esp_024__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_025",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada oeste, a la altura del cuarto piso.",
+    "n_imagenes": 0,
+    "tokens": 1287,
+    "segundos": 44.1,
+    "truncado": false,
+    "archivo": "esp_025__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "IndexError: tuple index out of range (en: line 19)"
+      ],
+      [
+        "IndexError: tuple index out of range (en: line 4)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_026",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 12 x 10 metros con altura de piso de 3 m y techo plano. Adosa en el costado izquierdo un anexo de un piso de 4 metros de largo (a lo largo de la fachada) por 3 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 259,
+    "segundos": 9.6,
+    "truncado": false,
+    "archivo": "esp_026__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_027",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 20 x 10 metros con altura de piso de 3 m y techo plano. Sobre la entrada de el lado oeste coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 734,
+    "segundos": 26.8,
+    "truncado": false,
+    "archivo": "esp_027__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "AttributeError: 'Object' object has no attribute 'ancho' (en: line 22)"
+      ],
+      [
+        "AttributeError: 'Object' object has no attribute 'pisos' (en: line 7)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_028",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 10 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a la fachada oeste, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 231,
+    "segundos": 9.0,
+    "truncado": false,
+    "archivo": "esp_028__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_029",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 10 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada este, a la altura del quinto piso.",
+    "n_imagenes": 0,
+    "tokens": 288,
+    "segundos": 10.6,
+    "truncado": false,
+    "archivo": "esp_029__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_030",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano. Adosa en la fachada derecha un anexo de un piso de 5 metros de largo (a lo largo de la fachada) por 4 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 316,
+    "segundos": 11.6,
+    "truncado": false,
+    "archivo": "esp_030__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_031",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 16 x 14 metros con altura de piso de 3 m y techo plano. Sobre la entrada de la fachada derecha coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 291,
+    "segundos": 10.8,
+    "truncado": false,
+    "archivo": "esp_031__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_032",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 16 x 14 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a el costado derecho, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 217,
+    "segundos": 8.3,
+    "truncado": false,
+    "archivo": "esp_032__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_033",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 10 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada principal, a la altura del primer piso.",
+    "n_imagenes": 0,
+    "tokens": 293,
+    "segundos": 10.8,
+    "truncado": false,
+    "archivo": "esp_033__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_034",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 14 x 8 metros con altura de piso de 3 m y techo plano. Adosa en la fachada frontal un anexo de un piso de 6 metros de largo (a lo largo de la fachada) por 3 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 257,
+    "segundos": 9.7,
+    "truncado": false,
+    "archivo": "esp_034__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_035",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 8 metros con altura de piso de 3 m y techo plano. Sobre la entrada de la fachada frontal coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 310,
+    "segundos": 11.4,
+    "truncado": false,
+    "archivo": "esp_035__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_036",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 10 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a la fachada principal, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 218,
+    "segundos": 8.6,
+    "truncado": false,
+    "archivo": "esp_036__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_037",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano. Agrega un balcón en voladizo de 3 metros de ancho y 1.5 metros de vuelo con baranda en la fachada norte, a la altura del cuarto piso.",
+    "n_imagenes": 0,
+    "tokens": 293,
+    "segundos": 10.9,
+    "truncado": false,
+    "archivo": "esp_037__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_038",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 8 metros con altura de piso de 3 m y techo plano. Adosa en el lado norte un anexo de un piso de 5 metros de largo (a lo largo de la fachada) por 4 metros de profundidad.",
+    "n_imagenes": 0,
+    "tokens": 272,
+    "segundos": 10.2,
+    "truncado": false,
+    "archivo": "esp_038__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_039",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 14 x 8 metros con altura de piso de 3 m y techo plano. Sobre la entrada de la fachada trasera coloca una marquesina en voladizo de 4 metros de ancho y 1.5 metros de vuelo a 3 metros de altura.",
+    "n_imagenes": 0,
+    "tokens": 301,
+    "segundos": 11.1,
+    "truncado": false,
+    "archivo": "esp_039__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_040",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano. Agrega una escalera exterior recta de 1.1 metros de ancho pegada a el lado norte, que suba desde el suelo hasta el primer piso.",
+    "n_imagenes": 0,
+    "tokens": 219,
+    "segundos": 8.8,
+    "truncado": false,
+    "archivo": "esp_040__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_041",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 20 x 10 metros con altura de piso de 3 m y techo plano. En la fachada principal, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 510,
+    "segundos": 18.8,
+    "truncado": false,
+    "archivo": "esp_041__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_042",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano. En la fachada trasera, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 443,
+    "segundos": 18.0,
+    "truncado": false,
+    "archivo": "esp_042__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "esp_043",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano. En la fachada oeste, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 1005,
+    "segundos": 38.0,
+    "truncado": false,
+    "archivo": "esp_043__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "NameError: name 'fondo' is not defined (en: line 7)"
+      ],
+      [
+        "NameError: name 'fondo' is not defined (en: line 7)"
+      ]
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "esp_044",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano. En la fachada este, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 730,
+    "segundos": 28.1,
+    "truncado": false,
+    "archivo": "esp_044__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "NameError: name 'fondo' is not defined (en: line 36)"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_045",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 12 x 12 metros con altura de piso de 3 m y techo plano. En la fachada principal, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 740,
+    "segundos": 28.1,
+    "truncado": false,
+    "archivo": "esp_045__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_046",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 12 x 14 metros con altura de piso de 3 m y techo plano. En la fachada posterior, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 432,
+    "segundos": 17.3,
+    "truncado": false,
+    "archivo": "esp_046__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_baranda'"
+    ]
+  },
+  {
+    "id": "esp_047",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 14 metros con altura de piso de 3 m y techo plano. En la fachada izquierda, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 478,
+    "segundos": 19.3,
+    "truncado": false,
+    "archivo": "esp_047__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_048",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano. En la fachada este, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 353,
+    "segundos": 14.5,
+    "truncado": false,
+    "archivo": "esp_048__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_049",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 12 x 12 metros con altura de piso de 3 m y techo plano. En la fachada sur, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 377,
+    "segundos": 15.8,
+    "truncado": false,
+    "archivo": "esp_049__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_050",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 14 x 8 metros con altura de piso de 3 m y techo plano. En la fachada trasera, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 434,
+    "segundos": 17.6,
+    "truncado": false,
+    "archivo": "esp_050__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_baranda'"
+    ]
+  },
+  {
+    "id": "esp_051",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 12 x 14 metros con altura de piso de 3 m y techo plano. En la fachada oeste, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 457,
+    "segundos": 17.3,
+    "truncado": false,
+    "archivo": "esp_051__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "esp_052",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 12 x 14 metros con altura de piso de 3 m y techo plano. En el lado este, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 417,
+    "segundos": 16.9,
+    "truncado": false,
+    "archivo": "esp_052__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_053",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano. En la fachada frontal, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 389,
+    "segundos": 15.8,
+    "truncado": false,
+    "archivo": "esp_053__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_baranda'"
+    ]
+  },
+  {
+    "id": "esp_054",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 16 x 10 metros con altura de piso de 3 m y techo plano. En la fachada posterior, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 433,
+    "segundos": 16.5,
+    "truncado": false,
+    "archivo": "esp_054__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_055",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 16 x 12 metros con altura de piso de 3 m y techo plano. En el lado oeste, agrega en cada piso desde el primero hasta el último un balcón en voladizo de 3 x 1.5 metros con baranda.",
+    "n_imagenes": 0,
+    "tokens": 332,
+    "segundos": 12.6,
+    "truncado": false,
+    "archivo": "esp_055__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "esp_056",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 16 x 14 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca una sala de máquinas de 5 x 3 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 252,
+    "segundos": 10.1,
+    "truncado": false,
+    "archivo": "esp_056__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_057",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 10 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un cuarto técnico de 5 x 3 metros y 3 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 219,
+    "segundos": 8.8,
+    "truncado": false,
+    "archivo": "esp_057__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_058",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 12 x 10 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un ático de 3 x 3 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 303,
+    "segundos": 11.2,
+    "truncado": false,
+    "archivo": "esp_058__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_059",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 12 x 10 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca una sala de máquinas de 4 x 3 metros y 3 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 261,
+    "segundos": 10.0,
+    "truncado": false,
+    "archivo": "esp_059__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_060",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un volumen de 5 x 4 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 686,
+    "segundos": 25.3,
+    "truncado": false,
+    "archivo": "esp_060__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 19: la función A.crear_volumen no existe en blender_arch"
+      ],
+      [
+        "ValueError: too many values to unpack (expected 2) (en: line 5)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_061",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca una sala de máquinas de 5 x 4 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 262,
+    "segundos": 11.6,
+    "truncado": false,
+    "archivo": "esp_061__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_062",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 18 x 8 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca una sala de máquinas de 3 x 3 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 266,
+    "segundos": 11.5,
+    "truncado": false,
+    "archivo": "esp_062__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_063",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 12 x 14 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un ático de 5 x 3 metros y 3 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 300,
+    "segundos": 12.5,
+    "truncado": false,
+    "archivo": "esp_063__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_habitacion: quitado 'material_losa'"
+    ]
+  },
+  {
+    "id": "esp_064",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 10 x 8 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un volumen de 3 x 4 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 411,
+    "segundos": 16.7,
+    "truncado": false,
+    "archivo": "esp_064__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 19: la función A.crear_volumen no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": [
+      "A.crear_muro: quitado 'ancho'",
+      "A.crear_muro: quitado 'fondo'"
+    ]
+  },
+  {
+    "id": "esp_065",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 18 x 14 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca una sala de máquinas de 3 x 4 metros y 3 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 246,
+    "segundos": 10.6,
+    "truncado": false,
+    "archivo": "esp_065__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_066",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un cuarto técnico de 5 x 4 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 220,
+    "segundos": 10.2,
+    "truncado": false,
+    "archivo": "esp_066__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_067",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 18 x 10 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un ático de 3 x 4 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 314,
+    "segundos": 13.3,
+    "truncado": false,
+    "archivo": "esp_067__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_068",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 16 x 12 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un volumen de 5 x 3 metros y 3 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 634,
+    "segundos": 25.0,
+    "truncado": false,
+    "archivo": "esp_068__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 19: la función A.crear_volumen no existe en blender_arch"
+      ],
+      [
+        "ValueError: too many values to unpack (expected 2) (en: line 7)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_069",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 12 x 12 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un cuarto técnico de 3 x 4 metros y 2.5 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 246,
+    "segundos": 10.8,
+    "truncado": false,
+    "archivo": "esp_069__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_070",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 12 x 14 metros con altura de piso de 3 m y techo plano. Sobre la cubierta, centrado, coloca un ático de 5 x 3 metros y 3 metros de alto con techo plano.",
+    "n_imagenes": 0,
+    "tokens": 304,
+    "segundos": 12.8,
+    "truncado": false,
+    "archivo": "esp_070__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_071",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 12 x 10 metros con altura de piso de 3 m y techo plano, girado 15 grados alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 105,
+    "segundos": 5.7,
+    "truncado": false,
+    "archivo": "esp_071__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'rotacion_z'"
+    ]
+  },
+  {
+    "id": "esp_072",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 14 metros con altura de piso de 3 m y techo plano, girado 20 grados alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 399,
+    "segundos": 14.9,
+    "truncado": false,
+    "archivo": "esp_072__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "esp_073",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano, girado 25 grados en sentido horario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 116,
+    "segundos": 5.9,
+    "truncado": false,
+    "archivo": "esp_073__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'rotacion_z'"
+    ]
+  },
+  {
+    "id": "esp_074",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 20 x 8 metros con altura de piso de 3 m y techo plano, girado 30 grados alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 431,
+    "segundos": 16.0,
+    "truncado": false,
+    "archivo": "esp_074__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 20: la función A.rotar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.rotar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_075",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 18 x 12 metros con altura de piso de 3 m y techo plano, girado 35 grados en sentido antihorario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 414,
+    "segundos": 15.5,
+    "truncado": false,
+    "archivo": "esp_075__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 4: la función A.rotar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.rotar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_076",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 12 x 8 metros con altura de piso de 3 m y techo plano, girado 40 grados en sentido horario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 384,
+    "segundos": 14.5,
+    "truncado": false,
+    "archivo": "esp_076__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 18: la función A.girar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_077",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 14 x 12 metros con altura de piso de 3 m y techo plano, girado 50 grados en sentido antihorario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 387,
+    "segundos": 14.6,
+    "truncado": false,
+    "archivo": "esp_077__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 18: la función A.girar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_078",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 14 x 10 metros con altura de piso de 3 m y techo plano, girado 55 grados alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 399,
+    "segundos": 15.0,
+    "truncado": false,
+    "archivo": "esp_078__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_tejado'"
+    ]
+  },
+  {
+    "id": "esp_079",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 16 x 10 metros con altura de piso de 3 m y techo plano, girado 60 grados en sentido horario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 387,
+    "segundos": 14.4,
+    "truncado": false,
+    "archivo": "esp_079__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 18: la función A.girar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_080",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 20 x 12 metros con altura de piso de 3 m y techo plano, girado 65 grados alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 415,
+    "segundos": 15.3,
+    "truncado": false,
+    "archivo": "esp_080__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 4: la función A.rotar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.rotar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_081",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano, girado 70 grados en sentido antihorario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 118,
+    "segundos": 6.1,
+    "truncado": false,
+    "archivo": "esp_081__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'rotacion_z'"
+    ]
+  },
+  {
+    "id": "esp_082",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 14 x 8 metros con altura de piso de 3 m y techo plano, girado 75 grados en sentido horario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 115,
+    "segundos": 6.0,
+    "truncado": false,
+    "archivo": "esp_082__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'rotacion_z'"
+    ]
+  },
+  {
+    "id": "esp_083",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano, girado 20 grados alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 104,
+    "segundos": 5.5,
+    "truncado": false,
+    "archivo": "esp_083__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'rotacion_z'"
+    ]
+  },
+  {
+    "id": "esp_084",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano, girado 30 grados alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 105,
+    "segundos": 5.8,
+    "truncado": false,
+    "archivo": "esp_084__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'rotacion_z'"
+    ]
+  },
+  {
+    "id": "esp_085",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 18 x 10 metros con altura de piso de 3 m y techo plano, girado 60 grados en sentido horario alrededor del eje vertical respecto a los ejes X/Y.",
+    "n_imagenes": 0,
+    "tokens": 387,
+    "segundos": 14.3,
+    "truncado": false,
+    "archivo": "esp_085__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 18: la función A.girar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 4: la función A.girar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_086",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos de 18 x 10 metros con altura de piso de 3 m y techo plano y un segundo edificio de 1 pisos de 6 x 7 metros ubicado al sur del primero, separados 6 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 305,
+    "segundos": 12.7,
+    "truncado": false,
+    "archivo": "esp_086__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_087",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 12 x 12 metros con altura de piso de 3 m y techo plano y un segundo edificio de 2 pisos de 9 x 6 metros ubicado al norte del primero, separados 10 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 269,
+    "segundos": 11.7,
+    "truncado": false,
+    "archivo": "esp_087__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_088",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 18 x 10 metros con altura de piso de 3 m y techo plano y un segundo edificio de 2 pisos de 8 x 6 metros ubicado al oeste del primero, separados 5 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 269,
+    "segundos": 11.7,
+    "truncado": false,
+    "archivo": "esp_088__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_089",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 10 x 8 metros con altura de piso de 3 m y techo plano y un segundo edificio de 1 pisos de 9 x 7 metros ubicado al este del primero, separados 10 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 269,
+    "segundos": 11.5,
+    "truncado": false,
+    "archivo": "esp_089__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_090",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 14 metros con altura de piso de 3 m y techo plano y un segundo edificio de 3 pisos de 9 x 7 metros ubicado al sur del primero, separados 8 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 267,
+    "segundos": 11.9,
+    "truncado": false,
+    "archivo": "esp_090__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_091",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 20 x 10 metros con altura de piso de 3 m y techo plano y un segundo edificio de 3 pisos de 8 x 6 metros ubicado al norte del primero, separados 15 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 272,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_091__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_092",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 20 x 10 metros con altura de piso de 3 m y techo plano y un segundo edificio de 1 pisos de 8 x 6 metros ubicado al oeste del primero, separados 5 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 263,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_092__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_093",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 12 metros con altura de piso de 3 m y techo plano y un segundo edificio de 1 pisos de 6 x 6 metros ubicado al este del primero, separados 15 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 272,
+    "segundos": 11.7,
+    "truncado": false,
+    "archivo": "esp_093__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_094",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 16 x 12 metros con altura de piso de 3 m y techo plano y un segundo edificio de 1 pisos de 9 x 7 metros ubicado al sur del primero, separados 10 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 269,
+    "segundos": 11.6,
+    "truncado": false,
+    "archivo": "esp_094__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_095",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 12 x 10 metros con altura de piso de 3 m y techo plano y un segundo edificio de 2 pisos de 8 x 6 metros ubicado al norte del primero, separados 8 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 275,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_095__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_096",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 14 x 12 metros con altura de piso de 3 m y techo plano y un segundo edificio de 1 pisos de 6 x 7 metros ubicado al oeste del primero, separados 8 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 269,
+    "segundos": 11.6,
+    "truncado": false,
+    "archivo": "esp_096__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_097",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 5 pisos de 12 x 8 metros con altura de piso de 3 m y techo plano y un segundo edificio de 2 pisos de 8 x 6 metros ubicado al este del primero, separados 8 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 274,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_097__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_098",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 18 x 10 metros con altura de piso de 3 m y techo plano y un segundo edificio de 1 pisos de 9 x 6 metros ubicado al sur del primero, separados 8 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 269,
+    "segundos": 11.9,
+    "truncado": false,
+    "archivo": "esp_098__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_099",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 6 pisos de 10 x 10 metros con altura de piso de 3 m y techo plano y un segundo edificio de 2 pisos de 9 x 6 metros ubicado al norte del primero, separados 5 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 270,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_099__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_100",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos de 14 x 12 metros con altura de piso de 3 m y techo plano y un segundo edificio de 3 pisos de 6 x 6 metros ubicado al oeste del primero, separados 15 metros entre sus fachadas enfrentadas y alineados por el centro.",
+    "n_imagenes": 0,
+    "tokens": 271,
+    "segundos": 11.7,
+    "truncado": false,
+    "archivo": "esp_100__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material_techo'",
+      "A.crear_edificio_n_pisos: quitado 'material_techo'"
+    ]
+  },
+  {
+    "id": "esp_101",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 2 pisos de 12 x 10 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 25 grados que cae hacia el sur.",
+    "n_imagenes": 0,
+    "tokens": 152,
+    "segundos": 7.3,
+    "truncado": false,
+    "archivo": "esp_101__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_casa_n_pisos: quitado 'con_techo_plano'"
+    ]
+  },
+  {
+    "id": "esp_102",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 1 piso de 8 x 10 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 10 grados que cae hacia el norte.",
+    "n_imagenes": 0,
+    "tokens": 739,
+    "segundos": 27.0,
+    "truncado": false,
+    "archivo": "esp_102__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 25: la función A.crear_techo_pendiente no existe en blender_arch",
+        "línea 37: la función A.rotar_objecto no existe en blender_arch"
+      ],
+      [
+        "línea 11: la función A.rotar_objecto no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_103",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 1 piso de 12 x 10 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 10 grados que cae hacia el oeste.",
+    "n_imagenes": 0,
+    "tokens": 1418,
+    "segundos": 51.3,
+    "truncado": false,
+    "archivo": "esp_103__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 26: la función A.crear_cubo no existe en blender_arch",
+        "línea 41: la función A.crear_caja no existe en blender_arch"
+      ],
+      [
+        "línea 14: la función A.crear_caja no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_104",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 1 piso de 12 x 8 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 10 grados que cae hacia el este.",
+    "n_imagenes": 0,
+    "tokens": 500,
+    "segundos": 20.0,
+    "truncado": false,
+    "archivo": "esp_104__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 27: la función A.extruir_techo_con_pendientes no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_105",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 2 pisos de 8 x 8 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 10 grados que cae hacia el sur.",
+    "n_imagenes": 0,
+    "tokens": 1437,
+    "segundos": 52.0,
+    "truncado": false,
+    "archivo": "esp_105__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 18: la función A.crear_volumen no existe en blender_arch",
+        "línea 57: la función A.asignar_scale no existe en blender_arch",
+        "línea 58: la función A.asignar_rotation no existe en blender_arch"
+      ],
+      [
+        "línea 12: la función A.crear_volumen no existe en blender_arch",
+        "línea 20: la función A.asignar_rotation no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_106",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 1 piso de 10 x 10 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 10 grados que cae hacia el norte.",
+    "n_imagenes": 0,
+    "tokens": 933,
+    "segundos": 36.1,
+    "truncado": false,
+    "archivo": "esp_106__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 26: la función A.crear_cubo no existe en blender_arch",
+        "línea 40: la función A.asignar_modificador_boolean no existe en blender_arch"
+      ],
+      [
+        "AttributeError: 'NoneType' object has no attribute 'operation' and no __dict__ for setting new attributes (en: line 13)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_107",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 2 pisos de 12 x 8 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 20 grados que cae hacia el oeste.",
+    "n_imagenes": 0,
+    "tokens": 410,
+    "segundos": 16.8,
+    "truncado": false,
+    "archivo": "esp_107__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 5: la función A.agregar_tejado_doble_pendiente no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": [
+      "A.crear_casa_n_pisos: quitado 'con_techo_plano'"
+    ]
+  },
+  {
+    "id": "esp_108",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una casa de 1 piso de 8 x 10 metros con altura de piso de 3 m y un techo de una sola pendiente (mono-pendiente) de 10 grados que cae hacia el este.",
+    "n_imagenes": 0,
+    "tokens": 460,
+    "segundos": 18.7,
+    "truncado": false,
+    "archivo": "esp_108__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 25: la función A.crear_techo_pendiente no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_109",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos con planta en forma de L, de 20 metros en X por 14 metros en Y en total; los brazos miden 7 metros de ancho (el brazo en X) y 8 metros (el brazo en Y). La esquina vacía de la L es la noreste. Altura de piso 3 m.",
+    "n_imagenes": 0,
+    "tokens": 347,
+    "segundos": 14.4,
+    "truncado": false,
+    "archivo": "esp_109__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material'",
+      "A.crear_edificio_n_pisos: quitado 'material'"
+    ]
+  },
+  {
+    "id": "esp_110",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos con planta en forma de L, de 18 metros en X por 14 metros en Y en total; los brazos miden 6 metros de ancho (el brazo en X) y 6 metros (el brazo en Y). La esquina vacía de la L es la noroeste. Altura de piso 3 m.",
+    "n_imagenes": 0,
+    "tokens": 1276,
+    "segundos": 46.0,
+    "truncado": false,
+    "archivo": "esp_110__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 26: la función A.unir_objetos no existe en blender_arch"
+      ],
+      [
+        "línea 19: la función A.unir_objetos no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_111",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos con planta en forma de L, de 16 metros en X por 16 metros en Y en total; los brazos miden 6 metros de ancho (el brazo en X) y 7 metros (el brazo en Y). La esquina vacía de la L es la sureste. Altura de piso 3 m.",
+    "n_imagenes": 0,
+    "tokens": 1211,
+    "segundos": 44.1,
+    "truncado": false,
+    "archivo": "esp_111__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 25: la función A.unir_objetos no existe en blender_arch"
+      ],
+      [
+        "línea 14: la función A.unir_objetos no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_112",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 2 pisos con planta en forma de L, de 18 metros en X por 16 metros en Y en total; los brazos miden 6 metros de ancho (el brazo en X) y 8 metros (el brazo en Y). La esquina vacía de la L es la suroeste. Altura de piso 3 m.",
+    "n_imagenes": 0,
+    "tokens": 579,
+    "segundos": 22.5,
+    "truncado": false,
+    "archivo": "esp_112__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_113",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 3 pisos con planta en forma de L, de 16 metros en X por 14 metros en Y en total; los brazos miden 7 metros de ancho (el brazo en X) y 7 metros (el brazo en Y). La esquina vacía de la L es la noreste. Altura de piso 3 m.",
+    "n_imagenes": 0,
+    "tokens": 308,
+    "segundos": 12.7,
+    "truncado": false,
+    "archivo": "esp_113__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_114",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 2 pisos con planta en forma de L, de 20 metros en X por 14 metros en Y en total; los brazos miden 6 metros de ancho (el brazo en X) y 7 metros (el brazo en Y). La esquina vacía de la L es la noroeste. Altura de piso 3 m.",
+    "n_imagenes": 0,
+    "tokens": 444,
+    "segundos": 17.7,
+    "truncado": false,
+    "archivo": "esp_114__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": [
+      "A.crear_edificio_n_pisos: quitado 'material'",
+      "A.crear_edificio_n_pisos: quitado 'material'"
+    ]
+  },
+  {
+    "id": "esp_115",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio de 4 pisos con planta en forma de L, de 18 metros en X por 16 metros en Y en total; los brazos miden 6 metros de ancho (el brazo en X) y 6 metros (el brazo en Y). La esquina vacía de la L es la sureste. Altura de piso 3 m.",
+    "n_imagenes": 0,
+    "tokens": 1331,
+    "segundos": 48.2,
+    "truncado": false,
+    "archivo": "esp_115__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 28: la función A.unir_objetos no existe en blender_arch"
+      ],
+      [
+        "línea 17: la función A.unir_objetos no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_116",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una torre cilíndrica de 16 metros de diámetro y 6 pisos de 3 m, con losas circulares en cada piso.",
+    "n_imagenes": 0,
+    "tokens": 389,
+    "segundos": 15.6,
+    "truncado": false,
+    "archivo": "esp_116__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_117",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una torre cilíndrica de 20 metros de diámetro y 6 pisos de 3 m, con losas circulares en cada piso.",
+    "n_imagenes": 0,
+    "tokens": 207,
+    "segundos": 9.1,
+    "truncado": false,
+    "archivo": "esp_117__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_118",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una torre cilíndrica de 16 metros de diámetro y 7 pisos de 3 m, con losas circulares en cada piso.",
+    "n_imagenes": 0,
+    "tokens": 283,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_118__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_119",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una torre cilíndrica de 16 metros de diámetro y 10 pisos de 3 m, con losas circulares en cada piso.",
+    "n_imagenes": 0,
+    "tokens": 582,
+    "segundos": 24.6,
+    "truncado": false,
+    "archivo": "esp_119__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "TypeError: ObjectModifiers.new(): error with keyword argument \"type\" -  enum \"EXTRUDE\" not found in ('GREASE_PENCIL_VERTEX_WEIGHT_PROXIMITY', 'DATA_TRANSFER', 'MESH_CACHE', 'MESH_SEQUENCE_CACHE', 'NORMAL_EDIT', 'WEIGHTED_NORMAL', 'UV_PROJECT', 'UV_WARP', 'VERTEX_WEIGHT_EDIT', 'VERTEX_WEIGHT_MIX', 'V (en: line 28)"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_120",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea una torre cilíndrica de 10 metros de diámetro y 8 pisos de 3 m, con losas circulares en cada piso.",
+    "n_imagenes": 0,
+    "tokens": 192,
+    "segundos": 8.5,
+    "truncado": false,
+    "archivo": "esp_120__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_121",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio escalonado de 3 volúmenes apilados de 2 pisos cada uno (altura de piso 3 m). El volumen inferior mide 20 x 20 metros y cada volumen superior se retranquea 3 metros por todos sus lados respecto al de abajo.",
+    "n_imagenes": 0,
+    "tokens": 332,
+    "segundos": 13.8,
+    "truncado": false,
+    "archivo": "esp_121__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_122",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio escalonado de 3 volúmenes apilados de 3 pisos cada uno (altura de piso 3 m). El volumen inferior mide 24 x 20 metros y cada volumen superior se retranquea 3 metros por todos sus lados respecto al de abajo.",
+    "n_imagenes": 0,
+    "tokens": 278,
+    "segundos": 11.9,
+    "truncado": false,
+    "archivo": "esp_122__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_123",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio escalonado de 3 volúmenes apilados de 2 pisos cada uno (altura de piso 3 m). El volumen inferior mide 24 x 16 metros y cada volumen superior se retranquea 2 metros por todos sus lados respecto al de abajo.",
+    "n_imagenes": 0,
+    "tokens": 742,
+    "segundos": 28.1,
+    "truncado": false,
+    "archivo": "esp_123__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_124",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio escalonado de 4 volúmenes apilados de 3 pisos cada uno (altura de piso 3 m). El volumen inferior mide 20 x 20 metros y cada volumen superior se retranquea 2 metros por todos sus lados respecto al de abajo.",
+    "n_imagenes": 0,
+    "tokens": 337,
+    "segundos": 13.8,
+    "truncado": false,
+    "archivo": "esp_124__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_125",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Crea un edificio escalonado de 3 volúmenes apilados de 3 pisos cada uno (altura de piso 3 m). El volumen inferior mide 20 x 20 metros y cada volumen superior se retranquea 3 metros por todos sus lados respecto al de abajo.",
+    "n_imagenes": 0,
+    "tokens": 314,
+    "segundos": 13.0,
+    "truncado": false,
+    "archivo": "esp_125__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_126",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=4, ancho=16, fondo=8, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un balcón en voladizo de 3 x 1.5 metros con baranda en la fachada frontal, a la altura del segundo piso.",
+    "n_imagenes": 0,
+    "tokens": 241,
+    "segundos": 10.4,
+    "truncado": false,
+    "archivo": "esp_126__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_127",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=20, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Gira el edificio 30 grados en sentido antihorario alrededor del eje vertical.",
+    "n_imagenes": 0,
+    "tokens": 2350,
+    "segundos": 87.4,
+    "truncado": false,
+    "archivo": "esp_127__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 10: la función A.rotar_objeto no existe en blender_arch"
+      ],
+      [
+        "TypeError: abrir_vanos_batch_rectangulares() missing 1 required positional argument: 'muro' (en: line 23)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_128",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=16, fondo=12, alto_piso=3, origen=(0, 0, 0))\nA.crear_losa_rectangular('Balcon', ancho=3, fondo=1.5, espesor=0.2, origen=(6.5, 12, 3))\nA.crear_baranda_lineal('Balcon_Baranda', largo=3, altura=1.1, origen=(6.5, 13.42, 3.2))\n```\nInstrucción: Mueve el balcón (losa y baranda) a la fachada sur, a la misma altura.",
+    "n_imagenes": 0,
+    "tokens": 154,
+    "segundos": 7.7,
+    "truncado": false,
+    "archivo": "esp_128__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_129",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=5, ancho=14, fondo=8, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega sobre la cubierta, centrado, un volumen de 4 x 3 metros y 3 metros de alto.",
+    "n_imagenes": 0,
+    "tokens": 257,
+    "segundos": 11.5,
+    "truncado": false,
+    "archivo": "esp_129__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 7: la función A.crear_volumen_rectangular no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_130",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=5, ancho=12, fondo=8, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un segundo edificio de 2 pisos de 8 x 6 metros al sur del existente, separado 8 metros entre fachadas y alineado por el centro.",
+    "n_imagenes": 0,
+    "tokens": 116,
+    "segundos": 6.2,
+    "truncado": false,
+    "archivo": "esp_130__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_131",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=10, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un balcón en voladizo de 3 x 1.5 metros con baranda en la fachada trasera, a la altura del tercer piso.",
+    "n_imagenes": 0,
+    "tokens": 743,
+    "segundos": 31.3,
+    "truncado": false,
+    "archivo": "esp_131__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "AttributeError: 'Object' object has no attribute 'pisos' (en: line 9)"
+      ],
+      [
+        "AttributeError: 'Object' object has no attribute 'pisos' (en: line 9)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_132",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=3, ancho=16, fondo=12, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Gira el edificio 20 grados en sentido antihorario alrededor del eje vertical.",
+    "n_imagenes": 0,
+    "tokens": 3269,
+    "segundos": 115.5,
+    "truncado": false,
+    "archivo": "esp_132__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 10: la función A.rotar_objeto no existe en blender_arch"
+      ],
+      [
+        "línea 27: la función A.crear_luz no existe en blender_arch"
+      ]
+    ],
+    "saneado": [
+      "A.abrir_vanos_grid_local: quitado 'centros_world'",
+      "A.abrir_vanos_grid_local: quitado 'centros_world'"
+    ]
+  },
+  {
+    "id": "esp_133",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=4, ancho=10, fondo=12, alto_piso=3, origen=(0, 0, 0))\nA.crear_losa_rectangular('Balcon', ancho=3, fondo=1.5, espesor=0.2, origen=(3.5, -1.5, 6))\nA.crear_baranda_lineal('Balcon_Baranda', largo=3, altura=1.1, origen=(3.5, -1.5, 6.2))\n```\nInstrucción: Mueve el balcón (losa y baranda) a la fachada posterior, a la misma altura.",
+    "n_imagenes": 0,
+    "tokens": 153,
+    "segundos": 7.4,
+    "truncado": false,
+    "archivo": "esp_133__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_134",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=4, ancho=16, fondo=12, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega sobre la cubierta, centrado, un volumen de 4 x 3 metros y 3 metros de alto.",
+    "n_imagenes": 0,
+    "tokens": 267,
+    "segundos": 11.9,
+    "truncado": false,
+    "archivo": "esp_134__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 7: la función A.crear_volumen no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_135",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=4, ancho=20, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un segundo edificio de 2 pisos de 8 x 6 metros al norte del existente, separado 6 metros entre fachadas y alineado por el centro.",
+    "n_imagenes": 0,
+    "tokens": 117,
+    "segundos": 6.4,
+    "truncado": false,
+    "archivo": "esp_135__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_136",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=20, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un balcón en voladizo de 3 x 1.5 metros con baranda en el costado izquierdo, a la altura del tercer piso.",
+    "n_imagenes": 0,
+    "tokens": 226,
+    "segundos": 10.4,
+    "truncado": false,
+    "archivo": "esp_136__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_137",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=4, ancho=16, fondo=8, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Gira el edificio 60 grados en sentido antihorario alrededor del eje vertical.",
+    "n_imagenes": 0,
+    "tokens": 543,
+    "segundos": 21.8,
+    "truncado": false,
+    "archivo": "esp_137__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 10: la función A.rotar_objeto no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_138",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=5, ancho=16, fondo=12, alto_piso=3, origen=(0, 0, 0))\nA.crear_losa_rectangular('Balcon', ancho=3, fondo=1.5, espesor=0.2, origen=(6.5, -1.5, 9))\nA.crear_baranda_lineal('Balcon_Baranda', largo=3, altura=1.1, origen=(6.5, -1.5, 9.2))\n```\nInstrucción: Mueve el balcón (losa y baranda) a la fachada oeste, a la misma altura.",
+    "n_imagenes": 0,
+    "tokens": 153,
+    "segundos": 7.7,
+    "truncado": false,
+    "archivo": "esp_138__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_139",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=20, fondo=12, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega sobre la cubierta, centrado, un volumen de 4 x 4 metros y 3 metros de alto.",
+    "n_imagenes": 0,
+    "tokens": 249,
+    "segundos": 11.8,
+    "truncado": false,
+    "archivo": "esp_139__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 7: la función A.crear_volumen_rectangular no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_140",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=3, ancho=18, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un segundo edificio de 2 pisos de 8 x 6 metros al oeste del existente, separado 10 metros entre fachadas y alineado por el centro.",
+    "n_imagenes": 0,
+    "tokens": 118,
+    "segundos": 6.4,
+    "truncado": false,
+    "archivo": "esp_140__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_141",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=4, ancho=12, fondo=8, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un balcón en voladizo de 3 x 1.5 metros con baranda en el lado este, a la altura del tercer piso.",
+    "n_imagenes": 0,
+    "tokens": 228,
+    "segundos": 10.1,
+    "truncado": false,
+    "archivo": "esp_141__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_142",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=5, ancho=12, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Gira el edificio 60 grados en sentido antihorario alrededor del eje vertical.",
+    "n_imagenes": 0,
+    "tokens": 2421,
+    "segundos": 87.6,
+    "truncado": false,
+    "archivo": "esp_142__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 10: la función A.rotar_objeto no existe en blender_arch"
+      ],
+      [
+        "línea 27: la función A.crear_luz no existe en blender_arch"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_143",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=4, ancho=12, fondo=10, alto_piso=3, origen=(0, 0, 0))\nA.crear_losa_rectangular('Balcon', ancho=3, fondo=1.5, espesor=0.2, origen=(4.5, -1.5, 3))\nA.crear_baranda_lineal('Balcon_Baranda', largo=3, altura=1.1, origen=(4.5, -1.5, 3.2))\n```\nInstrucción: Mueve el balcón (losa y baranda) a la fachada derecha, a la misma altura.",
+    "n_imagenes": 0,
+    "tokens": 153,
+    "segundos": 7.6,
+    "truncado": false,
+    "archivo": "esp_143__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_144",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=5, ancho=14, fondo=8, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega sobre la cubierta, centrado, un volumen de 4 x 4 metros y 3 metros de alto.",
+    "n_imagenes": 0,
+    "tokens": 294,
+    "segundos": 12.7,
+    "truncado": false,
+    "archivo": "esp_144__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 7: la función A.crear_volumen_rectangular no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_145",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=3, ancho=18, fondo=10, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un segundo edificio de 2 pisos de 8 x 6 metros al este del existente, separado 8 metros entre fachadas y alineado por el centro.",
+    "n_imagenes": 0,
+    "tokens": 117,
+    "segundos": 6.2,
+    "truncado": false,
+    "archivo": "esp_145__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_146",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=16, fondo=10, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un balcón en voladizo de 3 x 1.5 metros con baranda en la fachada sur, a la altura del tercer piso.",
+    "n_imagenes": 0,
+    "tokens": 717,
+    "segundos": 30.6,
+    "truncado": false,
+    "archivo": "esp_146__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "AttributeError: 'Object' object has no attribute 'pisos' (en: line 9)"
+      ],
+      [
+        "AttributeError: 'Object' object has no attribute 'pisos' (en: line 9)"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_147",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=5, ancho=10, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Gira el edificio 30 grados en sentido antihorario alrededor del eje vertical.",
+    "n_imagenes": 0,
+    "tokens": 4206,
+    "segundos": 150.6,
+    "truncado": true,
+    "archivo": "esp_147__lora.py",
+    "rondas_reparacion": 2,
+    "errores_por_ronda": [
+      [
+        "línea 10: la función A.rotar_objeto no existe en blender_arch"
+      ],
+      [
+        "SyntaxError línea 45: '(' was never closed"
+      ]
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_148",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=3, ancho=20, fondo=10, alto_piso=3, origen=(0, 0, 0))\nA.crear_losa_rectangular('Balcon', ancho=3, fondo=1.5, espesor=0.2, origen=(8.5, 10, 3))\nA.crear_baranda_lineal('Balcon_Baranda', largo=3, altura=1.1, origen=(8.5, 11.42, 3.2))\n```\nInstrucción: Mueve el balcón (losa y baranda) a la fachada sur, a la misma altura.",
+    "n_imagenes": 0,
+    "tokens": 153,
+    "segundos": 7.5,
+    "truncado": false,
+    "archivo": "esp_148__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_149",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=16, fondo=14, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega sobre la cubierta, centrado, un volumen de 4 x 3 metros y 3 metros de alto.",
+    "n_imagenes": 0,
+    "tokens": 265,
+    "segundos": 12.1,
+    "truncado": false,
+    "archivo": "esp_149__lora.py",
+    "rondas_reparacion": 1,
+    "errores_por_ronda": [
+      [
+        "línea 7: la función A.crear_volumen no existe en blender_arch"
+      ],
+      []
+    ],
+    "saneado": []
+  },
+  {
+    "id": "esp_150",
+    "tipo": "tarea",
+    "variante": "lora",
+    "prompt": "Código base:\n```python\nimport blender_arch as A\nimport bpy\nimport bmesh\nimport math\n\nA.limpiar_escena()\ned = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=12, fondo=8, alto_piso=3, origen=(0, 0, 0))\n```\nInstrucción: Agrega un segundo edificio de 2 pisos de 8 x 6 metros al sur del existente, separado 10 metros entre fachadas y alineado por el centro.",
+    "n_imagenes": 0,
+    "tokens": 117,
+    "segundos": 6.4,
+    "truncado": false,
+    "archivo": "esp_150__lora.py",
+    "rondas_reparacion": 0,
+    "errores_por_ronda": [
+      []
+    ],
+    "saneado": []
+  }
+]

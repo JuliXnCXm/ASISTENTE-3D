@@ -1,0 +1,5882 @@
+{
+ "esp_001__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_001__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_002__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_002__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_003__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_003__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_004__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_004__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_005__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_005__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_006__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_006__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_007__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_007__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_008__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_008__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_009__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_009__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_010__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_010__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_011__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_011__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_012__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_012__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_013__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_013__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_014__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_014__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_015__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_015__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_016__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_016__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_017__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_017__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_018__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_018__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_019__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_019__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_020__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_020__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_021__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_021__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_022__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_022__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_023__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_023__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_024__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_024__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_025__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "IndexError: tuple index out of range",
+  "paso": false,
+  "checks": []
+ },
+ "esp_025__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "IndexError: tuple index out of range",
+  "paso": false,
+  "checks": []
+ },
+ "esp_026__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_026__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_027__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: 'Object' object has no attribute 'ancho'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_027__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: 'Object' object has no attribute 'pisos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_028__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_028__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_029__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_029__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_030__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_030__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_031__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_031__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_032__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_032__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_033__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_033__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_034__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_034__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_035__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_035__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_036__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_036__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_037__inicial": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_037__lora": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_038__inicial": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_038__lora": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_039__inicial": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_039__lora": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_040__inicial": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_040__lora": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_041__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_041__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_042__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_042__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_043__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "NameError: name 'fondo' is not defined",
+  "paso": false,
+  "checks": []
+ },
+ "esp_043__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "NameError: name 'fondo' is not defined",
+  "paso": false,
+  "checks": []
+ },
+ "esp_044__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "NameError: name 'fondo' is not defined",
+  "paso": false,
+  "checks": []
+ },
+ "esp_044__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_045__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_045__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_046__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_046__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_047__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_047__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_048__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficina'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 5"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_048__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Oficina'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 5"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_049__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_049__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_050__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_050__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_051__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "4 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_051__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "4 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_052__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_052__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_053__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_053__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioConBalcones'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_054__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_054__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_055__inicial": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_055__lora": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Casa'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_056__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.4x5.6x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_056__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.4x5.6x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_057__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_057__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_058__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Civil'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x3.0x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_058__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Civil'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x3.0x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_059__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.4x4.6x3.0 centrado=True"
+   }
+  ]
+ },
+ "esp_059__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.4x4.6x3.0 centrado=True"
+   }
+  ]
+ },
+ "esp_060__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen'. Did you mean: 'crear_columna'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_060__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: 'tuple' object has no attribute 'data'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_061__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_061__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_062__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "volumen 3.4x3.6x2.5 centrado=False"
+   }
+  ]
+ },
+ "esp_062__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "volumen 3.4x3.6x2.5 centrado=False"
+   }
+  ]
+ },
+ "esp_063__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Civil'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.4x5.6x3.0 centrado=True"
+   }
+  ]
+ },
+ "esp_063__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Civil'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.4x5.6x3.0 centrado=True"
+   }
+  ]
+ },
+ "esp_064__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen'. Did you mean: 'crear_columna'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_064__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "volumen 0.2x4.0x2.5 centrado=False"
+   }
+  ]
+ },
+ "esp_065__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.6x4.4x3.0 centrado=True"
+   }
+  ]
+ },
+ "esp_065__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.6x4.4x3.0 centrado=True"
+   }
+  ]
+ },
+ "esp_066__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_066__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_067__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.6x4.4x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_067__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.6x4.4x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_068__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen'. Did you mean: 'crear_columna'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_068__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_069__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.6x4.4x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_069__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.6x4.4x2.5 centrado=True"
+   }
+  ]
+ },
+ "esp_070__inicial": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_070__lora": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioOficinas'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_071__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_071__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_072__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_072__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_073__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 65° mód 90)"
+   }
+  ]
+ },
+ "esp_073__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 65° mód 90)"
+   }
+  ]
+ },
+ "esp_074__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_074__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_075__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_075__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_076__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_076__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_077__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_077__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_078__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_078__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_079__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_079__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_080__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_080__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_081__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 70° mód 90)"
+   }
+  ]
+ },
+ "esp_081__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 70° mód 90)"
+   }
+  ]
+ },
+ "esp_082__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_082__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_083__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_083__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Circular'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_084__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_084__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Corporativo'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_085__inicial": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_085__lora": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'girar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_086__inicial": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -10.5 m (esperada 6), alineado=True"
+   }
+  ]
+ },
+ "esp_086__lora": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -10.5 m (esperada 6), alineado=True"
+   }
+  ]
+ },
+ "esp_087__inicial": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -18.0 m (esperada 10), alineado=False"
+   }
+  ]
+ },
+ "esp_087__lora": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -18.0 m (esperada 10), alineado=False"
+   }
+  ]
+ },
+ "esp_088__inicial": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -3.2 m (esperada 5), alineado=False"
+   }
+  ]
+ },
+ "esp_088__lora": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -3.2 m (esperada 5), alineado=False"
+   }
+  ]
+ },
+ "esp_089__inicial": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 4.8 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_089__lora": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 4.8 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_090__inicial": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 0.0 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_090__lora": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 0.0 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_091__inicial": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -20.0 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_091__lora": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -20.0 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_092__inicial": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -3.2 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_092__lora": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -3.2 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_093__inicial": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 4.8 m (esperada 15), alineado=False"
+   }
+  ]
+ },
+ "esp_093__lora": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 4.8 m (esperada 15), alineado=False"
+   }
+  ]
+ },
+ "esp_094__inicial": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 0.0 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_094__lora": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 0.0 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_095__inicial": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -7.0 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_095__lora": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -7.0 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_096__inicial": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 1.8 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_096__lora": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 1.8 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_097__inicial": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -0.2 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_097__lora": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -0.2 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_098__inicial": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -2.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_098__lora": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioPrincipal'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -2.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_099__inicial": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -15.0 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_099__lora": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio_Central'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -15.0 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_100__inicial": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioGrande'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 8.8 m (esperada 15), alineado=False"
+   }
+  ]
+ },
+ "esp_100__lora": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'EdificioGrande'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 8.8 m (esperada 15), alineado=False"
+   }
+  ]
+ },
+ "esp_101__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa_Familiar'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "no hay techo inclinado de una pendiente"
+   }
+  ]
+ },
+ "esp_101__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa_Familiar'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "no hay techo inclinado de una pendiente"
+   }
+  ]
+ },
+ "esp_102__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_techo_pendiente'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_102__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objecto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_103__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_cubo'. Did you mean: 'crear_muro'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_103__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_caja'. Did you mean: 'crear_cama'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_104__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'extruir_techo_con_pendientes'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_104__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'TechoCumbrera'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "no hay techo inclinado de una pendiente"
+   }
+  ]
+ },
+ "esp_105__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen'. Did you mean: 'crear_columna'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_105__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen'. Did you mean: 'crear_columna'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_106__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_cubo'. Did you mean: 'crear_muro'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_106__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: 'NoneType' object has no attribute 'operation' and no __dict__ for setting new attributes",
+  "paso": false,
+  "checks": []
+ },
+ "esp_107__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'agregar_tejado_doble_pendiente'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_107__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'CasaFamiliar'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "no hay techo inclinado de una pendiente"
+   }
+  ]
+ },
+ "esp_108__inicial": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_techo_pendiente'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_108__lora": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Techo_Cumbrera'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia frontal (100%) a 6°"
+   }
+  ]
+ },
+ "esp_109__inicial": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 15.6x8.3x12.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_109__lora": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 15.6x8.3x12.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_110__inicial": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "NameError: name 'bpy' is not defined",
+  "paso": false,
+  "checks": []
+ },
+ "esp_110__lora": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "NameError: name 'bpy' is not defined",
+  "paso": false,
+  "checks": []
+ },
+ "esp_111__inicial": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'unir_objetos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_111__lora": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'unir_objetos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_112__inicial": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 49.7x51.7x6.0"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=False, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_112__lora": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 49.7x51.7x6.0"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=False, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_113__inicial": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 16.4x39.0x9.0"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=False, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_113__lora": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 16.4x39.0x9.0"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=False, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_114__inicial": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 19.9x11.2x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=False, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_114__lora": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 19.9x11.2x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=False, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_115__inicial": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'unir_objetos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_115__lora": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: 'list' object has no attribute 'data'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_116__inicial": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x17.9"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.79"
+   }
+  ]
+ },
+ "esp_116__lora": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x17.9"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.79"
+   }
+  ]
+ },
+ "esp_117__inicial": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.0x20.0x18.0"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.79"
+   }
+  ]
+ },
+ "esp_117__lora": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.0x20.0x18.0"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.79"
+   }
+  ]
+ },
+ "esp_118__inicial": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x21.0"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_118__lora": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x21.0"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.79"
+   }
+  ]
+ },
+ "esp_119__inicial": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "TypeError: ObjectModifiers.new(): error with keyword argument \"type\" -  enum \"EXTRUDE\" not found in ('GREASE_PENCIL_VERTEX_WEIGHT_PROXIMITY', 'DATA_TRANSFER', 'MESH_CACHE', 'MESH_SEQUENCE_CACHE', 'NORMAL_EDIT', 'WEIGHTED_NORMAL', 'UV_PROJECT', 'UV_WARP', 'VERTEX_WEIGHT_EDIT', 'VERTEX_WEIGHT_MIX', 'V",
+  "paso": false,
+  "checks": []
+ },
+ "esp_119__lora": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x31.5"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.79"
+   }
+  ]
+ },
+ "esp_120__inicial": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 10.0x10.0x24.0"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_120__lora": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 10.0x10.0x24.0"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_121__inicial": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 20.0x20.0x9.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": true,
+    "msg": "retiros [1.5, 1.5]"
+   }
+  ]
+ },
+ "esp_121__lora": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 20.0x20.0x9.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": true,
+    "msg": "retiros [1.5, 1.5]"
+   }
+  ]
+ },
+ "esp_122__inicial": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 24.0x20.0x9.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_122__lora": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 24.0x20.0x9.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_123__inicial": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 24.0x16.0x12.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_123__lora": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 24.0x16.0x12.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_124__inicial": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 26.0x26.0x12.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [-2.0]"
+   }
+  ]
+ },
+ "esp_124__lora": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 26.0x26.0x12.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [-2.0]"
+   }
+  ]
+ },
+ "esp_125__inicial": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 23.0x20.0x9.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [-1.5]"
+   }
+  ]
+ },
+ "esp_125__lora": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": false,
+    "msg": "total 23.0x20.0x9.0"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [-1.5]"
+   }
+  ]
+ },
+ "esp_126__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_126__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_127__inicial": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objeto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_127__lora": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "TypeError: abrir_vanos_batch_rectangulares() missing 1 required positional argument: 'muro'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_128__inicial": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_128__lora": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_129__inicial": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen_rectangular'. Did you mean: 'crear_losa_rectangular'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_129__lora": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_130__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -10.0 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_130__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -10.0 m (esperada 8), alineado=False"
+   }
+  ]
+ },
+ "esp_131__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: 'Object' object has no attribute 'pisos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_131__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: 'Object' object has no attribute 'pisos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_132__inicial": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objeto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_132__lora": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "TypeError: abrir_vanos_batch_rectangulares() missing 1 required positional argument: 'muro'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_133__inicial": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_133__lora": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_134__inicial": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen'. Did you mean: 'crear_columna'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_134__lora": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x4.0x3.0 centrado=True"
+   }
+  ]
+ },
+ "esp_135__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -8.0 m (esperada 6), alineado=False"
+   }
+  ]
+ },
+ "esp_135__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -8.0 m (esperada 6), alineado=False"
+   }
+  ]
+ },
+ "esp_136__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_136__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_137__inicial": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objeto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_137__lora": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 60° mód 90)"
+   }
+  ]
+ },
+ "esp_138__inicial": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_138__lora": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_139__inicial": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen_rectangular'. Did you mean: 'crear_losa_rectangular'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_139__lora": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_140__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 1.8 m (esperada 10), alineado=False"
+   }
+  ]
+ },
+ "esp_140__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 1.8 m (esperada 10), alineado=False"
+   }
+  ]
+ },
+ "esp_141__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_141__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_142__inicial": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objeto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_142__lora": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_luz'. Did you mean: 'agregar_luz'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_143__inicial": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_143__lora": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_144__inicial": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen_rectangular'. Did you mean: 'crear_losa_rectangular'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_144__lora": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_145__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -10.2 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_145__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -10.2 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_146__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: 'Object' object has no attribute 'pisos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_146__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "AttributeError: 'Object' object has no attribute 'pisos'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_147__inicial": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'rotar_objeto'",
+  "paso": false,
+  "checks": []
+ },
+ "esp_147__lora": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "lora",
+  "ejecuta": false,
+  "error": "SyntaxError: '(' was never closed",
+  "paso": false,
+  "checks": []
+ },
+ "esp_148__inicial": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_148__lora": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_149__inicial": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "inicial",
+  "ejecuta": false,
+  "error": "AttributeError: module 'blender_arch' has no attribute 'crear_volumen'. Did you mean: 'crear_columna'?",
+  "paso": false,
+  "checks": []
+ },
+ "esp_149__lora": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_150__inicial": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "inicial",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -11.0 m (esperada 10), alineado=False"
+   }
+  ]
+ },
+ "esp_150__lora": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "lora",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida -11.0 m (esperada 10), alineado=False"
+   }
+  ]
+ }
+}

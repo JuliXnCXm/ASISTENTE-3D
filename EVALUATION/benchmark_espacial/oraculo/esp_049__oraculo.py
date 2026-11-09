@@ -1,0 +1,17 @@
+import blender_arch as A
+import bpy
+import bmesh
+import math
+
+A.limpiar_escena()
+ed = A.crear_edificio_n_pisos('Edificio', pisos=6, ancho=12, fondo=12, alto_piso=3, origen=(0, 0, 0))
+A.crear_losa_rectangular('Balcon_1', ancho=3, fondo=1.5, espesor=0.2, origen=(4.5, -1.5, 3))
+A.crear_baranda_lineal('Balcon_1_Baranda', largo=3, altura=1.1, origen=(4.5, -1.5, 3.2))
+A.crear_losa_rectangular('Balcon_2', ancho=3, fondo=1.5, espesor=0.2, origen=(4.5, -1.5, 6))
+A.crear_baranda_lineal('Balcon_2_Baranda', largo=3, altura=1.1, origen=(4.5, -1.5, 6.2))
+A.crear_losa_rectangular('Balcon_3', ancho=3, fondo=1.5, espesor=0.2, origen=(4.5, -1.5, 9))
+A.crear_baranda_lineal('Balcon_3_Baranda', largo=3, altura=1.1, origen=(4.5, -1.5, 9.2))
+A.crear_losa_rectangular('Balcon_4', ancho=3, fondo=1.5, espesor=0.2, origen=(4.5, -1.5, 12))
+A.crear_baranda_lineal('Balcon_4_Baranda', largo=3, altura=1.1, origen=(4.5, -1.5, 12.2))
+A.crear_losa_rectangular('Balcon_5', ancho=3, fondo=1.5, espesor=0.2, origen=(4.5, -1.5, 15))
+A.crear_baranda_lineal('Balcon_5_Baranda', largo=3, altura=1.1, origen=(4.5, -1.5, 15.2))

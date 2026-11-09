@@ -1,0 +1,6652 @@
+{
+ "esp_001__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_001__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_002__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_002__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_003__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_003__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_004__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_004__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_005__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_005__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_006__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_006__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_007__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_007__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_008__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_008__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_009__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_009__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_010__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_010__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_011__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_011__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_012__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_012__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_013__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_013__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_014__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_014__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_015__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_015__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_016__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_016__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_017__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_017__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_018__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_018__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_019__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_019__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_020__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_020__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_021__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_021__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_022__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_022__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_023__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_023__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_024__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_024__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_025__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_025__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_026__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_026__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_027__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_027__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_028__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_028__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_029__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_029__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_030__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_030__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_031__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_031__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_032__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_032__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_033__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_033__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_034__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_034__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_035__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_035__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_036__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_036__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_037__negativo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_037__oraculo": {
+  "categoria": "cara",
+  "subtipo": "balcon",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_038__negativo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "2 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_038__oraculo": {
+  "categoria": "cara",
+  "subtipo": "anexo",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_039__negativo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_039__oraculo": {
+  "categoria": "cara",
+  "subtipo": "marquesina",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_040__negativo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "6 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_040__oraculo": {
+  "categoria": "cara",
+  "subtipo": "escalera",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "6 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_041__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 2"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_041__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 2 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_042__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 3"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_042__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "3 piezas, 3 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_043__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 2"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_043__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 2 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_044__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 3"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_044__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "3 piezas, 3 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_045__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 3"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_045__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "3 piezas, 3 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_046__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 3"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_046__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "3 piezas, 3 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_047__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 4"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_047__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "4 piezas, 4 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_048__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 5"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_048__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "5 piezas, 5 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_049__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 5"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_049__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "5 piezas, 5 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_050__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 3"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_050__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "3 piezas, 3 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_051__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 3"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_051__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "3 piezas, 3 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_052__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 2"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_052__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 2 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_053__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 2"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_053__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 2 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_054__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 5"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_054__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "5 piezas, 5 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_055__negativo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "1 niveles < 2"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_055__oraculo": {
+  "categoria": "cada_piso",
+  "subtipo": "balcones",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "2 piezas, 2 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_056__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_056__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_057__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_057__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_058__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_058__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x3.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_059__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_059__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x4.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_060__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_060__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 4.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_061__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_061__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 4.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_062__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_062__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x3.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_063__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_063__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_064__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_064__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.2x4.0x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_065__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_065__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.2x4.0x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_066__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_066__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 4.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_067__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_067__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.2x4.0x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_068__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_068__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_069__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_069__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.2x4.0x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_070__negativo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_070__oraculo": {
+  "categoria": "encima",
+  "subtipo": "volumen",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x5.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_071__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_071__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 15° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_072__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_072__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 20° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_073__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 65° mód 90)"
+   }
+  ]
+ },
+ "esp_073__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 65° (esperado 65° mód 90)"
+   }
+  ]
+ },
+ "esp_074__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_074__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 30° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_075__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 35° mód 90)"
+   }
+  ]
+ },
+ "esp_075__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 35° (esperado 35° mód 90)"
+   }
+  ]
+ },
+ "esp_076__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 50° mód 90)"
+   }
+  ]
+ },
+ "esp_076__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 50° (esperado 50° mód 90)"
+   }
+  ]
+ },
+ "esp_077__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 50° mód 90)"
+   }
+  ]
+ },
+ "esp_077__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 50° (esperado 50° mód 90)"
+   }
+  ]
+ },
+ "esp_078__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 55° mód 90)"
+   }
+  ]
+ },
+ "esp_078__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 55° (esperado 55° mód 90)"
+   }
+  ]
+ },
+ "esp_079__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_079__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 30° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_080__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 65° mód 90)"
+   }
+  ]
+ },
+ "esp_080__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 65° (esperado 65° mód 90)"
+   }
+  ]
+ },
+ "esp_081__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 70° mód 90)"
+   }
+  ]
+ },
+ "esp_081__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 70° (esperado 70° mód 90)"
+   }
+  ]
+ },
+ "esp_082__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_082__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 15° (esperado 15° mód 90)"
+   }
+  ]
+ },
+ "esp_083__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_083__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 20° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_084__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_084__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 30° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_085__negativo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_085__oraculo": {
+  "categoria": "rotacion",
+  "subtipo": "edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 30° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_086__negativo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 12.0 m (esperada 6), alineado=True"
+   }
+  ]
+ },
+ "esp_086__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 6.0 m (esperada 6), alineado=True"
+   }
+  ]
+ },
+ "esp_087__negativo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 20.0 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_087__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 10.0 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_088__negativo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 9.8 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_088__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 4.8 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_089__negativo": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 19.8 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_089__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 9.8 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_090__negativo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 16.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_090__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 8.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_091__negativo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 30.0 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_091__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 15.0 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_092__negativo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 9.8 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_092__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 4.8 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_093__negativo": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 29.8 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_093__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 14.8 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_094__negativo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 20.0 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_094__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 10.0 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_095__negativo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 16.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_095__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 8.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_096__negativo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 15.8 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_096__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 7.8 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_097__negativo": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 15.8 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_097__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "este",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 7.8 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_098__negativo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 16.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_098__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "sur",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 8.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_099__negativo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 10.0 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_099__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "norte",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 5.0 m (esperada 5), alineado=True"
+   }
+  ]
+ },
+ "esp_100__negativo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 29.8 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_100__oraculo": {
+  "categoria": "separacion",
+  "subtipo": "oeste",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 14.8 m (esperada 15), alineado=True"
+   }
+  ]
+ },
+ "esp_101__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia trasera (100%) a 24°"
+   }
+  ]
+ },
+ "esp_101__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia frontal (100%) a 24°"
+   }
+  ]
+ },
+ "esp_102__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia frontal (100%) a 9°"
+   }
+  ]
+ },
+ "esp_102__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia trasera (100%) a 9°"
+   }
+  ]
+ },
+ "esp_103__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia derecha (100%) a 10°"
+   }
+  ]
+ },
+ "esp_103__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia izquierda (100%) a 10°"
+   }
+  ]
+ },
+ "esp_104__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia izquierda (100%) a 10°"
+   }
+  ]
+ },
+ "esp_104__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia derecha (100%) a 10°"
+   }
+  ]
+ },
+ "esp_105__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia trasera (100%) a 9°"
+   }
+  ]
+ },
+ "esp_105__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia frontal (100%) a 9°"
+   }
+  ]
+ },
+ "esp_106__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia frontal (100%) a 9°"
+   }
+  ]
+ },
+ "esp_106__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia trasera (100%) a 9°"
+   }
+  ]
+ },
+ "esp_107__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia derecha (100%) a 19°"
+   }
+  ]
+ },
+ "esp_107__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia izquierda (100%) a 19°"
+   }
+  ]
+ },
+ "esp_108__negativo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": false,
+    "msg": "techo cae hacia izquierda (100%) a 9°"
+   }
+  ]
+ },
+ "esp_108__oraculo": {
+  "categoria": "forma",
+  "subtipo": "mono_pendiente",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Casa'"
+   },
+   {
+    "tipo": "pendiente",
+    "ok": true,
+    "msg": "techo cae hacia derecha (100%) a 9°"
+   }
+  ]
+ },
+ "esp_109__negativo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x14.0x12.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_109__oraculo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x14.0x12.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": true,
+    "msg": "brazos ocupados=True, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_110__negativo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 18.2x14.0x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_110__oraculo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 18.2x14.0x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": true,
+    "msg": "brazos ocupados=True, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_111__negativo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.2x16.0x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_111__oraculo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.2x16.0x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": true,
+    "msg": "brazos ocupados=True, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_112__negativo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 18.2x16.0x6.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_112__oraculo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 18.2x16.0x6.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": true,
+    "msg": "brazos ocupados=True, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_113__negativo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.2x14.0x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_113__oraculo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.2x14.0x9.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": true,
+    "msg": "brazos ocupados=True, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_114__negativo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x14.0x6.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_114__oraculo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x14.0x6.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": true,
+    "msg": "brazos ocupados=True, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_115__negativo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 18.2x16.0x12.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": false,
+    "msg": "brazos ocupados=True, esquina vacía=False"
+   }
+  ]
+ },
+ "esp_115__oraculo": {
+  "categoria": "forma",
+  "subtipo": "planta_L",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 18.2x16.0x12.2"
+   },
+   {
+    "tipo": "huella",
+    "ok": true,
+    "msg": "brazos ocupados=True, esquina vacía=True"
+   }
+  ]
+ },
+ "esp_116__negativo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.2x16.0x18.2"
+   },
+   {
+    "tipo": "redondo",
+    "ok": false,
+    "msg": "casco/bbox = 1.00"
+   }
+  ]
+ },
+ "esp_116__oraculo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x18.1"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_117__negativo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x20.0x18.2"
+   },
+   {
+    "tipo": "redondo",
+    "ok": false,
+    "msg": "casco/bbox = 1.00"
+   }
+  ]
+ },
+ "esp_117__oraculo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.0x20.0x18.1"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_118__negativo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.2x16.0x21.2"
+   },
+   {
+    "tipo": "redondo",
+    "ok": false,
+    "msg": "casco/bbox = 1.00"
+   }
+  ]
+ },
+ "esp_118__oraculo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x21.1"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_119__negativo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.2x16.0x30.2"
+   },
+   {
+    "tipo": "redondo",
+    "ok": false,
+    "msg": "casco/bbox = 1.00"
+   }
+  ]
+ },
+ "esp_119__oraculo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 16.0x16.0x30.1"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_120__negativo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 10.2x10.0x24.2"
+   },
+   {
+    "tipo": "redondo",
+    "ok": false,
+    "msg": "casco/bbox = 1.00"
+   }
+  ]
+ },
+ "esp_120__oraculo": {
+  "categoria": "forma",
+  "subtipo": "cilindro",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 10.0x10.0x24.1"
+   },
+   {
+    "tipo": "redondo",
+    "ok": true,
+    "msg": "casco/bbox = 0.78"
+   }
+  ]
+ },
+ "esp_121__negativo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x20.0x18.2"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_121__oraculo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x20.0x18.6"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": true,
+    "msg": "retiros [3.0, 3.0]"
+   }
+  ]
+ },
+ "esp_122__negativo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 24.2x20.0x27.2"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_122__oraculo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 24.2x20.0x27.6"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": true,
+    "msg": "retiros [3.0, 3.0]"
+   }
+  ]
+ },
+ "esp_123__negativo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 24.2x16.0x18.2"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_123__oraculo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 24.2x16.0x18.6"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": true,
+    "msg": "retiros [2.0, 2.0]"
+   }
+  ]
+ },
+ "esp_124__negativo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x20.0x36.2"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_124__oraculo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x20.0x36.8"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": true,
+    "msg": "retiros [2.0, 2.0, 2.0]"
+   }
+  ]
+ },
+ "esp_125__negativo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x20.0x27.2"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": false,
+    "msg": "retiros [0.0]"
+   }
+  ]
+ },
+ "esp_125__oraculo": {
+  "categoria": "forma",
+  "subtipo": "escalonado",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims_total",
+    "ok": true,
+    "msg": "total 20.2x20.0x27.6"
+   },
+   {
+    "tipo": "escalonado",
+    "ok": true,
+    "msg": "retiros [3.0, 3.0]"
+   }
+  ]
+ },
+ "esp_126__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_126__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_127__negativo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_127__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 30° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_128__negativo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_128__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_129__negativo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_129__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x4.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_130__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 16.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_130__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 8.0 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_131__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_131__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_132__negativo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_132__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 20° (esperado 20° mód 90)"
+   }
+  ]
+ },
+ "esp_133__negativo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara trasera"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_133__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_134__negativo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_134__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x4.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_135__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 12.0 m (esperada 6), alineado=True"
+   }
+  ]
+ },
+ "esp_135__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 6.0 m (esperada 6), alineado=True"
+   }
+  ]
+ },
+ "esp_136__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_136__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara derecha"
+   }
+  ]
+ },
+ "esp_137__negativo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 60° mód 90)"
+   }
+  ]
+ },
+ "esp_137__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 60° (esperado 60° mód 90)"
+   }
+  ]
+ },
+ "esp_138__negativo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara izquierda"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_138__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_139__negativo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_139__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 4.0x4.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_140__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 19.8 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_140__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 9.8 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_141__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_141__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara izquierda"
+   }
+  ]
+ },
+ "esp_142__negativo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 60° mód 90)"
+   }
+  ]
+ },
+ "esp_142__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 60° (esperado 60° mód 90)"
+   }
+  ]
+ },
+ "esp_143__negativo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara derecha"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_143__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara frontal"
+   }
+  ]
+ },
+ "esp_144__negativo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_144__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 4.0x4.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_145__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 15.8 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_145__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 7.8 m (esperada 8), alineado=True"
+   }
+  ]
+ },
+ "esp_146__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_146__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_147__negativo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": false,
+    "msg": "giro medido 0° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_147__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "rotar",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "rotacion",
+    "ok": true,
+    "msg": "giro medido 30° (esperado 30° mód 90)"
+   }
+  ]
+ },
+ "esp_148__negativo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": false,
+    "msg": "nada sobresale de la cara frontal"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": false,
+    "msg": "1 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_148__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "mover_cara",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "cara",
+    "ok": true,
+    "msg": "1 piezas, 1 niveles"
+   },
+   {
+    "tipo": "no_cara",
+    "ok": true,
+    "msg": "0 piezas en la cara trasera"
+   }
+  ]
+ },
+ "esp_149__negativo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": false,
+    "msg": "nada sobre la cubierta"
+   }
+  ]
+ },
+ "esp_149__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "encima",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "encima",
+    "ok": true,
+    "msg": "volumen 3.0x4.2x2.8 centrado=True"
+   }
+  ]
+ },
+ "esp_150__negativo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "negativo",
+  "ejecuta": true,
+  "error": null,
+  "paso": false,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": false,
+    "msg": "separación medida 20.0 m (esperada 10), alineado=True"
+   }
+  ]
+ },
+ "esp_150__oraculo": {
+  "categoria": "edicion",
+  "subtipo": "agregar_edificio",
+  "variante": "oraculo",
+  "ejecuta": true,
+  "error": null,
+  "paso": true,
+  "checks": [
+   {
+    "tipo": "dims",
+    "ok": true,
+    "msg": "grupo 'Edificio'"
+   },
+   {
+    "tipo": "separacion",
+    "ok": true,
+    "msg": "separación medida 10.0 m (esperada 10), alineado=True"
+   }
+  ]
+ }
+}

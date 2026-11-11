@@ -73,6 +73,7 @@ except ImportError:
     torch_mod.cat = lambda seq, dim=0: _FakeTensor(np.concatenate([x.arr for x in seq], axis=dim))
 
     nn_mod = types.ModuleType("torch.nn")
+    nn_mod.Identity = lambda: (lambda x: x)
     func_mod = types.ModuleType("torch.nn.functional")
     func_mod.pad = lambda t, pad_tuple, value=0: _FakeTensor(
         np.pad(t.arr, ((pad_tuple[0], pad_tuple[1]),), mode="constant", constant_values=value)
@@ -300,15 +301,45 @@ def test_descargar_assets_syncs_hf_gold_splits(tmp_path: Path, monkeypatch):
 def test_chunked_cross_entropy_trainer_computes_exact_loss_without_full_upcast():
     trainer = tqm.ChunkedCrossEntropyTrainer.__new__(tqm.ChunkedCrossEntropyTrainer)
 
-    def fake_model(**kwargs):
-        assert "labels" not in kwargs
-        b, seq_len = kwargs["input_ids"].shape
-        return {"logits": torch.randn(b, seq_len, 32)}
+    class FakeLinear:
+        in_features = 16
+        out_features = 32
 
+        def __call__(self, h):
+            assert h.shape[-1] == 16
+            b, t, _ = h.shape
+            return torch.randn(b, t, 32)
+
+    class InnerModel:
+        def __init__(self):
+            self.lm_head = FakeLinear()
+            self._modules = {"lm_head": self.lm_head}
+
+    class OuterPeftWrapper:
+        def __init__(self):
+            self.inner = InnerModel()
+
+        @property
+        def lm_head(self):
+            return self.inner.lm_head
+
+        def modules(self):
+            return [self, self.inner]
+
+        def __call__(self, **kwargs):
+            assert "labels" not in kwargs
+            b, seq_len = kwargs["input_ids"].shape
+            hidden = torch.randn(b, seq_len, 16)
+            return {"logits": self.inner.lm_head(hidden)}
+
+    peft_model = OuterPeftWrapper()
+    orig_head = peft_model.inner.lm_head
     input_ids = torch.tensor([[1, 2, 3, 4, 5, 6]], dtype=torch.long)
     labels = torch.tensor([[-100, -100, 3, 4, 5, -100]], dtype=torch.long)
-    loss = trainer.compute_loss(fake_model, {"input_ids": input_ids, "labels": labels})
+    loss = trainer.compute_loss(peft_model, {"input_ids": input_ids, "labels": labels})
     assert loss is not None
+    assert peft_model.inner.lm_head is orig_head
+
 
 
 

@@ -448,16 +448,24 @@ class ChunkedCrossEntropyTrainer(Trainer):
     usando solo ~290 MB de VRAM pico."""
 
     @staticmethod
-    def _find_lm_head_holder(model):
-        for obj in (
-            model,
-            getattr(model, "base_model", None),
-            getattr(getattr(model, "base_model", None), "model", None),
-            getattr(model, "model", None),
-        ):
-            if obj is not None and hasattr(obj, "lm_head") and getattr(obj, "lm_head") is not None:
-                return obj
-        return None
+    def _find_lm_head_holders(model):
+        holders = []
+        if hasattr(model, "modules"):
+            for m in model.modules():
+                mods = getattr(m, "_modules", None)
+                if isinstance(mods, dict) and "lm_head" in mods and mods["lm_head"] is not None:
+                    holders.append(m)
+        if not holders:
+            for obj in (
+                getattr(getattr(model, "base_model", None), "model", None),
+                getattr(model, "base_model", None),
+                getattr(model, "model", None),
+                model,
+            ):
+                if obj is not None and hasattr(obj, "lm_head") and getattr(obj, "lm_head") is not None:
+                    holders.append(obj)
+                    break
+        return holders
 
     def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
         labels = inputs.get("labels")
@@ -465,15 +473,18 @@ class ChunkedCrossEntropyTrainer(Trainer):
             return super().compute_loss(model, inputs, return_outputs=return_outputs)
 
         model_inputs = {k: v for k, v in inputs.items() if k != "labels"}
-        holder = self._find_lm_head_holder(model)
-        real_lm_head = getattr(holder, "lm_head", None) if holder is not None else None
+        holders = self._find_lm_head_holders(model)
+        real_lm_head = getattr(holders[0], "lm_head", None) if holders else None
 
         if real_lm_head is not None and hasattr(torch.nn, "Identity"):
+            identity_mod = torch.nn.Identity()
             try:
-                setattr(holder, "lm_head", torch.nn.Identity())
+                for h_obj in holders:
+                    setattr(h_obj, "lm_head", identity_mod)
                 outputs = model(**model_inputs)
             finally:
-                setattr(holder, "lm_head", real_lm_head)
+                for h_obj in holders:
+                    setattr(h_obj, "lm_head", real_lm_head)
             hidden = outputs.get("logits") if isinstance(outputs, dict) else outputs.logits
             shift_hidden = hidden[..., :-1, :]
             shift_labels = labels[..., 1:]
@@ -484,8 +495,13 @@ class ChunkedCrossEntropyTrainer(Trainer):
                 loss = shift_hidden.sum() * 0.0
                 return (loss, outputs) if return_outputs else loss
 
+            in_features = getattr(real_lm_head, "in_features", None)
+
             def _chunk_ce(h_chunk, y_chunk):
-                logits_chunk = real_lm_head(h_chunk).float()
+                if in_features is None or h_chunk.shape[-1] == in_features:
+                    logits_chunk = real_lm_head(h_chunk).float()
+                else:
+                    logits_chunk = h_chunk.float()
                 return torch.nn.functional.cross_entropy(
                     logits_chunk.reshape(-1, logits_chunk.shape[-1]),
                     y_chunk.reshape(-1),

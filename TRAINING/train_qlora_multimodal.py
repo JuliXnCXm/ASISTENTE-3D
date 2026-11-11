@@ -343,6 +343,18 @@ class QwenVLDataset(Dataset):
                 content.append({"type": "text", "text": f"Instrucción del usuario: {clean_text}{extra}"})
                 qwen_messages.append({"role": "user", "content": content})
                 primer_user = False
+            elif msg["role"] == "assistant":
+                # Compactar comentarios puros y líneas vacías dentro del bloque python para ahorrar ~35% de tokens sin perder código
+                raw_c = msg["content"]
+                if "```python\n" in raw_c:
+                    pref, rest = raw_c.split("```python\n", 1)
+                    code_b, suff = rest.split("```", 1)
+                    compact_lines = [
+                        ln.rstrip() for ln in code_b.splitlines()
+                        if ln.strip() and not ln.strip().startswith("#")
+                    ]
+                    raw_c = f"{pref}```python\n" + "\n".join(compact_lines) + f"\n```{suff}"
+                qwen_messages.append({"role": "assistant", "content": [{"type": "text", "text": raw_c}]})
             else:
                 qwen_messages.append({"role": msg["role"], "content": [{"type": "text", "text": msg["content"]}]})
 
@@ -429,9 +441,23 @@ class QwenVLCollator:
 
 
 class ChunkedCrossEntropyTrainer(Trainer):
-    """Calcula la Cross-Entropy Loss en bloques de 1024 tokens sin convertir toda la matriz
-    de logits [B, seq_len, 152064] a FP32 de golpe (ahorra ~9-12 GB de VRAM en A100 40GB,
-    permitiendo entrenar con max_length=16384 sin truncar ningún script)."""
+    """Evita materializar la matriz gigante de logits [B, seq_len, 152064] (que consume ~18 GB
+    entre bf16 y los 20 chunks de 594 MB guardados en el grafo autograd).
+    Intercepta lm_head durante el forward para recibir hidden_states [B, seq_len, D] (~110 MB)
+    y calcula lm_head + cross_entropy en bloques de 512 tokens con gradient checkpointing,
+    usando solo ~290 MB de VRAM pico."""
+
+    @staticmethod
+    def _find_lm_head_holder(model):
+        for obj in (
+            model,
+            getattr(model, "base_model", None),
+            getattr(getattr(model, "base_model", None), "model", None),
+            getattr(model, "model", None),
+        ):
+            if obj is not None and hasattr(obj, "lm_head") and getattr(obj, "lm_head") is not None:
+                return obj
+        return None
 
     def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
         labels = inputs.get("labels")
@@ -439,12 +465,60 @@ class ChunkedCrossEntropyTrainer(Trainer):
             return super().compute_loss(model, inputs, return_outputs=return_outputs)
 
         model_inputs = {k: v for k, v in inputs.items() if k != "labels"}
+        holder = self._find_lm_head_holder(model)
+        real_lm_head = getattr(holder, "lm_head", None) if holder is not None else None
+
+        if real_lm_head is not None and hasattr(torch.nn, "Identity"):
+            try:
+                setattr(holder, "lm_head", torch.nn.Identity())
+                outputs = model(**model_inputs)
+            finally:
+                setattr(holder, "lm_head", real_lm_head)
+            hidden = outputs.get("logits") if isinstance(outputs, dict) else outputs.logits
+            shift_hidden = hidden[..., :-1, :]
+            shift_labels = labels[..., 1:]
+
+            valid_mask = shift_labels != -100
+            total_valid = valid_mask.sum()
+            if int(total_valid.item()) == 0:
+                loss = shift_hidden.sum() * 0.0
+                return (loss, outputs) if return_outputs else loss
+
+            def _chunk_ce(h_chunk, y_chunk):
+                logits_chunk = real_lm_head(h_chunk).float()
+                return torch.nn.functional.cross_entropy(
+                    logits_chunk.reshape(-1, logits_chunk.shape[-1]),
+                    y_chunk.reshape(-1),
+                    ignore_index=-100,
+                    reduction="sum",
+                )
+
+            seq_len = shift_hidden.shape[1]
+            chunk_size = 512
+            loss_sum = None
+            use_ckpt = hasattr(torch.utils, "checkpoint") and hasattr(torch.utils.checkpoint, "checkpoint")
+            for start in range(0, seq_len, chunk_size):
+                end = min(start + chunk_size, seq_len)
+                y_sub = shift_labels[:, start:end]
+                if not bool((y_sub != -100).any().item()):
+                    continue
+                h_sub = shift_hidden[:, start:end, :]
+                if use_ckpt and getattr(model, "training", False):
+                    step_loss = torch.utils.checkpoint.checkpoint(
+                        _chunk_ce, h_sub, y_sub, use_reentrant=False
+                    )
+                else:
+                    step_loss = _chunk_ce(h_sub, y_sub)
+                loss_sum = step_loss if loss_sum is None else (loss_sum + step_loss)
+
+            loss = (loss_sum / total_valid) if loss_sum is not None else (shift_hidden.sum() * 0.0)
+            return (loss, outputs) if return_outputs else loss
+
+        # Fallback cuando el modelo no expone lm_head (ej. mocks en tests unitarios)
         outputs = model(**model_inputs)
         logits = outputs.get("logits") if isinstance(outputs, dict) else outputs.logits
-
         shift_logits = logits[..., :-1, :]
         shift_labels = labels[..., 1:]
-
         valid_mask = shift_labels != -100
         total_valid = valid_mask.sum()
         if int(total_valid.item()) == 0:
@@ -452,7 +526,7 @@ class ChunkedCrossEntropyTrainer(Trainer):
             return (loss, outputs) if return_outputs else loss
 
         seq_len = shift_logits.shape[1]
-        chunk_size = 1024
+        chunk_size = 512
         loss_sum = None
         for start in range(0, seq_len, chunk_size):
             end = min(start + chunk_size, seq_len)
@@ -478,7 +552,7 @@ def main():
     parser.add_argument("--batch_size", type=int, default=1, help="Usa 1 para A100 40GB / L4 (24GB). Usa 2 para A100 80GB.")
     parser.add_argument("--push_to_hub", action="store_true", help="Subir el adaptador LoRA a Hugging Face al terminar")
     parser.add_argument("--hub_model_id", type=str, default="julianG99/qwen2.5-vl-aec-lora-gold-v1", help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
-    parser.add_argument("--max_length", type=int, default=20480, help="Tokens máximos por ejemplo (20480 garantiza 0% de scripts truncados con ChunkedCrossEntropyTrainer)")
+    parser.add_argument("--max_length", type=int, default=14336, help="Tokens máximos por ejemplo (con compactación de comentarios y checkpointed lm_head cubre el código completo en A100 40GB)")
     parser.add_argument("--assets_dir", type=str, default=DEFAULT_ASSETS_DIR,
                         help="Carpeta que contiene images/ y out_assets/ (rutas del JSONL son relativas a ella)")
     parser.add_argument("--descargar_assets", action="store_true",

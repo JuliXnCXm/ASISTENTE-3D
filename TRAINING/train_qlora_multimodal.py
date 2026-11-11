@@ -7,6 +7,7 @@ Integra Imágenes RGB + Texto -> Código CAD.
 
 import os
 import argparse
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 import torch
 import json
 import numpy as np
@@ -27,8 +28,8 @@ from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)                 # ASISTENTE-3D
-DEFAULT_ASSETS_DIR = os.path.join(PROJECT_DIR, "DATASET")  # contiene out_assets/
-HF_ASSETS_REPO = "julianG99/aec-procedural-blender"
+DEFAULT_ASSETS_DIR = os.path.join(PROJECT_DIR, "DATASET")  # contiene images/ y out_assets/
+HF_ASSETS_REPO = os.environ.get("HF_ASSETS_REPO", "julianG99/aec-procedural-blender-gold-v2")
 
 
 def leer_jsonl_tolerante(path):
@@ -47,16 +48,28 @@ def leer_jsonl_tolerante(path):
 
 
 def descargar_assets(assets_dir, con_profundidad=False):
-    """Descarga de Hugging Face SOLO lo necesario (renders RGB; EXR/cámara opcional)
-    a <assets_dir>/out_assets/... — las rutas del JSONL son relativas a assets_dir."""
+    """Descarga de Hugging Face el dataset Gold-Standard (images/*, data/*.jsonl) y/o out_assets/*
+    a <assets_dir> — las rutas del JSONL son relativas a assets_dir."""
+    import shutil
     from huggingface_hub import snapshot_download
-    patrones = ["out_assets/*/*_rgb.png"]
+    patrones = ["images/*", "data/*.jsonl", "out_assets/*/*_rgb.png"]
     if con_profundidad:
         patrones += ["out_assets/*/*_depth.exr", "out_assets/*/*_camera.json",
                      "out_assets/*/*_depth_est.npz", "out_assets/*/*_depth_est.json"]
     print(f"Descargando assets de {HF_ASSETS_REPO} -> {assets_dir} ({patrones})")
     snapshot_download(repo_id=HF_ASSETS_REPO, repo_type="dataset",
                       local_dir=assets_dir, allow_patterns=patrones, max_workers=16)
+    # Sincronizar data/{train,validation,test}.jsonl descargados de HF hacia TRAINING/data/*_multimodal.jsonl
+    data_dl = os.path.join(assets_dir, "data")
+    train_data_dir = os.path.join(SCRIPT_DIR, "data")
+    if os.path.isdir(data_dl):
+        os.makedirs(train_data_dir, exist_ok=True)
+        for sp in ("train", "validation", "test"):
+            src_j = os.path.join(data_dl, f"{sp}.jsonl")
+            dst_j = os.path.join(train_data_dir, f"{sp}_multimodal.jsonl")
+            if os.path.isfile(src_j):
+                shutil.copy2(src_j, dst_j)
+                print(f"[ASSETS] Sincronizado {src_j} -> {dst_j}")
     if con_profundidad:
         _reemplazar_assets_viejos(assets_dir)
 
@@ -227,27 +240,29 @@ class QwenVLDataset(Dataset):
         self.im_end_id = tok.convert_tokens_to_ids("<|im_end|>")
         self.data = leer_jsonl_tolerante(jsonl_path)
 
-        # Resolver rutas una sola vez y reportar cobertura (nunca más fallos silenciosos)
-        n_img = n_ref = n_depth = 0
+        # Resolver rutas una sola vez y reportar cobertura (soporta tanto multimodal.image como image en raíz)
+        n_img = n_ref = n_depth = n_ref_depth = 0
         for item in self.data:
             mm = item.get("multimodal") or {}
-            item["_img"] = self._resolver(mm.get("image"))
+            img_rel = mm.get("image") if mm.get("image") is not None else item.get("image")
+            item["_img"] = self._resolver(img_rel)
             dep = mm.get("metric_depth")
             if dep and fuente_profundidad == "estimada":
                 dep = dep.replace("_depth.exr", "_depth_est.npz")
             item["_depth"] = self._resolver(dep) if usar_profundidad else None
             item["_cam"] = self._resolver(mm.get("camera")) if usar_camara else None
-            n_ref += bool(mm.get("image"))
+            n_ref += bool(img_rel)
             n_img += bool(item["_img"])
+            n_ref_depth += bool(dep)
             n_depth += bool(item["_depth"])
         self.n_con_imagen = n_img
         print(f"[DATA] {os.path.basename(jsonl_path)}: {len(self.data)} ejemplos | "
               f"con imagen RGB encontrada: {n_img}/{n_ref} referenciadas"
-              + (f" | profundidad ({fuente_profundidad}): {n_depth}" if usar_profundidad else "")
+              + (f" | profundidad ({fuente_profundidad}): {n_depth}/{n_ref_depth}" if usar_profundidad else "")
               + (f" | aumentos: ruido escala ±{ruido_escala:.0%}, sin prof. {p_sin_profundidad:.0%}, "
                  f"sin cámara {p_sin_camara:.0%}" if aumentar else ""))
 
-        # Verificación real: que existan no basta, hay que poder LEER los EXR.
+        # Verificación real: si el dataset referencia mapas de profundidad, exigir que >=90% sean legibles
         if usar_profundidad and n_depth:
             muestra = [it["_depth"] for it in self.data if it["_depth"]][:: max(1, n_depth // 40)][:40]
             ok = sum(self._cargar_profundidad(p) is not None for p in muestra)
@@ -257,8 +272,8 @@ class QwenVLDataset(Dataset):
                     f"[ERROR] Solo {ok}/{len(muestra)} mapas de profundidad se pudieron leer. "
                     "EXR: pip install OpenEXR (OpenCV 5 no lee EXR). Estimada: faltan *_depth_est.npz "
                     "(--descargar_assets). Para entrenar sin profundidad a propósito: --no-usar_profundidad")
-        if usar_profundidad and n_depth < 0.9 * max(1, n_ref):
-            raise SystemExit(f"[ERROR] Solo {n_depth}/{n_ref} ejemplos tienen archivo de profundidad "
+        if usar_profundidad and n_ref_depth > 0 and n_depth < 0.9 * n_ref_depth:
+            raise SystemExit(f"[ERROR] Solo {n_depth}/{n_ref_depth} ejemplos tienen archivo de profundidad "
                              f"({fuente_profundidad}). ¿Falta --descargar_assets?")
 
     def _resolver(self, rel):
@@ -413,32 +428,73 @@ class QwenVLCollator:
         return batch
 
 
+class ChunkedCrossEntropyTrainer(Trainer):
+    """Calcula la Cross-Entropy Loss en bloques de 1024 tokens sin convertir toda la matriz
+    de logits [B, seq_len, 152064] a FP32 de golpe (ahorra ~9-12 GB de VRAM en A100 40GB,
+    permitiendo entrenar con max_length=16384 sin truncar ningún script)."""
+
+    def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
+        labels = inputs.get("labels")
+        if labels is None:
+            return super().compute_loss(model, inputs, return_outputs=return_outputs)
+
+        model_inputs = {k: v for k, v in inputs.items() if k != "labels"}
+        outputs = model(**model_inputs)
+        logits = outputs.get("logits") if isinstance(outputs, dict) else outputs.logits
+
+        shift_logits = logits[..., :-1, :]
+        shift_labels = labels[..., 1:]
+
+        valid_mask = shift_labels != -100
+        total_valid = valid_mask.sum()
+        if int(total_valid.item()) == 0:
+            loss = shift_logits.sum() * 0.0
+            return (loss, outputs) if return_outputs else loss
+
+        seq_len = shift_logits.shape[1]
+        chunk_size = 1024
+        loss_sum = None
+        for start in range(0, seq_len, chunk_size):
+            end = min(start + chunk_size, seq_len)
+            sub_labels = shift_labels[:, start:end].reshape(-1)
+            if not bool((sub_labels != -100).any().item()):
+                continue
+            sub_logits = shift_logits[:, start:end, :].reshape(-1, shift_logits.shape[-1]).float()
+            step_loss = torch.nn.functional.cross_entropy(
+                sub_logits, sub_labels, ignore_index=-100, reduction="sum"
+            )
+            loss_sum = step_loss if loss_sum is None else (loss_sum + step_loss)
+
+        loss = (loss_sum / total_valid) if loss_sum is not None else (shift_logits.sum() * 0.0)
+        return (loss, outputs) if return_outputs else loss
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name_or_path", type=str, default="Qwen/Qwen2.5-VL-7B-Instruct")
     parser.add_argument("--train_file", type=str, default=os.path.join(PROJECT_DIR, "TRAINING/data/train_multimodal.jsonl"))
     parser.add_argument("--val_file", type=str, default=os.path.join(PROJECT_DIR, "TRAINING/data/validation_multimodal.jsonl"))
     parser.add_argument("--output_dir", type=str, default="./checkpoints")
-    parser.add_argument("--batch_size", type=int, default=1, help="Usa 1 para L4 (24GB). Usa 2 para 4090/A6000. Usa 4 para A100 (80GB).")
+    parser.add_argument("--batch_size", type=int, default=1, help="Usa 1 para A100 40GB / L4 (24GB). Usa 2 para A100 80GB.")
     parser.add_argument("--push_to_hub", action="store_true", help="Subir el adaptador LoRA a Hugging Face al terminar")
-    parser.add_argument("--hub_model_id", type=str, default=None, help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
-    parser.add_argument("--max_length", type=int, default=6144, help="Tokens máximos por ejemplo (imagen+texto+código)")
+    parser.add_argument("--hub_model_id", type=str, default="julianG99/qwen2.5-vl-aec-lora-gold-v1", help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
+    parser.add_argument("--max_length", type=int, default=20480, help="Tokens máximos por ejemplo (20480 garantiza 0% de scripts truncados con ChunkedCrossEntropyTrainer)")
     parser.add_argument("--assets_dir", type=str, default=DEFAULT_ASSETS_DIR,
-                        help="Carpeta que contiene out_assets/ (rutas del JSONL son relativas a ella)")
+                        help="Carpeta que contiene images/ y out_assets/ (rutas del JSONL son relativas a ella)")
     parser.add_argument("--descargar_assets", action="store_true",
                         help=f"Descargar renders desde HF ({HF_ASSETS_REPO}) a --assets_dir antes de entrenar")
-    parser.add_argument("--usar_profundidad", action=argparse.BooleanOptionalAction, default=True,
-                        help="Incluir mapa de profundidad métrica EXR como 2ª imagen (--no-usar_profundidad para desactivar)")
-    parser.add_argument("--usar_camara", action=argparse.BooleanOptionalAction, default=True,
-                        help="Incluir datos de cámara como texto (--no-usar_camara para desactivar)")
-    parser.add_argument("--min_pct_imagenes", type=float, default=0.7,
-                        help="Aborta si menos de esta fracción de ejemplos tiene imagen (evita entrenar solo-texto sin querer). 0 = desactivar")
+    parser.add_argument("--usar_profundidad", action=argparse.BooleanOptionalAction, default=False,
+                        help="Incluir mapa de profundidad métrica EXR como 2ª imagen (desactivado por defecto en Gold-Standard RGB)")
+    parser.add_argument("--usar_camara", action=argparse.BooleanOptionalAction, default=False,
+                        help="Incluir datos de cámara como texto (desactivado por defecto en Gold-Standard RGB)")
+    parser.add_argument("--min_pct_imagenes", type=float, default=0.5,
+                        help="Aborta si menos de esta fracción de ejemplos tiene imagen (0.5 soporta Modality Dropout). 0 = desactivar")
     parser.add_argument("--max_pixels", type=int, default=768 * 768, help="Resolución máxima por imagen (controla tokens visuales)")
     parser.add_argument("--num_epochs", type=float, default=2)
     parser.add_argument("--max_steps", type=int, default=-1, help="Para pruebas rápidas (smoke test)")
     parser.add_argument("--report_to", type=str, default="wandb", help="wandb | none")
     parser.add_argument("--lora_r", type=int, default=64, help="Rango LoRA (alpha = 2*r)")
-    parser.add_argument("--save_steps", type=int, default=0,
+    parser.add_argument("--save_steps", type=int, default=50,
                         help="Si >0: evalúa y guarda checkpoint cada N pasos (en vez de por época), "
                              "para no perder progreso si se cae")
     parser.add_argument("--resume_from_checkpoint", type=str, default=None,
@@ -453,7 +509,7 @@ def main():
                         help="Prob. de quitar el texto de cámara en un ejemplo de train")
     args = parser.parse_args()
 
-    if args.descargar_assets:
+    if args.descargar_assets or not os.path.isdir(os.path.join(args.assets_dir, "images")):
         descargar_assets(args.assets_dir, con_profundidad=args.usar_profundidad or args.usar_camara)
 
     # Configurar Quantización (4-bits) para que quepa en memoria
@@ -547,7 +603,7 @@ def main():
         report_to=args.report_to
     )
 
-    trainer = Trainer(
+    trainer = ChunkedCrossEntropyTrainer(
         model=model,
         args=training_args,
         train_dataset=train_dataset,

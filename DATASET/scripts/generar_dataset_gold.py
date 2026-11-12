@@ -28,11 +28,13 @@ import hashlib
 import io
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
 import threading
+import time
 import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -753,12 +755,86 @@ for window in bpy.context.window_manager.windows:
     return code
 
 
+def extract_real_plan_from_bpy_ast(code: str, fallback_spec: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Extrae el <plan_arquitectonico> REAL directamente del AST y estructura del código Python
+    escrito por gemini-4-argon (colecciones reales, materiales reales, funciones helper reales,
+    secciones constructivas y título del proyecto), garantizando alineación 1:1 entre Plan y Código.
+    """
+    spec_out = dict(fallback_spec)
+    tree = ast.parse(code)
+
+    helper_funcs: List[str] = []
+    collections_found: List[str] = []
+    materials_found: List[str] = []
+    key_params: Dict[str, Any] = {}
+
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef):
+            args_str = ", ".join(a.arg for a in node.args.args)
+            helper_funcs.append(f"{node.name}({args_str})")
+        elif isinstance(node, ast.Call):
+            func_str = ast.unparse(node.func) if hasattr(ast, "unparse") else ""
+            if any(k in func_str for k in ("collections.new", "get_collection", "make_collection", "get_col", "create_collection")):
+                if node.args and isinstance(node.args[0], ast.Constant) and isinstance(node.args[0].value, str):
+                    c_val = node.args[0].value
+                    if c_val not in collections_found:
+                        collections_found.append(c_val)
+            elif any(k in func_str for k in ("create_pbr_material", "make_pbr_mat", "make_mat", "materials.new")):
+                if node.args and isinstance(node.args[0], ast.Constant) and isinstance(node.args[0].value, str):
+                    m_val = node.args[0].value
+                    if m_val not in materials_found:
+                        materials_found.append(m_val)
+
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+            k_name = node.targets[0].id
+            if isinstance(node.value, ast.Constant) and isinstance(node.value.value, (int, float, str)):
+                if any(w in k_name.lower() for w in ("w", "d", "h", "floor", "piso", "lote", "tier", "bay", "radius", "len")):
+                    key_params[k_name] = node.value.value
+
+    section_headers: List[str] = []
+    for ln in code.splitlines():
+        s = ln.strip()
+        if s.startswith("#") and any(ch.isdigit() for ch in s[:10]) and len(s) > 8 and "===" not in s and "---" not in s:
+            section_headers.append(s.lstrip("# ").strip())
+
+    if collections_found:
+        spec_out["collections"] = collections_found[:12]
+    if materials_found:
+        spec_out["materials_pbr"] = materials_found[:20]
+    if helper_funcs:
+        spec_out["helper_functions"] = helper_funcs[:12]
+    if key_params:
+        spec_out["parametric_variables"] = dict(list(key_params.items())[:16])
+    if section_headers:
+        spec_out["build_sections"] = section_headers[:12]
+        spec_out["archetype"] = re.sub(r"[^a-zA-Z0-9_]+", "_", section_headers[0].lower()).strip("_")[:48] or spec_out["archetype"]
+
+    return spec_out
+
+
+def is_pure_gemini4_script(code: str) -> Tuple[bool, str]:
+    """Verifica que el script provenga de gemini-4-argon puro y no tenga patrones defectuosos del fallback 3.1."""
+    if "# Regla 1:" in code or "def setup_environment():" in code:
+        return False, "fallback_gemini_3_1_signature"
+    if "wall_north = create_mesh_object" in code and "wall_north.location" not in code:
+        return False, "unpositioned_cross_walls"
+    if "for b in range(100):" in code and "Brick_F" in code:
+        return False, "brick_spam"
+    if len(code.splitlines()) < 140:
+        return False, "script_too_short"
+    if code.count(".location") < 3 and "bmesh.ops.translate" not in code and "Matrix.Translation" not in code:
+        return False, "missing_3d_positioning"
+    return True, "ok"
+
+
 def format_assistant_cot_response(spec: Dict[str, Any], code: str, mode: str = "architectural") -> str:
-    plan_copy = dict(spec)
+    plan_copy = extract_real_plan_from_bpy_ast(code, spec)
     plan_copy["engineering_mode"] = mode
     plan_copy["nivel_diseno"] = "LOD_400_INGENIERIA_AEC" if mode == "aec_structural" else "LOD_500_ULTRA_DETALLE"
-    plan_copy["cierre_6_caras"] = build_cierre_6_caras_manifest(spec, mode=mode)
-    plan_copy["validacion_6_caras_ok"] = validate_6_faces_in_code(code, spec["category"], mode)
+    plan_copy["cierre_6_caras"] = build_cierre_6_caras_manifest(plan_copy, mode=mode)
+    plan_copy["validacion_6_caras_ok"] = validate_6_faces_in_code(code, plan_copy["category"], mode)
     if not plan_copy["validacion_6_caras_ok"]:
         raise ValueError(f"El código generado para {spec['scene_id']} ({mode}) no pasó la validación de 6 caras.")
     plan_json = json.dumps(plan_copy, indent=2, ensure_ascii=False)
@@ -1306,15 +1382,18 @@ def build_six_matrix_variants(
       - aec_structural_creation (conversión a Ingeniería Estructural BIM LOD 400)
       - aec_structural_edit (refuerzo e intervención estructural AEC con <plan_edicion>)
     """
-    lot_w = spec["lot_dimensions_m"]["width_x"]
-    lot_d = spec["lot_dimensions_m"]["depth_y"]
-    lot_area = spec["lot_dimensions_m"]["area_m2"]
-    cat = spec["category"]
-    arch = spec["archetype"]
-    pal = spec["palette_pbr_rgb"]
+    real_plan = extract_real_plan_from_bpy_ast(code_arch, spec)
+    lot_w = real_plan["lot_dimensions_m"]["width_x"]
+    lot_d = real_plan["lot_dimensions_m"]["depth_y"]
+    lot_area = real_plan["lot_dimensions_m"]["area_m2"]
+    cat = real_plan["category"]
+    arch = real_plan["archetype"]
+    pal = real_plan["palette_pbr_rgb"]
+    cols_preview = ", ".join(real_plan.get("collections", [])[:5])
+    mats_preview = ", ".join(real_plan.get("materials_pbr", [])[:6])
 
-    resp_arch = format_assistant_cot_response(spec, code_arch, mode="architectural")
-    resp_aec = format_assistant_cot_response(spec, code_aec, mode="aec_structural")
+    resp_arch = format_assistant_cot_response(real_plan, code_arch, mode="architectural")
+    resp_aec = format_assistant_cot_response(real_plan, code_aec, mode="aec_structural")
     resp_edit_arch = format_assistant_edit_response(edit_plan_arch, code_edit_arch)
     resp_edit_aec = format_assistant_edit_response(edit_plan_aec, code_edit_aec)
 
@@ -1322,7 +1401,7 @@ def build_six_matrix_variants(
     creation_matrix_cat = f"{cat}_creation"
     edit_matrix_cat = f"{cat}_edit"
 
-    # 1. Creación — Imagen + Prompt
+    # 1. Creación — Imagen + Prompt (alineado con las colecciones reales del script)
     v_img_prompt = {
         "id": f"{spec['scene_id']}__image_plus_prompt",
         "scene_id": spec["scene_id"],
@@ -1340,10 +1419,11 @@ def build_six_matrix_variants(
                 "role": "user",
                 "content": (
                     f"<image>\n[NIVEL_DISENO: LOD_500_ULTRA_DETALLE] [CIERRE: 360_6_CARAS] "
-                    f"Crea esta escena ({arch}) en Blender con ultra-detalle sobre un lote de "
-                    f"{lot_area} m2 ({lot_w}m x {lot_d}m). Garantiza que existan las 6 caras completas "
-                    f"(frente, contrafrente trasero, lateral izquierdo, lateral derecho, base/solado y cubierta), "
-                    f"incluye puerta de madera de 2.00m de alto y aplica los materiales PBR con los colores de la imagen."
+                    f"Crea esta escena en Blender con ultra-detalle sobre un lote de "
+                    f"{lot_area} m2 ({lot_w}m x {lot_d}m) estructurada en las colecciones [{cols_preview}]. "
+                    f"Garantiza que existan las 6 caras completas (frente, contrafrente trasero, lateral izquierdo, "
+                    f"lateral derecho, base/solado y cubierta), incluye puerta de 2.00m de alto y aplica los "
+                    f"materiales PBR ({mats_preview}) con los colores de la imagen."
                 ),
             },
             {"role": "assistant", "content": resp_arch},
@@ -1376,7 +1456,7 @@ def build_six_matrix_variants(
         ],
     }
 
-    # 3. Creación — Solo Texto
+    # 3. Creación — Solo Texto (especificación rica alineada con las colecciones y materiales reales del script)
     v_text_only = {
         "id": f"{spec['scene_id']}__text_only",
         "scene_id": spec["scene_id"],
@@ -1394,10 +1474,10 @@ def build_six_matrix_variants(
                 "role": "user",
                 "content": (
                     f"[NIVEL_DISENO: LOD_500_ULTRA_DETALLE] [CIERRE: 360_6_CARAS] "
-                    f"Diseña en Blender una escena de categoría {cat} tipo '{arch}' en un lote de {lot_area} m2 "
-                    f"({lot_w}m x {lot_d}m), con {spec['building_program']['num_floors']} nivel(es) de "
-                    f"{spec['building_program']['floor_height_m']}m de altura, puerta de madera de 2.00m, "
-                    f"las 6 caras cerradas en 360° y paleta PBR principal RGB {pal['wall_primary']} y madera {pal['wood_warm']}."
+                    f"Diseña en Blender una escena de categoría {cat} en un lote de {lot_area} m2 "
+                    f"({lot_w}m x {lot_d}m) organizada en las colecciones [{cols_preview}], con materiales PBR "
+                    f"[{mats_preview}], puerta de 2.00m, las 6 caras cerradas en 360° y paleta RGB principal "
+                    f"{pal['wall_primary']} y cálida {pal['wood_warm']}."
                 ),
             },
             {"role": "assistant", "content": resp_arch},
@@ -1643,20 +1723,19 @@ def call_gemini_api_vision(
         "generationConfig": {"temperature": 0.2, "maxOutputTokens": 65536},
     }
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={key}"
-    req = urllib.request.Request(
-        url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"}, method="POST"
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=180) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except Exception:
-        fb_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={key}"
-        req_fb = urllib.request.Request(
-            fb_url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"}, method="POST"
+    last_exc = None
+    for retry in range(4):
+        req = urllib.request.Request(
+            url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"}, method="POST"
         )
-        with urllib.request.urlopen(req_fb, timeout=180) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    return data["candidates"][0]["content"]["parts"][0]["text"]
+        try:
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            return data["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception as exc:
+            last_exc = exc
+            time.sleep(6 * (retry + 1))
+    raise RuntimeError(f"Fallo en {model_name} tras 4 reintentos con backoff: {last_exc}")
 
 
 def _extract_python_code(resp_text: str) -> str:

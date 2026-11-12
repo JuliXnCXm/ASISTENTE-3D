@@ -51,7 +51,7 @@ def descargar_assets(assets_dir, con_profundidad=False):
     """Descarga de Hugging Face el dataset Gold-Standard (images/*, data/*.jsonl) y/o out_assets/*
     a <assets_dir> — las rutas del JSONL son relativas a assets_dir."""
     import shutil
-    from huggingface_hub import snapshot_download
+    from huggingface_hub import snapshot_download, hf_hub_download
     patrones = ["images/*", "data/*.jsonl", "out_assets/*/*_rgb.png"]
     if con_profundidad:
         patrones += ["out_assets/*/*_depth.exr", "out_assets/*/*_camera.json",
@@ -59,6 +59,18 @@ def descargar_assets(assets_dir, con_profundidad=False):
     print(f"Descargando assets de {HF_ASSETS_REPO} -> {assets_dir} ({patrones})")
     snapshot_download(repo_id=HF_ASSETS_REPO, repo_type="dataset",
                       local_dir=assets_dir, allow_patterns=patrones, max_workers=16)
+    # Forzar actualización fresca de data/{train,validation,test}.jsonl desde HF
+    for sp in ("train", "validation", "test"):
+        try:
+            hf_hub_download(
+                repo_id=HF_ASSETS_REPO,
+                filename=f"data/{sp}.jsonl",
+                repo_type="dataset",
+                local_dir=assets_dir,
+                force_download=True,
+            )
+        except Exception:
+            pass
     # Sincronizar data/{train,validation,test}.jsonl descargados de HF hacia TRAINING/data/*_multimodal.jsonl
     data_dl = os.path.join(assets_dir, "data")
     train_data_dir = os.path.join(SCRIPT_DIR, "data")
@@ -564,10 +576,10 @@ def main():
     parser.add_argument("--model_name_or_path", type=str, default="Qwen/Qwen2.5-VL-7B-Instruct")
     parser.add_argument("--train_file", type=str, default=os.path.join(PROJECT_DIR, "TRAINING/data/train_multimodal.jsonl"))
     parser.add_argument("--val_file", type=str, default=os.path.join(PROJECT_DIR, "TRAINING/data/validation_multimodal.jsonl"))
-    parser.add_argument("--output_dir", type=str, default="./checkpoints")
+    parser.add_argument("--output_dir", type=str, default="./checkpoints_gold_v2")
     parser.add_argument("--batch_size", type=int, default=1, help="Usa 1 para A100 40GB / L4 (24GB). Usa 2 para A100 80GB.")
     parser.add_argument("--push_to_hub", action="store_true", help="Subir el adaptador LoRA a Hugging Face al terminar")
-    parser.add_argument("--hub_model_id", type=str, default="julianG99/qwen2.5-vl-aec-lora-gold-v1", help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
+    parser.add_argument("--hub_model_id", type=str, default="julianG99/qwen2.5-vl-aec-lora-gold-v2", help="Ej: tu_usuario/qwen2.5-vl-aec-lora")
     parser.add_argument("--max_length", type=int, default=14336, help="Tokens máximos por ejemplo (con compactación de comentarios y checkpointed lm_head cubre el código completo en A100 40GB)")
     parser.add_argument("--assets_dir", type=str, default=DEFAULT_ASSETS_DIR,
                         help="Carpeta que contiene images/ y out_assets/ (rutas del JSONL son relativas a ella)")

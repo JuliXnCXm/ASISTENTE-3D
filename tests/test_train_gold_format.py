@@ -289,6 +289,7 @@ def test_descargar_assets_syncs_hf_gold_splits(tmp_path: Path, monkeypatch):
             (dl_data / f"{sp}.jsonl").write_text(f'{{"split": "{sp}"}}\n', encoding="utf-8")
 
     monkeypatch.setattr(huggingface_hub, "snapshot_download", fake_snapshot_download)
+    monkeypatch.setattr(huggingface_hub, "hf_hub_download", lambda **kwargs: None)
     monkeypatch.setattr(tqm, "SCRIPT_DIR", str(tmp_path / "TRAINING"))
 
     tqm.descargar_assets(str(tmp_path / "DATASET"), con_profundidad=False)

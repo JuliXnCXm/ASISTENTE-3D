@@ -65,33 +65,30 @@ def build_cierre_6_caras_manifest(spec: Dict[str, Any], mode: str = "architectur
     lot_w = spec["lot_dimensions_m"]["width_x"]
     lot_d = spec["lot_dimensions_m"]["depth_y"]
     num_floors = spec["building_program"]["num_floors"]
-    cat = spec["category"]
+    cols = spec.get("collections") or []
+    mats = spec.get("materials_pbr") or []
+    secs = spec.get("build_sections") or []
+
+    c_str = ", ".join(cols[:4]) if cols else "Estructura_360, Fachada_Completa"
+    m_str = ", ".join(mats[:4]) if mats else "PBR_Principal, Vidrio_Arquitectonico"
+    s_str = " | ".join(secs[:3]) if secs else f"Volumen de {num_floors} niveles"
 
     if mode == "aec_structural":
         return {
-            "cara_1_frente_sur": f"Pórtico metálico frontal de {num_floors} niveles + montantes Curtain Wall + pórtico puerta 2.00m + arriostramiento sísmico",
-            "cara_2_contrafrente_norte": f"Pórtico estructural trasero de {num_floors} niveles + vigas IPE de cierre + montantes CW traseros",
-            "cara_3_lateral_oeste_izq": "Columna HEA eje izquierdo + vigas transversales IPE + borde de replanteo izquierdo",
-            "cara_4_lateral_este_der": "Columna HEA eje derecho + vigas transversales IPE + borde de replanteo derecho",
-            "cara_5_base_suelo": f"Lote de {lot_area} m2 ({lot_w}m x {lot_d}m) + pilotes HA + cabezales + parrilla de vigas riostra + vaso HA de piscina con contrafuertes",
-            "cara_6_cubierta_techo": "Forjado superior con vigas IPE + viguetas secundarias + losa colaborante Steel Deck N_top",
-        }
-    if cat == "exterior":
-        return {
-            "cara_1_frente_sur": f"Fachada frontal de {num_floors} niveles + ventanales + escalinata y puerta principal de madera de 2.00m",
-            "cara_2_contrafrente_norte": f"Fachada trasera completa de {num_floors} niveles + ventanales traseros + cierre perimetral norte",
-            "cara_3_lateral_oeste_izq": f"Muro de cierre lateral izquierdo en los {num_floors} niveles + vegetación tropical lateral",
-            "cara_4_lateral_este_der": f"Muro de cierre lateral derecho en los {num_floors} niveles + baranda cromada y equipamiento",
-            "cara_5_base_suelo": f"Placa de lote de {lot_area} m2 ({lot_w}m x {lot_d}m) + solado de baldosas de travertino + espejo de agua de piscina",
-            "cara_6_cubierta_techo": "Losa de cubierta superior + entrepisos + copas de sombrillas pagoda en terraza inferior",
+            "cara_1_frente_sur": f"Pórtico estructural frontal ({s_str}) + montantes Curtain Wall + pórtico acceso 2.00m",
+            "cara_2_contrafrente_norte": f"Pórtico estructural posterior cerrado en 360° + vigas IPE de borde ({c_str})",
+            "cara_3_lateral_oeste_izq": "Eje estructural lateral izquierdo HEA/IPE + arriostramiento lateral",
+            "cara_4_lateral_este_der": "Eje estructural lateral derecho HEA/IPE + arriostramiento lateral",
+            "cara_5_base_suelo": f"Cimentación profunda sobre lote de {lot_area} m2 ({lot_w}m x {lot_d}m) con pilotes HA, cabezales y vigas riostra",
+            "cara_6_cubierta_techo": "Forjado superior metálico IPE + losas colaborantes Steel Deck en todos los niveles",
         }
     return {
-        "cara_1_frente_sur": "Cerramiento frontal interior (muro de cámara) que completa la caja arquitectónica",
-        "cara_2_contrafrente_norte": "Bay window curvo/facetado de piso a techo con 4 paños vidriados y 152 lamas de persiana veneciana",
-        "cara_3_lateral_oeste_izq": "Muro lateral izquierdo completo + puerta interior de madera de 2.00m de alto + bibliotecas modulares",
-        "cara_4_lateral_este_der": "Muro lateral derecho + tabique interior vidriado de piso a techo",
-        "cara_5_base_suelo": f"Losa base de {lot_area} m2 + solado interior de parquet de madera en espiga (Herringbone) de 196 listones",
-        "cara_6_cubierta_techo": "Losa de techo interior completa + bandeja suspendida con iluminación cove LED cálida",
+        "cara_1_frente_sur": f"Fachada principal ({s_str}) con carpinterías, acceso de 2.00m y materiales [{m_str}]",
+        "cara_2_contrafrente_norte": f"Cerramiento posterior completo en 360° articulado en [{c_str}]",
+        "cara_3_lateral_oeste_izq": f"Cerramiento y fachada lateral izquierda completa con materiales [{m_str}]",
+        "cara_4_lateral_este_der": f"Cerramiento y fachada lateral derecha completa integrada a [{c_str}]",
+        "cara_5_base_suelo": f"Plataforma y solado base sobre lote de {lot_area} m2 ({lot_w}m x {lot_d}m)",
+        "cara_6_cubierta_techo": "Sistema de entrepisos, coronamiento perimetral y cubierta superior cerrada en 360°",
     }
 
 
@@ -815,9 +812,9 @@ def extract_real_plan_from_bpy_ast(code: str, fallback_spec: Dict[str, Any]) -> 
 
 
 def is_pure_gemini4_script(code: str) -> Tuple[bool, str]:
-    """Verifica que el script provenga de gemini-4-argon puro y no tenga patrones defectuosos del fallback 3.1."""
-    if "# Regla 1:" in code or "def setup_environment():" in code:
-        return False, "fallback_gemini_3_1_signature"
+    """Descarta únicamente scripts con geometría en cruz rota (Base_i / BaseMesh / muros en (0,0,0) / brick spam)."""
+    if 'f"Base_{i}"' in code or "BaseMesh" in code:
+        return False, "broken_cross_basemesh"
     if "wall_north = create_mesh_object" in code and "wall_north.location" not in code:
         return False, "unpositioned_cross_walls"
     if "for b in range(100):" in code and "Brick_F" in code:
@@ -836,7 +833,12 @@ def format_assistant_cot_response(spec: Dict[str, Any], code: str, mode: str = "
     plan_copy["cierre_6_caras"] = build_cierre_6_caras_manifest(plan_copy, mode=mode)
     plan_copy["validacion_6_caras_ok"] = validate_6_faces_in_code(code, plan_copy["category"], mode)
     if not plan_copy["validacion_6_caras_ok"]:
-        raise ValueError(f"El código generado para {spec['scene_id']} ({mode}) no pasó la validación de 6 caras.")
+        raise ValueError(f"El código generado para {spec.get('scene_id')} ({mode}) no pasó la validación de 6 caras.")
+
+    # Eliminar identificadores de archivo para evitar memorización por ID (Shortcut Learning)
+    for forbidden_key in ("scene_id", "source_image", "blend_files", "bridge_verified", "bridge_object_count"):
+        plan_copy.pop(forbidden_key, None)
+
     plan_json = json.dumps(plan_copy, indent=2, ensure_ascii=False)
     return f"<plan_arquitectonico>\n{plan_json}\n</plan_arquitectonico>\n\n```python\n{code.strip()}\n```"
 
@@ -1360,7 +1362,10 @@ for l_i, ly in enumerate([2.4, 3.2, 4.0]):
 
 
 def format_assistant_edit_response(edit_plan: Dict[str, Any], code_edit: str) -> str:
-    plan_json = json.dumps(edit_plan, indent=2, ensure_ascii=False)
+    clean_plan = dict(edit_plan)
+    for forbidden_key in ("scene_id", "source_image", "blend_files"):
+        clean_plan.pop(forbidden_key, None)
+    plan_json = json.dumps(clean_plan, indent=2, ensure_ascii=False)
     return f"<plan_edicion>\n{plan_json}\n</plan_edicion>\n\n```python\n{code_edit.strip()}\n```"
 
 
@@ -1484,11 +1489,11 @@ def build_six_matrix_variants(
         ],
     }
 
-    # 4. Edición Arquitectónica Quirúrgica Multi-Turno + Contexto de Escena (exterior_edit o interior_edit)
+    # 4. Edición Arquitectónica Quirúrgica + Contexto de Escena (sin scene_id para evitar memorización por ID)
     edit_user_prompt = (
         f"[NIVEL_DISENO: LOD_500_ULTRA_DETALLE] [CIERRE: 360_6_CARAS]\n"
         f"<escena_actual_blender>\n"
-        f"scene_id: {spec['scene_id']} | colecciones: {spec['collections']} | lote: {lot_area} m2 ({lot_w}m x {lot_d}m)\n"
+        f"colecciones: {real_plan.get('collections', [])[:6]} | lote: {lot_area} m2 ({lot_w}m x {lot_d}m)\n"
         f"</escena_actual_blender>\n"
         f"Sobre la escena que acabas de construir en Blender, manteniendo intactas las 6 caras del edificio, "
         f"completa las escaleras de la entrada con iluminación LED para que conduzcan a un pasillo elevado "
@@ -1496,7 +1501,7 @@ def build_six_matrix_variants(
         if cat == "exterior"
         else f"[NIVEL_DISENO: LOD_500_ULTRA_DETALLE] [CIERRE: 360_6_CARAS]\n"
              f"<escena_actual_blender>\n"
-             f"scene_id: {spec['scene_id']} | colecciones: {spec['collections']} | lote: {lot_area} m2\n"
+             f"colecciones: {real_plan.get('collections', [])[:6]} | lote: {lot_area} m2\n"
              f"</escena_actual_blender>\n"
              f"Sobre la escena interior que acabas de construir en Blender, manteniendo las 6 caras del cerramiento, "
              f"reemplaza la mesa pequeña por una mesa de centro de piedra ampliada sobre alfombra tejida, "
@@ -1566,7 +1571,7 @@ def build_six_matrix_variants(
                 "content": (
                     f"<image>\n[NIVEL_DISENO: LOD_400_INGENIERIA_AEC] [CIERRE: 360_6_CARAS]\n"
                     f"<escena_actual_blender>\n"
-                    f"scene_id: {spec['scene_id']} | modo: aec_structural | lote: {lot_area} m2\n"
+                    f"modo: aec_structural | lote: {lot_area} m2 | colecciones: {real_plan.get('collections', [])[:5]}\n"
                     f"</escena_actual_blender>\n"
                     f"Sobre el modelo estructural AEC actual en Blender, agrega un refuerzo "
                     f"de ingeniería con bípode de columnas tubulares HSS en 'V' sobre dado de fundación de "
@@ -1729,7 +1734,7 @@ def call_gemini_api_vision(
             url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"}, method="POST"
         )
         try:
-            with urllib.request.urlopen(req, timeout=180) as resp:
+            with urllib.request.urlopen(req, timeout=420) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
             return data["candidates"][0]["content"]["parts"][0]["text"]
         except Exception as exc:
